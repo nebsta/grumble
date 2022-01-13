@@ -6,7 +6,7 @@
 //  Copyright © 2015 The Caffeinated Coder. All rights reserved.
 //
 
-#include "ShaderManager.h"
+#include "ShaderManager.hpp"
 
 ShaderManager::ShaderManager() {
     

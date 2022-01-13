@@ -18,7 +18,7 @@
 
 #include "Object.hpp"
 #include "ColorConstants.h"
-#include "ShaderManager.h"
+#include "ShaderManager.hpp"
 #include "ScreenManager.hpp"
 
 #define MAX_VERTICES 50

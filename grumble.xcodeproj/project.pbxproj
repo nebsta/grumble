@@ -33,8 +33,6 @@
 		4357434627904C15000B5062 /* Message.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431A27904C15000B5062 /* Message.hpp */; };
 		4357434727904C15000B5062 /* Responder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431C27904C15000B5062 /* Responder.hpp */; };
 		4357434827904C15000B5062 /* Responder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431D27904C15000B5062 /* Responder.cpp */; };
-		4357434927904C15000B5062 /* ShaderManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4357431F27904C15000B5062 /* ShaderManager.mm */; };
-		4357434A27904C15000B5062 /* ShaderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357432027904C15000B5062 /* ShaderManager.h */; };
 		4357434B27904C15000B5062 /* SpriteManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357432227904C15000B5062 /* SpriteManager.hpp */; };
 		4357434C27904C15000B5062 /* Sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357432327904C15000B5062 /* Sprite.h */; };
 		4357434D27904C15000B5062 /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357432427904C15000B5062 /* SpriteManager.cpp */; };
@@ -52,6 +50,8 @@
 		4357436027905602000B5062 /* ScreenHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357435B279055B6000B5062 /* ScreenHandler.hpp */; };
 		43574363279057FD000B5062 /* ShaderHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43574361279057FD000B5062 /* ShaderHandler.cpp */; };
 		43574364279057FD000B5062 /* ShaderHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43574362279057FD000B5062 /* ShaderHandler.hpp */; };
+		435743AD27907364000B5062 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743AC27907364000B5062 /* ShaderManager.cpp */; };
+		435743AF2790737E000B5062 /* ShaderManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 435743AE2790737E000B5062 /* ShaderManager.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,8 +82,6 @@
 		4357431A27904C15000B5062 /* Message.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Message.hpp; sourceTree = "<group>"; };
 		4357431C27904C15000B5062 /* Responder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Responder.hpp; sourceTree = "<group>"; };
 		4357431D27904C15000B5062 /* Responder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Responder.cpp; sourceTree = "<group>"; };
-		4357431F27904C15000B5062 /* ShaderManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderManager.mm; sourceTree = "<group>"; };
-		4357432027904C15000B5062 /* ShaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderManager.h; sourceTree = "<group>"; };
 		4357432227904C15000B5062 /* SpriteManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteManager.hpp; sourceTree = "<group>"; };
 		4357432327904C15000B5062 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		4357432427904C15000B5062 /* SpriteManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteManager.cpp; sourceTree = "<group>"; };
@@ -103,6 +101,8 @@
 		4357435D279055FC000B5062 /* ScreenManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScreenManager.hpp; sourceTree = "<group>"; };
 		43574361279057FD000B5062 /* ShaderHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderHandler.cpp; sourceTree = "<group>"; };
 		43574362279057FD000B5062 /* ShaderHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderHandler.hpp; sourceTree = "<group>"; };
+		435743AC27907364000B5062 /* ShaderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderManager.cpp; sourceTree = "<group>"; };
+		435743AE2790737E000B5062 /* ShaderManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,10 +234,10 @@
 		4357431E27904C15000B5062 /* shader */ = {
 			isa = PBXGroup;
 			children = (
-				4357431F27904C15000B5062 /* ShaderManager.mm */,
-				4357432027904C15000B5062 /* ShaderManager.h */,
-				43574361279057FD000B5062 /* ShaderHandler.cpp */,
+				435743AE2790737E000B5062 /* ShaderManager.hpp */,
+				435743AC27907364000B5062 /* ShaderManager.cpp */,
 				43574362279057FD000B5062 /* ShaderHandler.hpp */,
+				43574361279057FD000B5062 /* ShaderHandler.cpp */,
 			);
 			path = shader;
 			sourceTree = "<group>";
@@ -287,7 +287,6 @@
 				4357433E27904C15000B5062 /* Object.hpp in Headers */,
 				4357433F27904C15000B5062 /* Renderer.hpp in Headers */,
 				4357436027905602000B5062 /* ScreenHandler.hpp in Headers */,
-				4357434A27904C15000B5062 /* ShaderManager.h in Headers */,
 				4357435927905434000B5062 /* Touch.hpp in Headers */,
 				4357433827904C15000B5062 /* Logger.h in Headers */,
 				4357433627904C15000B5062 /* Button.hpp in Headers */,
@@ -295,6 +294,7 @@
 				4357433C27904C15000B5062 /* ColorConstants.h in Headers */,
 				43574364279057FD000B5062 /* ShaderHandler.hpp in Headers */,
 				4357434F27904C15000B5062 /* IUpdatable.h in Headers */,
+				435743AF2790737E000B5062 /* ShaderManager.hpp in Headers */,
 				4357434C27904C15000B5062 /* Sprite.h in Headers */,
 				4357433B27904C15000B5062 /* MathConstants.h in Headers */,
 				4357434B27904C15000B5062 /* SpriteManager.hpp in Headers */,
@@ -370,7 +370,6 @@
 				4357434827904C15000B5062 /* Responder.cpp in Sources */,
 				4357434227904C15000B5062 /* Renderer.cpp in Sources */,
 				4357435227904C15000B5062 /* AnimationCurves.cpp in Sources */,
-				4357434927904C15000B5062 /* ShaderManager.mm in Sources */,
 				4357433127904C15000B5062 /* View.cpp in Sources */,
 				4357435E279055FC000B5062 /* ScreenManager.cpp in Sources */,
 				4357434427904C15000B5062 /* MessageManager.cpp in Sources */,
@@ -386,6 +385,7 @@
 				4357434127904C15000B5062 /* Graphics.cpp in Sources */,
 				4357433A27904C15000B5062 /* Logger.mm in Sources */,
 				4357434327904C15000B5062 /* Message.cpp in Sources */,
+				435743AD27907364000B5062 /* ShaderManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
