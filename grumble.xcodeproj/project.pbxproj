@@ -8,49 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4357432F27904C15000B5062 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435742FE27904C15000B5062 /* Button.cpp */; };
-		4357433027904C15000B5062 /* Transform.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 435742FF27904C15000B5062 /* Transform.hpp */; };
 		4357433127904C15000B5062 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430027904C15000B5062 /* View.cpp */; };
 		4357433227904C15000B5062 /* ImageView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430127904C15000B5062 /* ImageView.cpp */; };
 		4357433327904C15000B5062 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430227904C15000B5062 /* Transform.cpp */; };
-		4357433427904C15000B5062 /* View.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357430327904C15000B5062 /* View.hpp */; };
-		4357433527904C15000B5062 /* ImageView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357430427904C15000B5062 /* ImageView.hpp */; };
-		4357433627904C15000B5062 /* Button.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357430527904C15000B5062 /* Button.hpp */; };
-		4357433727904C15000B5062 /* MemoryProfiler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357430727904C15000B5062 /* MemoryProfiler.hpp */; };
-		4357433827904C15000B5062 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357430827904C15000B5062 /* Logger.h */; };
 		4357433927904C15000B5062 /* MemoryProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430927904C15000B5062 /* MemoryProfiler.cpp */; };
-		4357433B27904C15000B5062 /* MathConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357430C27904C15000B5062 /* MathConstants.h */; };
-		4357433C27904C15000B5062 /* ColorConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357430D27904C15000B5062 /* ColorConstants.h */; };
 		4357433D27904C15000B5062 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430F27904C15000B5062 /* Object.cpp */; };
-		4357433E27904C15000B5062 /* Object.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431027904C15000B5062 /* Object.hpp */; };
-		4357433F27904C15000B5062 /* Renderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431227904C15000B5062 /* Renderer.hpp */; };
-		4357434027904C15000B5062 /* Graphics.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431327904C15000B5062 /* Graphics.hpp */; };
 		4357434127904C15000B5062 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431427904C15000B5062 /* Graphics.cpp */; };
 		4357434227904C15000B5062 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431527904C15000B5062 /* Renderer.cpp */; };
 		4357434327904C15000B5062 /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431727904C15000B5062 /* Message.cpp */; };
 		4357434427904C15000B5062 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431827904C15000B5062 /* MessageManager.cpp */; };
-		4357434527904C15000B5062 /* MessageManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431927904C15000B5062 /* MessageManager.hpp */; };
-		4357434627904C15000B5062 /* Message.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431A27904C15000B5062 /* Message.hpp */; };
-		4357434727904C15000B5062 /* Responder.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357431C27904C15000B5062 /* Responder.hpp */; };
 		4357434827904C15000B5062 /* Responder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431D27904C15000B5062 /* Responder.cpp */; };
 		4357434B27904C15000B5062 /* SpriteManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357432227904C15000B5062 /* SpriteManager.hpp */; };
-		4357434C27904C15000B5062 /* Sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357432327904C15000B5062 /* Sprite.h */; };
 		4357434D27904C15000B5062 /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357432427904C15000B5062 /* SpriteManager.cpp */; };
-		4357434E27904C15000B5062 /* SpriteHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357432527904C15000B5062 /* SpriteHandler.hpp */; };
-		4357434F27904C15000B5062 /* IUpdatable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357432727904C15000B5062 /* IUpdatable.h */; };
-		4357435027904C15000B5062 /* ViewAnimator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357432927904C15000B5062 /* ViewAnimator.hpp */; };
-		4357435127904C15000B5062 /* Animator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357432A27904C15000B5062 /* Animator.hpp */; };
 		4357435227904C15000B5062 /* AnimationCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357432B27904C15000B5062 /* AnimationCurves.cpp */; };
 		4357435327904C15000B5062 /* Animator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357432C27904C15000B5062 /* Animator.cpp */; };
-		4357435427904C15000B5062 /* AnimationCurves.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357432D27904C15000B5062 /* AnimationCurves.hpp */; };
 		4357435527904C15000B5062 /* ViewAnimator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357432E27904C15000B5062 /* ViewAnimator.cpp */; };
-		4357435927905434000B5062 /* Touch.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357435827905434000B5062 /* Touch.hpp */; };
 		4357435E279055FC000B5062 /* ScreenManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357435C279055FC000B5062 /* ScreenManager.cpp */; };
-		4357435F279055FC000B5062 /* ScreenManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357435D279055FC000B5062 /* ScreenManager.hpp */; };
-		4357436027905602000B5062 /* ScreenHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357435B279055B6000B5062 /* ScreenHandler.hpp */; };
 		43574363279057FD000B5062 /* ShaderHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43574361279057FD000B5062 /* ShaderHandler.cpp */; };
-		43574364279057FD000B5062 /* ShaderHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43574362279057FD000B5062 /* ShaderHandler.hpp */; };
 		435743AD27907364000B5062 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743AC27907364000B5062 /* ShaderManager.cpp */; };
-		435743AF2790737E000B5062 /* ShaderManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 435743AE2790737E000B5062 /* ShaderManager.hpp */; };
 		435743B227907622000B5062 /* libgrumble.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 435742E327904B61000B5062 /* libgrumble.a */; };
 		435743B727907946000B5062 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743B627907946000B5062 /* Logger.cpp */; };
 /* End PBXBuildFile section */
@@ -315,32 +290,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4357434527904C15000B5062 /* MessageManager.hpp in Headers */,
-				4357434727904C15000B5062 /* Responder.hpp in Headers */,
-				4357435F279055FC000B5062 /* ScreenManager.hpp in Headers */,
-				4357433E27904C15000B5062 /* Object.hpp in Headers */,
-				4357433F27904C15000B5062 /* Renderer.hpp in Headers */,
-				4357436027905602000B5062 /* ScreenHandler.hpp in Headers */,
-				4357435927905434000B5062 /* Touch.hpp in Headers */,
-				4357433827904C15000B5062 /* Logger.h in Headers */,
-				4357433627904C15000B5062 /* Button.hpp in Headers */,
-				4357435127904C15000B5062 /* Animator.hpp in Headers */,
-				4357433C27904C15000B5062 /* ColorConstants.h in Headers */,
-				43574364279057FD000B5062 /* ShaderHandler.hpp in Headers */,
-				4357434F27904C15000B5062 /* IUpdatable.h in Headers */,
-				435743AF2790737E000B5062 /* ShaderManager.hpp in Headers */,
-				4357434C27904C15000B5062 /* Sprite.h in Headers */,
-				4357433B27904C15000B5062 /* MathConstants.h in Headers */,
 				4357434B27904C15000B5062 /* SpriteManager.hpp in Headers */,
-				4357433027904C15000B5062 /* Transform.hpp in Headers */,
-				4357434027904C15000B5062 /* Graphics.hpp in Headers */,
-				4357433427904C15000B5062 /* View.hpp in Headers */,
-				4357434E27904C15000B5062 /* SpriteHandler.hpp in Headers */,
-				4357435427904C15000B5062 /* AnimationCurves.hpp in Headers */,
-				4357435027904C15000B5062 /* ViewAnimator.hpp in Headers */,
-				4357433727904C15000B5062 /* MemoryProfiler.hpp in Headers */,
-				4357433527904C15000B5062 /* ImageView.hpp in Headers */,
-				4357434627904C15000B5062 /* Message.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

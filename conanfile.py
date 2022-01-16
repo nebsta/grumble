@@ -1,6 +1,5 @@
 from conans import ConanFile, tools
 
-
 class HelloConan(ConanFile):
     name = "grumble"
     version = "1.0.0"

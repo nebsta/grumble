@@ -28,7 +28,6 @@ void operator delete(void* memory, size_t size) noexcept {
 
 namespace grumble {
 
-
     void MemoryProfiler::memoryFreed(const size_t &size) {
         _memoryUsed -= size;
     }
