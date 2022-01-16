@@ -8,16 +8,19 @@
 
 #include "MessageManager.hpp"
 
-typedef CallbackList::iterator CallbackIterator;
+namespace grumble {
 
-void MessageManager::subscribe(std::string type, BasicCallback callback) {
-    CallbackList list = _subscribers[type];
-    list.push_back(callback);
-}
+    typedef CallbackList::iterator CallbackIterator;
 
-void MessageManager::unsubscribe(std::string type, BasicCallback callback) {
-    CallbackList list = _subscribers[type];
+    void MessageManager::subscribe(std::string type, BasicCallback callback) {
+        CallbackList list = _subscribers[type];
+        list.push_back(callback);
+    }
 
-//    CallbackIterator pos = std::find(list.begin(), list.end(), callback);
-//    list.erase(pos);
+    void MessageManager::unsubscribe(std::string type, BasicCallback callback) {
+        CallbackList list = _subscribers[type];
+
+    //    CallbackIterator pos = std::find(list.begin(), list.end(), callback);
+    //    list.erase(pos);
+    }
 }

@@ -13,15 +13,19 @@
 
 #import "Sprite.h"
 
-using namespace std;
+namespace grumble {
+    using namespace std;
 
-class SpriteHandler {
-    
-public:
-    virtual ~SpriteHandler() { }
-    
-    virtual void loadAtlases() = 0;
-    virtual Sprite loadSprite(const string& file, const string& spriteName) const = 0;
-};
+    class SpriteHandler {
+        
+    public:
+        virtual ~SpriteHandler() { }
+        
+        virtual void loadAtlases() = 0;
+        virtual Sprite loadSprite(const string& file, const string& spriteName) const = 0;
+    };
+}
+
+
 
 #endif /* SpriteHandler_hpp */

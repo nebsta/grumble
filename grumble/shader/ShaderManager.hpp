@@ -16,25 +16,27 @@
 #include "Logger.h"
 #include "ShaderHandler.hpp"
 
-using namespace std;
+namespace grumble {
+    using namespace std;
 
-class ShaderManager {
-    
-public:
-    static ShaderManager& instance() {
-        static ShaderManager instance;
-        return instance;
-    }
-    
-    template<typename T>
-    void initialize(ShaderHandler *handler);
-    void teardown();
-    
-private:
-    unique_ptr<ShaderHandler> _shaderHandler;
-    
-    ShaderManager();
-    ~ShaderManager();
-};
+    class ShaderManager {
+        
+    public:
+        static ShaderManager& instance() {
+            static ShaderManager instance;
+            return instance;
+        }
+        
+        template<typename T>
+        void initialize(ShaderHandler *handler);
+        void teardown();
+        
+    private:
+        unique_ptr<ShaderHandler> _shaderHandler;
+        
+        ShaderManager();
+        ~ShaderManager();
+    };
+}
 
 #endif /* ShaderManager_hpp */

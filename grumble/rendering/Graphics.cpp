@@ -8,14 +8,16 @@
 
 #include "Graphics.hpp"
 
-void Graphics::Initialize() {
-    
-}
+namespace grumble {
+    void Graphics::Initialize() {
+        
+    }
 
-Renderer* Graphics::CreateViewRenderer(const glm::vec4& tint) {
-    return nullptr;
-}
+    Renderer* Graphics::CreateViewRenderer(const glm::vec4& tint) {
+        return nullptr;
+    }
 
-Renderer* Graphics::CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint) {
-    return nullptr;
+    Renderer* Graphics::CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint) {
+        return nullptr;
+    }
 }

@@ -11,18 +11,20 @@
 
 #include "View.hpp"
 
-class Button : public View {
-    
-public:
-    Button();
-    ~Button();
-    
-    void setActiveColor(glm::vec4 activeColor);
-    void setInactiveColor(glm::vec4 inactiveColor);
-    
-private:
-    glm::vec4 _activeColor;
-    glm::vec4 _inactiveColor;
-};
+namespace grumble {
+    class Button : public View {
+        
+    public:
+        Button();
+        ~Button();
+        
+        void setActiveColor(glm::vec4 activeColor);
+        void setInactiveColor(glm::vec4 inactiveColor);
+        
+    private:
+        glm::vec4 _activeColor;
+        glm::vec4 _inactiveColor;
+    };
+}
 
 #endif /* Button_hpp */

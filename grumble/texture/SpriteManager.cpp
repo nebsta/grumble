@@ -8,17 +8,20 @@
 
 #include "SpriteManager.hpp"
 
-template<typename T>
-SpriteManager::SpriteManager()
-{
-    _spriteHandler->loadAtlases();
+namespace grumble {
+    template<typename T>
+    SpriteManager::SpriteManager()
+    {
+        _spriteHandler->loadAtlases();
+    }
+
+    SpriteManager::~SpriteManager() {
+        
+    }
+
+    Sprite SpriteManager::loadSprite(const string &file, const string &spriteName) const {
+        
+        return SpriteEmpty;
+    }
 }
 
-SpriteManager::~SpriteManager() {
-    
-}
-
-Sprite SpriteManager::loadSprite(const string &file, const string &spriteName) const {
-    
-    return SpriteEmpty;
-}

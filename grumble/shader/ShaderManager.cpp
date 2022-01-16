@@ -8,17 +8,20 @@
 
 #include "ShaderManager.hpp"
 
-ShaderManager::ShaderManager() {
-    
-}
+namespace grumble {
+
+    ShaderManager::ShaderManager() {
+        
+    }
 
 
-ShaderManager::~ShaderManager() {
-    
-}
+    ShaderManager::~ShaderManager() {
+        
+    }
 
-template<typename T>
-void ShaderManager::initialize(ShaderHandler *handler)
-{
-    
+    template<typename T>
+    void ShaderManager::initialize(ShaderHandler *handler)
+    {
+        
+    }
 }

@@ -14,12 +14,14 @@
 #include "Renderer.hpp"
 #include "Sprite.h"
 
-class Graphics {
-public:
-    static void Initialize();
-    static Renderer* CreateViewRenderer(const glm::vec4& tint);
-    static Renderer* CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint);
-    
-};
+namespace grumble {
+    class Graphics {
+    public:
+        static void Initialize();
+        static Renderer* CreateViewRenderer(const glm::vec4& tint);
+        static Renderer* CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint);
+        
+    };
+}
 
 #endif /* Graphics_hpp */

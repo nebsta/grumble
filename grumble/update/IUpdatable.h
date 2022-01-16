@@ -9,20 +9,22 @@
 #ifndef IUpdatable_h
 #define IUpdatable_h
 
-class IUpdatable {
-public:
-    virtual void update(float dt) = 0;
-    
-    void setEnabled(bool enabled) {
-        this->enabled = enabled;
-    }
-    
-    bool isEnabled() {
-        return enabled;
-    }
-    
-private:
-    bool enabled = true;
-};
+namespace grumble {
+    class IUpdatable {
+    public:
+        virtual void update(float dt) = 0;
+        
+        void setEnabled(bool enabled) {
+            this->enabled = enabled;
+        }
+        
+        bool isEnabled() {
+            return enabled;
+        }
+        
+    private:
+        bool enabled = true;
+    };
+}
 
 #endif /* IUpdatable_h */

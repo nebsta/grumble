@@ -10,11 +10,13 @@
 
 #include <stdio.h>
 
-class ShaderHandler {
-public:
-    virtual void initialize() = 0;
-    virtual ~ShaderHandler() = 0;
-private:
-};
+namespace grumble {
+    class ShaderHandler {
+    public:
+        virtual void initialize() = 0;
+        virtual ~ShaderHandler() = 0;
+    private:
+    };
+}
 
 #endif /* ShaderHandler_hpp */

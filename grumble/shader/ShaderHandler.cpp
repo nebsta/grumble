@@ -6,3 +6,6 @@
 //
 
 #include "ShaderHandler.hpp"
+namespace grumble {
+
+}

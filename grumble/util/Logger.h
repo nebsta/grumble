@@ -13,13 +13,15 @@
 #include <sstream>
 #include <iostream>
 
-class Logger {
-    
-public:
-    static void logMessage(std::string message);
-    static void logMessage(std::string message, const char* vs...);
-    static void logError(std::string message);
-    
-};
+namespace grumble {
+    class Logger {
+        
+    public:
+        static void logMessage(std::string message);
+        static void logMessage(std::string message, const char* vs...);
+        static void logError(std::string message);
+        
+    };
+}
 
 #endif /* Logger_hpp */

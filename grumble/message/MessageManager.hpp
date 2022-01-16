@@ -15,22 +15,24 @@
 #include <map>
 #include <string>
 
-typedef std::function<void()> BasicCallback;
-typedef std::vector<BasicCallback> CallbackList;
+namespace grumble {
+    typedef std::function<void()> BasicCallback;
+    typedef std::vector<BasicCallback> CallbackList;
 
-class MessageManager {
-    
-public:
-    static MessageManager& instance() {
-        static MessageManager instance;
-        return instance;
-    }
-    
-    void subscribe(std::string type, BasicCallback callback);
-    void unsubscribe(std::string type, BasicCallback callback);
-    
-private:
-    std::map<std::string,CallbackList> _subscribers;
-};
+    class MessageManager {
+        
+    public:
+        static MessageManager& instance() {
+            static MessageManager instance;
+            return instance;
+        }
+        
+        void subscribe(std::string type, BasicCallback callback);
+        void unsubscribe(std::string type, BasicCallback callback);
+        
+    private:
+        std::map<std::string,CallbackList> _subscribers;
+    };
+}
 
 #endif /* MessageManager_hpp */

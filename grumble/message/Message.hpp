@@ -11,13 +11,15 @@
 
 #include <stdio.h>
 
-class Message {
-    
-public:
-    Message();
-    ~Message();
-    
-    void dispatch();
-};
+namespace grumble {
+    class Message {
+        
+    public:
+        Message();
+        ~Message();
+        
+        void dispatch();
+    };
+}
 
 #endif /* Message_hpp */

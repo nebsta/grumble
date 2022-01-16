@@ -8,14 +8,16 @@
 
 #include "Message.hpp"
 
-Message::Message() {
-    
-}
+namespace grumble {
+    Message::Message() {
+        
+    }
 
-Message::~Message() {
-    
-}
+    Message::~Message() {
+        
+    }
 
-void Message::dispatch() {
-    
+    void Message::dispatch() {
+        
+    }
 }

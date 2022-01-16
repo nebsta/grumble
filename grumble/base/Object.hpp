@@ -16,23 +16,25 @@
 
 #define CORE_DEFAULT_ID 0
 
-class Object {
-    
-public:
-    Object();
-    Object(int id);
-    ~Object();
-    
-    int id();
-    void setId(int id);
-    
-    void print();
-    
-    std::string toString();
-    std::stringstream toStream();
-    
-private:
-    int _id;
-};
+namespace grumble {
+    class Object {
+        
+    public:
+        Object();
+        Object(int id);
+        ~Object();
+        
+        int id();
+        void setId(int id);
+        
+        void print();
+        
+        std::string toString();
+        std::stringstream toStream();
+        
+    private:
+        int _id;
+    };
+}
 
 #endif /* Object_hpp */

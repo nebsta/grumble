@@ -15,18 +15,18 @@
 
 #define USAGE_WINDOW_SIZE 500
 
-class MemoryProfiler {
-    
-public:
-    void memoryAllocated(const size_t& size);
-    void memoryFreed(const size_t& size);
-    
-private:
-    int _memoryUsed;
-    
-    void updateUsageWindow();
-};
-
-
+namespace grumble {
+    class MemoryProfiler {
+        
+    public:
+        void memoryAllocated(const size_t& size);
+        void memoryFreed(const size_t& size);
+        
+    private:
+        int _memoryUsed;
+        
+        void updateUsageWindow();
+    };
+}
 
 #endif /* MemoryProfiler_hpp */

@@ -18,7 +18,6 @@
 		4357433727904C15000B5062 /* MemoryProfiler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4357430727904C15000B5062 /* MemoryProfiler.hpp */; };
 		4357433827904C15000B5062 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357430827904C15000B5062 /* Logger.h */; };
 		4357433927904C15000B5062 /* MemoryProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430927904C15000B5062 /* MemoryProfiler.cpp */; };
-		4357433A27904C15000B5062 /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4357430A27904C15000B5062 /* Logger.mm */; };
 		4357433B27904C15000B5062 /* MathConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357430C27904C15000B5062 /* MathConstants.h */; };
 		4357433C27904C15000B5062 /* ColorConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4357430D27904C15000B5062 /* ColorConstants.h */; };
 		4357433D27904C15000B5062 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357430F27904C15000B5062 /* Object.cpp */; };
@@ -53,7 +52,7 @@
 		435743AD27907364000B5062 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743AC27907364000B5062 /* ShaderManager.cpp */; };
 		435743AF2790737E000B5062 /* ShaderManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 435743AE2790737E000B5062 /* ShaderManager.hpp */; };
 		435743B227907622000B5062 /* libgrumble.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 435742E327904B61000B5062 /* libgrumble.a */; };
-		435743B527907739000B5062 /* libgrumble.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 435743B427907739000B5062 /* libgrumble.a */; };
+		435743B727907946000B5062 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743B627907946000B5062 /* Logger.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,7 +81,6 @@
 		4357430727904C15000B5062 /* MemoryProfiler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MemoryProfiler.hpp; sourceTree = "<group>"; };
 		4357430827904C15000B5062 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		4357430927904C15000B5062 /* MemoryProfiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryProfiler.cpp; sourceTree = "<group>"; };
-		4357430A27904C15000B5062 /* Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
 		4357430C27904C15000B5062 /* MathConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathConstants.h; sourceTree = "<group>"; };
 		4357430D27904C15000B5062 /* ColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstants.h; sourceTree = "<group>"; };
 		4357430F27904C15000B5062 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
@@ -119,6 +117,8 @@
 		435743AC27907364000B5062 /* ShaderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderManager.cpp; sourceTree = "<group>"; };
 		435743AE2790737E000B5062 /* ShaderManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderManager.hpp; sourceTree = "<group>"; };
 		435743B427907739000B5062 /* libgrumble.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgrumble.a; sourceTree = "<group>"; };
+		435743B627907946000B5062 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		435743B82790797C000B5062 /* conanfile.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = conanfile.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				435743B527907739000B5062 /* libgrumble.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +135,7 @@
 		435742DA27904B61000B5062 = {
 			isa = PBXGroup;
 			children = (
+				435743B82790797C000B5062 /* conanfile.py */,
 				435743B327907668000B5062 /* lib */,
 				435743572790532A000B5062 /* conanbuildinfo.xcconfig */,
 				4357435627905273000B5062 /* conanfile.txt */,
@@ -191,10 +191,10 @@
 		4357430627904C15000B5062 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				4357430727904C15000B5062 /* MemoryProfiler.hpp */,
 				4357430827904C15000B5062 /* Logger.h */,
+				435743B627907946000B5062 /* Logger.cpp */,
+				4357430727904C15000B5062 /* MemoryProfiler.hpp */,
 				4357430927904C15000B5062 /* MemoryProfiler.cpp */,
-				4357430A27904C15000B5062 /* Logger.mm */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -211,8 +211,8 @@
 		4357430E27904C15000B5062 /* base */ = {
 			isa = PBXGroup;
 			children = (
-				4357430F27904C15000B5062 /* Object.cpp */,
 				4357431027904C15000B5062 /* Object.hpp */,
+				4357430F27904C15000B5062 /* Object.cpp */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -295,9 +295,17 @@
 		435743B327907668000B5062 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				4357443927908253000B5062 /* include */,
 				435743B427907739000B5062 /* libgrumble.a */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		4357443927908253000B5062 /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +355,7 @@
 				435742E027904B61000B5062 /* Sources */,
 				435742E127904B61000B5062 /* Frameworks */,
 				435743B12790760C000B5062 /* CopyFiles */,
+				435743B9279079DB000B5062 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -389,6 +398,26 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		435743B9279079DB000B5062 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan export-pkg conanfile.py -f\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		435742E027904B61000B5062 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -401,6 +430,7 @@
 				4357435E279055FC000B5062 /* ScreenManager.cpp in Sources */,
 				4357434427904C15000B5062 /* MessageManager.cpp in Sources */,
 				4357432F27904C15000B5062 /* Button.cpp in Sources */,
+				435743B727907946000B5062 /* Logger.cpp in Sources */,
 				43574363279057FD000B5062 /* ShaderHandler.cpp in Sources */,
 				4357434D27904C15000B5062 /* SpriteManager.cpp in Sources */,
 				4357435527904C15000B5062 /* ViewAnimator.cpp in Sources */,
@@ -410,7 +440,6 @@
 				4357433D27904C15000B5062 /* Object.cpp in Sources */,
 				4357433227904C15000B5062 /* ImageView.cpp in Sources */,
 				4357434127904C15000B5062 /* Graphics.cpp in Sources */,
-				4357433A27904C15000B5062 /* Logger.mm in Sources */,
 				4357434327904C15000B5062 /* Message.cpp in Sources */,
 				435743AD27907364000B5062 /* ShaderManager.cpp in Sources */,
 			);
@@ -421,6 +450,7 @@
 /* Begin XCBuildConfiguration section */
 		435742EC27904B61000B5062 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 435743572790532A000B5062 /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -480,6 +510,7 @@
 		};
 		435742ED27904B61000B5062 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 435743572790532A000B5062 /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -532,7 +563,6 @@
 		};
 		435742EF27904B61000B5062 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 435743572790532A000B5062 /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4P3G8H5TQ3;
@@ -550,7 +580,6 @@
 		};
 		435742F027904B61000B5062 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 435743572790532A000B5062 /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4P3G8H5TQ3;

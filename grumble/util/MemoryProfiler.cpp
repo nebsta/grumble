@@ -8,7 +8,7 @@
 
 #include "MemoryProfiler.hpp"
 
-static MemoryProfiler profiler;
+static grumble::MemoryProfiler profiler;
 
 void* operator new(size_t size) {
     
@@ -26,10 +26,14 @@ void operator delete(void* memory, size_t size) noexcept {
     free(memory);
 }
 
-void MemoryProfiler::memoryFreed(const size_t &size) {
-    _memoryUsed -= size;
-}
+namespace grumble {
 
-void MemoryProfiler::memoryAllocated(const size_t &size) {
-    _memoryUsed += size;
+
+    void MemoryProfiler::memoryFreed(const size_t &size) {
+        _memoryUsed -= size;
+    }
+
+    void MemoryProfiler::memoryAllocated(const size_t &size) {
+        _memoryUsed += size;
+    }
 }
