@@ -10,7 +10,7 @@
 #define Animator_hpp
 
 #include <stdio.h>
-#include "Object.hpp"
+#include "../base/Object.hpp"
 #include "AnimationCurves.hpp"
 
 #define ANIMATOR_DEFAULT_DURATION 4.0f

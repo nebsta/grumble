@@ -16,7 +16,7 @@
 
 #include "Sprite.hpp"
 #include "SpriteHandler.hpp"
-#include "Logger.hpp"
+#include "../util/Logger.hpp"
 
 namespace grumble {
     using namespace std;

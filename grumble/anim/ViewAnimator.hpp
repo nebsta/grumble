@@ -14,7 +14,7 @@
 #include <glm/gtx/compatibility.hpp>
 
 #include "Animator.hpp"
-#include "MathConstants.hpp"
+#include "../util/MathConstants.hpp"
 
 #define VIEW_ANIM_DEFAULT_START_POS VECTOR_NEGATIVE
 #define VIEW_ANIM_DEFAULT_START_SIZE VECTOR_NEGATIVE

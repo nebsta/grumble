@@ -13,16 +13,18 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-#include "Object.hpp"
 #include "Transform.hpp"
-#include "Responder.hpp"
-#include "ViewAnimator.hpp"
 #include "ScreenManager.hpp"
-#include "Renderer.hpp"
 
-#include "ColorConstants.hpp"
-#include "MathConstants.hpp"
-#include "Graphics.hpp"
+#include "../input/Responder.hpp"
+
+#include "../anim/ViewAnimator.hpp"
+
+#include "../render/Renderer.hpp"
+#include "../render/Graphics.hpp"
+
+#include "../util/ColorConstants.hpp"
+#include "../util/MathConstants.hpp"
 
 #define VIEW_DEFAULT_COLOR COLOR_WHITE
 #define VIEW_DEFAULT_POSITION glm::vec2(0,0)

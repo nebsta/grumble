@@ -14,10 +14,10 @@
 #include <functional>
 #include <vector>
 
-#include "Object.hpp"
+#include "../base/Object.hpp"
+#include "../util/MathConstants.hpp"
+#include "../ui/Transform.hpp"
 #include "Touch.hpp"
-#include "MathConstants.hpp"
-#include "Transform.hpp"
 
 namespace grumble {
     typedef std::function<void(Touch)> TouchCallback;

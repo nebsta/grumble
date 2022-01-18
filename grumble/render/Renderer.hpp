@@ -16,10 +16,11 @@
 #include <stdio.h>
 #include <vector>
 
-#include "Object.hpp"
-#include "ColorConstants.hpp"
+#include "../base/Object.hpp"
+#include "../util/ColorConstants.hpp"
+#include "../ui/ScreenManager.hpp"
+
 #include "ShaderManager.hpp"
-#include "ScreenManager.hpp"
 
 #define MAX_VERTICES 50
 

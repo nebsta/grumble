@@ -12,9 +12,11 @@
 #include <stdio.h>
 
 #include "View.hpp"
-#include "Sprite.hpp"
-#include "MathConstants.hpp"
-#include "Graphics.hpp"
+
+#include "../render/Sprite.hpp"
+#include "../render/Graphics.hpp"
+
+#include "../util/MathConstants.hpp"
 
 #define IMAGEVIEW_DEFAULT_POSITION VECTOR_EMPTY
 #define IMAGEVIEW_DEFAULT_COLOR COLOR_WHITE
