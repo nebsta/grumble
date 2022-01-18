@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 #include "Renderer.hpp"
-#include "Sprite.h"
+#include "Sprite.hpp"
 
 namespace grumble {
     class Graphics {

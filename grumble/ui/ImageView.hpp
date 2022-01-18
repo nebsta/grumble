@@ -12,8 +12,8 @@
 #include <stdio.h>
 
 #include "View.hpp"
-#include "Sprite.h"
-#include "MathConstants.h"
+#include "Sprite.hpp"
+#include "MathConstants.hpp"
 #include "Graphics.hpp"
 
 #define IMAGEVIEW_DEFAULT_POSITION VECTOR_EMPTY

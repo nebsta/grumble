@@ -14,9 +14,9 @@
 #include <glm/glm.hpp>
 #include <map>
 
-#include "Sprite.h"
+#include "Sprite.hpp"
 #include "SpriteHandler.hpp"
-#include "Logger.h"
+#include "Logger.hpp"
 
 namespace grumble {
     using namespace std;

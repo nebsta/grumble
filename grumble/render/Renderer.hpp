@@ -17,7 +17,7 @@
 #include <vector>
 
 #include "Object.hpp"
-#include "ColorConstants.h"
+#include "ColorConstants.hpp"
 #include "ShaderManager.hpp"
 #include "ScreenManager.hpp"
 

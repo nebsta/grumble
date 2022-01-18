@@ -9,10 +9,12 @@ class HelloConan(ConanFile):
     license = "None"
     author = "Benjamin Wallis"
     topics = None
+    requires = ["glm/0.9.9.8"]
+    generators = "xcode"
 
     def package(self):
         self.copy("*.a", "lib", "lib")
-        self.copy("*.hpp", "lib/incude", "grumble")
+        self.copy("*.hpp", "include/grumble", "grumble")
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)

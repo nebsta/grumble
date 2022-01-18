@@ -16,7 +16,7 @@
 
 #include "Object.hpp"
 #include "Touch.hpp"
-#include "MathConstants.h"
+#include "MathConstants.hpp"
 #include "Transform.hpp"
 
 namespace grumble {

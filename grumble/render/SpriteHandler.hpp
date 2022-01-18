@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#import "Sprite.h"
+#import "Sprite.hpp"
 
 namespace grumble {
     using namespace std;

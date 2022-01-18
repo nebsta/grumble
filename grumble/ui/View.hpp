@@ -20,8 +20,8 @@
 #include "ScreenManager.hpp"
 #include "Renderer.hpp"
 
-#include "ColorConstants.h"
-#include "MathConstants.h"
+#include "ColorConstants.hpp"
+#include "MathConstants.hpp"
 #include "Graphics.hpp"
 
 #define VIEW_DEFAULT_COLOR COLOR_WHITE

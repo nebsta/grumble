@@ -6,7 +6,7 @@
 //  Copyright © 2015 The Caffeinated Coder. All rights reserved.
 //
 
-#include "Logger.h"
+#include "Logger.hpp"
 
 namespace grumble {
     void Logger::logMessage(std::string message) {

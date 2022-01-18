@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <sstream>
 
-#include "Logger.h"
+#include "Logger.hpp"
 
 #define CORE_DEFAULT_ID 0
 

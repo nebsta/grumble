@@ -10,7 +10,7 @@
 
 #include <glm/glm.hpp>
 
-#include "MathConstants.h"
+#include "MathConstants.hpp"
 
 namespace grumble {
     struct Touch  {
