@@ -2,11 +2,12 @@
  "graph_lock": {
   "nodes": {
    "0": {
+    "ref": "grumble/1.0.0",
     "options": "",
     "requires": [
      "1"
     ],
-    "path": "conanfile.txt",
+    "path": "conanfile.py",
     "context": "host"
    },
    "1": {
