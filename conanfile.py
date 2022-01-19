@@ -9,7 +9,7 @@ class HelloConan(ConanFile):
     license = "None"
     author = "Benjamin Wallis"
     topics = None
-    requires = ["glm/0.9.9.8"]
+    requires = ["glm/0.9.9.8", "nlohmann_json/3.10.5"]
     generators = "xcode"
 
     def package(self):
