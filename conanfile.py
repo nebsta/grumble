@@ -10,7 +10,7 @@ class HelloConan(ConanFile):
     author = "Benjamin Wallis"
     topics = None
     requires = ["glm/0.9.9.8", "nlohmann_json/3.10.5"]
-    generators = "xcode"
+    generators = "XcodeDeps"
 
     def package(self):
         self.copy("*.a", "lib", "lib")
