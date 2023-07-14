@@ -96,7 +96,7 @@
 		43E5A4A6279477260037ACF2 /* ColorConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorConstants.hpp; sourceTree = "<group>"; };
 		43E5A4A7279477260037ACF2 /* MathConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathConstants.hpp; sourceTree = "<group>"; };
 		43E5A4AA279477EC0037ACF2 /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
-		D929C6B42A6176D0006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
+		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +113,8 @@
 		435742DA27904B61000B5062 = {
 			isa = PBXGroup;
 			children = (
+				D929C6B72A61782D006F520E /* conan */,
 				435743B82790797C000B5062 /* conanfile.py */,
-				D929C6B42A6176D0006F520E /* conan_config.xcconfig */,
 				435743B327907668000B5062 /* lib */,
 				435742E527904B61000B5062 /* grumble */,
 				435742E427904B61000B5062 /* Products */,
@@ -264,6 +264,14 @@
 			path = render;
 			sourceTree = "<group>";
 		};
+		D929C6B72A61782D006F520E /* conan */ = {
+			isa = PBXGroup;
+			children = (
+				D929C6C02A61782D006F520E /* conan_config.xcconfig */,
+			);
+			path = conan;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -332,6 +340,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		436D996C27986DC3008B213C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -345,7 +354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan install . --build missing\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan install $PROJECT_DIR/conanfile.py -s build_type=$CONFIGURATION --output-folder $PROJECT_DIR/conan \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -493,7 +502,7 @@
 		};
 		435742EF27904B61000B5062 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D929C6B42A6176D0006F520E /* conan_config.xcconfig */;
+			baseConfigurationReference = D929C6C02A61782D006F520E /* conan_config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4P3G8H5TQ3;
@@ -512,7 +521,7 @@
 		};
 		435742F027904B61000B5062 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D929C6B42A6176D0006F520E /* conan_config.xcconfig */;
+			baseConfigurationReference = D929C6C02A61782D006F520E /* conan_config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4P3G8H5TQ3;

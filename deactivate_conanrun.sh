@@ -1,1 +1,1 @@
-. "/Users/bewa/Repos/personal/grumble/deactivate_conanrunenv-release-armv8.sh"
+. "/Users/bewa/Repos/personal/grumble/deactivate_conanrunenv-debug-armv8.sh"
