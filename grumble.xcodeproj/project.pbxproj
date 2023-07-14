@@ -65,7 +65,6 @@
 		4357431C27904C15000B5062 /* Responder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Responder.hpp; sourceTree = "<group>"; };
 		4357431D27904C15000B5062 /* Responder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Responder.cpp; sourceTree = "<group>"; };
 		4357432727904C15000B5062 /* IUpdatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUpdatable.h; sourceTree = "<group>"; };
-		435743572790532A000B5062 /* conanbuildinfo.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = conanbuildinfo.xcconfig; sourceTree = "<group>"; };
 		4357435827905434000B5062 /* Touch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Touch.hpp; sourceTree = "<group>"; };
 		4357435B279055B6000B5062 /* ScreenHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScreenHandler.hpp; sourceTree = "<group>"; };
 		4357435C279055FC000B5062 /* ScreenManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenManager.cpp; sourceTree = "<group>"; };
@@ -114,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				435743B82790797C000B5062 /* conanfile.py */,
-				435743572790532A000B5062 /* conanbuildinfo.xcconfig */,
 				435743B327907668000B5062 /* lib */,
 				435742E527904B61000B5062 /* grumble */,
 				435742E427904B61000B5062 /* Products */,
@@ -400,7 +398,6 @@
 /* Begin XCBuildConfiguration section */
 		435742EC27904B61000B5062 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 435743572790532A000B5062 /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -460,7 +457,6 @@
 		};
 		435742ED27904B61000B5062 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 435743572790532A000B5062 /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
