@@ -1,6 +1,0 @@
-// Conan XcodeDeps generated file
-// Includes all direct dependencies
-
-#include "conan_glm.xcconfig"
-
-#include "conan_nlohmann_json.xcconfig"
