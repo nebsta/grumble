@@ -8,20 +8,20 @@
 #include "ScreenManager.hpp"
 
 namespace grumble {
-    template<typename T>
-    void ScreenManager::initialize() {
-        
-    }
+  template<typename T>
+  void ScreenManager::initialize() {
+    
+  }
 
-    const ScreenHandler& ScreenManager::screenHandler() {
-        return *_screenHandler;
-    }
+  const ScreenHandler& ScreenManager::screenHandler() {
+    return *_screenHandler;
+  }
 
-    float ScreenManager::screenWidth() const {
-        return _screenHandler->screenWidth();
-    }
+  float ScreenManager::screenWidth() const {
+    return _screenHandler->screenWidth();
+  }
 
-    float ScreenManager::screenHeight() const {
-        return _screenHandler->screenHeight();
-    }
+  float ScreenManager::screenHeight() const {
+    return _screenHandler->screenHeight();
+  }
 }

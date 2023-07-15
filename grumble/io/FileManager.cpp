@@ -8,21 +8,21 @@
 #include "FileManager.hpp"
 
 namespace grumble {
-    FileManager::FileManager(const FileHandler* handler) :
-    _handler(handler) {
-        
-    }
+  FileManager::FileManager(const FileHandler* handler) :
+  _handler(handler) {
+    
+  }
 
-    FileManager::~FileManager() {
-        
-    }
+  FileManager::~FileManager() {
+    
+  }
 
-    std::string FileManager::loadFile(const std::string& filename) const {
-        return _handler->loadFile(filename);
-    }
+  std::string FileManager::loadFile(const std::string& filename) const {
+    return _handler->loadFile(filename);
+  }
 
-    nlohmann::json FileManager::loadJson(const std::string &filename) const {
-        std::string raw = loadFile(filename);
-        return nlohmann::json::parse(raw);
-    }
+  nlohmann::json FileManager::loadJson(const std::string &filename) const {
+    std::string raw = loadFile(filename);
+    return nlohmann::json::parse(raw);
+  }
 }

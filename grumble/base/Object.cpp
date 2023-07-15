@@ -9,37 +9,37 @@
 #include "Object.hpp"
 
 namespace grumble {
-    Object::Object() : Object(CORE_DEFAULT_ID) {
-        
-    }
+  Object::Object() : Object(CORE_DEFAULT_ID) {
+    
+  }
 
-    Object::Object(int id) : _id(id) {
-        
-    }
+  Object::Object(int id) : _id(id) {
+    
+  }
 
-    Object::~Object() {
-        
-    }
+  Object::~Object() {
+    
+  }
 
-    void Object::print() {
-        Logger::logMessage(toString());
-    }
+  void Object::print() {
+    Logger::logMessage(toString());
+  }
 
-    std::string Object::toString() {
-        return toStream().str();
-    }
+  std::string Object::toString() {
+    return toStream().str();
+  }
 
-    std::stringstream Object::toStream() {
-        std::stringstream stream;
-        stream << "{ id: " << _id << " }";
-        return stream;
-    }
+  std::stringstream Object::toStream() {
+    std::stringstream stream;
+    stream << "{ id: " << _id << " }";
+    return stream;
+  }
 
-    int Object::id() {
-        return _id;
-    }
+  int Object::id() {
+    return _id;
+  }
 
-    void Object::setId(int id) {
-        this->_id = id;
-    }
+  void Object::setId(int id) {
+    this->_id = id;
+  }
 }

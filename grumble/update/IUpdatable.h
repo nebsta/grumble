@@ -6,25 +6,22 @@
 //  Copyright © 2015 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef IUpdatable_h
-#define IUpdatable_h
+#pragma once
 
 namespace grumble {
-    class IUpdatable {
-    public:
-        virtual void update(float dt) = 0;
-        
-        void setEnabled(bool enabled) {
-            this->enabled = enabled;
-        }
-        
-        bool isEnabled() {
-            return enabled;
-        }
-        
-    private:
-        bool enabled = true;
-    };
+  class IUpdatable {
+  public:
+    virtual void update(float dt) = 0;
+    
+    void setEnabled(bool enabled) {
+      this->enabled = enabled;
+    }
+    
+    bool isEnabled() {
+      return enabled;
+    }
+    
+  private:
+    bool enabled = true;
+  };
 }
-
-#endif /* IUpdatable_h */

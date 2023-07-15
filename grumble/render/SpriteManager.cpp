@@ -9,19 +9,17 @@
 #include "SpriteManager.hpp"
 
 namespace grumble {
-    SpriteManager::SpriteManager(SpriteHandler* spriteHandler) :
-_spriteHandler(spriteHandler)
-    {
-        _spriteHandler->loadAtlases();
-    }
+  SpriteManager::SpriteManager(SpriteHandler* spriteHandler) :
+  _spriteHandler(spriteHandler)
+  {
+    _spriteHandler->loadAtlases();
+  }
 
-    SpriteManager::~SpriteManager() {
-        
-    }
+  SpriteManager::~SpriteManager() {
+    
+  }
 
-    Sprite SpriteManager::loadSprite(const std::string &file, const std::string &spriteName) const {
-        
-        return SpriteEmpty;
-    }
+  Sprite SpriteManager::loadSprite(const std::string &file, const std::string &spriteName) const {
+    return SpriteEmpty;
+  }
 }
-

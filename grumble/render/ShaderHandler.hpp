@@ -5,18 +5,16 @@
 //  Created by Benjamin Wallis on 13/01/2022.
 //
 
-#ifndef ShaderHandler_hpp
-#define ShaderHandler_hpp
+#pragma once
 
 #include <stdio.h>
 
 namespace grumble {
-    class ShaderHandler {
-    public:
-        virtual void initialize() = 0;
-        virtual ~ShaderHandler() = 0;
-    private:
-    };
+  class ShaderHandler {
+  public:
+    virtual void initialize() = 0;
+    virtual ~ShaderHandler() = 0;
+  private:
+  };
 }
 
-#endif /* ShaderHandler_hpp */

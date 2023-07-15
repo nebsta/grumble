@@ -6,22 +6,18 @@
 //  Copyright © 2015 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef Logger_hpp
-#define Logger_hpp
+#pragma once
 
 #include <string>
 #include <sstream>
 #include <iostream>
 
 namespace grumble {
-    class Logger {
-        
-    public:
-        static void logMessage(std::string message);
-        static void logMessage(std::string message, const char* vs...);
-        static void logError(std::string message);
-        
-    };
+  class Logger {
+      
+  public:
+    static void logMessage(std::string message);
+    static void logMessage(std::string message, const char* vs...);
+    static void logError(std::string message);
+  };
 }
-
-#endif /* Logger_hpp */

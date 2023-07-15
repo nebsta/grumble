@@ -9,15 +9,15 @@
 #include "Message.hpp"
 
 namespace grumble {
-    Message::Message() {
-        
-    }
+  Message::Message() {
+    
+  }
 
-    Message::~Message() {
-        
-    }
+  Message::~Message() {
+    
+  }
 
-    void Message::dispatch() {
-        
-    }
+  void Message::dispatch() {
+    
+  }
 }

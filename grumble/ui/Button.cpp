@@ -9,21 +9,21 @@
 #include "Button.hpp"
 
 namespace grumble {
-    Button::Button() : View() {
-        
-    }
+  Button::Button() : View() {
+    
+  }
 
-    Button::~Button() {
-        
-    }
+  Button::~Button() {
+    
+  }
 
-    #pragma mark Setters
+  #pragma mark Setters
 
-    void Button::setActiveColor(glm::vec4 activeColor) {
-        _activeColor = activeColor;
-    }
+  void Button::setActiveColor(glm::vec4 activeColor) {
+    _activeColor = activeColor;
+  }
 
-    void Button::setInactiveColor(glm::vec4 inactiveColor) {
-        _inactiveColor = inactiveColor;
-    }
+  void Button::setInactiveColor(glm::vec4 inactiveColor) {
+    _inactiveColor = inactiveColor;
+  }
 }

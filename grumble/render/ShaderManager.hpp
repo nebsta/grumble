@@ -6,8 +6,7 @@
 //  Copyright © 2015 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef ShaderManager_hpp
-#define ShaderManager_hpp
+#pragma once
 
 #include <stdio.h>
 #include <string>
@@ -17,26 +16,22 @@
 #include "ShaderHandler.hpp"
 
 namespace grumble {
-    using namespace std;
-
-    class ShaderManager {
-        
-    public:
-        static ShaderManager& instance() {
-            static ShaderManager instance;
-            return instance;
-        }
-        
-        template<typename T>
-        void initialize(ShaderHandler *handler);
-        void teardown();
-        
-    private:
-        unique_ptr<ShaderHandler> _shaderHandler;
-        
-        ShaderManager();
-        ~ShaderManager();
-    };
+  class ShaderManager {
+    
+  public:
+    static ShaderManager& instance() {
+      static ShaderManager instance;
+      return instance;
+    }
+    
+    template<typename T>
+    void initialize(ShaderHandler *handler);
+    void teardown();
+    
+  private:
+    std::unique_ptr<ShaderHandler> _shaderHandler;
+    
+    ShaderManager();
+    ~ShaderManager();
+  };
 }
-
-#endif /* ShaderManager_hpp */

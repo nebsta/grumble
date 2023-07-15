@@ -6,26 +6,19 @@
 //  Copyright © 2022 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef SpriteHandler_hpp
-#define SpriteHandler_hpp
+#pragma once
 
 #include <stdio.h>
 
 #import "Sprite.hpp"
 
 namespace grumble {
-    using namespace std;
-
-    class SpriteHandler {
-        
-    public:
-        virtual ~SpriteHandler() { }
-        
-        virtual void loadAtlases() = 0;
-        virtual Sprite loadSprite(const string& file, const string& spriteName) const = 0;
-    };
+  class SpriteHandler {
+    
+  public:
+    virtual ~SpriteHandler() { }
+    
+    virtual void loadAtlases() = 0;
+    virtual Sprite loadSprite(const std::string& file, const std::string& spriteName) const = 0;
+  };
 }
-
-
-
-#endif /* SpriteHandler_hpp */

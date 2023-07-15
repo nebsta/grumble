@@ -11,28 +11,27 @@
 static grumble::MemoryProfiler profiler;
 
 void* operator new(size_t size) {
-    
-//    std::cout << "Allocating " << size << " bytes\n";
-    profiler.memoryAllocated(size);
-    
-    return malloc(size);
+  
+  //    std::cout << "Allocating " << size << " bytes\n";
+  profiler.memoryAllocated(size);
+  
+  return malloc(size);
 }
 
 void operator delete(void* memory, size_t size) noexcept {
-    
-//    std::cout << "Freeing " << size << " bytes\n";
-    profiler.memoryFreed(size);
-    
-    free(memory);
+  
+  //    std::cout << "Freeing " << size << " bytes\n";
+  profiler.memoryFreed(size);
+  
+  free(memory);
 }
 
 namespace grumble {
+  void MemoryProfiler::memoryFreed(const size_t &size) {
+    _memoryUsed -= size;
+  }
 
-    void MemoryProfiler::memoryFreed(const size_t &size) {
-        _memoryUsed -= size;
-    }
-
-    void MemoryProfiler::memoryAllocated(const size_t &size) {
-        _memoryUsed += size;
-    }
+  void MemoryProfiler::memoryAllocated(const size_t &size) {
+    _memoryUsed += size;
+  }
 }

@@ -6,8 +6,7 @@
 //  Copyright © 2022 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef Graphics_hpp
-#define Graphics_hpp
+#pragma once
 
 #include <stdio.h>
 
@@ -15,13 +14,11 @@
 #include "Sprite.hpp"
 
 namespace grumble {
-    class Graphics {
-    public:
-        static void Initialize();
-        static Renderer* CreateViewRenderer(const glm::vec4& tint);
-        static Renderer* CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint);
-        
-    };
+  class Graphics {
+  public:
+    static void Initialize();
+    static Renderer* CreateViewRenderer(const glm::vec4& tint);
+    static Renderer* CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint);
+    
+  };
 }
-
-#endif /* Graphics_hpp */

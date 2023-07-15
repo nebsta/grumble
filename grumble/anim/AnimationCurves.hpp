@@ -6,8 +6,7 @@
 //  Copyright © 2017 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef AnimationCurves_hpp
-#define AnimationCurves_hpp
+#pragma once
 
 #include <glm/glm.hpp>
 
@@ -16,12 +15,9 @@
 #define CURVE_EASE_OUT {0.4, 0.66, 0.53, 1}
 
 namespace grumble {
-    typedef struct BezierCurve {
-        float x1; float y1; float x2; float y2;
-    } BezierCurve;
+  typedef struct BezierCurve {
+    float x1; float y1; float x2; float y2;
+  } BezierCurve;
 
-    glm::vec2 cubicBezier(float x1, float y1, float x2, float y2, float t);
+  glm::vec2 cubicBezier(float x1, float y1, float x2, float y2, float t);
 }
-
-#endif /* AnimationCurves_hpp */
-

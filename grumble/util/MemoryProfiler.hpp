@@ -6,8 +6,7 @@
 //  Copyright © 2022 The Caffeinated Coder. All rights reserved.
 //
 
-#ifndef MemoryProfiler_hpp
-#define MemoryProfiler_hpp
+#pragma mark
 
 #include <stdio.h>
 #include <iostream>
@@ -16,17 +15,15 @@
 #define USAGE_WINDOW_SIZE 500
 
 namespace grumble {
-    class MemoryProfiler {
-        
-    public:
-        void memoryAllocated(const size_t& size);
-        void memoryFreed(const size_t& size);
-        
-    private:
-        int _memoryUsed;
-        
-        void updateUsageWindow();
-    };
+  class MemoryProfiler {
+    
+  public:
+    void memoryAllocated(const size_t& size);
+    void memoryFreed(const size_t& size);
+    
+  private:
+    int _memoryUsed;
+    
+    void updateUsageWindow();
+  };
 }
-
-#endif /* MemoryProfiler_hpp */
