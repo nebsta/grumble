@@ -12,8 +12,6 @@ class Generator(ConanFile):
   requires = ["glm/cci.20230113", "nlohmann_json/3.11.2"]
   generators = "XcodeDeps"
 
-  exports_sources = "grumble/*"
-
   def package(self):
     print(self.build_folder)
   
