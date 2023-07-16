@@ -13,7 +13,10 @@ class Generator(ConanFile):
   generators = "XcodeDeps"
 
   def package(self):
-    print(self.build_folder)
-  
-    tools.files.copy(self, pattern="*.a", src=self.build_folder, dst=self.package_folder)
-    tools.files.copy(self, pattern="*.hpp", src=self.build_folder, dst=os.path.join(self.package_folder, "include"))
+    tools.files.copy(self, pattern="*.a", src=self.source_folder, dst=self.package_folder)
+    tools.files.copy(self, pattern="*.hpp", src=self.source_folder, dst=os.path.join(self.package_folder, "include"))
+
+  def package_info(self):
+    self.cpp_info.libs = ["libgrumble"]
+    self.cpp_info.includedirs = ["include"]
+    self.cpp_info.libdirs = ["lib"]

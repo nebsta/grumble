@@ -21,8 +21,7 @@ namespace grumble {
   _localPosition(position),
   _size(size),
   _constraint(TransformConstraint_None),
-  _parent(nullptr),
-  _screenHandler(ScreenManager::instance().screenHandler()) {
+  _parent(nullptr) {
     
   }
 
@@ -106,14 +105,14 @@ namespace grumble {
   }
 
   const glm::vec4 Transform::rect() const {
-    glm::vec2 pixelPosition = _screenHandler.convertToPixels(screenPosition());
-    glm::vec2 pixelSize = _screenHandler.convertToPixels(size());
+//    glm::vec2 pixelPosition = _screenHandler.convertToPixels(screenPosition());
+//    glm::vec2 pixelSize = _screenHandler.convertToPixels(size());
     
     glm::vec4 rect;
-    rect.x = pixelPosition.x;
-    rect.y = _screenHandler.screenPixelSize().y - (pixelPosition.y + pixelSize.y);
-    rect.z = pixelSize.x;
-    rect.w = pixelSize.y;
+//    rect.x = pixelPosition.x;
+//    rect.y = _screenHandler.screenPixelSize().y - (pixelPosition.y + pixelSize.y);
+//    rect.z = pixelSize.x;
+//    rect.w = pixelSize.y;
     
     return rect;
   }

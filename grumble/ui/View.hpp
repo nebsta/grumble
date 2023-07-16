@@ -73,7 +73,5 @@ namespace grumble {
     
   private:
     std::vector<View*> _children;
-    
-    const ScreenManager& _screenManager;
   };
 }

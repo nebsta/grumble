@@ -50,8 +50,6 @@ namespace grumble {
     bool containsScreenPoint(glm::vec2 point) const;
     
   private:
-    const ScreenHandler& _screenHandler;
-    
     glm::vec2 _localPosition;
     glm::vec2 _size;
     bool _propertiesChanged;

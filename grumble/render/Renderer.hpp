@@ -28,7 +28,7 @@
 #define RENDERER_DEFAULT_COLOR COLOR_BLUE
 #define RENDERER_DEFAULT_SHAPE Square
 #define RENDERER_DEFAULT_SHADER "ViewShader"
-#define RENDERER_DEFAULT_PROJECTION glm::ortho(0.0f, ScreenManager::instance().screenWidth(), ScreenManager::instance().screenHeight(), 0.0f, 0.0f, 1000.0f)
+#define RENDERER_DEFAULT_PROJECTION glm::ortho(0.0f, 100.0f, 100.0f, 0.0f, 0.0f, 1000.0f)
 
 namespace grumble {
   struct Vertex {

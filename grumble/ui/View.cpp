@@ -31,8 +31,7 @@ namespace grumble {
   View::View(const glm::vec2& position, const glm::vec2& size, Renderer* renderer) :
   _renderer(renderer),
   _transform(position,size),
-  _responder(_transform),
-  _screenManager(ScreenManager::instance()) {
+  _responder(_transform) {
     refreshRendererMatrix();
     refreshRendererClip();
   }

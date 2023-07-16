@@ -16,10 +16,8 @@ namespace grumble {
   class ScreenManager {
   public:
     
-    static ScreenManager& instance() {
-      static ScreenManager instance;
-      return instance;
-    }
+    ScreenManager();
+    ~ScreenManager();
     
     template<typename T>
     void initialize();
@@ -30,8 +28,6 @@ namespace grumble {
     float screenWidth() const;
     
   private:
-    ScreenManager();
-    ~ScreenManager();
     
     std::unique_ptr<ScreenHandler> _screenHandler;
   };
