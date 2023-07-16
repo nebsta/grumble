@@ -17,4 +17,3 @@ class Generator(ConanFile):
   
     tools.files.copy(self, pattern="*.a", src=self.build_folder, dst=self.package_folder)
     tools.files.copy(self, pattern="*.hpp", src=self.build_folder, dst=os.path.join(self.package_folder, "include"))
-      

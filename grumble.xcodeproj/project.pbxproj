@@ -356,7 +356,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan export-pkg .\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan export-pkg . --output-folder $PROJECT_DIR/conan\n";
 		};
 		D917F8532A643EAC00DCD0CC /* Conan Install */ = {
 			isa = PBXShellScriptBuildPhase;
