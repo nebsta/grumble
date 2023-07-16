@@ -1,20 +1,22 @@
 from conan import ConanFile, tools
+from conans.model.version import Version
 
-class HelloConan(ConanFile):
-    name = "grumble"
-    version = "1.0.0"
-    settings = "os", "compiler", "build_type", "arch"
-    description = "2D engine built in C++"
-    url = "None"
-    license = "None"
-    author = "Benjamin Wallis"
-    topics = None
-    requires = ["glm/cci.20230113", "nlohmann_json/3.11.2"]
-    generators = "XcodeDeps"
+import os
 
-    def package(self):
-        self.copy("*.a", "lib", "lib")
-        self.copy("*.hpp", "include/grumble", "grumble")
+class Generator(ConanFile):
+  name = "grumble"
+  version = "1.0.0"
+  settings = "os", "build_type", "arch"
+  description = "2D engine built in C++"
+  author = "Benjamin Wallis"
+  requires = ["glm/cci.20230113", "nlohmann_json/3.11.2"]
+  generators = "XcodeDeps"
 
-    def package_info(self):
-        self.cpp_info.libs = tools.collect_libs(self)
+  exports_sources = "grumble/*"
+
+  def package(self):
+    print(self.build_folder)
+  
+    tools.files.copy(self, pattern="*.a", src=self.build_folder, dst=self.package_folder)
+    tools.files.copy(self, pattern="*.hpp", src=self.build_folder, dst=os.path.join(self.package_folder, "include"))
+      

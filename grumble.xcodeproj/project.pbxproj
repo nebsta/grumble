@@ -290,11 +290,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 435742EE27904B61000B5062 /* Build configuration list for PBXNativeTarget "grumble" */;
 			buildPhases = (
-				436D996C27986DC3008B213C /* ShellScript */,
+				D917F8532A643EAC00DCD0CC /* Conan Install */,
 				435742DF27904B61000B5062 /* Headers */,
 				435742E027904B61000B5062 /* Sources */,
 				435742E127904B61000B5062 /* Frameworks */,
 				435743B12790760C000B5062 /* CopyFiles */,
+				D917F8512A642BAC00DCD0CC /* Conan Create */,
 			);
 			buildRules = (
 			);
@@ -338,7 +339,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		436D996C27986DC3008B213C /* ShellScript */ = {
+		D917F8512A642BAC00DCD0CC /* Conan Create */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -348,6 +349,26 @@
 			);
 			inputPaths = (
 			);
+			name = "Conan Create";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan export-pkg .\n";
+		};
+		D917F8532A643EAC00DCD0CC /* Conan Install */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Conan Install";
 			outputFileListPaths = (
 			);
 			outputPaths = (
