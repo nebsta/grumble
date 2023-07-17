@@ -17,6 +17,6 @@ class Generator(ConanFile):
     tools.files.copy(self, pattern="*.hpp", src=self.source_folder, dst=os.path.join(self.package_folder, "include"))
 
   def package_info(self):
-    self.cpp_info.libs = ["libgrumble"]
+    self.cpp_info.libs = ["grumble"]
     self.cpp_info.includedirs = ["include"]
     self.cpp_info.libdirs = ["lib"]
