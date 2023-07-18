@@ -16,7 +16,6 @@
 		4357434327904C15000B5062 /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431727904C15000B5062 /* Message.cpp */; };
 		4357434427904C15000B5062 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431827904C15000B5062 /* MessageManager.cpp */; };
 		4357434827904C15000B5062 /* Responder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357431D27904C15000B5062 /* Responder.cpp */; };
-		4357435E279055FC000B5062 /* ScreenManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4357435C279055FC000B5062 /* ScreenManager.cpp */; };
 		435743B227907622000B5062 /* libgrumble.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 435742E327904B61000B5062 /* libgrumble.a */; };
 		435743B727907946000B5062 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743B627907946000B5062 /* Logger.cpp */; };
 		436D9965279864A5008B213C /* FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 436D9963279864A5008B213C /* FileManager.cpp */; };
@@ -29,6 +28,8 @@
 		43E5A4A2279476DF0037ACF2 /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A490279476DF0037ACF2 /* SpriteManager.cpp */; };
 		43E5A4A3279476DF0037ACF2 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A491279476DF0037ACF2 /* ShaderManager.cpp */; };
 		43E5A4A5279476DF0037ACF2 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A493279476DF0037ACF2 /* Renderer.cpp */; };
+		D917F8952A65894F00DCD0CC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D917F8932A65894F00DCD0CC /* Game.cpp */; };
+		D917F8962A65894F00DCD0CC /* Game.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D917F8942A65894F00DCD0CC /* Game.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,8 +67,6 @@
 		4357431D27904C15000B5062 /* Responder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Responder.cpp; sourceTree = "<group>"; };
 		4357432727904C15000B5062 /* IUpdatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUpdatable.h; sourceTree = "<group>"; };
 		4357435827905434000B5062 /* Touch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Touch.hpp; sourceTree = "<group>"; };
-		4357435B279055B6000B5062 /* ScreenHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScreenHandler.hpp; sourceTree = "<group>"; };
-		4357435C279055FC000B5062 /* ScreenManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenManager.cpp; sourceTree = "<group>"; };
 		4357435D279055FC000B5062 /* ScreenManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScreenManager.hpp; sourceTree = "<group>"; };
 		435743B427907739000B5062 /* libgrumble.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgrumble.a; sourceTree = "<group>"; };
 		435743B627907946000B5062 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
@@ -96,6 +95,8 @@
 		43E5A4A6279477260037ACF2 /* ColorConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorConstants.hpp; sourceTree = "<group>"; };
 		43E5A4A7279477260037ACF2 /* MathConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathConstants.hpp; sourceTree = "<group>"; };
 		43E5A4AA279477EC0037ACF2 /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		D917F8932A65894F00DCD0CC /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		D917F8942A65894F00DCD0CC /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,8 +158,6 @@
 				4357430427904C15000B5062 /* ImageView.hpp */,
 				4357430127904C15000B5062 /* ImageView.cpp */,
 				4357435D279055FC000B5062 /* ScreenManager.hpp */,
-				4357435C279055FC000B5062 /* ScreenManager.cpp */,
-				4357435B279055B6000B5062 /* ScreenHandler.hpp */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -181,6 +180,8 @@
 			children = (
 				4357431027904C15000B5062 /* Object.hpp */,
 				4357430F27904C15000B5062 /* Object.cpp */,
+				D917F8942A65894F00DCD0CC /* Game.hpp */,
+				D917F8932A65894F00DCD0CC /* Game.cpp */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -279,6 +280,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D917F8962A65894F00DCD0CC /* Game.hpp in Headers */,
 				436D996A279864DC008B213C /* FileHandler.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +391,7 @@
 				4357433127904C15000B5062 /* View.cpp in Sources */,
 				436D9965279864A5008B213C /* FileManager.cpp in Sources */,
 				43E5A4A2279476DF0037ACF2 /* SpriteManager.cpp in Sources */,
-				4357435E279055FC000B5062 /* ScreenManager.cpp in Sources */,
+				D917F8952A65894F00DCD0CC /* Game.cpp in Sources */,
 				43E5A499279476DF0037ACF2 /* ViewAnimator.cpp in Sources */,
 				4357434427904C15000B5062 /* MessageManager.cpp in Sources */,
 				4357432F27904C15000B5062 /* Button.cpp in Sources */,
