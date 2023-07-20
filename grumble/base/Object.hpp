@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <sstream>
 
-#include "../util/Logger.hpp"
+#include "../logging/Logger.hpp"
 
 #define CORE_DEFAULT_ID 0
 
@@ -30,6 +30,14 @@ namespace grumble {
     
     std::string toString();
     std::stringstream toStream();
+    
+  protected:
+    virtual LogCategory logCategory() { return LogCategory::none; }
+    
+    void logDebug(std::string message);
+    void logInfo(std::string message);
+    void logWarn(std::string message);
+    void logError(std::string message);
     
   private:
     int _id;

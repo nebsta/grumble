@@ -22,7 +22,7 @@ namespace grumble {
   }
 
   void Object::print() {
-    Logger::logMessage(toString());
+    Logger::info(toString());
   }
 
   std::string Object::toString() {
@@ -41,5 +41,22 @@ namespace grumble {
 
   void Object::setId(int id) {
     this->_id = id;
+  }
+
+#pragma mark Logging
+  void Object::logDebug(std::string message) {
+    Logger::debug(message, this->logCategory());
+  }
+
+  void Object::logInfo(std::string message) {
+    Logger::info(message, this->logCategory());
+  }
+
+  void Object::logWarn(std::string message) {
+    Logger::warn(message, this->logCategory());
+  }
+
+  void Object::logError(std::string message) {
+    Logger::error(message, this->logCategory());
   }
 }

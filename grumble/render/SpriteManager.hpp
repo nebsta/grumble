@@ -15,7 +15,7 @@
 
 #include "Sprite.hpp"
 #include "SpriteHandler.hpp"
-#include "../util/Logger.hpp"
+#include "../logging/Logger.hpp"
 
 namespace grumble {
   class SpriteManager {

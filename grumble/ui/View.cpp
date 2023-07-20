@@ -58,7 +58,6 @@ namespace grumble {
   }
 
   void View::update(const float& dt) {
-    
     if (_animator.isPlaying()) {
       
       if (!_animator.hasStarted()) {
@@ -88,6 +87,10 @@ namespace grumble {
         (*iter)->update(dt);
       }
     }
+  }
+
+  void View::fixedUpdate() {
+    
   }
 
   void View::consumeTransformChanges() {

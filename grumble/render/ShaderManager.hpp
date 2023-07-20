@@ -12,7 +12,7 @@
 #include <string>
 #include <map>
 
-#include "../util/Logger.hpp"
+#include "../logging/Logger.hpp"
 #include "ShaderHandler.hpp"
 
 namespace grumble {

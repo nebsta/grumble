@@ -43,6 +43,7 @@ namespace grumble {
     
     void render();
     void update(const float& dt);
+    void fixedUpdate();
     
     void setViewConstraint(TransformConstraint constraint);
     
