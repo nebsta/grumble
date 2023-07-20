@@ -175,8 +175,6 @@
 			children = (
 				43E5A4A6279477260037ACF2 /* ColorConstants.hpp */,
 				43E5A4A7279477260037ACF2 /* MathConstants.hpp */,
-				4357430927904C15000B5062 /* MemoryProfiler.cpp */,
-				4357430727904C15000B5062 /* MemoryProfiler.hpp */,
 				D91D8A4C2A69833900E5B2A8 /* Time.cpp */,
 				D96C30562A67EBA600D5D581 /* Time.hpp */,
 			);
@@ -276,8 +274,10 @@
 		D91D8A4B2A69776D00E5B2A8 /* logging */ = {
 			isa = PBXGroup;
 			children = (
-				435743B627907946000B5062 /* Logger.cpp */,
+				4357430727904C15000B5062 /* MemoryProfiler.hpp */,
+				4357430927904C15000B5062 /* MemoryProfiler.cpp */,
 				43E5A4AA279477EC0037ACF2 /* Logger.hpp */,
+				435743B627907946000B5062 /* Logger.cpp */,
 				D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */,
 				D91D8A482A69771700E5B2A8 /* LogCategory.hpp */,
 			);

@@ -9,8 +9,6 @@
 
 #include <chrono>
 #include <string>
-#include <thread>
-#include <atomic>
 
 #import "Object.hpp"
 #import "../ui/ScreenManager.hpp"
@@ -21,13 +19,11 @@
 namespace grumble {
   class Game: public Object {
   public:
-    Game(/*ScreenManager *screenManager, View *rootView*/);
+    Game(ScreenManager *screenManager);
     ~Game();
     
-    void start();
     void setup();
-    
-    void close();
+    void executeLoop(double dt);
     
   protected:
     LogCategory logCategory() override;
@@ -35,13 +31,6 @@ namespace grumble {
   private:
     ScreenManager *_screenManager;
     View *_rootView;
-    std::atomic<bool> _shouldClose;
-    std::atomic<bool> _isRunning;
-    std::thread::id _uiThreadId;
-    
-    std::thread _mainThread;
-    
-    void mainLoop();
     
     void render();
     void update(double dt);

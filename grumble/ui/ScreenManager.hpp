@@ -12,17 +12,10 @@
 namespace grumble {
   class ScreenManager {
   public:
-    virtual ~ScreenManager() = 0;
+    virtual ~ScreenManager() = default;
     
     virtual void setup() = 0;
     
-    virtual glm::vec2 convertToPixels(const glm::vec2& vector) const = 0;
-    
-    virtual float screenScale() const = 0;
-    virtual float screenWidth() const = 0;
-    virtual float screenHeight() const = 0;
-    
-    virtual glm::vec2 screenPixelSize() const = 0;
     virtual glm::vec2 screenSize() const = 0;
   };
 }
