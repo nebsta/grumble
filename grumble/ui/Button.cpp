@@ -9,9 +9,6 @@
 #include "Button.hpp"
 
 namespace grumble {
-  Button::Button() : View() {
-    
-  }
 
   Button::~Button() {
     

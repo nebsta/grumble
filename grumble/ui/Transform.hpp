@@ -16,8 +16,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "../base/Object.hpp"
-#include "ScreenManager.hpp"
+#include "../core/Object.hpp"
 
 namespace grumble {
   typedef enum TransformConstraint {

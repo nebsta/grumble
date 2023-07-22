@@ -13,7 +13,7 @@
 #include <functional>
 #include <vector>
 
-#include "../base/Object.hpp"
+#include "../core/Object.hpp"
 #include "../util/MathConstants.hpp"
 #include "../ui/Transform.hpp"
 #include "Touch.hpp"

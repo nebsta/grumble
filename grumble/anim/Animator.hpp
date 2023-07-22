@@ -9,7 +9,7 @@
 #pragma once
 
 #include <stdio.h>
-#include "../base/Object.hpp"
+#include "../core/Object.hpp"
 #include "AnimationCurves.hpp"
 
 #define ANIMATOR_DEFAULT_DURATION 4.0f

@@ -17,19 +17,11 @@ namespace grumble {
     
   }
 
-  ImageView::ImageView(const Sprite& sprite, const glm::vec2& position) : ImageView(sprite,position,glm::vec2(sprite.region.w,sprite.region.h)) {
+  ImageView::ImageView(const Sprite& sprite, const glm::vec2& position) : ImageView(sprite, position,glm::vec2(sprite.region.w,sprite.region.h)) {
     
   }
 
   ImageView::ImageView(const Sprite& sprite, const glm::vec2& position, const glm::vec2& size) : ImageView(sprite, position, size, IMAGEVIEW_DEFAULT_COLOR) {
-    
-  }
-
-  ImageView::ImageView(const Sprite& sprite, const glm::vec2& position, const glm::vec2& size, const glm::vec4& tint) : ImageView(position, size, Graphics::CreateImageRenderer(sprite, tint)) {
-    
-  }
-
-  ImageView::ImageView(const glm::vec2& position, const glm::vec2& size, Renderer * const renderer) : View(position, size, renderer) {
     
   }
 

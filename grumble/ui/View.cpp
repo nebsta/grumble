@@ -11,27 +11,10 @@
 namespace grumble {
   typedef std::vector<View*>::iterator ViewIterator;
 
-  View::View() : View(VIEW_DEFAULT_POSITION) {
-    
-  }
-
-  View::View(const glm::vec2& position) : View(position,VIEW_DEFAULT_SIZE) {
-    
-  }
-
-  View::View(const glm::vec2& position, const glm::vec2& size) : View(position,size,VIEW_DEFAULT_COLOR) {
-    
-  }
-
-  View::View(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color) : View(position,size, Graphics::CreateViewRenderer(color))
-  {
-    
-  }
-
-  View::View(const glm::vec2& position, const glm::vec2& size, Renderer* renderer) :
-  _renderer(renderer),
+  View::View(const glm::vec2& position, const glm::vec2& size, std::shared_ptr<Renderer> renderer) :
   _transform(position,size),
   _responder(_transform) {
+    _renderer = renderer;
     refreshRendererMatrix();
     refreshRendererClip();
   }

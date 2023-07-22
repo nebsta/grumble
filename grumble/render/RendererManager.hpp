@@ -9,16 +9,17 @@
 #pragma once
 
 #include <stdio.h>
+#include <memory>
 
 #include "Renderer.hpp"
 #include "Sprite.hpp"
 
 namespace grumble {
-  class Graphics {
+  class RendererManager {
   public:
-    static void Initialize();
-    static Renderer* CreateViewRenderer(const glm::vec4& tint);
-    static Renderer* CreateImageRenderer(const Sprite& sprite, const glm::vec4& tint);
+    virtual ~RendererManager() = 0;
     
+    virtual std::shared_ptr<Renderer> createViewRenderer() = 0;
+    virtual std::shared_ptr<Renderer> createImageRenderer(const Sprite& sprite, const glm::vec4& tint) = 0;
   };
 }

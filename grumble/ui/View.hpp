@@ -11,16 +11,15 @@
 #include <stdio.h>
 #include <glm/glm.hpp>
 #include <vector>
+#include <memory>
 
 #include "Transform.hpp"
-#include "ScreenManager.hpp"
 
 #include "../input/Responder.hpp"
 
 #include "../anim/ViewAnimator.hpp"
 
-#include "../render/Renderer.hpp"
-#include "../render/Graphics.hpp"
+#include "../render/RendererManager.hpp"
 
 #include "../util/ColorConstants.hpp"
 #include "../util/MathConstants.hpp"
@@ -33,11 +32,7 @@ namespace grumble {
   class View : public Object {
     
   public:
-    View();
-    View(const glm::vec2& position);
-    View(const glm::vec2& position, const glm::vec2& size);
-    View(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
-    View(const glm::vec2& position, const glm::vec2& size, Renderer* renderer);
+    View(const glm::vec2& position, const glm::vec2& size, std::shared_ptr<Renderer> renderer);
     
     ~View();
     
@@ -63,7 +58,7 @@ namespace grumble {
     ViewAnimator& animator();
     
   protected:
-    std::unique_ptr<Renderer> _renderer;
+    std::shared_ptr<Renderer> _renderer;
     Transform _transform;
     ViewAnimator _animator;
     Responder _responder;

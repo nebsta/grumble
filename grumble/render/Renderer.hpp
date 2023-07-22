@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <vector>
 
-#include "../base/Object.hpp"
+#include "../core/Object.hpp"
 #include "../util/ColorConstants.hpp"
 #include "../ui/ScreenManager.hpp"
 

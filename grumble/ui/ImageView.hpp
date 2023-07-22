@@ -13,7 +13,6 @@
 #include "View.hpp"
 
 #include "../render/Sprite.hpp"
-#include "../render/Graphics.hpp"
 
 #include "../util/MathConstants.hpp"
 
