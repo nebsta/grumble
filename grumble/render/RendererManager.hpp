@@ -17,9 +17,8 @@
 namespace grumble {
   class RendererManager {
   public:
-    virtual ~RendererManager() = 0;
+    virtual ~RendererManager() = default;
     
     virtual std::shared_ptr<Renderer> createViewRenderer() = 0;
-    virtual std::shared_ptr<Renderer> createImageRenderer(const Sprite& sprite, const glm::vec4& tint) = 0;
   };
 }
