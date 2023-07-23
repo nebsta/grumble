@@ -14,7 +14,7 @@
 namespace grumble {
   Game::Game(std::shared_ptr<RendererManager> rendererManager) {
     _rendererManager = rendererManager;
-    _viewFactory = std::make_shared<ViewFactory>(ViewFactory());
+    _viewFactory = std::make_shared<ViewFactory>();
     _rootView = _viewFactory->createView({0,0}, {10,10});
   }
 
