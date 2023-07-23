@@ -26,7 +26,6 @@ namespace grumble {
     ~Game();
     
     void setup();
-    void executeLoop(double dt);
     
     View* rootView() const;
     std::shared_ptr<ViewFactory> viewFactory();

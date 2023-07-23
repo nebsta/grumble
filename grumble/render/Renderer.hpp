@@ -19,45 +19,28 @@
 #include "../util/ColorConstants.hpp"
 #include "../ui/ScreenManager.hpp"
 
+#include "RenderMethod.hpp"
+#include "Shapes.hpp"
 #include "ShaderManager.hpp"
 
-#define MAX_VERTICES 50
-
-#define BUFFER_OFFSET(i) ((char *)NULL + (i))
-
 #define RENDERER_DEFAULT_COLOR COLOR_BLUE
-#define RENDERER_DEFAULT_SHAPE Square
+#define RENDERER_DEFAULT_SHAPE grumble::Shapes.Square
 #define RENDERER_DEFAULT_SHADER "ViewShader"
-#define RENDERER_DEFAULT_PROJECTION glm::ortho(0.0f, 100.0f, 100.0f, 0.0f, 0.0f, 1000.0f)
 
 namespace grumble {
-  struct Vertex {
-    glm::vec2 position;
-    glm::vec2 textCoord;
-  };
-
-  struct Mesh {
-    Vertex vertices[MAX_VERTICES];
-    int vertexCount;
-  };
-
-  const Mesh Square = {
-    {
-      {glm::vec2(0.0f,1.0f),glm::vec2(0.0f,1.0f)},
-      {glm::vec2(0.0f,0.0f),glm::vec2(0.0f,0.0f)},
-      {glm::vec2(1.0f,1.0f),glm::vec2(1.0f,1.0f)},
-      {glm::vec2(1.0f,0.0f),glm::vec2(1.0f,0.0f)}
-    }, 4
-  };
-
-
   class Renderer : public Object {
     
   public:
     Renderer();
-    Renderer(const glm::vec4& tint);
-    Renderer(const Mesh& mesh, const glm::vec4& tint);
-    Renderer(const Mesh& mesh, const glm::vec4& tint, const std::string& shader);
+    Renderer(glm::vec4 tint);
+    Renderer(grumble::Mesh mesh, glm::vec4 tint);
+    Renderer(grumble::Mesh mesh,
+             glm::vec4 tint,
+             std::string shader);
+    Renderer(grumble::Mesh mesh,
+             glm::vec4 tint,
+             std::string shader,
+             RenderMethod renderMethod);
     ~Renderer();
     
     void render();
@@ -66,7 +49,6 @@ namespace grumble {
     virtual void popClippingRect();
     
     void setModelviewMatrix(const glm::mat4& matrix);
-    void setProjectionMatrix(const glm::mat4& matrix);
     void setTint(const glm::vec4& tint);
     void setClipChildren(const bool& clipChildren);
     void setClippingRect(const glm::vec4& clippingRect);
@@ -74,6 +56,7 @@ namespace grumble {
   protected:
     std::string _shader;
     
+    RenderMethod _renderMethod;
     bool _clipChildren;
     glm::vec4 _clippingRect;
     int _parentScissorRect[4];

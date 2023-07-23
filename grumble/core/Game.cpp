@@ -28,13 +28,6 @@ namespace grumble {
     _screenManager->setup();
   }
 
-  void Game::executeLoop(double dt) {
-    logDebug("Execute Loop. Delta: " + std::to_string(dt));
-
-    update(dt);
-    render();
-  }
-
   View* Game::rootView() const {
     return _rootView;
   }
@@ -44,8 +37,8 @@ namespace grumble {
   }
 
 #pragma mark Private Methods
-
   void Game::update(double dt) {
+    logDebug("Update. Delta: " + std::to_string(dt));
     _rootView->update(dt);
   }
 

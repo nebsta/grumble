@@ -17,5 +17,7 @@ namespace grumble {
     virtual void setup() = 0;
     
     virtual glm::vec2 screenSize() const = 0;
+    
+    virtual const glm::mat4 projectionMatrix() const = 0;
   };
 }

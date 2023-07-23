@@ -105,8 +105,10 @@
 		D91D8A4C2A69833900E5B2A8 /* Time.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
 		D927AA862A6C58ED002D5F0D /* ViewFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFactory.cpp; sourceTree = "<group>"; };
 		D927AA872A6C58ED002D5F0D /* ViewFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFactory.hpp; sourceTree = "<group>"; };
+		D927AA8D2A6C6E9E002D5F0D /* Shapes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shapes.hpp; sourceTree = "<group>"; };
 		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
+		D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderMethod.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 		43E5A487279476DF0037ACF2 /* render */ = {
 			isa = PBXGroup;
 			children = (
+				D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */,
 				43E5A488279476DF0037ACF2 /* ShaderManager.hpp */,
 				43E5A491279476DF0037ACF2 /* ShaderManager.cpp */,
 				43E5A489279476DF0037ACF2 /* Renderer.hpp */,
@@ -270,6 +273,7 @@
 				43E5A490279476DF0037ACF2 /* SpriteManager.cpp */,
 				43E5A48F279476DF0037ACF2 /* Sprite.hpp */,
 				43E5A492279476DF0037ACF2 /* SpriteHandler.hpp */,
+				D927AA8D2A6C6E9E002D5F0D /* Shapes.hpp */,
 			);
 			path = render;
 			sourceTree = "<group>";

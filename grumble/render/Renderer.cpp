@@ -15,22 +15,26 @@ namespace grumble {
     
   }
 
-  Renderer::Renderer(const glm::vec4& tint) : Renderer(RENDERER_DEFAULT_SHAPE, tint) {
+  Renderer::Renderer(glm::vec4 tint) : Renderer(grumble::Shapes::Square, tint) {
     
   }
 
-  Renderer::Renderer(const Mesh& mesh, const glm::vec4& tint) : Renderer(mesh, tint, RENDERER_DEFAULT_SHADER) {
+  Renderer::Renderer(Mesh mesh, glm::vec4 tint) : Renderer(mesh, tint, RENDERER_DEFAULT_SHADER) {
     
   }
 
-  Renderer::Renderer(const Mesh& mesh, const glm::vec4& tint, const std::string& shader) :
-  _mesh(mesh),
-  _tint(tint),
-  _modelviewMatrix(),
-  _projectionMatrix(RENDERER_DEFAULT_PROJECTION),
-  _shader(shader),
-  _clipChildren(true) {
+  Renderer::Renderer(Mesh mesh,
+                     glm::vec4 tint,
+                     std::string shader) : Renderer(mesh, tint, shader, RenderMethod::TringleStrip) {
     
+  }
+
+  Renderer::Renderer(Mesh mesh, glm::vec4 tint, std::string shader, RenderMethod renderMethod) {
+    _mesh = mesh;
+    _tint = tint;
+    _shader = shader;
+    _clipChildren = true;
+    _renderMethod = renderMethod;
   }
 
   Renderer::~Renderer() {
@@ -56,10 +60,6 @@ namespace grumble {
 
   void Renderer::setModelviewMatrix(const glm::mat4& matrix) {
     _modelviewMatrix = matrix;
-  }
-
-  void Renderer::setProjectionMatrix(const glm::mat4& matrix) {
-    _projectionMatrix = matrix;
   }
 
   void Renderer::setTint(const glm::vec4& tint) {
