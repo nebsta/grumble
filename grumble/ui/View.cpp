@@ -51,6 +51,10 @@ namespace grumble {
     return _transform;
   }
 
+  const Renderer View::renderer() const {
+    return _renderer;
+  }
+
   View::Iterator View::childIteratorBegin() {
     return _children.begin();
   }

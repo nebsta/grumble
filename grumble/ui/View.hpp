@@ -17,6 +17,7 @@
 
 #include "../input/Responder.hpp"
 #include "../anim/ViewAnimator.hpp"
+#include "../render/Renderer.hpp"
 
 #include "../util/ColorConstants.hpp"
 #include "../util/MathConstants.hpp"
@@ -41,6 +42,7 @@ namespace grumble {
     bool hasChildren() const;
     
     Transform& transform();
+    const Renderer renderer() const;
     
     Iterator childIteratorBegin();
     Iterator childIteratorEnd();
@@ -50,5 +52,6 @@ namespace grumble {
     
   private:
     List _children;
+    Renderer _renderer;
   };
 }

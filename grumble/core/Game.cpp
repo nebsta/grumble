@@ -27,15 +27,11 @@ namespace grumble {
     _screenManager->setup();
   }
 
-#pragma mark Private Methods
   void Game::update(double dt) {
     logDebug("Update. Delta: " + std::to_string(dt));
     _rootView->update(dt);
   }
 
-  void Game::fixedUpdate() {
-    
-  }
 
   void Game::render() {
     _rendererManager->renderAll(_rootView);

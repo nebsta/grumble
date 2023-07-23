@@ -19,72 +19,28 @@ namespace grumble {
     
   }
 
-  Renderer::Renderer(Mesh mesh, glm::vec4 tint) : Renderer(mesh, tint, RENDERER_DEFAULT_SHADER) {
+  Renderer::Renderer(Mesh mesh, glm::vec4 tint) : Renderer(mesh, tint, RenderMethod::TriangleStrip) {
     
   }
 
-  Renderer::Renderer(Mesh mesh,
-                     glm::vec4 tint,
-                     std::string shader) : Renderer(mesh, tint, shader, RenderMethod::TringleStrip) {
-    
-  }
-
-  Renderer::Renderer(Mesh mesh, glm::vec4 tint, std::string shader, RenderMethod renderMethod) {
+  Renderer::Renderer(Mesh mesh, glm::vec4 tint, RenderMethod renderMethod) {
     _mesh = mesh;
     _tint = tint;
-    _shader = shader;
-    _clipChildren = true;
     _renderMethod = renderMethod;
   }
 
   Renderer::~Renderer() {
   }
 
-  void Renderer::render() {
-    preDraw();
-    draw();
-    onPostDraw();
-  }
-
-  #pragma mark Clipping
-
-  void Renderer::pushClippingRect() {
-    
-  }
-
-  void Renderer::popClippingRect() {
-    
-  }
-
   #pragma mark Setters
-
-  void Renderer::setModelviewMatrix(const glm::mat4& matrix) {
-    _modelviewMatrix = matrix;
-  }
 
   void Renderer::setTint(const glm::vec4& tint) {
     _tint = tint;
   }
 
-  void Renderer::setClippingRect(const glm::vec4& clippingRect) {
-    _clippingRect = clippingRect;
-  }
+#pragma mark Getters
 
-  void Renderer::setClipChildren(const bool& clipChildren) {
-    _clipChildren = clipChildren;
-  }
-
-  #pragma mark Virtual Methods
-
-  void Renderer::preDraw() {
-    
-  }
-
-  void Renderer::draw() {
-    
-  }
-
-  void Renderer::onPostDraw() {
-    
+  const RenderMethod Renderer::renderMethod() const {
+    return _renderMethod;
   }
 }

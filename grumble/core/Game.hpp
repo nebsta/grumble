@@ -26,6 +26,9 @@ namespace grumble {
     
     void setup();
     
+    void update(double dt);
+    void render();
+    
     View* rootView() const;
     
   protected:
@@ -36,9 +39,5 @@ namespace grumble {
     std::shared_ptr<RendererManager> _rendererManager;
     
     std::shared_ptr<View> _rootView;
-    
-    void render();
-    void update(double dt);
-    void fixedUpdate();
   };
 }

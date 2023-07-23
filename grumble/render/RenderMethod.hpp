@@ -10,6 +10,6 @@
 namespace grumble {
   enum RenderMethod {
     Triangle,
-    TringleStrip
+    TriangleStrip
   };
 }

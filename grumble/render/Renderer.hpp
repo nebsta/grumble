@@ -36,38 +36,19 @@ namespace grumble {
     Renderer(grumble::Mesh mesh, glm::vec4 tint);
     Renderer(grumble::Mesh mesh,
              glm::vec4 tint,
-             std::string shader);
-    Renderer(grumble::Mesh mesh,
-             glm::vec4 tint,
-             std::string shader,
              RenderMethod renderMethod);
     ~Renderer();
     
     void render();
     
-    virtual void pushClippingRect();
-    virtual void popClippingRect();
-    
-    void setModelviewMatrix(const glm::mat4& matrix);
     void setTint(const glm::vec4& tint);
-    void setClipChildren(const bool& clipChildren);
-    void setClippingRect(const glm::vec4& clippingRect);
+    
+    const RenderMethod renderMethod() const;
     
   protected:
-    std::string _shader;
-    
     RenderMethod _renderMethod;
-    bool _clipChildren;
-    glm::vec4 _clippingRect;
-    int _parentScissorRect[4];
     
     Mesh _mesh;
     glm::vec4 _tint;
-    glm::mat4 _modelviewMatrix;
-    glm::mat4 _projectionMatrix;
-    
-    virtual void preDraw();
-    virtual void draw();
-    virtual void onPostDraw();
   };
 }
