@@ -42,8 +42,6 @@ namespace grumble {
     glm::vec2 screenPosition() const;
     const glm::vec2 size() const;
     const glm::mat4 matrix() const;
-    const glm::vec4 rect() const;
-    const bool consumePropertyChanges();
     
     bool containsLocalPoint(glm::vec2 point) const;
     bool containsScreenPoint(glm::vec2 point) const;

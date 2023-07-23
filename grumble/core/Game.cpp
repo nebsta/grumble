@@ -15,7 +15,6 @@ namespace grumble {
   Game::Game(std::shared_ptr<ScreenManager> screenManager, std::shared_ptr<RendererManager> rendererManager) {
     _screenManager = screenManager;
     _rendererManager = rendererManager;
-    _viewFactory = std::make_shared<grumble::ViewFactory>(grumble::ViewFactory(_rendererManager));
   }
 
   Game::~Game() {
@@ -26,14 +25,6 @@ namespace grumble {
 
   void Game::setup() {
     _screenManager->setup();
-  }
-
-  View* Game::rootView() const {
-    return _rootView;
-  }
-
-  std::shared_ptr<ViewFactory> Game::viewFactory() {
-    return _viewFactory;
   }
 
 #pragma mark Private Methods
@@ -47,7 +38,7 @@ namespace grumble {
   }
 
   void Game::render() {
-    _rootView->render();
+    _rendererManager->renderAll(_rootView);
   }
 
 #pragma mark Protected Methods

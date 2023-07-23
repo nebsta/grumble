@@ -96,27 +96,6 @@ namespace grumble {
     return _size;
   }
 
-  const bool Transform::consumePropertyChanges() {
-    if (!_propertiesChanged) {
-      return false;
-    }
-    _propertiesChanged = false;
-    return true;
-  }
-
-  const glm::vec4 Transform::rect() const {
-//    glm::vec2 pixelPosition = _screenHandler.convertToPixels(screenPosition());
-//    glm::vec2 pixelSize = _screenHandler.convertToPixels(size());
-    
-    glm::vec4 rect;
-//    rect.x = pixelPosition.x;
-//    rect.y = _screenHandler.screenPixelSize().y - (pixelPosition.y + pixelSize.y);
-//    rect.z = pixelSize.x;
-//    rect.w = pixelSize.y;
-    
-    return rect;
-  }
-
   bool Transform::containsLocalPoint(glm::vec2 point) const {
     return point.x >= _localPosition.x && point.y >= _localPosition.y &&
     point.x <= _localPosition.x + _size.x && point.y <= _localPosition.y + _size.y;

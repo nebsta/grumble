@@ -32,8 +32,7 @@
 		D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */; };
 		D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D91D8A482A69771700E5B2A8 /* LogCategory.hpp */; };
 		D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D8A4C2A69833900E5B2A8 /* Time.cpp */; };
-		D927AA882A6C58ED002D5F0D /* ViewFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D927AA862A6C58ED002D5F0D /* ViewFactory.cpp */; };
-		D927AA892A6C58ED002D5F0D /* ViewFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D927AA872A6C58ED002D5F0D /* ViewFactory.hpp */; };
+		D9CE629A2A6D5AC400D9477F /* RendererManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9CE62992A6D5AC400D9477F /* RendererManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,12 +102,11 @@
 		D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogLevel.hpp; sourceTree = "<group>"; };
 		D91D8A482A69771700E5B2A8 /* LogCategory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogCategory.hpp; sourceTree = "<group>"; };
 		D91D8A4C2A69833900E5B2A8 /* Time.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
-		D927AA862A6C58ED002D5F0D /* ViewFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFactory.cpp; sourceTree = "<group>"; };
-		D927AA872A6C58ED002D5F0D /* ViewFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFactory.hpp; sourceTree = "<group>"; };
 		D927AA8D2A6C6E9E002D5F0D /* Shapes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shapes.hpp; sourceTree = "<group>"; };
 		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
 		D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderMethod.hpp; sourceTree = "<group>"; };
+		D9CE62992A6D5AC400D9477F /* RendererManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RendererManager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +168,6 @@
 				4357430427904C15000B5062 /* ImageView.hpp */,
 				4357430127904C15000B5062 /* ImageView.cpp */,
 				4357435D279055FC000B5062 /* ScreenManager.hpp */,
-				D927AA872A6C58ED002D5F0D /* ViewFactory.hpp */,
-				D927AA862A6C58ED002D5F0D /* ViewFactory.cpp */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -269,6 +265,7 @@
 				43E5A48D279476DF0037ACF2 /* ShaderHandler.hpp */,
 				43E5A48A279476DF0037ACF2 /* ShaderHandler.cpp */,
 				43E5A48B279476DF0037ACF2 /* RendererManager.hpp */,
+				D9CE62992A6D5AC400D9477F /* RendererManager.cpp */,
 				43E5A48C279476DF0037ACF2 /* SpriteManager.hpp */,
 				43E5A490279476DF0037ACF2 /* SpriteManager.cpp */,
 				43E5A48F279476DF0037ACF2 /* Sprite.hpp */,
@@ -309,7 +306,6 @@
 				D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */,
 				D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */,
 				D917F8962A65894F00DCD0CC /* Game.hpp in Headers */,
-				D927AA892A6C58ED002D5F0D /* ViewFactory.hpp in Headers */,
 				436D996A279864DC008B213C /* FileHandler.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +421,7 @@
 				4357434427904C15000B5062 /* MessageManager.cpp in Sources */,
 				4357432F27904C15000B5062 /* Button.cpp in Sources */,
 				43E5A497279476DF0037ACF2 /* Animator.cpp in Sources */,
+				D9CE629A2A6D5AC400D9477F /* RendererManager.cpp in Sources */,
 				435743B727907946000B5062 /* Logger.cpp in Sources */,
 				43E5A4A3279476DF0037ACF2 /* ShaderManager.cpp in Sources */,
 				D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */,
@@ -433,7 +430,6 @@
 				43E5A4A5279476DF0037ACF2 /* Renderer.cpp in Sources */,
 				43E5A496279476DF0037ACF2 /* AnimationCurves.cpp in Sources */,
 				4357433D27904C15000B5062 /* Object.cpp in Sources */,
-				D927AA882A6C58ED002D5F0D /* ViewFactory.cpp in Sources */,
 				4357433227904C15000B5062 /* ImageView.cpp in Sources */,
 				4357434327904C15000B5062 /* Message.cpp in Sources */,
 			);

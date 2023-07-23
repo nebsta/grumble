@@ -17,7 +17,6 @@
 #import "../logging/Logger.hpp"
 #import "../util/Time.hpp"
 #import "../render/RendererManager.hpp"
-#import "../ui/ViewFactory.hpp"
 
 namespace grumble {
   class Game: public Object {
@@ -28,7 +27,6 @@ namespace grumble {
     void setup();
     
     View* rootView() const;
-    std::shared_ptr<ViewFactory> viewFactory();
     
   protected:
     LogCategory logCategory() override;
@@ -36,9 +34,8 @@ namespace grumble {
   private:
     std::shared_ptr<ScreenManager> _screenManager;
     std::shared_ptr<RendererManager> _rendererManager;
-    std::shared_ptr<ViewFactory> _viewFactory;
     
-    View *_rootView;
+    std::shared_ptr<View> _rootView;
     
     void render();
     void update(double dt);

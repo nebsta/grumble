@@ -8,17 +8,20 @@
 
 #pragma once
 
-#include <stdio.h>
-#include <memory>
+#import <stdio.h>
+#import <memory>
 
-#include "Renderer.hpp"
-#include "Sprite.hpp"
+#import "Renderer.hpp"
+#import "Sprite.hpp"
+#import "../ui/View.hpp"
 
 namespace grumble {
   class RendererManager {
   public:
     virtual ~RendererManager() = default;
     
-    virtual std::shared_ptr<Renderer> createViewRenderer() = 0;
+    void renderAll(std::shared_ptr<View> rootView);
+    
+    virtual void render(std::shared_ptr<View> view) = 0;
   };
 }
