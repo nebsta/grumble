@@ -12,9 +12,10 @@
 #define TIME_PER_FRAME_MS DurationMilliseconds(1.0f / FPS.count())
 
 namespace grumble {
-  Game::Game(std::shared_ptr<ScreenManager> screenManager, std::shared_ptr<RendererManager> rendererManager) {
-    _screenManager = screenManager;
+  Game::Game(std::shared_ptr<RendererManager> rendererManager) {
     _rendererManager = rendererManager;
+    _viewFactory = std::make_shared<ViewFactory>(ViewFactory());
+    _rootView = _viewFactory->createView({0,0}, {10,10});
   }
 
   Game::~Game() {
@@ -24,7 +25,7 @@ namespace grumble {
 #pragma mark Public Methods
 
   void Game::setup() {
-    _screenManager->setup();
+    
   }
 
   void Game::update(double dt) {
@@ -32,9 +33,12 @@ namespace grumble {
     _rootView->update(dt);
   }
 
-
   void Game::render() {
     _rendererManager->renderAll(_rootView);
+  }
+
+  std::shared_ptr<ViewFactory> Game::viewFactory() {
+    return _viewFactory;
   }
 
 #pragma mark Protected Methods

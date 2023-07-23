@@ -69,7 +69,7 @@ namespace grumble {
     return _parent != nullptr;
   }
 
-  const glm::mat4 Transform::matrix() const {
+  const glm::mat4 Transform::modelMatrix() const {
     glm::mat4 matrix = glm::mat4();
     glm::vec2 resultPosition = screenPosition();
     glm::vec2 resultSize = size();

@@ -33,6 +33,8 @@
 		D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D91D8A482A69771700E5B2A8 /* LogCategory.hpp */; };
 		D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D8A4C2A69833900E5B2A8 /* Time.cpp */; };
 		D9CE629A2A6D5AC400D9477F /* RendererManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9CE62992A6D5AC400D9477F /* RendererManager.cpp */; };
+		D9CE629F2A6D664200D9477F /* ViewFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9CE629D2A6D664200D9477F /* ViewFactory.cpp */; };
+		D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9CE629E2A6D664200D9477F /* ViewFactory.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,9 +70,7 @@
 		4357431A27904C15000B5062 /* Message.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Message.hpp; sourceTree = "<group>"; };
 		4357431C27904C15000B5062 /* Responder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Responder.hpp; sourceTree = "<group>"; };
 		4357431D27904C15000B5062 /* Responder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Responder.cpp; sourceTree = "<group>"; };
-		4357432727904C15000B5062 /* IUpdatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUpdatable.h; sourceTree = "<group>"; };
 		4357435827905434000B5062 /* Touch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Touch.hpp; sourceTree = "<group>"; };
-		4357435D279055FC000B5062 /* ScreenManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScreenManager.hpp; sourceTree = "<group>"; };
 		435743B427907739000B5062 /* libgrumble.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgrumble.a; sourceTree = "<group>"; };
 		435743B627907946000B5062 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 		435743B82790797C000B5062 /* conanfile.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = conanfile.py; sourceTree = "<group>"; };
@@ -102,11 +102,12 @@
 		D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogLevel.hpp; sourceTree = "<group>"; };
 		D91D8A482A69771700E5B2A8 /* LogCategory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogCategory.hpp; sourceTree = "<group>"; };
 		D91D8A4C2A69833900E5B2A8 /* Time.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
-		D927AA8D2A6C6E9E002D5F0D /* Shapes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shapes.hpp; sourceTree = "<group>"; };
 		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
 		D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderMethod.hpp; sourceTree = "<group>"; };
 		D9CE62992A6D5AC400D9477F /* RendererManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RendererManager.cpp; sourceTree = "<group>"; };
+		D9CE629D2A6D664200D9477F /* ViewFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFactory.cpp; sourceTree = "<group>"; };
+		D9CE629E2A6D664200D9477F /* ViewFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFactory.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +150,6 @@
 				4357431B27904C15000B5062 /* input */,
 				4357431627904C15000B5062 /* message */,
 				435742FD27904C15000B5062 /* ui */,
-				4357432627904C15000B5062 /* update */,
 				4357430627904C15000B5062 /* util */,
 				D91D8A4B2A69776D00E5B2A8 /* logging */,
 			);
@@ -167,7 +167,8 @@
 				4357430027904C15000B5062 /* View.cpp */,
 				4357430427904C15000B5062 /* ImageView.hpp */,
 				4357430127904C15000B5062 /* ImageView.cpp */,
-				4357435D279055FC000B5062 /* ScreenManager.hpp */,
+				D9CE629E2A6D664200D9477F /* ViewFactory.hpp */,
+				D9CE629D2A6D664200D9477F /* ViewFactory.cpp */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -213,14 +214,6 @@
 				4357435827905434000B5062 /* Touch.hpp */,
 			);
 			path = input;
-			sourceTree = "<group>";
-		};
-		4357432627904C15000B5062 /* update */ = {
-			isa = PBXGroup;
-			children = (
-				4357432727904C15000B5062 /* IUpdatable.h */,
-			);
-			path = update;
 			sourceTree = "<group>";
 		};
 		435743B327907668000B5062 /* lib */ = {
@@ -270,7 +263,6 @@
 				43E5A490279476DF0037ACF2 /* SpriteManager.cpp */,
 				43E5A48F279476DF0037ACF2 /* Sprite.hpp */,
 				43E5A492279476DF0037ACF2 /* SpriteHandler.hpp */,
-				D927AA8D2A6C6E9E002D5F0D /* Shapes.hpp */,
 			);
 			path = render;
 			sourceTree = "<group>";
@@ -306,6 +298,7 @@
 				D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */,
 				D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */,
 				D917F8962A65894F00DCD0CC /* Game.hpp in Headers */,
+				D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */,
 				436D996A279864DC008B213C /* FileHandler.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +419,7 @@
 				43E5A4A3279476DF0037ACF2 /* ShaderManager.cpp in Sources */,
 				D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */,
 				4357433327904C15000B5062 /* Transform.cpp in Sources */,
+				D9CE629F2A6D664200D9477F /* ViewFactory.cpp in Sources */,
 				4357433927904C15000B5062 /* MemoryProfiler.cpp in Sources */,
 				43E5A4A5279476DF0037ACF2 /* Renderer.cpp in Sources */,
 				43E5A496279476DF0037ACF2 /* AnimationCurves.cpp in Sources */,

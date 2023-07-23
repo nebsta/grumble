@@ -10,6 +10,7 @@
 
 namespace grumble {
   View::View(glm::vec2 position, glm::vec2 size) {
+    _renderer = Renderer();
     _transform = Transform(position, size);
   }
 

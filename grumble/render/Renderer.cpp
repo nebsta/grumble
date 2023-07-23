@@ -15,16 +15,11 @@ namespace grumble {
     
   }
 
-  Renderer::Renderer(glm::vec4 tint) : Renderer(grumble::Shapes::Square, tint) {
+  Renderer::Renderer(glm::vec4 tint) : Renderer(tint, RenderMethod::TriangleStrip) {
     
   }
 
-  Renderer::Renderer(Mesh mesh, glm::vec4 tint) : Renderer(mesh, tint, RenderMethod::TriangleStrip) {
-    
-  }
-
-  Renderer::Renderer(Mesh mesh, glm::vec4 tint, RenderMethod renderMethod) {
-    _mesh = mesh;
+  Renderer::Renderer(glm::vec4 tint, RenderMethod renderMethod) {
     _tint = tint;
     _renderMethod = renderMethod;
   }
@@ -38,7 +33,7 @@ namespace grumble {
     _tint = tint;
   }
 
-#pragma mark Getters
+  #pragma mark Getters
 
   const RenderMethod Renderer::renderMethod() const {
     return _renderMethod;

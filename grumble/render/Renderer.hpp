@@ -17,10 +17,8 @@
 
 #include "../core/Object.hpp"
 #include "../util/ColorConstants.hpp"
-#include "../ui/ScreenManager.hpp"
 
 #include "RenderMethod.hpp"
-#include "Shapes.hpp"
 #include "ShaderManager.hpp"
 
 #define RENDERER_DEFAULT_COLOR COLOR_BLUE
@@ -33,10 +31,7 @@ namespace grumble {
   public:
     Renderer();
     Renderer(glm::vec4 tint);
-    Renderer(grumble::Mesh mesh, glm::vec4 tint);
-    Renderer(grumble::Mesh mesh,
-             glm::vec4 tint,
-             RenderMethod renderMethod);
+    Renderer(glm::vec4 tint, RenderMethod renderMethod);
     ~Renderer();
     
     void render();
@@ -48,7 +43,6 @@ namespace grumble {
   protected:
     RenderMethod _renderMethod;
     
-    Mesh _mesh;
     glm::vec4 _tint;
   };
 }
