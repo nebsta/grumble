@@ -11,7 +11,9 @@ namespace grumble {
   ViewFactory::ViewFactory() {
   }
 
-  std::shared_ptr<View> ViewFactory::createView(glm::vec2 position, glm::vec2 size) {
-    return std::make_shared<View>(position, size);
+  std::shared_ptr<View> ViewFactory::createView(glm::vec2 position,
+                                                glm::vec2 size,
+                                                TransformOrigin origin) {
+    return std::make_shared<View>(position, size, origin);
   }
 }

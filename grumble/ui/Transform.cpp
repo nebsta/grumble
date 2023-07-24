@@ -75,15 +75,15 @@ namespace grumble {
     return _parent != nullptr;
   }
 
-  const glm::mat4 Transform::modelMatrix() const {
+  const glm::mat4 Transform::modelMatrix(float renderScale) const {
     glm::mat4 matrix = glm::mat4(1.0f);
     glm::vec2 resultPosition = screenPosition();
-    glm::vec2 resultSize = size();
+    glm::vec2 resultSize = size() / renderScale;
     
     // applying offset based on origin
     if (_origin != TransformOrigin::Center) {
-      float halfWidth = _size.x / 2.0f;
-      float halfHeight = _size.y / 2.0f;
+      float halfWidth = size().x / 2.0f;
+      float halfHeight = size().y / 2.0f;
       
       switch (_origin) {
         case TransformOrigin::TopLeft: resultPosition += glm::vec2(halfWidth, halfHeight); break;
@@ -112,7 +112,7 @@ namespace grumble {
       }
     }
     
-    matrix = glm::scale(matrix, glm::vec3(resultSize.x,resultSize.y,1.0f));
+    matrix = glm::scale(matrix, glm::vec3(resultSize.x, resultSize.y, 1.0f));
     return matrix;
   }
 

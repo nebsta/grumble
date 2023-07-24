@@ -9,9 +9,9 @@
 #include "View.hpp"
 
 namespace grumble {
-  View::View(glm::vec2 position, glm::vec2 size) {
+  View::View(glm::vec2 position, glm::vec2 size, TransformOrigin origin) {
     _renderer = Renderer();
-    _transform = Transform(position, size);
+    _transform = Transform(position, size, origin);
   }
 
   View::~View() {

@@ -32,7 +32,7 @@ namespace grumble {
     typedef std::vector<std::shared_ptr<View>> List;
     typedef List::iterator Iterator;
     
-    View(glm::vec2 position, glm::vec2 size);
+    View(glm::vec2 position, glm::vec2 size, TransformOrigin origin = TransformOrigin::Center);
     
     ~View();
     

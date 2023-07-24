@@ -23,8 +23,8 @@ namespace grumble {
 
 #pragma mark Public Methods
 
-  void Game::setup() {
-    
+  void Game::setup(float renderScale) {
+    _rendererManager->setup(renderScale);
   }
 
   void Game::setRootView(std::shared_ptr<View> view) {

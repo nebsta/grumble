@@ -24,7 +24,7 @@ namespace grumble {
     Game(std::shared_ptr<RendererManager> rendererManager);
     ~Game();
     
-    void setup();
+    void setup(float renderScale);
     
     void update(double dt);
     void render();
