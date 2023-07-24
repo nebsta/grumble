@@ -18,19 +18,17 @@
 
 #include "../core/Object.hpp"
 
+#include "TransformConstraint.hpp"
+#include "TransformOrigin.hpp"
+
 namespace grumble {
-  typedef enum TransformConstraint {
-    TransformConstraint_None = 0,
-    TransformConstraint_FillX = -1,
-    TransformConstraint_FillY = -2,
-    TransformConstraint_FillXY = -3
-  } TransformConstraint;
 
   class Transform : public Object {
   public:
     Transform();
     Transform(glm::vec2 position);
     Transform(glm::vec2 position, glm::vec2 size);
+    Transform(glm::vec2 position, glm::vec2 size, TransformOrigin origin);
     ~Transform();
     
     void setLocalPosition(glm::vec2 localPosition);
@@ -52,6 +50,8 @@ namespace grumble {
     bool _propertiesChanged;
     
     TransformConstraint _constraint;
+    TransformOrigin _origin;
+    
     Transform *_parent;
     const bool hasParent() const;
   };

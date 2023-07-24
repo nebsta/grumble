@@ -29,10 +29,6 @@ namespace grumble {
   #pragma mark Child Management
 
   void View::addChild(std::shared_ptr<View> child) {
-    if (child == nullptr) {
-      return;
-    }
-    
     Iterator pos = std::find(_children.begin(), _children.end(), child);
     if (pos != _children.end()) {
       return;
@@ -52,7 +48,7 @@ namespace grumble {
     return _transform;
   }
 
-  const Renderer View::renderer() const {
+  Renderer& View::renderer() {
     return _renderer;
   }
 

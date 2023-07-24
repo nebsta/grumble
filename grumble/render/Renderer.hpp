@@ -39,6 +39,7 @@ namespace grumble {
     void setTint(const glm::vec4& tint);
     
     const RenderMethod renderMethod() const;
+    const glm::vec4 tint() const;
     
   protected:
     RenderMethod _renderMethod;

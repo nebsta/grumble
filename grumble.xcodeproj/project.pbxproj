@@ -103,6 +103,8 @@
 		D91D8A482A69771700E5B2A8 /* LogCategory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogCategory.hpp; sourceTree = "<group>"; };
 		D91D8A4C2A69833900E5B2A8 /* Time.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
 		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
+		D92D77C62A6EF65700E5F178 /* TransformConstraint.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformConstraint.hpp; sourceTree = "<group>"; };
+		D92D77C82A6EF6CD00E5F178 /* TransformOrigin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformOrigin.hpp; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
 		D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderMethod.hpp; sourceTree = "<group>"; };
 		D9CE62992A6D5AC400D9477F /* RendererManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RendererManager.cpp; sourceTree = "<group>"; };
@@ -163,6 +165,8 @@
 				435742FE27904C15000B5062 /* Button.cpp */,
 				435742FF27904C15000B5062 /* Transform.hpp */,
 				4357430227904C15000B5062 /* Transform.cpp */,
+				D92D77C62A6EF65700E5F178 /* TransformConstraint.hpp */,
+				D92D77C82A6EF6CD00E5F178 /* TransformOrigin.hpp */,
 				4357430327904C15000B5062 /* View.hpp */,
 				4357430027904C15000B5062 /* View.cpp */,
 				4357430427904C15000B5062 /* ImageView.hpp */,

@@ -38,4 +38,8 @@ namespace grumble {
   const RenderMethod Renderer::renderMethod() const {
     return _renderMethod;
   }
+
+  const glm::vec4 Renderer::tint() const {
+    return _tint;
+  }
 }

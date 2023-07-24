@@ -42,7 +42,7 @@ namespace grumble {
     bool hasChildren() const;
     
     Transform& transform();
-    const Renderer renderer() const;
+    Renderer& renderer();
     
     Iterator childIteratorBegin();
     Iterator childIteratorEnd();

@@ -20,8 +20,15 @@ namespace grumble {
   public:
     virtual ~RendererManager() = default;
     
+    void setup(float renderScale);
+    
     void renderAll(std::shared_ptr<View> rootView);
     
     virtual void render(std::shared_ptr<View> view) = 0;
+    
+    const float renderScale() const;
+    
+  private:
+    float _renderScale;
   };
 }

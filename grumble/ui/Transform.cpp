@@ -13,16 +13,22 @@ namespace grumble {
     
   }
 
-  Transform::Transform(glm::vec2 position) : Transform(position,TRANSFORM_DEFAULT_SIZE) {
+  Transform::Transform(glm::vec2 position) : Transform(position, TRANSFORM_DEFAULT_SIZE, TransformOrigin::Center) {
     
   }
 
-  Transform::Transform(glm::vec2 position, glm::vec2 size) :
-  _localPosition(position),
-  _size(size),
-  _constraint(TransformConstraint_None),
-  _parent(nullptr) {
+  Transform::Transform(glm::vec2 position, glm::vec2 size) : Transform(position, size, TransformOrigin::Center) {
     
+  }
+
+  Transform::Transform(glm::vec2 position,
+                       glm::vec2 size,
+                       TransformOrigin origin) {
+    _localPosition = position;
+    _size = size;
+    _origin = origin;
+    _constraint = TransformConstraint::None;
+    _parent = nullptr;
   }
 
   Transform::~Transform() {
@@ -59,9 +65,9 @@ namespace grumble {
 
   glm::vec2 Transform::screenPosition() const {
     glm::vec2 result = glm::vec2();
-    if (_parent != nullptr) {
-      result = _parent->screenPosition();
-    }
+//    if (_parent != nullptr) {
+//      result = _parent->screenPosition();
+//    }
     return result + _localPosition;
   }
 
@@ -74,14 +80,32 @@ namespace grumble {
     glm::vec2 resultPosition = screenPosition();
     glm::vec2 resultSize = size();
     
+    // applying offset based on origin
+    if (_origin != TransformOrigin::Center) {
+      float halfWidth = _size.x / 2.0f;
+      float halfHeight = _size.y / 2.0f;
+      
+      switch (_origin) {
+        case TransformOrigin::TopLeft: resultPosition += glm::vec2(halfWidth, halfHeight); break;
+        case TransformOrigin::Top: resultPosition += glm::vec2(0, halfWidth); break;
+        case TransformOrigin::TopRight: resultPosition += glm::vec2(-halfWidth, halfHeight); break;
+        case TransformOrigin::Left: resultPosition += glm::vec2(halfWidth, 0); break;
+        case TransformOrigin::Right: resultPosition += glm::vec2(-halfWidth, 0); break;
+        case TransformOrigin::BottomLeft: resultPosition += glm::vec2(halfWidth, -halfHeight); break;
+        case TransformOrigin::Bottom: resultPosition += glm::vec2(0, -halfHeight); break;
+        case TransformOrigin::BottomRight: resultPosition += glm::vec2(-halfWidth, -halfHeight); break;
+        default: break;
+      }
+    }
+    
     matrix = glm::translate(matrix, glm::vec3(resultPosition.x,resultPosition.y,0.0f));
     
     // Applying view constraints
-    if (_constraint != TransformConstraint_None && hasParent()) {
+    if (_constraint != TransformConstraint::None && hasParent()) {
       glm::vec2 parentSize = _parent->size();
-      if (_constraint == TransformConstraint_FillX) {
+      if (_constraint == TransformConstraint::FillX) {
         resultSize.x = parentSize.x;
-      } else if (_constraint == TransformConstraint_FillY) {
+      } else if (_constraint == TransformConstraint::FillY) {
         resultSize.y = parentSize.y;
       } else {
         resultSize = parentSize;

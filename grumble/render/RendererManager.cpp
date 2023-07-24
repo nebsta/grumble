@@ -9,14 +9,23 @@
 
 namespace grumble {
   void RendererManager::renderAll(std::shared_ptr<View> rootView) {
+    this->render(rootView);
+    
     if (!rootView->hasChildren()) {
-      this->render(rootView);
       return;
     }
     
     for (View::Iterator iter = rootView->childIteratorBegin(); iter != rootView->childIteratorEnd(); iter++) {
       this->render(*iter);
     }
+  }
+
+  void RendererManager::setup(float renderScale) {
+    _renderScale= renderScale;
+  }
+
+  const float RendererManager::renderScale() const {
+    return _renderScale;
   }
 }
 
