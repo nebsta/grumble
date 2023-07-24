@@ -28,6 +28,7 @@ namespace grumble {
     
     void update(double dt);
     void render();
+    void setRootView(std::shared_ptr<View> view);
     
     std::shared_ptr<View> rootView();
     

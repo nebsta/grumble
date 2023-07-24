@@ -15,7 +15,6 @@ namespace grumble {
   Game::Game(std::shared_ptr<RendererManager> rendererManager) {
     _rendererManager = rendererManager;
     _viewFactory = std::make_shared<ViewFactory>();
-    _rootView = _viewFactory->createView({0,0}, {10,10});
   }
 
   Game::~Game() {
@@ -26,6 +25,10 @@ namespace grumble {
 
   void Game::setup() {
     
+  }
+
+  void Game::setRootView(std::shared_ptr<View> view) {
+    _rootView = view;
   }
 
   void Game::update(double dt) {
