@@ -20,7 +20,7 @@ namespace grumble {
     });
     _viewFactory = std::make_shared<ViewFactory>();
     _rootView = _viewFactory->createView({0.0f, 0.0f}, _rendererManager->screenSize());
-    _rootView->renderer().setTint(COLOR_GREEN);
+    _rootView->renderer().setTint(COLOR_WHITE);
   }
 
   Game::~Game() {
