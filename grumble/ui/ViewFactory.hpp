@@ -18,6 +18,6 @@ namespace grumble {
   public:
     ViewFactory();
     
-    std::shared_ptr<View> createView(glm::vec2 position, glm::vec2 size, TransformOrigin origin = TransformOrigin::Center);
+    std::shared_ptr<View> createView(glm::vec2 position, glm::vec2 size, TransformOrigin origin = TransformOrigin::TopLeft);
   };
 }

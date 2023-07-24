@@ -27,5 +27,29 @@ namespace grumble {
   const float RendererManager::renderScale() const {
     return _renderScale;
   }
+
+  const glm::vec2 RendererManager::screenSize() const {
+    return _screenSize;
+  }
+
+  void RendererManager::setOnScreenSizeUpdated(ScreenSizeUpdated onScreenSizeUpdated) {
+    _onScreenSizeUpdated = onScreenSizeUpdated;
+  }
+
+#pragma mark Protected Methods
+
+  glm::mat4 RendererManager::submitScreenSize(glm::vec2 size) {
+    logInfo("Screen size submitted: " + glm::to_string(size));
+    
+    _screenSize = size;
+    if (_onScreenSizeUpdated) {
+      _onScreenSizeUpdated(size);
+    }
+    return glm::ortho(0.0f, float(size.x), float(size.y), 0.0f);
+  }
+
+  LogCategory RendererManager::logCategory() {
+    return LogCategory::rendering;
+  }
 }
 
