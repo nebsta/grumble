@@ -19,6 +19,7 @@ namespace grumble {
       this->_rootView->transform().setSize(size);
     });
     _viewFactory = std::make_shared<ViewFactory>();
+    _fontManager = std::make_shared<FontManager>();
     _rootView = _viewFactory->createView({0.0f, 0.0f}, _rendererManager->screenSize());
     _rootView->renderer().setTint(COLOR_WHITE);
   }
@@ -31,6 +32,7 @@ namespace grumble {
 
   void Game::setup(float renderScale) {
     _rendererManager->setup(renderScale);
+    _fontManager->setup();
   }
 
   void Game::update(double dt) {

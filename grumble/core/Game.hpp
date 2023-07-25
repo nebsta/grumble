@@ -11,12 +11,18 @@
 #include <string>
 #include <memory>
 
-#import "Object.hpp"
-#import "../ui/View.hpp"
-#import "../logging/Logger.hpp"
-#import "../util/Time.hpp"
-#import "../render/RendererManager.hpp"
-#import "../ui/ViewFactory.hpp"
+#include "Object.hpp"
+
+#include "../logging/Logger.hpp"
+
+#include "../util/Time.hpp"
+
+#include "../render/RendererManager.hpp"
+
+#include "../font/FontManager.hpp"
+
+#include "../ui/View.hpp"
+#include "../ui/ViewFactory.hpp"
 
 namespace grumble {
   class Game: public Object {
@@ -38,6 +44,7 @@ namespace grumble {
   private:
     std::shared_ptr<RendererManager> _rendererManager;
     std::shared_ptr<ViewFactory> _viewFactory;
+    std::shared_ptr<FontManager> _fontManager;
     
     std::shared_ptr<View> _rootView;
   };
