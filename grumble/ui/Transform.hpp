@@ -18,8 +18,8 @@
 
 #include "../core/Object.hpp"
 
-#include "TransformConstraint.hpp"
 #include "TransformOrigin.hpp"
+#include "TransformDimension.hpp"
 
 namespace grumble {
 
@@ -32,8 +32,12 @@ namespace grumble {
     ~Transform();
     
     void setLocalPosition(glm::vec2 localPosition);
+    
+    void setWidth(float width);
+    void setHeight(float height);
+    void setRelativeWidth(float factor);
+    void setRelativeHeight(float factor);
     void setSize(glm::vec2 size);
-    void setConstraint(TransformConstraint constraint);
     void setParent(Transform* const parent);
     
     glm::vec2 localPosition() const;
@@ -46,13 +50,15 @@ namespace grumble {
     
   private:
     glm::vec2 _localPosition;
-    glm::vec2 _size;
-    bool _propertiesChanged;
     
-    TransformConstraint _constraint;
+    TransformDimension _width;
+    TransformDimension _height;
+    
     TransformOrigin _origin;
     
     Transform *_parent;
     const bool hasParent() const;
+    
+    float calculateDimensionSize(TransformDimension dimension, float parentSize);
   };
 }

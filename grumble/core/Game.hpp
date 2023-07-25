@@ -30,6 +30,7 @@ namespace grumble {
     void render();
     
     std::shared_ptr<ViewFactory> viewFactory();
+    std::shared_ptr<View> rootView();
     
   protected:
     LogCategory logCategory() override;

@@ -32,6 +32,8 @@
 		D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */; };
 		D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D91D8A482A69771700E5B2A8 /* LogCategory.hpp */; };
 		D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D8A4C2A69833900E5B2A8 /* Time.cpp */; };
+		D9A08CD12A6FC8D600DBA3E5 /* TransformDimension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A08CCF2A6FC8D600DBA3E5 /* TransformDimension.cpp */; };
+		D9A08CD22A6FC8D600DBA3E5 /* TransformDimension.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9A08CD02A6FC8D600DBA3E5 /* TransformDimension.hpp */; };
 		D9CE629A2A6D5AC400D9477F /* RendererManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9CE62992A6D5AC400D9477F /* RendererManager.cpp */; };
 		D9CE629F2A6D664200D9477F /* ViewFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9CE629D2A6D664200D9477F /* ViewFactory.cpp */; };
 		D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9CE629E2A6D664200D9477F /* ViewFactory.hpp */; };
@@ -103,9 +105,11 @@
 		D91D8A482A69771700E5B2A8 /* LogCategory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogCategory.hpp; sourceTree = "<group>"; };
 		D91D8A4C2A69833900E5B2A8 /* Time.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
 		D929C6C02A61782D006F520E /* conan_config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = conan_config.xcconfig; sourceTree = "<group>"; };
-		D92D77C62A6EF65700E5F178 /* TransformConstraint.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformConstraint.hpp; sourceTree = "<group>"; };
 		D92D77C82A6EF6CD00E5F178 /* TransformOrigin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformOrigin.hpp; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
+		D9A08CCF2A6FC8D600DBA3E5 /* TransformDimension.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TransformDimension.cpp; sourceTree = "<group>"; };
+		D9A08CD02A6FC8D600DBA3E5 /* TransformDimension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformDimension.hpp; sourceTree = "<group>"; };
+		D9A08CD42A6FC98000DBA3E5 /* DimensionSizing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DimensionSizing.hpp; sourceTree = "<group>"; };
 		D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderMethod.hpp; sourceTree = "<group>"; };
 		D9CE62992A6D5AC400D9477F /* RendererManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RendererManager.cpp; sourceTree = "<group>"; };
 		D9CE629D2A6D664200D9477F /* ViewFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFactory.cpp; sourceTree = "<group>"; };
@@ -165,7 +169,9 @@
 				435742FE27904C15000B5062 /* Button.cpp */,
 				435742FF27904C15000B5062 /* Transform.hpp */,
 				4357430227904C15000B5062 /* Transform.cpp */,
-				D92D77C62A6EF65700E5F178 /* TransformConstraint.hpp */,
+				D9A08CD02A6FC8D600DBA3E5 /* TransformDimension.hpp */,
+				D9A08CCF2A6FC8D600DBA3E5 /* TransformDimension.cpp */,
+				D9A08CD42A6FC98000DBA3E5 /* DimensionSizing.hpp */,
 				D92D77C82A6EF6CD00E5F178 /* TransformOrigin.hpp */,
 				4357430327904C15000B5062 /* View.hpp */,
 				4357430027904C15000B5062 /* View.cpp */,
@@ -301,6 +307,7 @@
 			files = (
 				D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */,
 				D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */,
+				D9A08CD22A6FC8D600DBA3E5 /* TransformDimension.hpp in Headers */,
 				D917F8962A65894F00DCD0CC /* Game.hpp in Headers */,
 				D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */,
 				436D996A279864DC008B213C /* FileHandler.hpp in Headers */,
@@ -411,6 +418,7 @@
 				4357434827904C15000B5062 /* Responder.cpp in Sources */,
 				43E5A49C279476DF0037ACF2 /* ShaderHandler.cpp in Sources */,
 				4357433127904C15000B5062 /* View.cpp in Sources */,
+				D9A08CD12A6FC8D600DBA3E5 /* TransformDimension.cpp in Sources */,
 				436D9965279864A5008B213C /* FileManager.cpp in Sources */,
 				43E5A4A2279476DF0037ACF2 /* SpriteManager.cpp in Sources */,
 				D917F8952A65894F00DCD0CC /* Game.cpp in Sources */,

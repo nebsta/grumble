@@ -42,6 +42,10 @@ namespace grumble {
     _rendererManager->renderAll(_rootView);
   }
 
+  std::shared_ptr<View> Game::rootView() {
+    return _rootView;
+  }
+
   std::shared_ptr<ViewFactory> Game::viewFactory() {
     return _viewFactory;
   }
