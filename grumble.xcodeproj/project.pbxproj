@@ -406,7 +406,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan install $PROJECT_DIR/conanfile.py -s build_type=$CONFIGURATION --output-folder $PROJECT_DIR/conan \n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan install $PROJECT_DIR/conanfile.py -s build_type=$CONFIGURATION --output-folder $PROJECT_DIR/conan\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -568,10 +568,25 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/freetype/lib",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"$(OTHER_CPLUSPLUSFLAGS_nlohmann_json_nlohmann_json)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(OTHER_LDFLAGS_nlohmann_json_nlohmann_json)",
+					"-lfreetype",
 				);
 				PACKAGE_ROOT_glm = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_HEADER_SEARCH_PATHS_nlohmann_json_nlohmann_json)",
+					"$(PROJECT_DIR)/freetype/include",
+				);
 			};
 			name = Debug;
 		};
@@ -588,9 +603,24 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/freetype/lib",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(inherited)",
+					"$(OTHER_CPLUSPLUSFLAGS_nlohmann_json_nlohmann_json)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(OTHER_LDFLAGS_nlohmann_json_nlohmann_json)",
+					"-lfreetype",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_HEADER_SEARCH_PATHS_nlohmann_json_nlohmann_json)",
+					"$(PROJECT_DIR)/freetype/include",
+				);
 			};
 			name = Release;
 		};
