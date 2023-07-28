@@ -14,9 +14,10 @@ namespace grumble {
 #pragma mark Public Methods
 
   void Logger::log(std::string message, LogLevel level, LogCategory category) {
-    if (level >= Logger::activeLogLevel()) {
-      return;
-    }
+    // TODO: Need to add this back that isn't only compile time constant
+//    if (level < Logger::activeLogLevel()) {
+//      return;
+//    }
     
     std::string levelName = Logger::logLevelName(level);
     
@@ -64,6 +65,7 @@ namespace grumble {
       case LogCategory::rendering: return "rendering";
       case LogCategory::ui: return "ui";
       case LogCategory::font: return "font";
+      case LogCategory::io: return "io";
     }
   }
 

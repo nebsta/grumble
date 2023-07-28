@@ -19,7 +19,6 @@
 		435743B227907622000B5062 /* libgrumble.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 435742E327904B61000B5062 /* libgrumble.a */; };
 		435743B727907946000B5062 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 435743B627907946000B5062 /* Logger.cpp */; };
 		436D9965279864A5008B213C /* FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 436D9963279864A5008B213C /* FileManager.cpp */; };
-		436D996A279864DC008B213C /* FileHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 436D9968279864DC008B213C /* FileHandler.hpp */; };
 		43E5A496279476DF0037ACF2 /* AnimationCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A483279476DF0037ACF2 /* AnimationCurves.cpp */; };
 		43E5A497279476DF0037ACF2 /* Animator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A484279476DF0037ACF2 /* Animator.cpp */; };
 		43E5A499279476DF0037ACF2 /* ViewAnimator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A486279476DF0037ACF2 /* ViewAnimator.cpp */; };
@@ -81,7 +80,6 @@
 		435743B82790797C000B5062 /* conanfile.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = conanfile.py; sourceTree = "<group>"; };
 		436D9963279864A5008B213C /* FileManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileManager.cpp; sourceTree = "<group>"; };
 		436D9964279864A5008B213C /* FileManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileManager.hpp; sourceTree = "<group>"; };
-		436D9968279864DC008B213C /* FileHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileHandler.hpp; sourceTree = "<group>"; };
 		43E5A481279476DF0037ACF2 /* ViewAnimator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ViewAnimator.hpp; sourceTree = "<group>"; };
 		43E5A482279476DF0037ACF2 /* Animator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Animator.hpp; sourceTree = "<group>"; };
 		43E5A483279476DF0037ACF2 /* AnimationCurves.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationCurves.cpp; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 			children = (
 				436D9964279864A5008B213C /* FileManager.hpp */,
 				436D9963279864A5008B213C /* FileManager.cpp */,
-				436D9968279864DC008B213C /* FileHandler.hpp */,
 			);
 			path = io;
 			sourceTree = "<group>";
@@ -330,7 +327,6 @@
 				D9A08CD22A6FC8D600DBA3E5 /* TransformDimension.hpp in Headers */,
 				D917F8962A65894F00DCD0CC /* Game.hpp in Headers */,
 				D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */,
-				436D996A279864DC008B213C /* FileHandler.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

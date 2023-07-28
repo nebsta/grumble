@@ -7,19 +7,28 @@
 
 #pragma once
 
-#include <stdio.h>
+#include <fstream>
 #include <nlohmann/json.hpp>
-#include "FileHandler.hpp"
+#include <filesystem>
+
+#include "../core/Object.hpp"
 
 namespace grumble {
-  class FileManager {
+  class FileManager: public Object {
   public:
-    FileManager(const FileHandler* fileHandler);
+    FileManager(std::string rootPath);
     ~FileManager();
     
-    std::string loadFile(const std::string& filename) const;
-    nlohmann::json loadJson(const std::string& filename) const;
+    std::string loadFile(std::string filename);
+    std::vector<char> loadFileRaw(std::string filename);
+    nlohmann::json loadJson(std::string filename);
+    
+  protected:
+    LogCategory logCategory() override;
+    
   private:
-    const std::unique_ptr<const FileHandler> _handler;
+    std::string _rootPath;
+    
+    std::filesystem::path buildFilePath(std::string filename);
   };
 }

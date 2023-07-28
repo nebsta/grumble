@@ -24,10 +24,14 @@
 #include "../ui/View.hpp"
 #include "../ui/ViewFactory.hpp"
 
+#include "../io/FileManager.hpp"
+
 namespace grumble {
   class Game: public Object {
   public:
-    Game(std::shared_ptr<RendererManager> rendererManager);
+    Game(std::shared_ptr<RendererManager> rendererManager,
+         std::shared_ptr<FileManager> fileManager,
+         std::string mainFontFile);
     ~Game();
     
     void setup(float renderScale);
@@ -36,6 +40,8 @@ namespace grumble {
     void render();
     
     std::shared_ptr<ViewFactory> viewFactory();
+    std::shared_ptr<FileManager> fileManager();
+    std::shared_ptr<FontManager> fontManager();
     std::shared_ptr<View> rootView();
     
   protected:
@@ -45,6 +51,7 @@ namespace grumble {
     std::shared_ptr<RendererManager> _rendererManager;
     std::shared_ptr<ViewFactory> _viewFactory;
     std::shared_ptr<FontManager> _fontManager;
+    std::shared_ptr<FileManager> _fileManager;
     
     std::shared_ptr<View> _rootView;
   };

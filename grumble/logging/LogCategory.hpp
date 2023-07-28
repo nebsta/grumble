@@ -13,7 +13,8 @@ namespace grumble {
     core = 1,
     ui = 2,
     rendering = 3,
-    font = 4
+    font = 4,
+    io = 5
   };
 }
 

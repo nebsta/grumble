@@ -11,11 +11,12 @@
 #include FT_FREETYPE_H
 
 #include "../core/Object.hpp"
+#include "../io/FileManager.hpp"
 
 namespace grumble {
   class FontManager: public Object {
   public:
-    FontManager();
+    FontManager(std::shared_ptr<FileManager> fileManager, std::string mainFontFile);
     ~FontManager();
     
     void setup();
@@ -25,5 +26,9 @@ namespace grumble {
     
   private:
     FT_Library _library;
+    std::string _mainFontFile;
+    std::shared_ptr<FileManager> _fileManager;
+    
+    const char* getErrorMessage(FT_Error err);
   };
 }
