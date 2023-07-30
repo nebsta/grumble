@@ -18,10 +18,13 @@ namespace grumble {
 
   class Sprite: public Object {
   public:
-    Sprite(std::string name, std::string atlas, Region region);
+    Sprite(std::string name, Region region);
+    
+    std::string name();
+    Region region();
+    
   private:
     std::string _name;
-    std::string _atlas;
     Region _region;
   };
 }

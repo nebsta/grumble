@@ -13,7 +13,6 @@
 #include <functional>
 
 #include "Renderer.hpp"
-#include "Sprite.hpp"
 
 #include "../core/Object.hpp"
 #include "../ui/View.hpp"

@@ -24,11 +24,19 @@ namespace grumble {
   void SpriteManager::setup() {
     logInfo("Setting up SpriteManager");
     
+    std::filesystem::path atlasLayoutPath = buildAtlasPath("MainAtlas-data.json");
+    std::filesystem::path atlasImagePath = buildAtlasPath("MainAtlas-sheet.png");
+    auto atlasLayout = _fileManager->loadJson(atlasLayoutPath);
+    auto atlasImage = _fileManager->loadFileRaw(atlasImagePath);
+    
+    _allAtlases["MainAtlas"] = std::make_shared<SpriteAtlas>("MainAtlas", atlasLayout, atlasImage);
+    
+    
     logInfo("Successfully set up SpriteManager");
   }
 
   std::shared_ptr<Sprite> SpriteManager::getSprite(std::string name, std::string atlas) {
-    return nullptr;
+    return _allAtlases[atlas]->getSprite(name);
   }
 
   LogCategory SpriteManager::logCategory() {

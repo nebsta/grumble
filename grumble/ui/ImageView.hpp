@@ -12,7 +12,7 @@
 
 #include "View.hpp"
 
-#include "../render/Sprite.hpp"
+#include "../sprite/Sprite.hpp"
 
 #include "../util/MathConstants.hpp"
 

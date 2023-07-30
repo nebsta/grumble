@@ -18,7 +18,8 @@
 #include "../util/Time.hpp"
 
 #include "../render/RendererManager.hpp"
-#include "../render/SpriteManager.hpp"
+
+#include "../sprite/SpriteManager.hpp"
 
 #include "../font/FontManager.hpp"
 

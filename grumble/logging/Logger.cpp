@@ -66,6 +66,7 @@ namespace grumble {
       case LogCategory::ui: return "ui";
       case LogCategory::font: return "font";
       case LogCategory::io: return "io";
+      case LogCategory::sprite: return "sprite";
     }
   }
 

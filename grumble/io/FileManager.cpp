@@ -16,34 +16,31 @@ namespace grumble {
     
   }
 
-  std::string FileManager::loadFile(std::string filename) {
+  std::string FileManager::loadFile(std::filesystem::path filename) {
     std::filesystem::path path = buildFilePath(filename);
     if (!std::filesystem::exists(path)) {
       logError("File at path " + path.string() + " doesn't exist.");
       return "";
     }
     
-    auto fileSize = std::filesystem::file_size(path);
-    
-    logInfo("File size: " + std::to_string(fileSize));
-    
-    return "";
-//    return _handler->loadFile(filename);
+    std::ifstream file(path);
+    std::string str((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    return str;
   }
 
-  std::vector<char> FileManager::loadFileRaw(std::string filename) {
+  std::vector<char> FileManager::loadFileRaw(std::filesystem::path filename) {
     std::filesystem::path path = buildFilePath(filename);
     if (!std::filesystem::exists(path)) {
       logError("File at path " + path.string() + " doesn't exist.");
       return std::vector<char>();
     }
     
-    std::ifstream infile(path, std::ios_base::binary);
-    std::vector<char> buffer((std::istreambuf_iterator<char>(infile)), std::istreambuf_iterator<char>());
+    std::ifstream file(path, std::ios_base::binary);
+    std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
     return buffer;
   }
 
-  nlohmann::json FileManager::loadJson(std::string filename) {
+  nlohmann::json FileManager::loadJson(std::filesystem::path filename) {
     std::string raw = loadFile(filename);
     return nlohmann::json::parse(raw);
   }

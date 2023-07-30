@@ -14,12 +14,13 @@
 #include <map>
 
 #include "Sprite.hpp"
+#include "SpriteAtlas.hpp"
 
 #include "../logging/Logger.hpp"
 #include "../io/FileManager.hpp"
 
 namespace grumble {
-  typedef std::map<std::string, std::map<std::string,Sprite>> AtlasMap;
+  typedef std::map<std::string, std::shared_ptr<SpriteAtlas>> AtlasMap;
 
   class SpriteManager: Object {
     

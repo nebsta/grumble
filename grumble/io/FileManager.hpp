@@ -19,9 +19,9 @@ namespace grumble {
     FileManager(std::string rootPath);
     ~FileManager();
     
-    std::string loadFile(std::string filename);
-    std::vector<char> loadFileRaw(std::string filename);
-    nlohmann::json loadJson(std::string filename);
+    std::string loadFile(std::filesystem::path filename);
+    std::vector<char> loadFileRaw(std::filesystem::path filename);
+    nlohmann::json loadJson(std::filesystem::path filename);
     
   protected:
     LogCategory logCategory() override;
