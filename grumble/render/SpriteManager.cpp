@@ -9,17 +9,33 @@
 #include "SpriteManager.hpp"
 
 namespace grumble {
-  SpriteManager::SpriteManager(SpriteHandler* spriteHandler) :
-  _spriteHandler(spriteHandler)
+  SpriteManager::SpriteManager(std::shared_ptr<FileManager> fileManager,
+                               std::filesystem::path atlasPath) :
+  _fileManager(fileManager),
+  _atlasPath(atlasPath)
   {
-    _spriteHandler->loadAtlases();
+    
   }
 
   SpriteManager::~SpriteManager() {
     
   }
 
-  Sprite SpriteManager::loadSprite(const std::string &file, const std::string &spriteName) const {
-    return SpriteEmpty;
+  void SpriteManager::setup() {
+    logInfo("Setting up SpriteManager");
+    
+    logInfo("Successfully set up SpriteManager");
+  }
+
+  std::shared_ptr<Sprite> SpriteManager::getSprite(std::string name, std::string atlas) {
+    return nullptr;
+  }
+
+  LogCategory SpriteManager::logCategory() {
+    return LogCategory::rendering;
+  }
+
+  std::filesystem::path SpriteManager::buildAtlasPath(std::filesystem::path filename) {
+    return _atlasPath / filename;
   }
 }

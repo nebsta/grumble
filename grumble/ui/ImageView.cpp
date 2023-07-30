@@ -9,19 +9,11 @@
 #include "ImageView.hpp"
 
 namespace grumble {
-  ImageView::ImageView() : ImageView(SpriteEmpty) {
-    
-  }
-
-  ImageView::ImageView(const Sprite& sprite) : ImageView(sprite,IMAGEVIEW_DEFAULT_POSITION) {
-    
-  }
-
-  ImageView::ImageView(const Sprite& sprite, const glm::vec2& position) : ImageView(sprite, position,glm::vec2(sprite.region.w,sprite.region.h)) {
-    
-  }
-
-  ImageView::ImageView(const Sprite& sprite, const glm::vec2& position, const glm::vec2& size) : ImageView(sprite, position, size, IMAGEVIEW_DEFAULT_COLOR) {
+  ImageView::ImageView(std::shared_ptr<Sprite> sprite,
+                       glm::vec2 position,
+                       glm::vec2 size,
+                       glm::vec4 tint) :
+    _sprite(sprite) {
     
   }
 

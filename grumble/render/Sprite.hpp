@@ -9,33 +9,19 @@
 #pragma once
 
 #include <stdio.h>
+#include "../core/Object.hpp"
 
 namespace grumble {
   typedef struct Region {
     float x, y, w, h;
   } Region;
 
-  typedef struct Sprite {
-    std::byte *data;
-    Region region;
-  } Sprite;
-
-  const Sprite SpriteEmpty = { nullptr, {0, 0, 0, 0} };
-
-  inline bool operator==(const Sprite& s1, const Sprite& s2)
-  {
-    if (s1.data == nullptr && s2.data == nullptr) {
-      return true;
-    } else if (s1.data == nullptr || s2.data == nullptr) {
-      return false;
-    }
-    
-    //TODO: fix comparison
-    return true;
-    //    return s1.texture.target == s2.texture.target;
-  }
-
-  inline bool isSpriteEmpty(Sprite sprite) {
-    return sprite.data == nullptr;
-  }
+  class Sprite: public Object {
+  public:
+    Sprite(std::string name, std::string atlas, Region region);
+  private:
+    std::string _name;
+    std::string _atlas;
+    Region _region;
+  };
 }

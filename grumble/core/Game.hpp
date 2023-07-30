@@ -18,6 +18,7 @@
 #include "../util/Time.hpp"
 
 #include "../render/RendererManager.hpp"
+#include "../render/SpriteManager.hpp"
 
 #include "../font/FontManager.hpp"
 
@@ -31,6 +32,7 @@ namespace grumble {
   public:
     Game(std::shared_ptr<RendererManager> rendererManager,
          std::shared_ptr<FileManager> fileManager,
+         std::shared_ptr<SpriteManager> spriteManager,
          std::string mainFontFile);
     ~Game();
     
@@ -42,6 +44,7 @@ namespace grumble {
     std::shared_ptr<ViewFactory> viewFactory();
     std::shared_ptr<FileManager> fileManager();
     std::shared_ptr<FontManager> fontManager();
+    std::shared_ptr<SpriteManager> spriteManager();
     std::shared_ptr<View> rootView();
     
   protected:
@@ -52,6 +55,7 @@ namespace grumble {
     std::shared_ptr<ViewFactory> _viewFactory;
     std::shared_ptr<FontManager> _fontManager;
     std::shared_ptr<FileManager> _fileManager;
+    std::shared_ptr<SpriteManager> _spriteManager;
     
     std::shared_ptr<View> _rootView;
   };

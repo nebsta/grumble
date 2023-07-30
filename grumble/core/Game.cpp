@@ -7,16 +7,14 @@
 
 #include "Game.hpp"
 
-#define FIXED_UPDATE_MS DurationMilliseconds(100)
-#define FPS DurationSeconds(30.0f)
-#define TIME_PER_FRAME_MS DurationMilliseconds(1.0f / FPS.count())
-
 namespace grumble {
   Game::Game(std::shared_ptr<RendererManager> rendererManager,
              std::shared_ptr<FileManager> fileManager,
+             std::shared_ptr<SpriteManager> spriteManager,
              std::string mainFontFile):
   _rendererManager(rendererManager),
   _fileManager(fileManager),
+  _spriteManager(spriteManager),
   _viewFactory(std::make_shared<ViewFactory>()),
   _fontManager(std::make_shared<FontManager>(fileManager, mainFontFile)),
   _rootView(_viewFactory->createView({0.0f, 0.0f}, _rendererManager->screenSize())) {
@@ -36,6 +34,7 @@ namespace grumble {
   void Game::setup(float renderScale) {
     _rendererManager->setup(renderScale);
     _fontManager->setup();
+    _spriteManager->setup();
   }
 
   void Game::update(double dt) {
@@ -57,6 +56,10 @@ namespace grumble {
 
   std::shared_ptr<FileManager> Game::fileManager() {
     return _fileManager;
+  }
+
+  std::shared_ptr<SpriteManager> Game::spriteManager() {
+    return _spriteManager;
   }
 
 #pragma mark Protected Methods

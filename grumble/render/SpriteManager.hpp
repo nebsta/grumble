@@ -14,24 +14,33 @@
 #include <map>
 
 #include "Sprite.hpp"
-#include "SpriteHandler.hpp"
+
 #include "../logging/Logger.hpp"
+#include "../io/FileManager.hpp"
 
 namespace grumble {
-  class SpriteManager {
+  typedef std::map<std::string, std::map<std::string,Sprite>> AtlasMap;
+
+  class SpriteManager: Object {
     
   public:
-    SpriteManager(SpriteHandler* handler);
+    SpriteManager(std::shared_ptr<FileManager> fileManager, std::filesystem::path atlasPath);
     ~SpriteManager();
     
-    Sprite loadSprite(const std::string& file, const std::string& spriteName) const;
+    void setup();
+    
+    std::shared_ptr<Sprite> getSprite(std::string name, std::string atlas);
+    
+  protected:
+    LogCategory logCategory() override;
     
   private:
-    std::unique_ptr<SpriteHandler> _spriteHandler;
+    std::shared_ptr<FileManager> _fileManager;
     
-    std::map<std::string, std::map<std::string,Region>> _allAtlases;
+    std::filesystem::path _atlasPath;
     
-    void parseAtlas(std::string file);
-    glm::vec2 parseAtlasSize(const char * const raw);
+    AtlasMap _allAtlases;
+    
+    std::filesystem::path buildAtlasPath(std::filesystem::path atlasName);
   };
 }

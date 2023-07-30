@@ -48,8 +48,8 @@ namespace grumble {
     return nlohmann::json::parse(raw);
   }
 
-  std::filesystem::path FileManager::buildFilePath(std::string filename) {
-    return _rootPath + "/" + filename;
+  std::filesystem::path FileManager::buildFilePath(std::filesystem::path filename) {
+    return _rootPath / filename;
   }
 
   LogCategory FileManager::logCategory() {

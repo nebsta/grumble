@@ -29,6 +29,6 @@ namespace grumble {
   private:
     std::string _rootPath;
     
-    std::filesystem::path buildFilePath(std::string filename);
+    std::filesystem::path buildFilePath(std::filesystem::path filename);
   };
 }

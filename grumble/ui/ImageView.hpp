@@ -23,14 +23,14 @@ namespace grumble {
   class ImageView : public View {
     
   public:
-    ImageView();
-    ImageView(const Sprite& sprite);
-    ImageView(const Sprite& sprite, const glm::vec2& position);
-    ImageView(const Sprite& sprite, const glm::vec2& position, const glm::vec2& size);
-    ImageView(const Sprite& sprite, const glm::vec2& position, const glm::vec2& size, const glm::vec4& tint);
+    ImageView(std::shared_ptr<Sprite> sprite = nullptr,
+              glm::vec2 position = VECTOR_EMPTY,
+              glm::vec2 size = glm::vec2(10,10),
+              glm::vec4 tint = COLOR_WHITE);
     ~ImageView();
     
     void setSprite(Sprite sprite);
   private:
+    std::shared_ptr<Sprite> _sprite;
   };
 }
