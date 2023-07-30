@@ -31,6 +31,7 @@ namespace grumble {
     void setup();
     
     std::shared_ptr<Sprite> getSprite(std::string name, std::string atlas);
+    std::vector<char> getAtlasData(std::string atlasName);
     
   protected:
     LogCategory logCategory() override;

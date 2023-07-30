@@ -29,4 +29,8 @@ namespace grumble {
   std::shared_ptr<Sprite> SpriteAtlas::getSprite(std::string name) {
     return _allSprites[name];
   }
+
+  std::vector<char> SpriteAtlas::data() {
+    return _data;
+  }
 }

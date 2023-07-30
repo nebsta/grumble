@@ -39,6 +39,10 @@ namespace grumble {
     return _allAtlases[atlas]->getSprite(name);
   }
 
+  std::vector<char> SpriteManager::getAtlasData(std::string atlasName) {
+    return _allAtlases[atlasName]->data();
+  }
+
   LogCategory SpriteManager::logCategory() {
     return LogCategory::rendering;
   }

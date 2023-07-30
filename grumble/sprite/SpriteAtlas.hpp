@@ -23,6 +23,8 @@ namespace grumble {
     
     std::shared_ptr<Sprite> getSprite(std::string name);
     
+    std::vector<char> data();
+    
   private:
     std::string _name;
     nlohmann::json _layout;

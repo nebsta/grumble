@@ -32,9 +32,9 @@ namespace grumble {
 #pragma mark Public Methods
 
   void Game::setup(float renderScale) {
+    _spriteManager->setup();
     _rendererManager->setup(renderScale);
     _fontManager->setup();
-    _spriteManager->setup();
   }
 
   void Game::update(double dt) {

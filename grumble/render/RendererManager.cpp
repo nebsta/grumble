@@ -21,7 +21,9 @@ namespace grumble {
   }
 
   void RendererManager::setup(float renderScale) {
-    _renderScale= renderScale;
+    logInfo("Setting up render manager with scale: " + std::to_string(renderScale));
+    _renderScale = renderScale;
+    setup();
   }
 
   const float RendererManager::renderScale() const {

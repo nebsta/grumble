@@ -24,7 +24,8 @@ namespace grumble {
   public:
     virtual ~RendererManager() = default;
     
-    void setup(float renderScale);
+    virtual void setup(float renderScale);
+    virtual void setup() = 0;
     
     void renderAll(std::shared_ptr<View> rootView);
     
