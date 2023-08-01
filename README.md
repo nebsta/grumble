@@ -11,3 +11,4 @@
 
 ### Other
 * [Texture Packer](codeandweb.com/texturepacker) 
+* CMake 3.27.1

@@ -10,6 +10,7 @@
 #include <fstream>
 #include <nlohmann/json.hpp>
 #include <filesystem>
+#include <png.h>
 
 #include "../core/Object.hpp"
 
@@ -21,6 +22,7 @@ namespace grumble {
     
     std::string loadFile(std::filesystem::path filename);
     std::vector<char> loadFileRaw(std::filesystem::path filename);
+    png_bytep* loadPNG(std::filesystem::path filename);
     nlohmann::json loadJson(std::filesystem::path filename);
     
   protected:
@@ -30,5 +32,9 @@ namespace grumble {
     std::string _rootPath;
     
     std::filesystem::path buildFilePath(std::filesystem::path filename);
+    
+    static void pngError(png_structp png_ptr, png_const_charp error_msg);
+    static void pngWarning(png_structp png_ptr, png_const_charp warning_msg);
+    static void readPNGData(png_structp pngPtr, png_bytep data, png_size_t length);
   };
 }

@@ -1,6 +1,16 @@
 // Conan XcodeDeps generated file
 // Includes all direct dependencies
 
+#include "conan_bzip2.xcconfig"
+
+#include "conan_brotli.xcconfig"
+
+#include "conan_libpng.xcconfig"
+
+#include "conan_zlib.xcconfig"
+
 #include "conan_glm.xcconfig"
 
 #include "conan_nlohmann_json.xcconfig"
+
+#include "conan_freetype.xcconfig"

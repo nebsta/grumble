@@ -353,7 +353,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 435742EE27904B61000B5062 /* Build configuration list for PBXNativeTarget "grumble" */;
 			buildPhases = (
-				D917F8532A643EAC00DCD0CC /* Conan Install */,
 				435742DF27904B61000B5062 /* Headers */,
 				435742E027904B61000B5062 /* Sources */,
 				435742E127904B61000B5062 /* Frameworks */,
@@ -420,25 +419,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan export-pkg . --output-folder $PROJECT_DIR/conan\n";
-		};
-		D917F8532A643EAC00DCD0CC /* Conan Install */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Conan Install";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/conan install $PROJECT_DIR/conanfile.py -s build_type=$CONFIGURATION --output-folder $PROJECT_DIR/conan\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
