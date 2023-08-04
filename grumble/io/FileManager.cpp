@@ -71,18 +71,45 @@ namespace grumble {
     png_uint_32 bitDepth = png_get_bit_depth(pngPtr, infoPtr);
     png_uint_32 channels = png_get_channels(pngPtr, infoPtr);
     png_uint_32 color_type = png_get_color_type(pngPtr, infoPtr);
+    png_uint_32 interlace_type = png_get_interlace_type(pngPtr, infoPtr);
     
     logInfo("Image Size: " + std::to_string(imgWidth) + ", " + std::to_string(imgHeight));
+    logInfo("bitDepth: " + std::to_string(bitDepth));
+    logInfo("channels: " + std::to_string(channels));
+    logInfo("color_type: " + std::to_string(color_type));
+    logInfo("interlaced: " + std::to_string(interlace_type));
+    if (color_type == PNG_COLOR_TYPE_RGBA) {
+      logInfo("RGBA FILE");
+    }
+    
+    if (color_type == PNG_COLOR_TYPE_RGB) {
+      logInfo("RGB FILE");
+    }
+    
+//    png_set_swap_alpha(pngPtr);
+    png_read_update_info(pngPtr, infoPtr);
     
     //Here's one of the pointers we've defined in the error handler section:
     //Array of row pointers. One for every row.
     png_bytep* rowPtrs = new png_bytep[imgHeight];
+    size_t rowSize = png_get_rowbytes(pngPtr, infoPtr);
+    logInfo("row size: " + std::to_string(rowSize));
 
     for(int y = 0; y < imgHeight; y++) {
-      rowPtrs[y] = new png_byte[png_get_rowbytes(pngPtr, infoPtr)];
+      rowPtrs[y] = new png_byte[rowSize];
     }
 
     png_read_image(pngPtr, rowPtrs);
+    
+    logInfo("Raw Image Data");
+    for (int i = 0; i < imgHeight; i++) {
+      std::string rowString = "";
+      for (int j = 0; j < rowSize; j++) {
+        rowString += std::to_string(rowPtrs[i][j]) + "-";
+      }
+              
+      logInfo(rowString);
+    }
     
     fclose(fp);
     png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
