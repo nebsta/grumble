@@ -40,7 +40,7 @@ namespace grumble {
     return buffer;
   }
 
-  png_bytep* FileManager::loadPNG(std::filesystem::path filename) {
+  png_byte* FileManager::loadPNG(std::filesystem::path filename) {
     std::filesystem::path path = buildFilePath(filename);
     if (!std::filesystem::exists(path)) {
       logError("File at path " + path.string() + " doesn't exist.");
@@ -91,24 +91,37 @@ namespace grumble {
     
     //Here's one of the pointers we've defined in the error handler section:
     //Array of row pointers. One for every row.
-    png_bytep* rowPtrs = new png_bytep[imgHeight];
     size_t rowSize = png_get_rowbytes(pngPtr, infoPtr);
+    auto arrayLength = imgHeight * rowSize;
+    png_byte* rowPtrs = new png_byte[arrayLength];
     logInfo("row size: " + std::to_string(rowSize));
-
-    for(int y = 0; y < imgHeight; y++) {
-      rowPtrs[y] = new png_byte[rowSize];
+    
+    for (int i = 0; i < imgHeight; i++) {
+      png_read_row(pngPtr, &rowPtrs[i*rowSize], NULL);
+//      rowPtrs += rowSize;
     }
-
-    png_read_image(pngPtr, rowPtrs);
+    png_read_end(pngPtr, infoPtr);
+    
+//    png_read_image(pngPtr, rowPtrs);
     
     logInfo("Raw Image Data");
-    for (int i = 0; i < imgHeight; i++) {
-      std::string rowString = "";
-      for (int j = 0; j < rowSize; j++) {
-        rowString += std::to_string(rowPtrs[i][j]) + "-";
+//    for (int i = 0; i < imgHeight; i++) {
+//      std::string rowString = "";
+//      for (int j = 0; j < rowSize; j++) {
+//        rowString += std::to_string(rowPtrs[i][j]) + "-";
+//      }
+//
+//      logInfo(rowString);
+//    }
+    
+    std::string rowString = "";
+    for (int i = 0; i < arrayLength; i++) {
+      rowString += std::to_string(rowPtrs[i]) + "-";
+      
+      if ((i + 1) % rowSize == 0) {
+        logInfo(rowString);
+        rowString = "";
       }
-              
-      logInfo(rowString);
     }
     
     fclose(fp);

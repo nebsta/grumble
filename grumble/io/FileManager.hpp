@@ -22,7 +22,7 @@ namespace grumble {
     
     std::string loadFile(std::filesystem::path filename);
     std::vector<char> loadFileRaw(std::filesystem::path filename);
-    png_bytep* loadPNG(std::filesystem::path filename);
+    png_byte* loadPNG(std::filesystem::path filename);
     nlohmann::json loadJson(std::filesystem::path filename);
     
   protected:
