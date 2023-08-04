@@ -10,10 +10,10 @@
 namespace grumble {
   SpriteAtlas::SpriteAtlas(std::string name,
                            nlohmann::json layout,
-                           std::vector<char> data) :
+                           std::shared_ptr<ImageFile> file) :
     _name(name),
     _layout(layout),
-    _data(data) {
+    _file(file) {
       
     auto frames = _layout["frames"];
     for (nlohmann::json::iterator it = frames.begin(); it != frames.end(); ++it) {
@@ -30,7 +30,7 @@ namespace grumble {
     return _allSprites[name];
   }
 
-  std::vector<char> SpriteAtlas::data() {
-    return _data;
+  std::shared_ptr<ImageFile> SpriteAtlas::file() {
+    return _file;
   }
 }

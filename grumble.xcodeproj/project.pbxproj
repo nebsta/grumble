@@ -113,6 +113,7 @@
 		D92D77C82A6EF6CD00E5F178 /* TransformOrigin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformOrigin.hpp; sourceTree = "<group>"; };
 		D93044682A7D8E8000D5E04D /* ImageFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageFile.cpp; sourceTree = "<group>"; };
 		D93044692A7D8E8000D5E04D /* ImageFile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageFile.hpp; sourceTree = "<group>"; };
+		D930446E2A7D987300D5E04D /* SpriteManagerConfiguration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteManagerConfiguration.hpp; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
 		D9975B462A76C03A00286822 /* Sprite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
 		D9975B502A76C7A800286822 /* SpriteAtlas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteAtlas.cpp; sourceTree = "<group>"; };
@@ -318,6 +319,7 @@
 			children = (
 				43E5A48C279476DF0037ACF2 /* SpriteManager.hpp */,
 				43E5A490279476DF0037ACF2 /* SpriteManager.cpp */,
+				D930446E2A7D987300D5E04D /* SpriteManagerConfiguration.hpp */,
 				43E5A48F279476DF0037ACF2 /* Sprite.hpp */,
 				D9975B462A76C03A00286822 /* Sprite.cpp */,
 				D9975B512A76C7A800286822 /* SpriteAtlas.hpp */,

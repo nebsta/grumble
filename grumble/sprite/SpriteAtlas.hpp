@@ -13,22 +13,25 @@
 #include "Sprite.hpp"
 
 #include "../core/Object.hpp"
+#include "../io/ImageFile.hpp"
 
 namespace grumble {
   class SpriteAtlas: public Object {
+    typedef std::vector<SpriteAtlas>::iterator Iterator;
+    
   public:
     SpriteAtlas(std::string name,
                 nlohmann::json layout,
-                std::vector<char> data);
+                std::shared_ptr<ImageFile> file);
     
     std::shared_ptr<Sprite> getSprite(std::string name);
     
-    std::vector<char> data();
+    std::shared_ptr<ImageFile> file();
     
   private:
     std::string _name;
     nlohmann::json _layout;
-    std::vector<char> _data;
+    std::shared_ptr<ImageFile> _file;
     std::map<std::string, std::shared_ptr<Sprite>> _allSprites;
   };
 }

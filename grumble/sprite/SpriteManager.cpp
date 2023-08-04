@@ -9,11 +9,10 @@
 #include "SpriteManager.hpp"
 
 namespace grumble {
-  SpriteManager::SpriteManager(std::shared_ptr<FileManager> fileManager,
-                               std::filesystem::path atlasPath) :
+  SpriteManager::SpriteManager(SpriteManagerConfiguration configuration,
+                               std::shared_ptr<FileManager> fileManager) :
   _fileManager(fileManager),
-  _atlasPath(atlasPath)
-  {
+  _configuration(configuration) {
     
   }
 
@@ -24,13 +23,18 @@ namespace grumble {
   void SpriteManager::setup() {
     logInfo("Setting up SpriteManager");
     
-    std::filesystem::path atlasLayoutPath = buildAtlasPath("MainAtlas-data.json");
-    std::filesystem::path atlasImagePath = buildAtlasPath("MainAtlas-sheet.png");
-    auto atlasLayout = _fileManager->loadJson(atlasLayoutPath);
-    auto atlasImage = _fileManager->loadFileRaw(atlasImagePath);
-    
-    _allAtlases["MainAtlas"] = std::make_shared<SpriteAtlas>("MainAtlas", atlasLayout, atlasImage);
-    
+    SpriteManagerConfiguration::AtlasIterator iterator = _configuration.atlases.begin();
+    for (; iterator != _configuration.atlases.end(); iterator++) {
+      std::string atlasName = (*iterator);
+      logInfo("Setting up atlas: " + atlasName);
+      
+      std::filesystem::path atlasLayoutPath = buildAtlasDataPath(atlasName);
+      std::filesystem::path atlasImagePath = buildAtlasImagePath(atlasName);
+      auto atlasLayout = _fileManager->loadJson(atlasLayoutPath);
+      std::shared_ptr<ImageFile> atlasImage = _fileManager->loadPNG(atlasImagePath);
+      
+      _allAtlases[atlasName] = std::make_shared<SpriteAtlas>(atlasName, atlasLayout, atlasImage);
+    }
     
     logInfo("Successfully set up SpriteManager");
   }
@@ -39,15 +43,28 @@ namespace grumble {
     return _allAtlases[atlas]->getSprite(name);
   }
 
-  std::vector<char> SpriteManager::getAtlasData(std::string atlasName) {
-    return _allAtlases[atlasName]->data();
+  std::shared_ptr<ImageFile> SpriteManager::getAtlasFile(std::string atlasName) {
+    return _allAtlases[atlasName]->file();
   }
 
   LogCategory SpriteManager::logCategory() {
     return LogCategory::rendering;
   }
 
-  std::filesystem::path SpriteManager::buildAtlasPath(std::filesystem::path filename) {
-    return _atlasPath / filename;
+  std::filesystem::path SpriteManager::buildAtlasImagePath(std::string filename) {
+    return _configuration.atlasPath / std::filesystem::path(filename + "-sheet.png");
+  }
+
+  std::filesystem::path SpriteManager::buildAtlasDataPath(std::string filename) {
+    return _configuration.atlasPath / std::filesystem::path(filename + "-data.json");
+  }
+
+  const std::vector<std::shared_ptr<ImageFile>> SpriteManager::allAtlasFiles() const {
+    std::vector<std::shared_ptr<ImageFile>> allFiles;
+    AtlasMapIterator iterator = _allAtlases.begin();
+    for (; iterator != _allAtlases.end(); ++iterator) {
+      allFiles.push_back(iterator->second->file());
+    }
+    return allFiles;
   }
 }

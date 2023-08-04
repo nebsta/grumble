@@ -29,7 +29,7 @@ namespace grumble {
               glm::vec4 tint = COLOR_WHITE);
     ~ImageView();
     
-    void setSprite(Sprite sprite);
+    void setSprite(std::shared_ptr<Sprite> sprite);
   private:
     std::shared_ptr<Sprite> _sprite;
   };

@@ -15,34 +15,39 @@
 
 #include "Sprite.hpp"
 #include "SpriteAtlas.hpp"
+#include "SpriteManagerConfiguration.hpp"
 
 #include "../logging/Logger.hpp"
 #include "../io/FileManager.hpp"
 
 namespace grumble {
   typedef std::map<std::string, std::shared_ptr<SpriteAtlas>> AtlasMap;
+  typedef AtlasMap::const_iterator AtlasMapIterator;
 
   class SpriteManager: Object {
     
   public:
-    SpriteManager(std::shared_ptr<FileManager> fileManager, std::filesystem::path atlasPath);
+    SpriteManager(SpriteManagerConfiguration configuration,
+                  std::shared_ptr<FileManager> fileManager);
     ~SpriteManager();
     
     void setup();
     
     std::shared_ptr<Sprite> getSprite(std::string name, std::string atlas);
-    std::vector<char> getAtlasData(std::string atlasName);
+    std::shared_ptr<ImageFile> getAtlasFile(std::string atlasName);
+    
+    const std::vector<std::shared_ptr<ImageFile>> allAtlasFiles() const;
     
   protected:
     LogCategory logCategory() override;
     
   private:
+    SpriteManagerConfiguration _configuration;
     std::shared_ptr<FileManager> _fileManager;
-    
-    std::filesystem::path _atlasPath;
     
     AtlasMap _allAtlases;
     
-    std::filesystem::path buildAtlasPath(std::filesystem::path atlasName);
+    std::filesystem::path buildAtlasImagePath(std::string atlasName);
+    std::filesystem::path buildAtlasDataPath(std::string atlasName);
   };
 }

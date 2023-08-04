@@ -8,9 +8,10 @@
 #include "ImageFile.hpp"
 
 namespace grumble {
-  ImageFile::ImageFile(float width, float height, png_byte* data) :
+  ImageFile::ImageFile(int width, int height, int bytesPerRow, png_byte* data) :
     _width(width),
     _height(height),
+    _bytesPerRow(bytesPerRow),
     _data(data) {
     
   }
@@ -20,12 +21,17 @@ namespace grumble {
     delete _data;
   }
 
-  const float ImageFile::width() const {
+  const int ImageFile::width() const {
     return _width;
   }
 
-  const float ImageFile::height() const {
+  const int ImageFile::height() const {
     return _height;
+  }
+
+
+  const int ImageFile::bytesPerRow() const {
+    return _bytesPerRow;
   }
 
   const png_byte* const ImageFile::data() const {

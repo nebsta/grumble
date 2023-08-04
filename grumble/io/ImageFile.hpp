@@ -13,18 +13,22 @@
 
 namespace grumble {
   class ImageFile: public Object {
+    typedef std::vector<ImageFile>::const_iterator Iterator;
+    
   public:
-    ImageFile(float width, float height, png_byte* data);
+    ImageFile(int width, int height, int bytesPerRow, png_byte* data);
     ~ImageFile();
     
-    const float width() const;
-    const float height() const;
+    const int width() const;
+    const int height() const;
+    const int bytesPerRow() const;
     
     const png_byte* const data() const;
     
   private:
-    float _width;
-    float _height;
+    int _width;
+    int _height;
+    int _bytesPerRow;
     
     png_byte* _data;
   };

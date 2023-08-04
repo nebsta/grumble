@@ -13,6 +13,7 @@ namespace grumble {
                        glm::vec2 position,
                        glm::vec2 size,
                        glm::vec4 tint) :
+    View(position, size),
     _sprite(sprite) {
     
   }
@@ -23,7 +24,7 @@ namespace grumble {
 
   #pragma mark Setters
 
-  void ImageView::setSprite(Sprite sprite) {
-    //    ((ImageViewRenderer&)_renderer).setSprite(sprite);
+  void ImageView::setSprite(std::shared_ptr<Sprite> sprite) {
+    _sprite = sprite;
   }
 }
