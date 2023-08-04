@@ -114,15 +114,15 @@ namespace grumble {
 //      logInfo(rowString);
 //    }
     
-    std::string rowString = "";
-    for (int i = 0; i < arrayLength; i++) {
-      rowString += std::to_string(rowPtrs[i]) + "-";
-      
-      if ((i + 1) % rowSize == 0) {
-        logInfo(rowString);
-        rowString = "";
-      }
-    }
+//    std::string rowString = "";
+//    for (int i = 0; i < arrayLength; i++) {
+//      rowString += std::to_string(rowPtrs[i]) + "-";
+//      
+//      if ((i + 1) % rowSize == 0) {
+//        logInfo(rowString);
+//        rowString = "";
+//      }
+//    }
     
     fclose(fp);
     png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
