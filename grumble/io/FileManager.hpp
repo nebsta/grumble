@@ -13,6 +13,7 @@
 #include <png.h>
 
 #include "../core/Object.hpp"
+#include "ImageFile.hpp"
 
 namespace grumble {
   class FileManager: public Object {
@@ -22,7 +23,7 @@ namespace grumble {
     
     std::string loadFile(std::filesystem::path filename);
     std::vector<char> loadFileRaw(std::filesystem::path filename);
-    png_byte* loadPNG(std::filesystem::path filename);
+    std::shared_ptr<ImageFile> loadPNG(std::filesystem::path filename);
     nlohmann::json loadJson(std::filesystem::path filename);
     
   protected:
