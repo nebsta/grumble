@@ -59,12 +59,12 @@ namespace grumble {
     return _configuration.atlasPath / std::filesystem::path(filename + "-data.json");
   }
 
-  const std::vector<std::shared_ptr<ImageFile>> SpriteManager::allAtlasFiles() const {
-    std::vector<std::shared_ptr<ImageFile>> allFiles;
+  const std::vector<std::shared_ptr<SpriteAtlas>> SpriteManager::allAtlases() const {
+    std::vector<std::shared_ptr<SpriteAtlas>> allAtlases;
     AtlasMapIterator iterator = _allAtlases.begin();
     for (; iterator != _allAtlases.end(); ++iterator) {
-      allFiles.push_back(iterator->second->file());
+      allAtlases.push_back(iterator->second);
     }
-    return allFiles;
+    return allAtlases;
   }
 }

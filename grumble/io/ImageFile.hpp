@@ -7,8 +7,6 @@
 
 #pragma once
 
-#include <png.h>
-
 #include "../core/Object.hpp"
 
 namespace grumble {
@@ -16,20 +14,19 @@ namespace grumble {
     typedef std::vector<ImageFile>::const_iterator Iterator;
     
   public:
-    ImageFile(int width, int height, int bytesPerRow, png_byte* data);
-    ~ImageFile();
+    ImageFile(int width, int height, int bytesPerRow, std::shared_ptr<unsigned char> data);
     
     const int width() const;
     const int height() const;
     const int bytesPerRow() const;
     
-    const png_byte* const data() const;
+    std::shared_ptr<unsigned char> data() const;
     
   private:
     int _width;
     int _height;
     int _bytesPerRow;
     
-    png_byte* _data;
+    std::shared_ptr<unsigned char> _data;
   };
 }

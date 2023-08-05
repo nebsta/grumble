@@ -11,11 +11,13 @@
 #include <stdio.h>
 #include <memory>
 #include <functional>
+#include <typeinfo>
 
 #include "Renderer.hpp"
 
 #include "../core/Object.hpp"
 #include "../ui/View.hpp"
+#include "../ui/ImageView.hpp"
 
 namespace grumble {
   class RendererManager: public Object {
@@ -29,7 +31,8 @@ namespace grumble {
     
     void renderAll(std::shared_ptr<View> rootView);
     
-    virtual void render(std::shared_ptr<View> view) = 0;
+    virtual void renderView(Transform transform, std::shared_ptr<Renderer> renderer) = 0;
+    virtual void renderImageView(Transform transform, std::shared_ptr<ImageRenderer> renderer) = 0;
     
     const float renderScale() const;
     const glm::vec2 screenSize() const;

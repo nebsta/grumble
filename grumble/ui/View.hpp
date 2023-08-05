@@ -34,7 +34,8 @@ namespace grumble {
     
     View(glm::vec2 position = {0, 0},
          glm::vec2 size = {0, 0},
-         TransformOrigin origin = TransformOrigin::TopLeft);
+         TransformOrigin origin = TransformOrigin::TopLeft,
+         std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>());
     
     ~View();
     
@@ -44,16 +45,16 @@ namespace grumble {
     bool hasChildren() const;
     
     Transform& transform();
-    Renderer& renderer();
+    std::shared_ptr<Renderer> renderer();
     
     Iterator childIteratorBegin();
     Iterator childIteratorEnd();
     
   protected:
     Transform _transform;
+    std::shared_ptr<Renderer> _renderer;
     
   private:
     List _children;
-    Renderer _renderer;
   };
 }

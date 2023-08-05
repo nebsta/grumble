@@ -19,22 +19,14 @@
 #include "../util/ColorConstants.hpp"
 
 #include "RenderMethod.hpp"
-#include "ShaderManager.hpp"
-
-#define RENDERER_DEFAULT_COLOR COLOR_BLUE
-#define RENDERER_DEFAULT_SHAPE grumble::Shapes.Square
-#define RENDERER_DEFAULT_SHADER "ViewShader"
 
 namespace grumble {
   class Renderer : public Object {
+    typedef std::vector<std::shared_ptr<Renderer>>::iterator Iterator;
     
   public:
-    Renderer();
-    Renderer(glm::vec4 tint);
-    Renderer(glm::vec4 tint, RenderMethod renderMethod);
+    Renderer(RenderMethod renderMethod = RenderMethod::TriangleStrip);
     ~Renderer();
-    
-    void render();
     
     void setTint(const glm::vec4& tint);
     

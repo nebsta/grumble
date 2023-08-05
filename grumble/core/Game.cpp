@@ -22,7 +22,7 @@ namespace grumble {
       this->logInfo("Resizing root view to " + glm::to_string(size));
       this->_rootView->transform().setSize(size);
     });
-    _rootView->renderer().setTint(COLOR_WHITE);
+    _rootView->renderer()->setTint(COLOR_WHITE);
   }
 
   Game::~Game() {

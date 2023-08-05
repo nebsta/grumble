@@ -9,14 +9,20 @@
 
 namespace grumble {
   void RendererManager::renderAll(std::shared_ptr<View> rootView) {
-    this->render(rootView);
+    this->renderView(rootView->transform(), rootView->renderer());
     
     if (!rootView->hasChildren()) {
       return;
     }
     
     for (View::Iterator iter = rootView->childIteratorBegin(); iter != rootView->childIteratorEnd(); iter++) {
-      this->render(*iter);
+      auto view = *iter;
+      
+      if (typeid(view) == typeid(View)) {
+        this->renderView(view->transform(), view->renderer());
+      } else if (typeid(view) == typeid(ImageView)) {
+        this->renderImageView(view->transform(), dynamic_pointer_cast<ImageRenderer>(view->renderer()));
+      }
     }
   }
 

@@ -17,15 +17,16 @@
 
 namespace grumble {
   class SpriteAtlas: public Object {
-    typedef std::vector<SpriteAtlas>::iterator Iterator;
-    
   public:
+    typedef std::vector<std::shared_ptr<SpriteAtlas>>::iterator Iterator;
+    
     SpriteAtlas(std::string name,
                 nlohmann::json layout,
                 std::shared_ptr<ImageFile> file);
     
     std::shared_ptr<Sprite> getSprite(std::string name);
     
+    const std::string name() const;
     std::shared_ptr<ImageFile> file();
     
   private:

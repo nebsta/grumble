@@ -17,17 +17,21 @@ namespace grumble {
       
     auto frames = _layout["frames"];
     for (nlohmann::json::iterator it = frames.begin(); it != frames.end(); ++it) {
-      std::string name = (*it)["filename"];
+      std::string spriteName = (*it)["filename"];
       
       auto frameRegion = (*it)["frame"];
       Region region = { frameRegion["x"], frameRegion["y"], frameRegion["w"], frameRegion["h"] };
-      std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(name, region);
+      std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(spriteName, _name, region);
       _allSprites[name] = sprite;
     }
   }
 
   std::shared_ptr<Sprite> SpriteAtlas::getSprite(std::string name) {
     return _allSprites[name];
+  }
+
+  const std::string SpriteAtlas::name() const {
+    return _name;
   }
 
   std::shared_ptr<ImageFile> SpriteAtlas::file() {

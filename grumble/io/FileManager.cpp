@@ -91,7 +91,7 @@ namespace grumble {
     
     fclose(fp);
     png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
-    return std::make_shared<ImageFile>(imgWidth, imgHeight, rowSize, rowPtrs);
+    return std::make_shared<ImageFile>(imgWidth, imgHeight, rowSize, std::shared_ptr<unsigned char>(rowPtrs));
   }
 
   void FileManager::pngError(png_structp png_ptr, png_const_charp error_msg) {

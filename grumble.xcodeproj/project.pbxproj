@@ -22,10 +22,10 @@
 		43E5A496279476DF0037ACF2 /* AnimationCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A483279476DF0037ACF2 /* AnimationCurves.cpp */; };
 		43E5A497279476DF0037ACF2 /* Animator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A484279476DF0037ACF2 /* Animator.cpp */; };
 		43E5A499279476DF0037ACF2 /* ViewAnimator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A486279476DF0037ACF2 /* ViewAnimator.cpp */; };
-		43E5A49C279476DF0037ACF2 /* ShaderHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A48A279476DF0037ACF2 /* ShaderHandler.cpp */; };
 		43E5A4A2279476DF0037ACF2 /* SpriteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A490279476DF0037ACF2 /* SpriteManager.cpp */; };
-		43E5A4A3279476DF0037ACF2 /* ShaderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A491279476DF0037ACF2 /* ShaderManager.cpp */; };
 		43E5A4A5279476DF0037ACF2 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43E5A493279476DF0037ACF2 /* Renderer.cpp */; };
+		D913D08A2A7E661700BE39C9 /* ImageRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D913D0882A7E661700BE39C9 /* ImageRenderer.cpp */; };
+		D913D08B2A7E661700BE39C9 /* ImageRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D913D0892A7E661700BE39C9 /* ImageRenderer.hpp */; };
 		D917F8952A65894F00DCD0CC /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D917F8932A65894F00DCD0CC /* Game.cpp */; };
 		D917F8962A65894F00DCD0CC /* Game.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D917F8942A65894F00DCD0CC /* Game.hpp */; };
 		D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */; };
@@ -91,19 +91,17 @@
 		43E5A484279476DF0037ACF2 /* Animator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animator.cpp; sourceTree = "<group>"; };
 		43E5A485279476DF0037ACF2 /* AnimationCurves.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationCurves.hpp; sourceTree = "<group>"; };
 		43E5A486279476DF0037ACF2 /* ViewAnimator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ViewAnimator.cpp; sourceTree = "<group>"; };
-		43E5A488279476DF0037ACF2 /* ShaderManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderManager.hpp; sourceTree = "<group>"; };
 		43E5A489279476DF0037ACF2 /* Renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
-		43E5A48A279476DF0037ACF2 /* ShaderHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderHandler.cpp; sourceTree = "<group>"; };
 		43E5A48B279476DF0037ACF2 /* RendererManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RendererManager.hpp; sourceTree = "<group>"; };
 		43E5A48C279476DF0037ACF2 /* SpriteManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteManager.hpp; sourceTree = "<group>"; };
-		43E5A48D279476DF0037ACF2 /* ShaderHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderHandler.hpp; sourceTree = "<group>"; };
 		43E5A48F279476DF0037ACF2 /* Sprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sprite.hpp; sourceTree = "<group>"; };
 		43E5A490279476DF0037ACF2 /* SpriteManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteManager.cpp; sourceTree = "<group>"; };
-		43E5A491279476DF0037ACF2 /* ShaderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderManager.cpp; sourceTree = "<group>"; };
 		43E5A493279476DF0037ACF2 /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		43E5A4A6279477260037ACF2 /* ColorConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorConstants.hpp; sourceTree = "<group>"; };
 		43E5A4A7279477260037ACF2 /* MathConstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathConstants.hpp; sourceTree = "<group>"; };
 		43E5A4AA279477EC0037ACF2 /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		D913D0882A7E661700BE39C9 /* ImageRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageRenderer.cpp; sourceTree = "<group>"; };
+		D913D0892A7E661700BE39C9 /* ImageRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageRenderer.hpp; sourceTree = "<group>"; };
 		D917F8932A65894F00DCD0CC /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		D917F8942A65894F00DCD0CC /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogLevel.hpp; sourceTree = "<group>"; };
@@ -281,12 +279,10 @@
 			isa = PBXGroup;
 			children = (
 				D9CE62962A6D4C9400D9477F /* RenderMethod.hpp */,
-				43E5A488279476DF0037ACF2 /* ShaderManager.hpp */,
-				43E5A491279476DF0037ACF2 /* ShaderManager.cpp */,
 				43E5A489279476DF0037ACF2 /* Renderer.hpp */,
 				43E5A493279476DF0037ACF2 /* Renderer.cpp */,
-				43E5A48D279476DF0037ACF2 /* ShaderHandler.hpp */,
-				43E5A48A279476DF0037ACF2 /* ShaderHandler.cpp */,
+				D913D0892A7E661700BE39C9 /* ImageRenderer.hpp */,
+				D913D0882A7E661700BE39C9 /* ImageRenderer.cpp */,
 				43E5A48B279476DF0037ACF2 /* RendererManager.hpp */,
 				D9CE62992A6D5AC400D9477F /* RendererManager.cpp */,
 			);
@@ -352,6 +348,7 @@
 				D917F8962A65894F00DCD0CC /* Game.hpp in Headers */,
 				D930446B2A7D8E8000D5E04D /* ImageFile.hpp in Headers */,
 				D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */,
+				D913D08B2A7E661700BE39C9 /* ImageRenderer.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4357434827904C15000B5062 /* Responder.cpp in Sources */,
-				43E5A49C279476DF0037ACF2 /* ShaderHandler.cpp in Sources */,
 				4357433127904C15000B5062 /* View.cpp in Sources */,
 				D9A08CD12A6FC8D600DBA3E5 /* TransformDimension.cpp in Sources */,
 				D9975B472A76C03A00286822 /* Sprite.cpp in Sources */,
@@ -451,8 +447,8 @@
 				D9CE629A2A6D5AC400D9477F /* RendererManager.cpp in Sources */,
 				D9975B522A76C7A800286822 /* SpriteAtlas.cpp in Sources */,
 				D9A08D1E2A6FDC4E00DBA3E5 /* FontManager.cpp in Sources */,
+				D913D08A2A7E661700BE39C9 /* ImageRenderer.cpp in Sources */,
 				435743B727907946000B5062 /* Logger.cpp in Sources */,
-				43E5A4A3279476DF0037ACF2 /* ShaderManager.cpp in Sources */,
 				D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */,
 				4357433327904C15000B5062 /* Transform.cpp in Sources */,
 				D9CE629F2A6D664200D9477F /* ViewFactory.cpp in Sources */,

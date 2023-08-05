@@ -8,17 +8,12 @@
 #include "ImageFile.hpp"
 
 namespace grumble {
-  ImageFile::ImageFile(int width, int height, int bytesPerRow, png_byte* data) :
+  ImageFile::ImageFile(int width, int height, int bytesPerRow, std::shared_ptr<unsigned char> data) :
     _width(width),
     _height(height),
     _bytesPerRow(bytesPerRow),
     _data(data) {
     
-  }
-
-  ImageFile::~ImageFile() {
-    logInfo("Destroying image file data");
-    delete _data;
   }
 
   const int ImageFile::width() const {
@@ -29,12 +24,11 @@ namespace grumble {
     return _height;
   }
 
-
   const int ImageFile::bytesPerRow() const {
     return _bytesPerRow;
   }
 
-  const png_byte* const ImageFile::data() const {
+  std::shared_ptr<unsigned char> ImageFile::data() const {
     return _data;
   }
 }

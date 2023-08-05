@@ -12,14 +12,18 @@ namespace grumble {
   ImageView::ImageView(std::shared_ptr<Sprite> sprite,
                        glm::vec2 position,
                        glm::vec2 size,
-                       glm::vec4 tint) :
-    View(position, size),
+                       TransformOrigin origin) :
+    View(position, size, origin, std::make_shared<ImageRenderer>(sprite)),
     _sprite(sprite) {
     
   }
 
   ImageView::~ImageView() {
     
+  }
+
+  std::shared_ptr<ImageRenderer> ImageView::imageRenderer() {
+    return dynamic_pointer_cast<ImageRenderer>(_renderer);
   }
 
   #pragma mark Setters

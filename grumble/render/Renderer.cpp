@@ -9,18 +9,9 @@
 #include "Renderer.hpp"
 
 namespace grumble {
-  typedef std::vector<Renderer*>::iterator RendererIterator;
 
-  Renderer::Renderer() : Renderer(RENDERER_DEFAULT_COLOR) {
-    
-  }
-
-  Renderer::Renderer(glm::vec4 tint) : Renderer(tint, RenderMethod::TriangleStrip) {
-    
-  }
-
-  Renderer::Renderer(glm::vec4 tint, RenderMethod renderMethod) {
-    _tint = tint;
+  Renderer::Renderer(RenderMethod renderMethod) {
+    _tint = COLOR_WHITE;
     _renderMethod = renderMethod;
   }
 
