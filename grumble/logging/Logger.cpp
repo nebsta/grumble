@@ -31,18 +31,6 @@ namespace grumble {
     std::cout << message << std::endl;
   }
 
-  void Logger::info(std::string message, LogCategory category) {
-    Logger::log(message, LogLevel::info, category);
-  }
-
-  void Logger::warn(std::string message, LogCategory category) {
-    Logger::log(message, LogLevel::warn, category);
-  }
-
-  void Logger::error(std::string message, LogCategory category) {
-    Logger::log(message, LogLevel::error, category);
-  }
-
 #pragma mark Private Methods
 
   std::string Logger::logLevelName(LogLevel level) {

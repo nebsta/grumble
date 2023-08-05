@@ -22,13 +22,24 @@ namespace grumble {
     static void log(std::string message, LogLevel level, LogCategory category);
 
     template <typename... T>
-    static void debug(const std::string message, LogCategory category, T&&... args) {
+    static void debug(const std::string message, LogCategory category = LogCategory::none, T&&... args) {
       Logger::log(fmt::format(fmt::runtime(message),args...), LogLevel::debug, category);
     }
-    
-    static void info(std::string message, LogCategory category = none);
-    static void warn(std::string message, LogCategory category = none);
-    static void error(std::string message, LogCategory category = none);
+
+    template <typename... T>
+    static void info(std::string message, LogCategory category = LogCategory::none, T&&... args) {
+      Logger::log(fmt::format(fmt::runtime(message),args...), LogLevel::info, category);
+    }
+
+    template <typename... T>
+    static void warn(std::string message, LogCategory category = LogCategory::none, T&&... args) {
+      Logger::log(fmt::format(fmt::runtime(message),args...), LogLevel::warn, category);
+    }
+
+    template <typename... T>
+    static void error(std::string message, LogCategory category = LogCategory::none, T&&... args) {
+      Logger::log(fmt::format(fmt::runtime(message),args...), LogLevel::error, category);
+    }
     
   private:
     static std::string logLevelName(LogLevel level);

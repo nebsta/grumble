@@ -25,26 +25,15 @@ namespace grumble {
     return fmt::format("id: {}", _id);
   }
 
+  LogCategory Object::logCategory() {
+    return LogCategory::none;
+  }
+
   int Object::id() {
     return _id;
   }
 
   void Object::setId(int id) {
     this->_id = id;
-  }
-
-#pragma mark Logging
-
-
-  void Object::logInfo(std::string message) {
-    Logger::info(message, this->logCategory());
-  }
-
-  void Object::logWarn(std::string message) {
-    Logger::warn(message, this->logCategory());
-  }
-
-  void Object::logError(std::string message) {
-    Logger::error(message, this->logCategory());
   }
 }

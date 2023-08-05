@@ -25,6 +25,7 @@ namespace grumble {
       logDebug("Setting up sprite: {}", spriteName);
       
       std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(spriteName, _name, region);
+      logDebug("");
       _allSprites[name] = sprite;
     }
   }

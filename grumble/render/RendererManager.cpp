@@ -29,7 +29,7 @@ namespace grumble {
   }
 
   void RendererManager::setup(float renderScale) {
-    logInfo("Setting up render manager with scale: " + std::to_string(renderScale));
+    logInfo("Setting up render manager with scale: {}", renderScale);
     _renderScale = renderScale;
     setup();
   }
@@ -49,7 +49,7 @@ namespace grumble {
 #pragma mark Protected Methods
 
   glm::mat4 RendererManager::submitScreenSize(glm::vec2 size) {
-    logInfo("Screen size submitted: " + glm::to_string(size));
+    logInfo("Screen size submitted: {}", glm::to_string(size));
     
     _screenSize = size;
     if (_onScreenSizeUpdated) {

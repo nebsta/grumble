@@ -585,7 +585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D929C6C02A61782D006F520E /* conan_config.xcconfig */;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4P3G8H5TQ3;
 				EXECUTABLE_PREFIX = lib;
@@ -620,7 +620,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D929C6C02A61782D006F520E /* conan_config.xcconfig */;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4P3G8H5TQ3;
 				EXECUTABLE_PREFIX = lib;

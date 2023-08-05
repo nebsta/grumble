@@ -30,18 +30,29 @@ namespace grumble {
     virtual const std::string toString() const;
     
   protected:
-    virtual LogCategory logCategory() { return LogCategory::none; }
+    int _id;
+    
+    virtual LogCategory logCategory();
     
     template <typename... T>
     void logDebug(std::string message, T&&... args) {
       Logger::debug(message, logCategory(), args...);
     }
     
-    void logInfo(std::string message);
-    void logWarn(std::string message);
-    void logError(std::string message);
+    template <typename... T>
+    void logInfo(std::string message, T&&... args) {
+      Logger::info(message, logCategory(), args...);
+    }
     
-    int _id;
+    template <typename... T>
+    void logWarn(std::string message, T&&... args) {
+      Logger::warn(message, logCategory(), args...);
+    }
+    
+    template <typename... T>
+    void logError(std::string message, T&&... args) {
+      Logger::error(message, logCategory(), args...);
+    }
   };
 }
 

@@ -19,7 +19,7 @@ namespace grumble {
   _fontManager(std::make_shared<FontManager>(fileManager, mainFontFile)),
   _rootView(_viewFactory->createView({0.0f, 0.0f}, _rendererManager->screenSize())) {
     _rendererManager->setOnScreenSizeUpdated([=](glm::vec2 size) {
-      this->logInfo("Resizing root view to " + glm::to_string(size));
+      this->logInfo("Resizing root view to {}", glm::to_string(size));
       this->_rootView->transform().setSize(size);
     });
     _rootView->renderer()->setTint(COLOR_WHITE);
