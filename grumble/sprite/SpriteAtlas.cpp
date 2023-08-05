@@ -20,7 +20,10 @@ namespace grumble {
       std::string spriteName = (*it)["filename"];
       
       auto frameRegion = (*it)["frame"];
-      Region region = { frameRegion["x"], frameRegion["y"], frameRegion["w"], frameRegion["h"] };
+      SpriteRegion region = { frameRegion["x"], frameRegion["y"], frameRegion["w"], frameRegion["h"] };
+      
+      logDebug("Setting up sprite: {}", spriteName);
+      
       std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(spriteName, _name, region);
       _allSprites[name] = sprite;
     }

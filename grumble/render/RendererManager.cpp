@@ -17,11 +17,13 @@ namespace grumble {
     
     for (View::Iterator iter = rootView->childIteratorBegin(); iter != rootView->childIteratorEnd(); iter++) {
       auto view = *iter;
-      
-      if (typeid(view) == typeid(View)) {
-        this->renderView(view->transform(), view->renderer());
-      } else if (typeid(view) == typeid(ImageView)) {
-        this->renderImageView(view->transform(), dynamic_pointer_cast<ImageRenderer>(view->renderer()));
+      switch (view->type()) {
+        case ViewType::BaseType:
+          this->renderView(view->transform(), view->renderer());
+          break;
+        case ViewType::ImageViewType:
+          this->renderImageView(view->transform(), dynamic_pointer_cast<ImageRenderer>(view->renderer()));
+          break;
       }
     }
   }

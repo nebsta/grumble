@@ -9,24 +9,26 @@
 #pragma once
 
 #include <stdio.h>
+
+#include "SpriteRegion.hpp"
+
 #include "../core/Object.hpp"
 
 namespace grumble {
-  typedef struct Region {
-    int x, y, w, h;
-  } Region;
 
   class Sprite: public Object {
   public:
-    Sprite(std::string name, std::string atlas, Region region);
+    Sprite(std::string name, std::string atlas, SpriteRegion region);
     
     const std::string name() const;
     const std::string atlas() const;
-    const Region region() const;
+    const SpriteRegion region() const;
+    
+    const std::string toString() const override;
     
   private:
     std::string _name;
     std::string _atlas;
-    Region _region;
+    SpriteRegion _region;
   };
 }

@@ -14,6 +14,7 @@
 #include <memory>
 
 #include "Transform.hpp"
+#include "ViewType.hpp"
 
 #include "../input/Responder.hpp"
 #include "../anim/ViewAnimator.hpp"
@@ -35,7 +36,8 @@ namespace grumble {
     View(glm::vec2 position = {0, 0},
          glm::vec2 size = {0, 0},
          TransformOrigin origin = TransformOrigin::TopLeft,
-         std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>());
+         std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>(),
+         ViewType type = ViewType::BaseType);
     
     ~View();
     
@@ -50,11 +52,14 @@ namespace grumble {
     Iterator childIteratorBegin();
     Iterator childIteratorEnd();
     
+    const ViewType type() const;
+    
   protected:
     Transform _transform;
     std::shared_ptr<Renderer> _renderer;
     
   private:
+    ViewType _type;
     List _children;
   };
 }

@@ -10,7 +10,12 @@
 #include <memory>
 
 #include "../core/Object.hpp"
+
 #include "../ui/View.hpp"
+#include "../ui/ImageView.hpp"
+
+#include "../sprite/Sprite.hpp"
+
 #include "../render/RendererManager.hpp"
 
 namespace grumble {
@@ -18,6 +23,12 @@ namespace grumble {
   public:
     ViewFactory();
     
-    std::shared_ptr<View> createView(glm::vec2 position, glm::vec2 size, TransformOrigin origin = TransformOrigin::TopLeft);
+    std::shared_ptr<View> createView(glm::vec2 position = VECTOR_EMPTY,
+                                     glm::vec2 size = {0.0, 0.0},
+                                     TransformOrigin origin = TransformOrigin::TopLeft);
+    std::shared_ptr<ImageView> createImageView(std::shared_ptr<Sprite> sprite,
+                                               glm::vec2 position = VECTOR_EMPTY,
+                                               glm::vec2 size = {10.0f, 10.0},
+                                               TransformOrigin origin = TransformOrigin::TopLeft);
   };
 }

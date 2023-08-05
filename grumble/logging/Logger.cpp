@@ -31,10 +31,6 @@ namespace grumble {
     std::cout << message << std::endl;
   }
 
-  void Logger::debug(std::string message, LogCategory category) {
-    Logger::log(message, LogLevel::debug, category);
-  }
-
   void Logger::info(std::string message, LogCategory category) {
     Logger::log(message, LogLevel::info, category);
   }

@@ -21,18 +21,8 @@ namespace grumble {
     
   }
 
-  void Object::print() {
-    Logger::info(toString());
-  }
-
-  std::string Object::toString() {
-    return toStream().str();
-  }
-
-  std::stringstream Object::toStream() {
-    std::stringstream stream;
-    stream << "{ id: " << _id << " }";
-    return stream;
+  const std::string Object::toString() const {
+    return fmt::format("id: {}", _id);
   }
 
   int Object::id() {
@@ -44,9 +34,7 @@ namespace grumble {
   }
 
 #pragma mark Logging
-  void Object::logDebug(std::string message) {
-    Logger::debug(message, this->logCategory());
-  }
+
 
   void Object::logInfo(std::string message) {
     Logger::info(message, this->logCategory());

@@ -26,7 +26,7 @@ namespace grumble {
     SpriteManagerConfiguration::AtlasIterator iterator = _configuration.atlases.begin();
     for (; iterator != _configuration.atlases.end(); iterator++) {
       std::string atlasName = (*iterator);
-      logInfo("Setting up atlas: " + atlasName);
+      logDebug("Setting up atlas: {}", atlasName);
       
       std::filesystem::path atlasLayoutPath = buildAtlasDataPath(atlasName);
       std::filesystem::path atlasImagePath = buildAtlasImagePath(atlasName);
@@ -40,6 +40,7 @@ namespace grumble {
   }
 
   std::shared_ptr<Sprite> SpriteManager::getSprite(std::string name, std::string atlas) {
+    
     return _allAtlases[atlas]->getSprite(name);
   }
 

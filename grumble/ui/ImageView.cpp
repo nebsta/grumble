@@ -13,7 +13,7 @@ namespace grumble {
                        glm::vec2 position,
                        glm::vec2 size,
                        TransformOrigin origin) :
-    View(position, size, origin, std::make_shared<ImageRenderer>(sprite)),
+    View(position, size, origin, std::make_shared<ImageRenderer>(sprite), ViewType::ImageViewType),
     _sprite(sprite) {
     
   }

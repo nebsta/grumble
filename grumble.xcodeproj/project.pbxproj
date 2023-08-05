@@ -102,6 +102,8 @@
 		43E5A4AA279477EC0037ACF2 /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
 		D913D0882A7E661700BE39C9 /* ImageRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageRenderer.cpp; sourceTree = "<group>"; };
 		D913D0892A7E661700BE39C9 /* ImageRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageRenderer.hpp; sourceTree = "<group>"; };
+		D913D08C2A7EB35800BE39C9 /* ViewType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewType.hpp; sourceTree = "<group>"; };
+		D913D08D2A7ECC0200BE39C9 /* SpriteRegion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteRegion.hpp; sourceTree = "<group>"; };
 		D917F8932A65894F00DCD0CC /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		D917F8942A65894F00DCD0CC /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		D91D8A442A694CC600E5B2A8 /* LogLevel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LogLevel.hpp; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				4357430127904C15000B5062 /* ImageView.cpp */,
 				D9CE629E2A6D664200D9477F /* ViewFactory.hpp */,
 				D9CE629D2A6D664200D9477F /* ViewFactory.cpp */,
+				D913D08C2A7EB35800BE39C9 /* ViewType.hpp */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -205,8 +208,8 @@
 			children = (
 				43E5A4A6279477260037ACF2 /* ColorConstants.hpp */,
 				43E5A4A7279477260037ACF2 /* MathConstants.hpp */,
-				D91D8A4C2A69833900E5B2A8 /* Time.cpp */,
 				D96C30562A67EBA600D5D581 /* Time.hpp */,
+				D91D8A4C2A69833900E5B2A8 /* Time.cpp */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				D930446E2A7D987300D5E04D /* SpriteManagerConfiguration.hpp */,
 				43E5A48F279476DF0037ACF2 /* Sprite.hpp */,
 				D9975B462A76C03A00286822 /* Sprite.cpp */,
+				D913D08D2A7ECC0200BE39C9 /* SpriteRegion.hpp */,
 				D9975B512A76C7A800286822 /* SpriteAtlas.hpp */,
 				D9975B502A76C7A800286822 /* SpriteAtlas.cpp */,
 			);

@@ -14,3 +14,5 @@
 #include "conan_nlohmann_json.xcconfig"
 
 #include "conan_freetype.xcconfig"
+
+#include "conan_fmt.xcconfig"

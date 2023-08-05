@@ -12,10 +12,11 @@ namespace grumble {
   View::View(glm::vec2 position,
              glm::vec2 size,
              TransformOrigin origin,
-             std::shared_ptr<Renderer> renderer) :
+             std::shared_ptr<Renderer> renderer,
+             ViewType type) :
     _transform(position, size, origin),
-    _renderer(renderer) {
-    
+    _renderer(renderer),
+    _type(type) {
     
   }
 
@@ -63,5 +64,9 @@ namespace grumble {
 
   View::Iterator View::childIteratorEnd() {
     return _children.end();
+  }
+
+  const ViewType View::type() const {
+    return _type;
   }
 }

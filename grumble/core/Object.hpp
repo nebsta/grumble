@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <sstream>
+#include <fmt/core.h>
 
 #include "../logging/Logger.hpp"
 
@@ -26,20 +27,20 @@ namespace grumble {
     int id();
     void setId(int id);
     
-    void print();
-    
-    std::string toString();
-    std::stringstream toStream();
+    virtual const std::string toString() const;
     
   protected:
     virtual LogCategory logCategory() { return LogCategory::none; }
     
-    void logDebug(std::string message);
+    template <typename... T>
+    void logDebug(std::string message, T&&... args) {
+      Logger::debug(message, logCategory(), args...);
+    }
+    
     void logInfo(std::string message);
     void logWarn(std::string message);
     void logError(std::string message);
     
-  private:
     int _id;
   };
 }

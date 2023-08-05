@@ -8,7 +8,7 @@
 #include "Sprite.hpp"
 
 namespace grumble {
-  Sprite::Sprite(std::string name, std::string atlas, Region region) :
+  Sprite::Sprite(std::string name, std::string atlas, SpriteRegion region) :
     _name(name),
     _atlas(atlas),
     _region(region) {
@@ -23,7 +23,11 @@ namespace grumble {
     return _atlas;
   }
 
-  const Region Sprite::region() const {
+  const SpriteRegion Sprite::region() const {
     return _region;
+  }
+
+  const std::string Sprite::toString() const {
+    return fmt::format("id: {}, name: {}, atlas: {}", _id, _name, _atlas);
   }
 }
