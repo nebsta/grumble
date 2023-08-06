@@ -28,21 +28,21 @@ namespace grumble {
     
   public:
     SpriteManager(SpriteManagerConfiguration configuration,
-                  std::shared_ptr<FileManager> fileManager);
+                  FileManager::shared_ptr fileManager);
     ~SpriteManager();
     
     void setup();
     
-    std::shared_ptr<Sprite> getSprite(std::string name, std::string atlas);
+    Sprite::shared_ptr getSprite(std::string name, std::string atlas);
     
-    const std::vector<std::shared_ptr<SpriteAtlas>> allAtlases() const;
+    const SpriteAtlas::vector allAtlases() const;
     
   protected:
     LogCategory logCategory() override;
     
   private:
     SpriteManagerConfiguration _configuration;
-    std::shared_ptr<FileManager> _fileManager;
+    FileManager::shared_ptr _fileManager;
     
     AtlasMap _allAtlases;
     

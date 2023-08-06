@@ -26,7 +26,7 @@ namespace grumble {
 
   void View::update(const float& dt) {
     if (hasChildren()) {
-      for (Iterator iter = _children.begin(); iter != _children.end(); iter++) {
+      for (iterator iter = _children.begin(); iter != _children.end(); iter++) {
         (*iter)->update(dt);
       }
     }
@@ -34,8 +34,8 @@ namespace grumble {
 
   #pragma mark Child Management
 
-  void View::addChild(std::shared_ptr<View> child) {
-    Iterator pos = std::find(_children.begin(), _children.end(), child);
+  void View::addChild(View::shared_ptr child) {
+    iterator pos = std::find(_children.begin(), _children.end(), child);
     if (pos != _children.end()) {
       return;
     }
@@ -54,15 +54,15 @@ namespace grumble {
     return _transform;
   }
 
-  std::shared_ptr<Renderer> View::renderer() {
+Renderer::shared_ptr View::renderer() {
     return _renderer;
   }
 
-  View::Iterator View::childIteratorBegin() {
+  View::iterator View::childIteratorBegin() {
     return _children.begin();
   }
 
-  View::Iterator View::childIteratorEnd() {
+  View::iterator View::childIteratorEnd() {
     return _children.end();
   }
 

@@ -40,7 +40,7 @@ namespace grumble {
     return buffer;
   }
 
-  std::shared_ptr<ImageFile> FileManager::loadPNG(std::filesystem::path filename) {
+  ImageFile::shared_ptr FileManager::loadPNG(std::filesystem::path filename) {
     logInfo("Attempting to load png image: " + filename.string());
     
     std::filesystem::path path = buildFilePath(filename);
@@ -100,11 +100,6 @@ namespace grumble {
 
   void FileManager::pngWarning(png_structp png_ptr, png_const_charp warning_msg) {
     Logger::log("PNG load Warning: " + std::string(warning_msg), LogLevel::warn, LogCategory::io);
-  }
-
-  void FileManager::readPNGData(png_structp pngPtr, png_bytep data, png_size_t length) {
-     png_voidp a = png_get_io_ptr(pngPtr);
-     ((std::istream*)a)->read((char*)data, length);
   }
 
   nlohmann::json FileManager::loadJson(std::filesystem::path filename) {

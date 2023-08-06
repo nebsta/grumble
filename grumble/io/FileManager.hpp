@@ -18,12 +18,14 @@
 namespace grumble {
   class FileManager: public Object {
   public:
+    typedef std::shared_ptr<FileManager> shared_ptr;
+    
     FileManager(std::string rootPath);
     ~FileManager();
     
     std::string loadFile(std::filesystem::path filename);
     std::vector<char> loadFileRaw(std::filesystem::path filename);
-    std::shared_ptr<ImageFile> loadPNG(std::filesystem::path filename);
+    ImageFile::shared_ptr loadPNG(std::filesystem::path filename);
     nlohmann::json loadJson(std::filesystem::path filename);
     
   protected:
@@ -36,6 +38,5 @@ namespace grumble {
     
     static void pngError(png_structp png_ptr, png_const_charp error_msg);
     static void pngWarning(png_structp png_ptr, png_const_charp warning_msg);
-    static void readPNGData(png_structp pngPtr, png_bytep data, png_size_t length);
   };
 }

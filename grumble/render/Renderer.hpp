@@ -22,9 +22,10 @@
 
 namespace grumble {
   class Renderer : public Object {
-    typedef std::vector<std::shared_ptr<Renderer>>::iterator Iterator;
-    
   public:
+    typedef std::shared_ptr<Renderer> shared_ptr;
+    typedef std::vector<shared_ptr>::iterator iterator;
+    
     Renderer(RenderMethod renderMethod = RenderMethod::TriangleStrip);
     ~Renderer();
     

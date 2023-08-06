@@ -22,7 +22,6 @@
 #include "TransformDimension.hpp"
 
 namespace grumble {
-
   class Transform : public Object {
   public:
     Transform();

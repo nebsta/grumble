@@ -8,14 +8,15 @@
 #include "RendererManager.hpp"
 
 namespace grumble {
-  void RendererManager::renderAll(std::shared_ptr<View> rootView) {
+  void RendererManager::renderAll(View::shared_ptr rootView) {
     this->renderView(rootView->transform(), rootView->renderer());
     
     if (!rootView->hasChildren()) {
       return;
     }
     
-    for (View::Iterator iter = rootView->childIteratorBegin(); iter != rootView->childIteratorEnd(); iter++) {
+    View::iterator iter = rootView->childIteratorBegin();
+    for (; iter != rootView->childIteratorEnd(); iter++) {
       auto view = *iter;
       switch (view->type()) {
         case ViewType::BaseType:

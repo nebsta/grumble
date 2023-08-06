@@ -13,14 +13,15 @@
 namespace grumble {
   class ImageRenderer: public Renderer {
   public:
+    typedef std::shared_ptr<ImageRenderer> shared_ptr;
     
-    ImageRenderer(std::shared_ptr<Sprite> sprite,
+    ImageRenderer(Sprite::shared_ptr sprite,
                   RenderMethod renderMethod = RenderMethod::TriangleStrip);
     ~ImageRenderer();
     
-    std::shared_ptr<Sprite> sprite() const;
+    Sprite::shared_ptr sprite() const;
     
   private:
-    std::shared_ptr<Sprite> _sprite;
+    Sprite::shared_ptr _sprite;
   };
 }

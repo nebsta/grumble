@@ -29,10 +29,10 @@ namespace grumble {
     virtual void setup(float renderScale);
     virtual void setup() = 0;
     
-    void renderAll(std::shared_ptr<View> rootView);
+    void renderAll(View::shared_ptr rootView);
     
-    virtual void renderView(Transform transform, std::shared_ptr<Renderer> renderer) = 0;
-    virtual void renderImageView(Transform transform, std::shared_ptr<ImageRenderer> renderer) = 0;
+    virtual void renderView(Transform transform, Renderer::shared_ptr renderer) = 0;
+    virtual void renderImageView(Transform transform, ImageRenderer::shared_ptr renderer) = 0;
     
     const float renderScale() const;
     const glm::vec2 screenSize() const;

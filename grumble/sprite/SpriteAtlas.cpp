@@ -10,7 +10,7 @@
 namespace grumble {
   SpriteAtlas::SpriteAtlas(std::string name,
                            nlohmann::json layout,
-                           std::shared_ptr<ImageFile> file) :
+                           ImageFile::shared_ptr file) :
     _name(name),
     _layout(layout),
     _file(file) {
@@ -37,8 +37,8 @@ namespace grumble {
         { xPos + width / atlasWidth, yPos + height / atlasHeight },
       };
       
-      std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(spriteName, _name, region);
-      std::pair<std::string,std::shared_ptr<Sprite>> item = { spriteName, sprite };
+      Sprite::shared_ptr sprite = std::make_shared<Sprite>(spriteName, _name, region);
+      std::pair<std::string,Sprite::shared_ptr> item = { spriteName, sprite };
       _allSprites.insert(item);
       
       logDebug("Set up sprite successfully: {}", sprite->toString());
@@ -53,12 +53,12 @@ namespace grumble {
     return _name;
   }
 
-  std::shared_ptr<ImageFile> SpriteAtlas::file() {
+  ImageFile::shared_ptr SpriteAtlas::file() {
     return _file;
   }
 
-  std::vector<std::shared_ptr<Sprite>> SpriteAtlas::allSprites() const{
-    std::vector<std::shared_ptr<Sprite>> allSprites;
+  Sprite::vector SpriteAtlas::allSprites() const{
+    Sprite::vector allSprites;
     SpriteMapConstIterator iterator = _allSprites.begin();
     for (; iterator != _allSprites.end(); ++iterator) {
       allSprites.push_back(iterator->second);

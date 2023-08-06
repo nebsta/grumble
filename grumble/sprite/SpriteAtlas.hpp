@@ -19,28 +19,29 @@ namespace grumble {
   class SpriteAtlas: public Object {
   public:
     typedef std::shared_ptr<SpriteAtlas> shared_ptr;
-    typedef std::vector<std::shared_ptr<SpriteAtlas>>::iterator Iterator;
-    typedef std::vector<std::shared_ptr<SpriteAtlas>>::const_iterator ConstIterator;
+    typedef std::vector<shared_ptr> vector;
+    typedef vector::iterator iterator;
+    typedef vector::const_iterator const_iterator;
     
-    typedef std::map<std::string, std::shared_ptr<Sprite>> SpriteMap;
+    typedef std::map<std::string, Sprite::shared_ptr> SpriteMap;
     typedef SpriteMap::const_iterator SpriteMapConstIterator;
     
     SpriteAtlas(std::string name,
                 nlohmann::json layout,
-                std::shared_ptr<ImageFile> file);
+                ImageFile::shared_ptr file);
     
-    std::shared_ptr<Sprite> getSprite(std::string name);
+    Sprite::shared_ptr getSprite(std::string name);
     
     const std::string name() const;
-    std::shared_ptr<ImageFile> file();
+    ImageFile::shared_ptr file();
     
     const std::string toString() const override;
-    std::vector<std::shared_ptr<Sprite>> allSprites() const;
+    Sprite::vector allSprites() const;
     
   private:
     std::string _name;
     nlohmann::json _layout;
-    std::shared_ptr<ImageFile> _file;
+    ImageFile::shared_ptr _file;
     SpriteMap _allSprites;
   };
 }

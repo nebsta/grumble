@@ -11,9 +11,9 @@
 
 namespace grumble {
   class ImageFile: public Object {
-    typedef std::vector<ImageFile>::const_iterator Iterator;
-    
   public:
+    typedef std::shared_ptr<ImageFile> shared_ptr;
+    
     ImageFile(int width, int height, int bytesPerRow, std::shared_ptr<unsigned char> data);
     
     const int width() const;

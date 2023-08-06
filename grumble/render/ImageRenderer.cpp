@@ -8,7 +8,7 @@
 #include "ImageRenderer.hpp"
 
 namespace grumble {
-  ImageRenderer::ImageRenderer(std::shared_ptr<Sprite> sprite,
+  ImageRenderer::ImageRenderer(Sprite::shared_ptr sprite,
                                RenderMethod renderMethod) :
     Renderer(renderMethod),
     _sprite(sprite) {
@@ -19,8 +19,7 @@ namespace grumble {
     
   }
 
-
-  std::shared_ptr<Sprite> ImageRenderer::sprite() const {
+  Sprite::shared_ptr ImageRenderer::sprite() const {
     return _sprite;
   }
 }

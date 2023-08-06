@@ -23,34 +23,31 @@
 #include "../util/ColorConstants.hpp"
 #include "../util/MathConstants.hpp"
 
-#define VIEW_DEFAULT_COLOR COLOR_WHITE
-#define VIEW_DEFAULT_POSITION glm::vec2(0,0)
-#define VIEW_DEFAULT_SIZE glm::vec2(10,10)
-
 namespace grumble {
   class View : public Object {
   public:
-    typedef std::vector<std::shared_ptr<View>> List;
-    typedef List::iterator Iterator;
+    typedef std::shared_ptr<View> shared_ptr;
+    typedef std::vector<shared_ptr> vector;
+    typedef vector::iterator iterator;
     
     View(glm::vec2 position = {0, 0},
          glm::vec2 size = {0, 0},
          TransformOrigin origin = TransformOrigin::TopLeft,
-         std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>(),
+         Renderer::shared_ptr renderer = std::make_shared<Renderer>(),
          ViewType type = ViewType::BaseType);
     
     ~View();
     
     void update(const float& dt);
     
-    void addChild(std::shared_ptr<View> child);
+    void addChild(shared_ptr child);
     bool hasChildren() const;
     
     Transform& transform();
-    std::shared_ptr<Renderer> renderer();
+    Renderer::shared_ptr renderer();
     
-    Iterator childIteratorBegin();
-    Iterator childIteratorEnd();
+    iterator childIteratorBegin();
+    iterator childIteratorEnd();
     
     const ViewType type() const;
     
@@ -60,6 +57,6 @@ namespace grumble {
     
   private:
     ViewType _type;
-    List _children;
+    vector _children;
   };
 }
