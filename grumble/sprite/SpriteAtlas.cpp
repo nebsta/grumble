@@ -19,13 +19,16 @@ namespace grumble {
     for (nlohmann::json::iterator it = frames.begin(); it != frames.end(); ++it) {
       std::string spriteName = (*it)["filename"];
       
+      logInfo("Setting up sprite: {}", spriteName);
+      
       auto frameRegion = (*it)["frame"];
       SpriteRegion region = { frameRegion["x"], frameRegion["y"], frameRegion["w"], frameRegion["h"] };
       
       std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(spriteName, _name, region);
       std::pair<std::string,std::shared_ptr<Sprite>> item = { spriteName, sprite };
-      logDebug("Setting up sprite: {}", sprite->toString());
       _allSprites.insert(item);
+      
+      logDebug("Set up sprite successfully: {}", sprite->toString());
     }
   }
 
