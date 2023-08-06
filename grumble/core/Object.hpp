@@ -14,23 +14,20 @@
 
 #include "../logging/Logger.hpp"
 
-#define CORE_DEFAULT_ID 0
-
 namespace grumble {
   class Object {
     
   public:
-    Object();
-    Object(int id);
+    Object(std::string id = "");
     ~Object();
     
-    int id();
-    void setId(int id);
+    std::string id() const;
+    void setId(std::string id);
     
     virtual const std::string toString() const;
     
   protected:
-    int _id;
+    std::string _id;
     
     virtual LogCategory logCategory();
     

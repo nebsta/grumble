@@ -18,6 +18,11 @@ namespace grumble {
 
   class Sprite: public Object {
   public:
+    typedef std::shared_ptr<Sprite> shared_ptr;
+    typedef std::vector<shared_ptr> vector;
+    typedef vector::iterator iterator;
+    typedef vector::const_iterator const_iterator;
+    
     Sprite(std::string name, std::string atlas, SpriteRegion region);
     
     const std::string name() const;

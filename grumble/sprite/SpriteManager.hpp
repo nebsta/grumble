@@ -22,7 +22,7 @@
 
 namespace grumble {
   typedef std::map<std::string, std::shared_ptr<SpriteAtlas>> AtlasMap;
-  typedef AtlasMap::const_iterator AtlasMapIterator;
+  typedef AtlasMap::const_iterator AtlasMapConstIterator;
 
   class SpriteManager: Object {
     

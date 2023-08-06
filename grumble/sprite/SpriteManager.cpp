@@ -63,7 +63,7 @@ namespace grumble {
 
   const std::vector<std::shared_ptr<SpriteAtlas>> SpriteManager::allAtlases() const {
     std::vector<std::shared_ptr<SpriteAtlas>> allAtlases;
-    AtlasMapIterator iterator = _allAtlases.begin();
+    AtlasMapConstIterator iterator = _allAtlases.begin();
     for (; iterator != _allAtlases.end(); ++iterator) {
       allAtlases.push_back(iterator->second);
     }

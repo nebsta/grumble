@@ -9,11 +9,7 @@
 #include "Object.hpp"
 
 namespace grumble {
-  Object::Object() : Object(CORE_DEFAULT_ID) {
-    
-  }
-
-  Object::Object(int id) : _id(id) {
+  Object::Object(std::string id) : _id(id) {
     
   }
 
@@ -29,11 +25,11 @@ namespace grumble {
     return LogCategory::none;
   }
 
-  int Object::id() {
+  std::string Object::id() const {
     return _id;
   }
 
-  void Object::setId(int id) {
-    this->_id = id;
+  void Object::setId(std::string id) {
+    _id = id;
   }
 }

@@ -9,6 +9,7 @@
 
 namespace grumble {
   Sprite::Sprite(std::string name, std::string atlas, SpriteRegion region) :
+    Object(fmt::format("{}-{}", atlas, name)),
     _name(name),
     _atlas(atlas),
     _region(region) {

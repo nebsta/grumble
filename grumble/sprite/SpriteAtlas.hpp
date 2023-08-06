@@ -18,7 +18,12 @@
 namespace grumble {
   class SpriteAtlas: public Object {
   public:
+    typedef std::shared_ptr<SpriteAtlas> shared_ptr;
     typedef std::vector<std::shared_ptr<SpriteAtlas>>::iterator Iterator;
+    typedef std::vector<std::shared_ptr<SpriteAtlas>>::const_iterator ConstIterator;
+    
+    typedef std::map<std::string, std::shared_ptr<Sprite>> SpriteMap;
+    typedef SpriteMap::const_iterator SpriteMapConstIterator;
     
     SpriteAtlas(std::string name,
                 nlohmann::json layout,
@@ -30,11 +35,12 @@ namespace grumble {
     std::shared_ptr<ImageFile> file();
     
     const std::string toString() const override;
+    std::vector<std::shared_ptr<Sprite>> allSprites() const;
     
   private:
     std::string _name;
     nlohmann::json _layout;
     std::shared_ptr<ImageFile> _file;
-    std::map<std::string, std::shared_ptr<Sprite>> _allSprites;
+    SpriteMap _allSprites;
   };
 }

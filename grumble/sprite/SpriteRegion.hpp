@@ -8,13 +8,18 @@
 #pragma once
 
 #include <fmt/core.h>
+#include <glm/gtx/string_cast.hpp>
 
 namespace grumble {
   struct SpriteRegion {
-    int x, y, w, h;
+    glm::vec2 topLeft, topRight, bottomLeft, bottomRight;
     
     std::string toString() const {
-      return fmt::format("{}, {}, {}, {}", x, y, w, h);
+      return fmt::format("{}, {}, {}, {}",
+                         glm::to_string(topLeft),
+                         glm::to_string(topRight),
+                         glm::to_string(bottomLeft),
+                         glm::to_string(bottomRight));
     }
   };
 }
