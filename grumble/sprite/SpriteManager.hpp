@@ -34,7 +34,6 @@ namespace grumble {
     void setup();
     
     std::shared_ptr<Sprite> getSprite(std::string name, std::string atlas);
-    std::shared_ptr<ImageFile> getAtlasFile(std::string atlasName);
     
     const std::vector<std::shared_ptr<SpriteAtlas>> allAtlases() const;
     

@@ -11,8 +11,9 @@
 namespace grumble {
   SpriteManager::SpriteManager(SpriteManagerConfiguration configuration,
                                std::shared_ptr<FileManager> fileManager) :
-  _fileManager(fileManager),
-  _configuration(configuration) {
+    _fileManager(fileManager),
+    _configuration(configuration),
+    _allAtlases() {
     
   }
 
@@ -33,19 +34,28 @@ namespace grumble {
       auto atlasLayout = _fileManager->loadJson(atlasLayoutPath);
       std::shared_ptr<ImageFile> atlasImage = _fileManager->loadPNG(atlasImagePath);
       
-      _allAtlases[atlasName] = std::make_shared<SpriteAtlas>(atlasName, atlasLayout, atlasImage);
+      std::shared_ptr<SpriteAtlas> atlas = std::make_shared<SpriteAtlas>(atlasName, atlasLayout, atlasImage);
+      std::pair<std::string,std::shared_ptr<SpriteAtlas>> item = { atlasName, atlas };
+      _allAtlases.insert(item);
     }
     
     logInfo("Successfully set up SpriteManager");
   }
 
   std::shared_ptr<Sprite> SpriteManager::getSprite(std::string name, std::string atlas) {
+    logDebug("Getting sprite: {} in atlas: {}", name, atlas);
     
-    return _allAtlases[atlas]->getSprite(name);
-  }
-
-  std::shared_ptr<ImageFile> SpriteManager::getAtlasFile(std::string atlasName) {
-    return _allAtlases[atlasName]->file();
+    
+    AtlasMapIterator iterator = _allAtlases.begin();
+    for (; iterator != _allAtlases.end(); ++iterator) {
+      logInfo("finding: {} - {}", (*iterator).first, (*iterator).second->toString());
+    }
+    
+    
+    
+    auto foundAtlas = _allAtlases.at(atlas);
+    logInfo("Getting atlas: {}", foundAtlas->toString());
+    return foundAtlas->getSprite(name);
   }
 
   LogCategory SpriteManager::logCategory() {

@@ -29,6 +29,8 @@ namespace grumble {
     const std::string name() const;
     std::shared_ptr<ImageFile> file();
     
+    const std::string toString() const override;
+    
   private:
     std::string _name;
     nlohmann::json _layout;

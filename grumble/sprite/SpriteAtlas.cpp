@@ -22,16 +22,15 @@ namespace grumble {
       auto frameRegion = (*it)["frame"];
       SpriteRegion region = { frameRegion["x"], frameRegion["y"], frameRegion["w"], frameRegion["h"] };
       
-      logDebug("Setting up sprite: {}", spriteName);
-      
       std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(spriteName, _name, region);
-      logDebug("");
-      _allSprites[name] = sprite;
+      std::pair<std::string,std::shared_ptr<Sprite>> item = { spriteName, sprite };
+      logDebug("Setting up sprite: {}", sprite->toString());
+      _allSprites.insert(item);
     }
   }
 
   std::shared_ptr<Sprite> SpriteAtlas::getSprite(std::string name) {
-    return _allSprites[name];
+    return _allSprites.at(name);
   }
 
   const std::string SpriteAtlas::name() const {
@@ -40,5 +39,16 @@ namespace grumble {
 
   std::shared_ptr<ImageFile> SpriteAtlas::file() {
     return _file;
+  }
+
+  const std::string SpriteAtlas::toString() const {
+    std::string spritesString = "[";
+    auto iter = _allSprites.begin();
+    for (; iter != _allSprites.end(); iter++) {
+      spritesString += fmt::format("{}," ,(*iter).second->toString());
+    }
+    spritesString += "]";
+    
+    return fmt::format("id: {}, name: {}, sprites: {}", _id, _name, spritesString);
   }
 }

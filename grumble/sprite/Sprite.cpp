@@ -28,6 +28,6 @@ namespace grumble {
   }
 
   const std::string Sprite::toString() const {
-    return fmt::format("id: {}, name: {}, atlas: {}", _id, _name, _atlas);
+    return fmt::format("id: {}, name: {}, atlas: {}, region: {}", _id, _name, _atlas, _region.toString());
   }
 }
