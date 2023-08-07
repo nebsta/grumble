@@ -31,6 +31,8 @@
 namespace grumble {
   class Game: public Object {
   public:
+    typedef std::shared_ptr<Game> shared_ptr;
+    
     Game(RendererManager::shared_ptr rendererManager,
          FileManager::shared_ptr fileManager,
          SpriteManager::shared_ptr spriteManager,
