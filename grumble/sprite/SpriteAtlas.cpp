@@ -32,9 +32,9 @@ namespace grumble {
       float height = frameRegion["h"];
       SpriteRegion region = {
         { xPos / atlasWidth, yPos / atlasHeight },
-        { xPos + width / atlasWidth, yPos / atlasHeight },
-        { xPos / atlasWidth, yPos + height / atlasHeight },
-        { xPos + width / atlasWidth, yPos + height / atlasHeight },
+        { (xPos + width) / atlasWidth, yPos / atlasHeight },
+        { xPos / atlasWidth, (yPos + height) / atlasHeight },
+        { (xPos + width) / atlasWidth, (yPos + height) / atlasHeight },
       };
       
       Sprite::shared_ptr sprite = std::make_shared<Sprite>(spriteName, _name, region);
