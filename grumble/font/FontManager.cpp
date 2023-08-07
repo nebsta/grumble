@@ -8,7 +8,7 @@
 #include "FontManager.hpp"
 
 namespace grumble {
-  FontManager::FontManager(std::shared_ptr<FileManager> fileManager, std::string mainFontFile):
+  FontManager::FontManager(FileManager::shared_ptr fileManager, std::string mainFontFile):
     _fileManager(fileManager),
     _mainFontFile(mainFontFile) {
     

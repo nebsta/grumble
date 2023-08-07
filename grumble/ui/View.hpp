@@ -43,7 +43,7 @@ namespace grumble {
     void addChild(shared_ptr child);
     bool hasChildren() const;
     
-    Transform& transform();
+    Transform::shared_ptr transform();
     Renderer::shared_ptr renderer();
     
     iterator childIteratorBegin();
@@ -52,8 +52,8 @@ namespace grumble {
     const ViewType type() const;
     
   protected:
-    Transform _transform;
-    std::shared_ptr<Renderer> _renderer;
+    Transform::shared_ptr _transform;
+    Renderer::shared_ptr _renderer;
     
   private:
     ViewType _type;

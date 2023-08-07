@@ -9,7 +9,7 @@
 #include "ImageView.hpp"
 
 namespace grumble {
-  ImageView::ImageView(std::shared_ptr<Sprite> sprite,
+  ImageView::ImageView(Sprite::shared_ptr sprite,
                        glm::vec2 position,
                        glm::vec2 size,
                        TransformOrigin origin) :
@@ -22,13 +22,13 @@ namespace grumble {
     
   }
 
-  std::shared_ptr<ImageRenderer> ImageView::imageRenderer() {
+  ImageRenderer::shared_ptr ImageView::imageRenderer() const {
     return dynamic_pointer_cast<ImageRenderer>(_renderer);
   }
 
   #pragma mark Setters
 
-  void ImageView::setSprite(std::shared_ptr<Sprite> sprite) {
+  void ImageView::setSprite(Sprite::shared_ptr sprite) {
     _sprite = sprite;
   }
 }

@@ -24,6 +24,8 @@ namespace grumble {
     typedef std::function<void(glm::vec2)> ScreenSizeUpdated;
     
   public:
+    typedef std::shared_ptr<RendererManager> shared_ptr;
+    
     virtual ~RendererManager() = default;
     
     virtual void setup(float renderScale);
@@ -31,8 +33,8 @@ namespace grumble {
     
     void renderAll(View::shared_ptr rootView);
     
-    virtual void renderView(Transform transform, Renderer::shared_ptr renderer) = 0;
-    virtual void renderImageView(Transform transform, ImageRenderer::shared_ptr renderer) = 0;
+    virtual void renderView(Transform::shared_ptr transform, Renderer::shared_ptr renderer) = 0;
+    virtual void renderImageView(Transform::shared_ptr transform, ImageRenderer::shared_ptr renderer) = 0;
     
     const float renderScale() const;
     const glm::vec2 screenSize() const;

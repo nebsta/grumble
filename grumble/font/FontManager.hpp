@@ -16,7 +16,9 @@
 namespace grumble {
   class FontManager: public Object {
   public:
-    FontManager(std::shared_ptr<FileManager> fileManager, std::string mainFontFile);
+    typedef std::shared_ptr<FontManager> shared_ptr;
+    
+    FontManager(FileManager::shared_ptr fileManager, std::string mainFontFile);
     ~FontManager();
     
     void setup();
@@ -27,7 +29,7 @@ namespace grumble {
   private:
     FT_Library _library;
     std::string _mainFontFile;
-    std::shared_ptr<FileManager> _fileManager;
+    FileManager::shared_ptr _fileManager;
     
     const char* getErrorMessage(FT_Error err);
   };

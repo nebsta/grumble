@@ -8,9 +8,6 @@
 
 #pragma once
 
-#define TRANSFORM_DEFAULT_POSITION glm::vec2(0,0)
-#define TRANSFORM_DEFAULT_SIZE glm::vec2(10,10)
-
 #include <vector>
 #include <stdio.h>
 #include <glm/glm.hpp>
@@ -24,10 +21,11 @@
 namespace grumble {
   class Transform : public Object {
   public:
-    Transform();
-    Transform(glm::vec2 position);
-    Transform(glm::vec2 position, glm::vec2 size);
-    Transform(glm::vec2 position, glm::vec2 size, TransformOrigin origin);
+    typedef std::shared_ptr<Transform> shared_ptr;
+    
+    Transform(glm::vec2 position = {0, 0},
+              glm::vec2 size = {10, 10},
+              TransformOrigin origin = TransformOrigin::TopLeft);
     ~Transform();
     
     void setLocalPosition(glm::vec2 localPosition);
@@ -37,7 +35,7 @@ namespace grumble {
     void setRelativeWidth(float factor);
     void setRelativeHeight(float factor);
     void setSize(glm::vec2 size);
-    void setParent(Transform* const parent);
+    void setParent(Transform::shared_ptr parent);
     
     glm::vec2 localPosition() const;
     glm::vec2 screenPosition() const;
@@ -55,7 +53,7 @@ namespace grumble {
     
     TransformOrigin _origin;
     
-    Transform *_parent;
+    Transform::shared_ptr _parent;
     const bool hasParent() const;
     
     float calculateDimensionSize(TransformDimension dimension, float parentSize);

@@ -21,12 +21,13 @@
 #include "../io/FileManager.hpp"
 
 namespace grumble {
-  typedef std::map<std::string, std::shared_ptr<SpriteAtlas>> AtlasMap;
+  typedef std::map<std::string, SpriteAtlas::shared_ptr> AtlasMap;
   typedef AtlasMap::const_iterator AtlasMapConstIterator;
 
   class SpriteManager: Object {
-    
   public:
+    typedef std::shared_ptr<SpriteManager> shared_ptr;
+    
     SpriteManager(SpriteManagerConfiguration configuration,
                   FileManager::shared_ptr fileManager);
     ~SpriteManager();

@@ -12,9 +12,9 @@ namespace grumble {
   View::View(glm::vec2 position,
              glm::vec2 size,
              TransformOrigin origin,
-             std::shared_ptr<Renderer> renderer,
+             Renderer::shared_ptr renderer,
              ViewType type) :
-    _transform(position, size, origin),
+    _transform(std::make_shared<Transform>(position, size, origin)),
     _renderer(renderer),
     _type(type) {
     
@@ -41,7 +41,7 @@ namespace grumble {
     }
     _children.push_back(child);
     
-    child->transform().setParent(&_transform);
+    child->transform()->setParent(_transform);
   }
 
   bool View::hasChildren() const {
@@ -50,11 +50,11 @@ namespace grumble {
 
   #pragma mark Getters
 
-  Transform& View::transform() {
+  Transform::shared_ptr View::transform() {
     return _transform;
   }
 
-Renderer::shared_ptr View::renderer() {
+  Renderer::shared_ptr View::renderer() {
     return _renderer;
   }
 

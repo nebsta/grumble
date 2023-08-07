@@ -9,18 +9,6 @@
 #include "Transform.hpp"
 
 namespace grumble {
-  Transform::Transform() : Transform(TRANSFORM_DEFAULT_POSITION) {
-    
-  }
-
-  Transform::Transform(glm::vec2 position) : Transform(position, TRANSFORM_DEFAULT_SIZE, TransformOrigin::Center) {
-    
-  }
-
-  Transform::Transform(glm::vec2 position, glm::vec2 size) : Transform(position, size, TransformOrigin::Center) {
-    
-  }
-
   Transform::Transform(glm::vec2 position,
                        glm::vec2 size,
                        TransformOrigin origin) :
@@ -63,7 +51,7 @@ namespace grumble {
     setHeight(size.y);
   }
 
-  void Transform::setParent(Transform* const parent) {
+  void Transform::setParent(Transform::shared_ptr parent) {
     _parent = parent;
   }
 
