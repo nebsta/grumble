@@ -18,7 +18,7 @@ namespace grumble {
   public:
     typedef std::shared_ptr<FontManager> shared_ptr;
     typedef std::map<std::string, Font::shared_ptr> FontMap;
-    typedef std::pair<std::string,Font::shared_ptr> FontMapItem;
+    typedef std::pair<std::string, Font::shared_ptr> FontMapItem;
     
     FontManager(FontManagerConfiguration configuration,
                 FileManager::shared_ptr fileManager);
@@ -28,6 +28,8 @@ namespace grumble {
     
     Font::shared_ptr getFont(std::string name);
     Font::shared_ptr getMainFont();
+    
+    Font::vector allFonts();
     
   protected:
     LogCategory logCategory() override;

@@ -15,22 +15,39 @@
 
 #include "FontCharacter.hpp"
 
+#define CHARACTER_TOTAL 128
+#define ATLAS_SIZE glm::vec2(512, 512)
+
 namespace grumble {
   class Font: public Object {
   public:
     typedef std::shared_ptr<Font> shared_ptr;
     typedef std::map<char, FontCharacter::shared_ptr> FontCharacterMap;
     typedef std::pair<char, FontCharacter::shared_ptr> FontCharacterItem;
+    typedef std::vector<shared_ptr> vector;
+    typedef vector::iterator iterator;
     
-    Font();
+    Font(std::string name);
     ~Font();
     
     void setup(FT_Face face);
+    
+    std::vector<unsigned char*> data();
+    int atlasWidth();
+    int atlasHeight();
+    int bytesPerRow();
+    std::string name();
+    
+    FontCharacter::vector allCharacters();
+    
+    const std::string toString() const override;
     
   protected:
     LogCategory logCategory() override;
     
   private:
     FontCharacterMap _characterMap;
+    std::vector<unsigned char*> _data;
+    std::string _name;
   };
 }

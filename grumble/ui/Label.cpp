@@ -12,7 +12,7 @@ namespace grumble {
                Font::shared_ptr font,
                glm::vec2 position,
                TransformOrigin origin) :
-    View(position, VECTOR_EMPTY, origin, std::make_shared<Renderer>(), ViewType::LabelViewType),
+    View(position, VECTOR_EMPTY, origin, std::make_shared<TextRenderer>(text, font), ViewType::LabelViewType),
     _text(text) {
     
   }

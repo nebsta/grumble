@@ -14,6 +14,7 @@
 #include <typeinfo>
 
 #include "Renderer.hpp"
+#include "TextRenderer.hpp"
 
 #include "../core/Object.hpp"
 #include "../ui/View.hpp"
@@ -35,7 +36,7 @@ namespace grumble {
     
     virtual void renderView(Transform::shared_ptr transform, Renderer::shared_ptr renderer) = 0;
     virtual void renderImageView(Transform::shared_ptr transform, ImageRenderer::shared_ptr renderer) = 0;
-    virtual void renderLabel(Transform::shared_ptr transform, Renderer::shared_ptr renderer) = 0;
+    virtual void renderLabel(Transform::shared_ptr transform, TextRenderer::shared_ptr renderer) = 0;
     
     const float renderScale() const;
     const glm::vec2 screenSize() const;

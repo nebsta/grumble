@@ -11,6 +11,8 @@
 
 #include "../font/Font.hpp"
 
+#include "../render/TextRenderer.hpp"
+
 namespace grumble {
   class Label: public View {
   public:

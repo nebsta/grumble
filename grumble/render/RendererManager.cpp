@@ -25,9 +25,8 @@ namespace grumble {
         case ViewType::ImageViewType:
           this->renderImageView(view->transform(), dynamic_pointer_cast<ImageRenderer>(view->renderer()));
           break;
-          
         case ViewType::LabelViewType:
-          this->renderLabel(view->transform(), view->renderer());
+          this->renderLabel(view->transform(), dynamic_pointer_cast<TextRenderer>(view->renderer()));
           break;
       }
     }

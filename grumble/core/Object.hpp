@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <sstream>
 #include <fmt/core.h>
+#include <glm/gtx/string_cast.hpp>
 
 #include "../logging/Logger.hpp"
 

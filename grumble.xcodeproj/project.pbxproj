@@ -35,6 +35,8 @@
 		D930446B2A7D8E8000D5E04D /* ImageFile.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D93044692A7D8E8000D5E04D /* ImageFile.hpp */; };
 		D9340CAC2A80CE8100D44B0D /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9340CAA2A80CE8100D44B0D /* Font.cpp */; };
 		D9340CAD2A80CE8100D44B0D /* Font.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9340CAB2A80CE8100D44B0D /* Font.hpp */; };
+		D970B92E2A929F5600E59E38 /* TextRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D970B92C2A929F5600E59E38 /* TextRenderer.cpp */; };
+		D970B92F2A929F5600E59E38 /* TextRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D970B92D2A929F5600E59E38 /* TextRenderer.hpp */; };
 		D9975B472A76C03A00286822 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9975B462A76C03A00286822 /* Sprite.cpp */; };
 		D9975B522A76C7A800286822 /* SpriteAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9975B502A76C7A800286822 /* SpriteAtlas.cpp */; };
 		D9975B532A76C7A800286822 /* SpriteAtlas.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9975B512A76C7A800286822 /* SpriteAtlas.hpp */; };
@@ -122,6 +124,8 @@
 		D9340CAA2A80CE8100D44B0D /* Font.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
 		D9340CAB2A80CE8100D44B0D /* Font.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Font.hpp; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
+		D970B92C2A929F5600E59E38 /* TextRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderer.cpp; sourceTree = "<group>"; };
+		D970B92D2A929F5600E59E38 /* TextRenderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextRenderer.hpp; sourceTree = "<group>"; };
 		D9975B462A76C03A00286822 /* Sprite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
 		D9975B502A76C7A800286822 /* SpriteAtlas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteAtlas.cpp; sourceTree = "<group>"; };
 		D9975B512A76C7A800286822 /* SpriteAtlas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteAtlas.hpp; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 				43E5A493279476DF0037ACF2 /* Renderer.cpp */,
 				D913D0892A7E661700BE39C9 /* ImageRenderer.hpp */,
 				D913D0882A7E661700BE39C9 /* ImageRenderer.cpp */,
+				D970B92D2A929F5600E59E38 /* TextRenderer.hpp */,
+				D970B92C2A929F5600E59E38 /* TextRenderer.cpp */,
 				43E5A48B279476DF0037ACF2 /* RendererManager.hpp */,
 				D9CE62992A6D5AC400D9477F /* RendererManager.cpp */,
 			);
@@ -340,9 +346,9 @@
 		D9A08D1B2A6FDC4200DBA3E5 /* font */ = {
 			isa = PBXGroup;
 			children = (
+				D9340CA92A80CDC900D44B0D /* FontManagerConfiguration.hpp */,
 				D9A08D1D2A6FDC4E00DBA3E5 /* FontManager.hpp */,
 				D9A08D1C2A6FDC4E00DBA3E5 /* FontManager.cpp */,
-				D9340CA92A80CDC900D44B0D /* FontManagerConfiguration.hpp */,
 				D9340CAB2A80CE8100D44B0D /* Font.hpp */,
 				D9340CAA2A80CE8100D44B0D /* Font.cpp */,
 				D999EFBC2A9253F500699B70 /* FontCharacter.hpp */,
@@ -360,6 +366,7 @@
 			files = (
 				D91D8A462A694CC600E5B2A8 /* LogLevel.hpp in Headers */,
 				D9A08D1F2A6FDC4E00DBA3E5 /* FontManager.hpp in Headers */,
+				D970B92F2A929F5600E59E38 /* TextRenderer.hpp in Headers */,
 				D9975B532A76C7A800286822 /* SpriteAtlas.hpp in Headers */,
 				D91D8A4A2A69771700E5B2A8 /* LogCategory.hpp in Headers */,
 				D9A08CD22A6FC8D600DBA3E5 /* TransformDimension.hpp in Headers */,
@@ -472,6 +479,7 @@
 				D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */,
 				4357433327904C15000B5062 /* Transform.cpp in Sources */,
 				D9CE629F2A6D664200D9477F /* ViewFactory.cpp in Sources */,
+				D970B92E2A929F5600E59E38 /* TextRenderer.cpp in Sources */,
 				4357433927904C15000B5062 /* MemoryProfiler.cpp in Sources */,
 				D9340CAC2A80CE8100D44B0D /* Font.cpp in Sources */,
 				D9A08D192A6FD8CF00DBA3E5 /* Label.cpp in Sources */,

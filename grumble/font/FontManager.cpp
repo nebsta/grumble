@@ -54,7 +54,7 @@ namespace grumble {
         return;
       }
       
-      Font::shared_ptr font = std::make_shared<Font>();
+      Font::shared_ptr font = std::make_shared<Font>(fontName);
       font->setup(face);
       _allFonts.insert({ fontName, font });
       
@@ -84,6 +84,15 @@ namespace grumble {
 
   std::filesystem::path FontManager::buildFontPath(std::string fontFile) {
     return _configuration.fontPath / std::filesystem::path(fontFile);
+  }
+
+  Font::vector FontManager::allFonts() {
+    Font::vector allFonts;
+    FontMap::iterator iterator = _allFonts.begin();
+    for (; iterator != _allFonts.end(); ++iterator) {
+      allFonts.push_back(iterator->second);
+    }
+    return allFonts;
   }
 
 #pragma mark Protected Methods

@@ -33,8 +33,8 @@ namespace grumble {
 
   void Game::setup(float renderScale) {
     _spriteManager->setup();
-    _rendererManager->setup(renderScale);
     _fontManager->setup();
+    _rendererManager->setup(renderScale);
   }
 
   void Game::update(double dt) {
@@ -56,6 +56,10 @@ namespace grumble {
 
   std::shared_ptr<FileManager> Game::fileManager() {
     return _fileManager;
+  }
+
+  std::shared_ptr<FontManager> Game::fontManager() {
+    return _fontManager;
   }
 
   std::shared_ptr<SpriteManager> Game::spriteManager() {
