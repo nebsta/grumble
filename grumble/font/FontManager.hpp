@@ -37,7 +37,6 @@ namespace grumble {
     FileManager::shared_ptr _fileManager;
     
     FontMap _allFonts;
-    FT_Library _library;
     
     std::filesystem::path buildFontPath(std::string fontFile);
     

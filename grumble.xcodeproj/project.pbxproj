@@ -38,6 +38,8 @@
 		D9975B472A76C03A00286822 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9975B462A76C03A00286822 /* Sprite.cpp */; };
 		D9975B522A76C7A800286822 /* SpriteAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9975B502A76C7A800286822 /* SpriteAtlas.cpp */; };
 		D9975B532A76C7A800286822 /* SpriteAtlas.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9975B512A76C7A800286822 /* SpriteAtlas.hpp */; };
+		D999EFBD2A9253F500699B70 /* FontCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D999EFBB2A9253F500699B70 /* FontCharacter.cpp */; };
+		D999EFBE2A9253F500699B70 /* FontCharacter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D999EFBC2A9253F500699B70 /* FontCharacter.hpp */; };
 		D9A08CD12A6FC8D600DBA3E5 /* TransformDimension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A08CCF2A6FC8D600DBA3E5 /* TransformDimension.cpp */; };
 		D9A08CD22A6FC8D600DBA3E5 /* TransformDimension.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9A08CD02A6FC8D600DBA3E5 /* TransformDimension.hpp */; };
 		D9A08D192A6FD8CF00DBA3E5 /* Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A08D172A6FD8CF00DBA3E5 /* Label.cpp */; };
@@ -123,6 +125,8 @@
 		D9975B462A76C03A00286822 /* Sprite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
 		D9975B502A76C7A800286822 /* SpriteAtlas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteAtlas.cpp; sourceTree = "<group>"; };
 		D9975B512A76C7A800286822 /* SpriteAtlas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteAtlas.hpp; sourceTree = "<group>"; };
+		D999EFBB2A9253F500699B70 /* FontCharacter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FontCharacter.cpp; sourceTree = "<group>"; };
+		D999EFBC2A9253F500699B70 /* FontCharacter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FontCharacter.hpp; sourceTree = "<group>"; };
 		D9A08CCF2A6FC8D600DBA3E5 /* TransformDimension.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TransformDimension.cpp; sourceTree = "<group>"; };
 		D9A08CD02A6FC8D600DBA3E5 /* TransformDimension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformDimension.hpp; sourceTree = "<group>"; };
 		D9A08CD42A6FC98000DBA3E5 /* DimensionSizing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DimensionSizing.hpp; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 				D9340CA92A80CDC900D44B0D /* FontManagerConfiguration.hpp */,
 				D9340CAB2A80CE8100D44B0D /* Font.hpp */,
 				D9340CAA2A80CE8100D44B0D /* Font.cpp */,
+				D999EFBC2A9253F500699B70 /* FontCharacter.hpp */,
+				D999EFBB2A9253F500699B70 /* FontCharacter.cpp */,
 			);
 			path = font;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				D930446B2A7D8E8000D5E04D /* ImageFile.hpp in Headers */,
 				D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */,
 				D913D08B2A7E661700BE39C9 /* ImageRenderer.hpp in Headers */,
+				D999EFBE2A9253F500699B70 /* FontCharacter.hpp in Headers */,
 				D9340CAD2A80CE8100D44B0D /* Font.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +477,7 @@
 				D9A08D192A6FD8CF00DBA3E5 /* Label.cpp in Sources */,
 				43E5A4A5279476DF0037ACF2 /* Renderer.cpp in Sources */,
 				43E5A496279476DF0037ACF2 /* AnimationCurves.cpp in Sources */,
+				D999EFBD2A9253F500699B70 /* FontCharacter.cpp in Sources */,
 				4357433D27904C15000B5062 /* Object.cpp in Sources */,
 				D930446A2A7D8E8000D5E04D /* ImageFile.cpp in Sources */,
 				4357433227904C15000B5062 /* ImageView.cpp in Sources */,

@@ -16,4 +16,8 @@ namespace grumble {
     _text(text) {
     
   }
+
+  Label::~Label() {
+    
+  }
 }

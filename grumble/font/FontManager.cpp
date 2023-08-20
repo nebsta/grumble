@@ -46,6 +46,7 @@ namespace grumble {
                                  fontBuffer.size(),
                                  0,
                                  &face);
+      FT_Set_Pixel_Sizes(face, 0, 48);
       
       if (error) {
         std::string str = getErrorMessage(error);
@@ -53,10 +54,14 @@ namespace grumble {
         return;
       }
       
-      FontMapItem item = { fontName, std::make_shared<Font>(face) };
-      _allFonts.insert(item);
+      Font::shared_ptr font = std::make_shared<Font>();
+      font->setup(face);
+      _allFonts.insert({ fontName, font });
+      
+      FT_Done_Face(face);
     }
     
+    FT_Done_FreeType(library);
     logInfo("FontManager setup successfully");
   }
 
@@ -81,8 +86,8 @@ namespace grumble {
     return _configuration.fontPath / std::filesystem::path(fontFile);
   }
 
-
 #pragma mark Protected Methods
+
   LogCategory FontManager::logCategory() {
     return LogCategory::font;
   }
