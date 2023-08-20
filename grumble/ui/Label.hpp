@@ -9,11 +9,15 @@
 
 #include "View.hpp"
 
+#include "../font/Font.hpp"
+
 namespace grumble {
   class Label: public View {
   public:
-    Label();
-    Label(std::string text);
+    Label(std::string text,
+          Font::shared_ptr font,
+          glm::vec2 position,
+          TransformOrigin origin = TransformOrigin::TopLeft);
     ~Label();
     
   private:

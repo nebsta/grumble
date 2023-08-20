@@ -27,6 +27,7 @@ namespace grumble {
     void setup();
     
     Font::shared_ptr getFont(std::string name);
+    Font::shared_ptr getMainFont();
     
   protected:
     LogCategory logCategory() override;

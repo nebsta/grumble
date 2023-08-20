@@ -15,7 +15,7 @@ namespace grumble {
   _rendererManager(rendererManager),
   _fileManager(fileManager),
   _spriteManager(spriteManager),
-  _viewFactory(std::make_shared<ViewFactory>()),
+  _viewFactory(std::make_shared<ViewFactory>(fontManager)),
   _fontManager(fontManager),
   _rootView(_viewFactory->createView({0.0f, 0.0f}, _rendererManager->screenSize())) {
     _rendererManager->setOnScreenSizeUpdated([=](glm::vec2 size) {

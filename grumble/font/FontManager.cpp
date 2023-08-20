@@ -35,6 +35,7 @@ namespace grumble {
     for (; iter != _configuration.fonts.end(); ++iter) {
       std::string fontName = *iter;
       std::filesystem::path fontPath = buildFontPath(fontName);
+      logInfo("Setting up font: {}", fontName);
       
       FT_Face face;
       
@@ -70,6 +71,10 @@ namespace grumble {
 
   Font::shared_ptr FontManager::getFont(std::string name) {
     return _allFonts.at(name);
+  }
+
+  Font::shared_ptr FontManager::getMainFont() {
+    return _allFonts.at(_configuration.mainFont);
   }
 
   std::filesystem::path FontManager::buildFontPath(std::string fontFile) {

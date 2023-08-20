@@ -10,6 +10,7 @@
 namespace grumble {
   enum ViewType {
     BaseType = 0,
-    ImageViewType = 1
+    ImageViewType = 1,
+    LabelViewType = 2
   };
 }
