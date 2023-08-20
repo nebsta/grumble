@@ -11,12 +11,12 @@ namespace grumble {
   Game::Game(RendererManager::shared_ptr rendererManager,
              FileManager::shared_ptr fileManager,
              SpriteManager::shared_ptr spriteManager,
-             std::string mainFontFile):
+             FontManager::shared_ptr fontManager):
   _rendererManager(rendererManager),
   _fileManager(fileManager),
   _spriteManager(spriteManager),
   _viewFactory(std::make_shared<ViewFactory>()),
-  _fontManager(std::make_shared<FontManager>(fileManager, mainFontFile)),
+  _fontManager(fontManager),
   _rootView(_viewFactory->createView({0.0f, 0.0f}, _rendererManager->screenSize())) {
     _rendererManager->setOnScreenSizeUpdated([=](glm::vec2 size) {
       this->logInfo("Resizing root view to {}", glm::to_string(size));

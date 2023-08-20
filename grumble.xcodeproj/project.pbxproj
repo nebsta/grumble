@@ -33,6 +33,8 @@
 		D91D8A4D2A69833900E5B2A8 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91D8A4C2A69833900E5B2A8 /* Time.cpp */; };
 		D930446A2A7D8E8000D5E04D /* ImageFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93044682A7D8E8000D5E04D /* ImageFile.cpp */; };
 		D930446B2A7D8E8000D5E04D /* ImageFile.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D93044692A7D8E8000D5E04D /* ImageFile.hpp */; };
+		D9340CAC2A80CE8100D44B0D /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9340CAA2A80CE8100D44B0D /* Font.cpp */; };
+		D9340CAD2A80CE8100D44B0D /* Font.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9340CAB2A80CE8100D44B0D /* Font.hpp */; };
 		D9975B472A76C03A00286822 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9975B462A76C03A00286822 /* Sprite.cpp */; };
 		D9975B522A76C7A800286822 /* SpriteAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9975B502A76C7A800286822 /* SpriteAtlas.cpp */; };
 		D9975B532A76C7A800286822 /* SpriteAtlas.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9975B512A76C7A800286822 /* SpriteAtlas.hpp */; };
@@ -114,6 +116,9 @@
 		D93044682A7D8E8000D5E04D /* ImageFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageFile.cpp; sourceTree = "<group>"; };
 		D93044692A7D8E8000D5E04D /* ImageFile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ImageFile.hpp; sourceTree = "<group>"; };
 		D930446E2A7D987300D5E04D /* SpriteManagerConfiguration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteManagerConfiguration.hpp; sourceTree = "<group>"; };
+		D9340CA92A80CDC900D44B0D /* FontManagerConfiguration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FontManagerConfiguration.hpp; sourceTree = "<group>"; };
+		D9340CAA2A80CE8100D44B0D /* Font.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		D9340CAB2A80CE8100D44B0D /* Font.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Font.hpp; sourceTree = "<group>"; };
 		D96C30562A67EBA600D5D581 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
 		D9975B462A76C03A00286822 /* Sprite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
 		D9975B502A76C7A800286822 /* SpriteAtlas.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteAtlas.cpp; sourceTree = "<group>"; };
@@ -333,6 +338,9 @@
 			children = (
 				D9A08D1D2A6FDC4E00DBA3E5 /* FontManager.hpp */,
 				D9A08D1C2A6FDC4E00DBA3E5 /* FontManager.cpp */,
+				D9340CA92A80CDC900D44B0D /* FontManagerConfiguration.hpp */,
+				D9340CAB2A80CE8100D44B0D /* Font.hpp */,
+				D9340CAA2A80CE8100D44B0D /* Font.cpp */,
 			);
 			path = font;
 			sourceTree = "<group>";
@@ -353,6 +361,7 @@
 				D930446B2A7D8E8000D5E04D /* ImageFile.hpp in Headers */,
 				D9CE62A02A6D664200D9477F /* ViewFactory.hpp in Headers */,
 				D913D08B2A7E661700BE39C9 /* ImageRenderer.hpp in Headers */,
+				D9340CAD2A80CE8100D44B0D /* Font.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +466,7 @@
 				4357433327904C15000B5062 /* Transform.cpp in Sources */,
 				D9CE629F2A6D664200D9477F /* ViewFactory.cpp in Sources */,
 				4357433927904C15000B5062 /* MemoryProfiler.cpp in Sources */,
+				D9340CAC2A80CE8100D44B0D /* Font.cpp in Sources */,
 				D9A08D192A6FD8CF00DBA3E5 /* Label.cpp in Sources */,
 				43E5A4A5279476DF0037ACF2 /* Renderer.cpp in Sources */,
 				43E5A496279476DF0037ACF2 /* AnimationCurves.cpp in Sources */,

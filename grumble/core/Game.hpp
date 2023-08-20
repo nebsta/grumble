@@ -36,7 +36,7 @@ namespace grumble {
     Game(RendererManager::shared_ptr rendererManager,
          FileManager::shared_ptr fileManager,
          SpriteManager::shared_ptr spriteManager,
-         std::string mainFontFile);
+         FontManager::shared_ptr fontManager);
     ~Game();
     
     void setup(float renderScale);
