@@ -12,11 +12,12 @@
 #include FT_FREETYPE_H
 
 #include "../core/Object.hpp"
+#include "../io/ImageFile.hpp"
 
 #include "FontCharacter.hpp"
 
-#define CHARACTER_TOTAL 128
-#define ATLAS_SIZE glm::vec2(512, 512)
+#define CHARACTER_TOTAL 58
+#define ATLAS_SIZE glm::vec2(256, 256)
 
 namespace grumble {
   class Font: public Object {
@@ -32,7 +33,7 @@ namespace grumble {
     
     void setup(FT_Face face);
     
-    std::vector<unsigned char*> data();
+    std::shared_ptr<unsigned char> data();
     int atlasWidth();
     int atlasHeight();
     int bytesPerRow();
@@ -42,12 +43,14 @@ namespace grumble {
     
     const std::string toString() const override;
     
+    std::shared_ptr<ImageFile> generateAtlasImage();
+    
   protected:
     LogCategory logCategory() override;
     
   private:
     FontCharacterMap _characterMap;
-    std::vector<unsigned char*> _data;
+    std::vector<unsigned char> _data;
     std::string _name;
   };
 }

@@ -17,13 +17,11 @@ namespace grumble {
   }
 
   void Font::setup(FT_Face face) {
-    std::vector<unsigned char*> buffers;
-    
     int maxRowHeight = 0;
     int rowWidth = 0;
     int yPos = 0;
     int xPos = 0;
-    for (unsigned char c = 0; c < CHARACTER_TOTAL; c++) {
+    for (unsigned char c = 48; c < CHARACTER_TOTAL; c++) {
       logInfo("Loading glyph: {}", c);
       
       if (FT_Load_Char(face, c, FT_LOAD_RENDER)) {
@@ -41,16 +39,21 @@ namespace grumble {
                                                                             region,
                                                                             bearing,
                                                                             advance);
-                        
-
       
-      logInfo("Loaded glyph: {}", character->toString());
+      int mode = (int)face->glyph->bitmap.pixel_mode;
+      logInfo("Loaded glyph: {}. Pixel mode: {}", character->toString(), mode);
       FontCharacterItem item = { c, character };
       _characterMap.insert(item);
       
       maxRowHeight = fmax(size.y, maxRowHeight);
       
-      _data.push_back(face->glyph->bitmap.buffer);
+      for(int row = 0; row < face->glyph->bitmap.rows; ++row) {
+        for(int col = 0; col < face->glyph->bitmap.width; ++col) {
+          char pixel = face->glyph->bitmap.buffer[row * face->glyph->bitmap.pitch + col];
+          _data.push_back(pixel);
+        }
+      }
+      
       rowWidth += size.x;
       xPos += size.x;
       if (rowWidth >= ATLAS_SIZE.x) {
@@ -62,8 +65,8 @@ namespace grumble {
     }
   }
 
-  std::vector<unsigned char*> Font::data() {
-    return _data;
+  std::shared_ptr<unsigned char> Font::data() {
+    return std::shared_ptr<unsigned char>(_data.data());
   }
 
   std::string Font::name() {
@@ -84,6 +87,13 @@ namespace grumble {
 
   int Font::bytesPerRow() {
     return ATLAS_SIZE.x;
+  }
+
+  std::shared_ptr<ImageFile> Font::generateAtlasImage() {
+    return std::make_shared<ImageFile>(atlasWidth(),
+                                       atlasHeight(),
+                                       bytesPerRow(),
+                                       data());
   }
 
   FontCharacter::vector Font::allCharacters() {

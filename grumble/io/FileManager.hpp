@@ -13,6 +13,8 @@
 #include <png.h>
 
 #include "../core/Object.hpp"
+
+#include "FileManagerConfiguration.hpp"
 #include "ImageFile.hpp"
 
 namespace grumble {
@@ -20,7 +22,7 @@ namespace grumble {
   public:
     typedef std::shared_ptr<FileManager> shared_ptr;
     
-    FileManager(std::string rootPath);
+    FileManager(FileManagerConfiguration configuration);
     ~FileManager();
     
     std::string loadFile(std::filesystem::path filename);
@@ -28,13 +30,16 @@ namespace grumble {
     ImageFile::shared_ptr loadPNG(std::filesystem::path filename);
     nlohmann::json loadJson(std::filesystem::path filename);
     
+    void writePNG(std::filesystem::path filename, ImageFile::shared_ptr file);
+    
   protected:
     LogCategory logCategory() override;
     
   private:
-    std::string _rootPath;
+    FileManagerConfiguration _configuration;
     
-    std::filesystem::path buildFilePath(std::filesystem::path filename);
+    std::filesystem::path buildReadPath(std::filesystem::path filename);
+    std::filesystem::path buildWritePath(std::filesystem::path filename);
     
     static void pngError(png_structp png_ptr, png_const_charp error_msg);
     static void pngWarning(png_structp png_ptr, png_const_charp warning_msg);

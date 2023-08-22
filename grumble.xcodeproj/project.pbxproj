@@ -131,6 +131,7 @@
 		D9975B512A76C7A800286822 /* SpriteAtlas.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteAtlas.hpp; sourceTree = "<group>"; };
 		D999EFBB2A9253F500699B70 /* FontCharacter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FontCharacter.cpp; sourceTree = "<group>"; };
 		D999EFBC2A9253F500699B70 /* FontCharacter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FontCharacter.hpp; sourceTree = "<group>"; };
+		D99C06FF2A952344000E39A3 /* FileManagerConfiguration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileManagerConfiguration.hpp; sourceTree = "<group>"; };
 		D9A08CCF2A6FC8D600DBA3E5 /* TransformDimension.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TransformDimension.cpp; sourceTree = "<group>"; };
 		D9A08CD02A6FC8D600DBA3E5 /* TransformDimension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformDimension.hpp; sourceTree = "<group>"; };
 		D9A08CD42A6FC98000DBA3E5 /* DimensionSizing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DimensionSizing.hpp; sourceTree = "<group>"; };
@@ -270,6 +271,7 @@
 		436D996227986491008B213C /* io */ = {
 			isa = PBXGroup;
 			children = (
+				D99C06FF2A952344000E39A3 /* FileManagerConfiguration.hpp */,
 				436D9964279864A5008B213C /* FileManager.hpp */,
 				436D9963279864A5008B213C /* FileManager.cpp */,
 				D93044692A7D8E8000D5E04D /* ImageFile.hpp */,

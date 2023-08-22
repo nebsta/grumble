@@ -7,7 +7,6 @@
 
 #pragma once
 
-
 namespace grumble {
   struct FontManagerConfiguration {
     typedef std::vector<std::string>::iterator FontIterator;
