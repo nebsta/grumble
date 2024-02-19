@@ -1,0 +1,3 @@
+/Users/bewa/Repos/personal/grumble/build/CMakeFiles/grumble.dir
+/Users/bewa/Repos/personal/grumble/build/CMakeFiles/edit_cache.dir
+/Users/bewa/Repos/personal/grumble/build/CMakeFiles/rebuild_cache.dir

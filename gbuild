@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+import subprocess
+import os
+import shutil
+
+if os.path.isdir("build"):
+  shutil.rmtree("build")
+
+subprocess.run(["conan", "install", "." ,"--output-folder=build", "--build=missing"])
+
+os.chdir("build")
+
+subprocess.run(["cmake", "..", "-DCMAKE_TOOLCHAIN_FILE='conan_toolchain.cmake'", "-DCMAKE_BUILD_TYPE=Debug"])
+subprocess.run(["cmake", "--build", ".", "--config Debug"])
+
