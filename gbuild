@@ -12,5 +12,5 @@ subprocess.run(["conan", "install", "." ,"--output-folder=build", "--build=missi
 os.chdir("build")
 
 subprocess.run(["cmake", "..", "-DCMAKE_TOOLCHAIN_FILE='conan_toolchain.cmake'", "-DCMAKE_BUILD_TYPE=Debug"])
-subprocess.run(["cmake", "--build", ".", "--config Debug"])
+subprocess.run(["cmake", "--build", ".", "--config Debug", "--clean-first", "--verbose"])
 
