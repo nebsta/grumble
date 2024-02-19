@@ -13,4 +13,4 @@ os.chdir("build")
 
 subprocess.run(["cmake", "..", "-DCMAKE_TOOLCHAIN_FILE='conan_toolchain.cmake'", "-DCMAKE_BUILD_TYPE=Debug"])
 subprocess.run(["cmake", "--build", ".", "--config Debug"])
-
+subprocess.run(["export-pkg", ".", "--output-folder" , "conan"])
