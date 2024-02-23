@@ -7,15 +7,9 @@
 
 #pragma once
 
-#include <chrono>
-#include <string>
 #include <memory>
 
 #include "Object.hpp"
-
-#include "../logging/Logger.hpp"
-
-#include "../util/Time.hpp"
 
 #include "../render/RendererManager.hpp"
 
