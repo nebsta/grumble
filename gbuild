@@ -11,7 +11,7 @@ if len(sys.argv) == 2 and sys.argv[1] == "--clean":
 
 if clean_project:
   print("Cleaning project before building")
-  subprocess.run(["conan", "clean", "\"grumble\"", "-c"])
+  subprocess.run(["conan", "remove", "grumble", "-c"])
 
   if os.path.isdir("build"):
     shutil.rmtree("build")

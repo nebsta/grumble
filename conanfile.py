@@ -9,12 +9,24 @@ class Generator(ConanFile):
   settings = "os", "build_type", "arch"
   description = "2D engine built in C++"
   author = "Benjamin Wallis"
-  requires = ["glm/cci.20230113", "nlohmann_json/3.11.2", "freetype/2.11.1", "libpng/1.6.42", "fmt/10.0.0"]
+  requires = ["freetype/2.11.1", "libpng/1.6.42", "fmt/10.0.0"]
   generators = ["CMakeDeps", "CMakeToolchain"]
 
+  def requirements(self):
+     self.requires("glm/cci.20230113", transitive_headers=True)
+     self.requires("nlohmann_json/3.11.2", transitive_headers=True)
+  def build_reqirements(self):
+     self.tool_requires("glm/cci.20230113")
+     self.tool_requires("nlohmann_json/3.11.2")
+
   def package(self):
-    tools.files.copy(self, pattern="*.a", src=self.source_folder, dst=self.package_folder)
-    tools.files.copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "include"), dst=os.path.join(self.package_folder, "include"))
+    source_build_path = os.path.join(self.source_folder, "build")
+    source_path = os.path.join(self.source_folder, "src")
+    package_lib_path = os.path.join(self.package_folder, "lib")
+    package_include_path = os.path.join(self.package_folder, "include")
+
+    tools.files.copy(self, pattern="*.a", src=source_build_path, dst=package_lib_path)
+    tools.files.copy(self, pattern="*.hpp", src=source_path, dst=package_include_path)
 
   def package_info(self):
     self.cpp_info.libs = ["grumble"]
