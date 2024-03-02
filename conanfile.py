@@ -23,7 +23,7 @@ class Generator(ConanFile):
     source_build_path = os.path.join(self.source_folder, "build")
     source_path = os.path.join(self.source_folder, "src")
     package_lib_path = os.path.join(self.package_folder, "lib")
-    package_include_path = os.path.join(self.package_folder, "include")
+    package_include_path = os.path.join(self.package_folder, "include/grumble")
 
     tools.files.copy(self, pattern="*.a", src=source_build_path, dst=package_lib_path)
     tools.files.copy(self, pattern="*.hpp", src=source_path, dst=package_include_path)
