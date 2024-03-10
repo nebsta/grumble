@@ -12,6 +12,7 @@
 #include <memory>
 
 #include "Renderer.hpp"
+#include "RendererManagerConfiguration.hpp"
 #include "TextRenderer.hpp"
 
 #include "../core/Object.hpp"
@@ -25,9 +26,9 @@ class RendererManager : public Object {
 public:
   typedef std::shared_ptr<RendererManager> shared_ptr;
 
+  RendererManager(RendererManagerConfiguration config);
   virtual ~RendererManager() = default;
 
-  virtual void setup(float renderScale);
   virtual void setup() = 0;
   virtual void teardown() = 0;
 
@@ -48,6 +49,7 @@ public:
   void setOnScreenSizeUpdated(ScreenSizeUpdated onScreenSizeUpdated);
 
 private:
+  RendererManagerConfiguration _configuration;
   float _renderScale;
   glm::vec2 _screenSize;
   ScreenSizeUpdated _onScreenSizeUpdated;
@@ -56,5 +58,6 @@ protected:
   glm::mat4 submitScreenSize(glm::vec2 size);
 
   LogCategory logCategory() override;
+  const RendererManagerConfiguration configuration() const;
 };
 } // namespace grumble

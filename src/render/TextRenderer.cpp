@@ -8,26 +8,14 @@
 #include "TextRenderer.hpp"
 
 namespace grumble {
-  
-  TextRenderer::TextRenderer(std::string text,
-                             Font::shared_ptr font,
-                             RenderMethod renderMethod) :
-    Renderer(renderMethod),
-    _text(text),
-    _font(font) {
-    
-  }
 
-  TextRenderer::~TextRenderer() {
-    
-  }
+TextRenderer::TextRenderer(std::string text, Font::shared_ptr font, Shape shape,
+                           RenderMethod renderMethod)
+    : Renderer(shape, renderMethod), _text(text), _font(font) {}
 
+TextRenderer::~TextRenderer() {}
 
-  std::string TextRenderer::text() const {
-    return _text;
-  }
+std::string TextRenderer::text() const { return _text; }
 
-  Font::shared_ptr TextRenderer::font() const {
-    return _font;
-  }
-}
+Font::shared_ptr TextRenderer::font() const { return _font; }
+} // namespace grumble

@@ -6,8 +6,13 @@
 //
 
 #include "RendererManager.hpp"
+#include "RendererManagerConfiguration.hpp"
 
 namespace grumble {
+
+RendererManager::RendererManager(RendererManagerConfiguration configuration)
+    : _configuration(configuration) {}
+
 void RendererManager::renderFrame(View::shared_ptr rootView) {
   this->renderView(rootView->transform(), rootView->renderer());
 
@@ -35,12 +40,6 @@ void RendererManager::renderFrame(View::shared_ptr rootView) {
   }
 }
 
-void RendererManager::setup(float renderScale) {
-  logInfo("Setting up render manager with scale: {}", renderScale);
-  _renderScale = renderScale;
-  setup();
-}
-
 const float RendererManager::renderScale() const { return _renderScale; }
 
 const glm::vec2 RendererManager::screenSize() const { return _screenSize; }
@@ -63,4 +62,8 @@ glm::mat4 RendererManager::submitScreenSize(glm::vec2 size) {
 }
 
 LogCategory RendererManager::logCategory() { return LogCategory::rendering; }
+
+const RendererManagerConfiguration RendererManager::configuration() const {
+  return _configuration;
+}
 } // namespace grumble

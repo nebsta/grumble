@@ -33,7 +33,7 @@ public:
        FontManager::shared_ptr fontManager);
   ~Game();
 
-  void setup(float renderScale);
+  void setup();
   void teardown();
 
   void update(double dt);

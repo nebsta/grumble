@@ -29,10 +29,10 @@ Game::~Game() {}
 
 #pragma mark Public Methods
 
-void Game::setup(float renderScale) {
+void Game::setup() {
   _spriteManager->setup();
   _fontManager->setup();
-  _rendererManager->setup(renderScale);
+  _rendererManager->setup();
 }
 
 void Game::teardown() { _rendererManager->teardown(); }
