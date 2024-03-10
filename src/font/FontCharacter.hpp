@@ -13,31 +13,27 @@
 #include <glm/glm.hpp>
 
 namespace grumble {
-  class FontCharacter: public Object {
-  public:
-    typedef std::shared_ptr<FontCharacter> shared_ptr;
-    typedef std::vector<shared_ptr> vector;
-    typedef vector::iterator iterator;
-    
-    FontCharacter(std::string font,
-                  char character,
-                  SpriteRegion region,
-                  glm::ivec2 bearing,
-                  unsigned int advance);
-    ~FontCharacter();
-    
-    SpriteRegion region();
-    glm::ivec2 bearing();
-    
-    const std::string toString() const override;
-    
-  protected:
-    LogCategory logCategory() override;
-    
-  private:
-    char _character;
-    SpriteRegion _region;
-    glm::ivec2 _bearing;
-    unsigned int _advance;
-  };
-}
+class FontCharacter : public Object {
+public:
+  typedef std::shared_ptr<FontCharacter> shared_ptr;
+  typedef std::vector<shared_ptr> vector;
+
+  FontCharacter(std::string font, char character, SpriteRegion region,
+                glm::ivec2 bearing, unsigned int advance);
+  ~FontCharacter();
+
+  SpriteRegion region();
+  glm::ivec2 bearing();
+
+  const std::string toString() const override;
+
+protected:
+  LogCategory logCategory() override;
+
+private:
+  char _character;
+  SpriteRegion _region;
+  glm::ivec2 _bearing;
+  unsigned int _advance;
+};
+} // namespace grumble
