@@ -23,37 +23,38 @@
 #include "../io/FileManager.hpp"
 
 namespace grumble {
-  class Game: public Object {
-  public:
-    typedef std::shared_ptr<Game> shared_ptr;
-    
-    Game(RendererManager::shared_ptr rendererManager,
-         FileManager::shared_ptr fileManager,
-         SpriteManager::shared_ptr spriteManager,
-         FontManager::shared_ptr fontManager);
-    ~Game();
-    
-    void setup(float renderScale);
-    
-    void update(double dt);
-    void render();
-    
-    ViewFactory::shared_ptr viewFactory();
-    FileManager::shared_ptr fileManager();
-    FontManager::shared_ptr fontManager();
-    SpriteManager::shared_ptr spriteManager();
-    View::shared_ptr rootView();
-    
-  protected:
-    LogCategory logCategory() override;
-    
-  private:
-    RendererManager::shared_ptr _rendererManager;
-    ViewFactory::shared_ptr _viewFactory;
-    FontManager::shared_ptr _fontManager;
-    FileManager::shared_ptr _fileManager;
-    SpriteManager::shared_ptr _spriteManager;
-    
-    View::shared_ptr _rootView;
-  };
-}
+class Game : public Object {
+public:
+  typedef std::shared_ptr<Game> shared_ptr;
+
+  Game(RendererManager::shared_ptr rendererManager,
+       FileManager::shared_ptr fileManager,
+       SpriteManager::shared_ptr spriteManager,
+       FontManager::shared_ptr fontManager);
+  ~Game();
+
+  void setup(float renderScale);
+  void teardown();
+
+  void update(double dt);
+  void render();
+
+  ViewFactory::shared_ptr viewFactory();
+  FileManager::shared_ptr fileManager();
+  FontManager::shared_ptr fontManager();
+  SpriteManager::shared_ptr spriteManager();
+  View::shared_ptr rootView();
+
+protected:
+  LogCategory logCategory() override;
+
+private:
+  RendererManager::shared_ptr _rendererManager;
+  ViewFactory::shared_ptr _viewFactory;
+  FontManager::shared_ptr _fontManager;
+  FileManager::shared_ptr _fileManager;
+  SpriteManager::shared_ptr _spriteManager;
+
+  View::shared_ptr _rootView;
+};
+} // namespace grumble
