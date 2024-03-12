@@ -9,6 +9,7 @@
 
 #include <memory>
 
+#include "Camera.hpp"
 #include "Object.hpp"
 
 #include "../render/RendererManager.hpp"
@@ -44,6 +45,7 @@ public:
   FontManager::shared_ptr fontManager();
   SpriteManager::shared_ptr spriteManager();
   View::shared_ptr rootView();
+  Camera::shared_ptr camera();
 
 protected:
   LogCategory logCategory() override;
@@ -54,7 +56,7 @@ private:
   FontManager::shared_ptr _fontManager;
   FileManager::shared_ptr _fileManager;
   SpriteManager::shared_ptr _spriteManager;
-
+  Camera::shared_ptr _camera;
   View::shared_ptr _rootView;
 };
 } // namespace grumble

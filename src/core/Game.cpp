@@ -50,13 +50,15 @@ void Game::render() {
 
 View::shared_ptr Game::rootView() { return _rootView; }
 
-std::shared_ptr<ViewFactory> Game::viewFactory() { return _viewFactory; }
+ViewFactory::shared_ptr Game::viewFactory() { return _viewFactory; }
 
-std::shared_ptr<FileManager> Game::fileManager() { return _fileManager; }
+FileManager::shared_ptr Game::fileManager() { return _fileManager; }
 
-std::shared_ptr<FontManager> Game::fontManager() { return _fontManager; }
+FontManager::shared_ptr Game::fontManager() { return _fontManager; }
 
-std::shared_ptr<SpriteManager> Game::spriteManager() { return _spriteManager; }
+SpriteManager::shared_ptr Game::spriteManager() { return _spriteManager; }
+
+Camera::shared_ptr Game::camera() { return _camera; }
 
 #pragma mark Protected Methods
 

@@ -9,16 +9,13 @@
 
 #include "../font/Font.hpp"
 #include "../render/Renderer.hpp"
-#include "Shape.hpp"
 
 namespace grumble {
 class TextRenderer : public Renderer {
 public:
   typedef std::shared_ptr<TextRenderer> shared_ptr;
 
-  TextRenderer(std::string text, Font::shared_ptr font,
-               Shape shape = SHAPE_SQUARE,
-               RenderMethod renderMethod = RenderMethod::TriangleStrip);
+  TextRenderer(std::string text, Font::shared_ptr font);
   ~TextRenderer();
 
   std::string text() const;

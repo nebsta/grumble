@@ -8,9 +8,8 @@
 #include "ImageRenderer.hpp"
 
 namespace grumble {
-ImageRenderer::ImageRenderer(Sprite::shared_ptr sprite, Shape shape,
-                             RenderMethod renderMethod)
-    : Renderer(shape, renderMethod), _sprite(sprite) {}
+ImageRenderer::ImageRenderer(Sprite::shared_ptr sprite)
+    : Renderer(), _sprite(sprite) {}
 
 ImageRenderer::~ImageRenderer() {}
 

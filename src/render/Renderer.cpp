@@ -10,8 +10,7 @@
 
 namespace grumble {
 
-Renderer::Renderer(Shape shape, RenderMethod renderMethod)
-    : _tint(COLOR_WHITE), _renderMethod(renderMethod), _shape(shape) {}
+Renderer::Renderer() : _tint(COLOR_WHITE) {}
 
 Renderer::~Renderer() {}
 
@@ -21,9 +20,6 @@ void Renderer::setTint(const glm::vec4 &tint) { _tint = tint; }
 
 #pragma mark Getters
 
-const RenderMethod Renderer::renderMethod() const { return _renderMethod; }
-
 const glm::vec4 Renderer::tint() const { return _tint; }
 
-const Shape Renderer::shape() const { return _shape; }
 } // namespace grumble
