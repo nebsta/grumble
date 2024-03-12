@@ -6,6 +6,7 @@
 //
 
 #include "Game.hpp"
+#include <memory>
 
 namespace grumble {
 Game::Game(RendererManager::shared_ptr rendererManager,
@@ -17,7 +18,8 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _spriteManager(spriteManager),
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
       _fontManager(fontManager), _inputManager(inputManager),
-      _rootView(_viewFactory->createView({0.0f, 0.0f})) {
+      _rootView(_viewFactory->createView({0.0f, 0.0f})),
+      _camera(std::make_shared<Camera>()) {
   _rootView->renderer()->setTint(COLOR_WHITE);
 }
 
@@ -52,6 +54,12 @@ void Game::setScreenSize(HMM_Vec2 size) {
 void Game::setCameraPosition(HMM_Vec2 pos) {
   _camera->setPosition(pos);
   _rendererManager->setCameraPosition(pos);
+}
+
+void Game::moveCameraPosition(HMM_Vec2 by) {
+  auto newPos = _camera->position() + by;
+  _camera->setPosition(newPos);
+  _rendererManager->setCameraPosition(newPos);
 }
 
 View::shared_ptr Game::rootView() { return _rootView; }

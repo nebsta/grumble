@@ -52,6 +52,7 @@ public:
 
   void setScreenSize(HMM_Vec2 size);
   void setCameraPosition(HMM_Vec2 pos);
+  void moveCameraPosition(HMM_Vec2 by);
 
 protected:
   LogCategory logCategory() const override;
