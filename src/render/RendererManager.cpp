@@ -11,7 +11,9 @@
 namespace grumble {
 
 RendererManager::RendererManager(RendererManagerConfiguration configuration)
-    : _configuration(configuration) {}
+    : _configuration(configuration) {
+  setCameraPosition({0.0f, 0.0f});
+}
 
 void RendererManager::renderFrame(View::shared_ptr rootView) {
   this->renderView(rootView->transform(), rootView->renderer());
