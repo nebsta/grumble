@@ -11,11 +11,12 @@ namespace grumble {
 Game::Game(RendererManager::shared_ptr rendererManager,
            FileManager::shared_ptr fileManager,
            SpriteManager::shared_ptr spriteManager,
-           FontManager::shared_ptr fontManager)
+           FontManager::shared_ptr fontManager,
+           InputManager::shared_ptr inputManager)
     : _rendererManager(rendererManager), _fileManager(fileManager),
       _spriteManager(spriteManager),
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
-      _fontManager(fontManager),
+      _fontManager(fontManager), _inputManager(inputManager),
       _rootView(_viewFactory->createView({0.0f, 0.0f})) {
   _rootView->renderer()->setTint(COLOR_WHITE);
 }
@@ -62,6 +63,8 @@ FileManager::shared_ptr Game::fileManager() { return _fileManager; }
 FontManager::shared_ptr Game::fontManager() { return _fontManager; }
 
 SpriteManager::shared_ptr Game::spriteManager() { return _spriteManager; }
+
+InputManager::shared_ptr Game::inputManager() { return _inputManager; }
 
 Camera::shared_ptr Game::camera() { return _camera; }
 
