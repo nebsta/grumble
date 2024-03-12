@@ -32,7 +32,7 @@ public:
   void writePNG(std::filesystem::path filename, ImageFile::shared_ptr file);
 
 protected:
-  LogCategory logCategory() override;
+  LogCategory logCategory() const override;
 
 private:
   FileManagerConfiguration _configuration;

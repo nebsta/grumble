@@ -28,21 +28,25 @@ public:
 protected:
   std::string _id;
 
-  virtual LogCategory logCategory();
+  virtual LogCategory logCategory() const;
 
-  template <typename... T> void logDebug(std::string message, T &&...args) {
+  template <typename... T>
+  void logDebug(std::string message, T &&...args) const {
     Logger::debug(message, logCategory(), args...);
   }
 
-  template <typename... T> void logInfo(std::string message, T &&...args) {
+  template <typename... T>
+  void logInfo(std::string message, T &&...args) const {
     Logger::info(message, logCategory(), args...);
   }
 
-  template <typename... T> void logWarn(std::string message, T &&...args) {
+  template <typename... T>
+  void logWarn(std::string message, T &&...args) const {
     Logger::warn(message, logCategory(), args...);
   }
 
-  template <typename... T> void logError(std::string message, T &&...args) {
+  template <typename... T>
+  void logError(std::string message, T &&...args) const {
     Logger::error(message, logCategory(), args...);
   }
 };

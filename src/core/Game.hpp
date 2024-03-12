@@ -54,7 +54,7 @@ public:
   void setCameraPosition(HMM_Vec2 pos);
 
 protected:
-  LogCategory logCategory() override;
+  LogCategory logCategory() const override;
 
 private:
   RendererManager::shared_ptr _rendererManager;

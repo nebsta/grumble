@@ -53,7 +53,7 @@ private:
   HMM_Mat4 _viewMatrix;
 
 protected:
-  LogCategory logCategory() override;
+  LogCategory logCategory() const override;
   HMM_Mat4 projectionViewMatrix() const;
   const RendererManagerConfiguration configuration() const;
 };

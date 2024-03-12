@@ -70,5 +70,5 @@ Camera::shared_ptr Game::camera() { return _camera; }
 
 #pragma mark Protected Methods
 
-LogCategory Game::logCategory() { return LogCategory::core; }
+LogCategory Game::logCategory() const { return LogCategory::core; }
 } // namespace grumble

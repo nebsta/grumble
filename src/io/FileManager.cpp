@@ -180,5 +180,5 @@ FileManager::buildWritePath(std::filesystem::path filename) {
   return _configuration.rootWritePath / filename;
 }
 
-LogCategory FileManager::logCategory() { return LogCategory::io; }
+LogCategory FileManager::logCategory() const { return LogCategory::io; }
 } // namespace grumble

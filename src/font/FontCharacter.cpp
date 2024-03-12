@@ -8,42 +8,24 @@
 #include "FontCharacter.hpp"
 
 namespace grumble {
-  FontCharacter::FontCharacter(std::string font,
-                               char character,
-                               SpriteRegion region,
-                               glm::ivec2 bearing,
-                               unsigned int advance):
-    Object(fmt::format("{}-{}", font, (int)character)),
-    _character(character),
-    _region(region),
-    _bearing(bearing),
-    _advance(advance) {
-    
-  }
+FontCharacter::FontCharacter(std::string font, char character,
+                             SpriteRegion region, glm::ivec2 bearing,
+                             unsigned int advance)
+    : Object(fmt::format("{}-{}", font, (int)character)), _character(character),
+      _region(region), _bearing(bearing), _advance(advance) {}
 
-  FontCharacter::~FontCharacter() {
+FontCharacter::~FontCharacter() {}
 
-  }
+SpriteRegion FontCharacter::region() { return _region; }
 
-  SpriteRegion FontCharacter::region() {
-    return _region;
-  }
+glm::ivec2 FontCharacter::bearing() { return _bearing; }
 
-  glm::ivec2 FontCharacter::bearing() {
-    return _bearing;
-  }
-
-  const std::string FontCharacter::toString() const {
-    return fmt::format("id: {}, character: {}, region: {}, bearing: {}, advance: {}",
-                       _id,
-                       _character,
-                       _region.toString(),
-                       glm::to_string(_bearing),
-                       _advance);
-  }
+const std::string FontCharacter::toString() const {
+  return fmt::format(
+      "id: {}, character: {}, region: {}, bearing: {}, advance: {}", _id,
+      _character, _region.toString(), glm::to_string(_bearing), _advance);
+}
 
 #pragma mark Protected Methods
-  LogCategory FontCharacter::logCategory() {
-    return LogCategory::font;
-  }
-}
+LogCategory FontCharacter::logCategory() const { return LogCategory::font; }
+} // namespace grumble

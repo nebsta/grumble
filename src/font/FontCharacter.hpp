@@ -28,7 +28,7 @@ public:
   const std::string toString() const override;
 
 protected:
-  LogCategory logCategory() override;
+  LogCategory logCategory() const override;
 
 private:
   char _character;

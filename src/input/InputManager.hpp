@@ -1,3 +1,4 @@
+#pragma once
 #include "../core/Object.hpp"
 #include "InputCode.hpp"
 #include <memory>
@@ -17,9 +18,11 @@ public:
   bool isInputActive(InputCode code) const;
 
 protected:
-  LogCategory logCategory() override;
+  LogCategory logCategory() const override;
 
 private:
   std::set<InputCode> _activeInputs;
+
+  void logActiveInputs() const;
 };
 } // namespace grumble

@@ -56,7 +56,9 @@ void RendererManager::setCameraPosition(HMM_Vec2 pos) {
 
 #pragma mark Protected Methods
 
-LogCategory RendererManager::logCategory() { return LogCategory::rendering; }
+LogCategory RendererManager::logCategory() const {
+  return LogCategory::rendering;
+}
 
 HMM_Mat4 RendererManager::projectionViewMatrix() const {
   return HMM_MulM4(_projectionMatrix, _viewMatrix);

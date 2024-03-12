@@ -7,62 +7,74 @@
 //
 
 #include "Logger.hpp"
-#include <iomanip>
 
 namespace grumble {
 
 #pragma mark Public Methods
 
-  void Logger::log(std::string message, LogLevel level, LogCategory category) {
-    // TODO: Need to add this back that isn't only compile time constant
-//    if (level < Logger::activeLogLevel()) {
-//      return;
-//    }
-    
-    std::string levelName = Logger::logLevelName(level);
-    
-    std::cout << Time::nowString();
-    
-    std::cout << " [" << levelName << "] ";
-    if (category != none) {
-      std::string categoryName = Logger::logCategoryName(category);
-      std::cout << "[" << categoryName << "] ";
-    }
-    std::cout << message << std::endl;
+void Logger::log(std::string message, LogLevel level, LogCategory category) {
+  // TODO: Need to add this back that isn't only compile time constant
+  //    if (level < Logger::activeLogLevel()) {
+  //      return;
+  //    }
+
+  std::string levelName = Logger::logLevelName(level);
+
+  std::cout << Time::nowString();
+
+  std::cout << " [" << levelName << "] ";
+  if (category != none) {
+    std::string categoryName = Logger::logCategoryName(category);
+    std::cout << "[" << categoryName << "] ";
   }
+  std::cout << message << std::endl;
+}
 
 #pragma mark Private Methods
 
-  std::string Logger::logLevelName(LogLevel level) {
-    switch (level) {
-      case LogLevel::debug: return "debug";
-      case LogLevel::info: return "info";
-      case LogLevel::warn: return "warn";
-      case LogLevel::error: return "error";
-    }
-  }
-
-  std::string Logger::logCategoryName(LogCategory category) {
-    switch (category) {
-      case LogCategory::none: return "";
-      case LogCategory::core: return "core";
-      case LogCategory::rendering: return "rendering";
-      case LogCategory::ui: return "ui";
-      case LogCategory::font: return "font";
-      case LogCategory::io: return "io";
-      case LogCategory::sprite: return "sprite";
-    }
-  }
-
-  LogLevel Logger::activeLogLevel() {
-#ifdef GRUMBLE_LOG_DEBUG
-    return LogLevel::debug;
-#elif GRUMBLE_LOG_INFO
-    return LogLevel::info;
-#elif GRUMBLE_LOG_WARN
-    return LogLevel::warn;
-#else // GRUMBLE_LOG_ERROR
-    return LogLevel::error;
-#endif
+std::string Logger::logLevelName(LogLevel level) {
+  switch (level) {
+  case LogLevel::debug:
+    return "debug";
+  case LogLevel::info:
+    return "info";
+  case LogLevel::warn:
+    return "warn";
+  case LogLevel::error:
+    return "error";
   }
 }
+
+std::string Logger::logCategoryName(LogCategory category) {
+  switch (category) {
+  case LogCategory::none:
+    return "";
+  case LogCategory::core:
+    return "core";
+  case LogCategory::rendering:
+    return "rendering";
+  case LogCategory::ui:
+    return "ui";
+  case LogCategory::font:
+    return "font";
+  case LogCategory::io:
+    return "io";
+  case LogCategory::sprite:
+    return "sprite";
+  case LogCategory::input:
+    return "input";
+  }
+}
+
+LogLevel Logger::activeLogLevel() {
+#ifdef GRUMBLE_LOG_DEBUG
+  return LogLevel::debug;
+#elif GRUMBLE_LOG_INFO
+  return LogLevel::info;
+#elif GRUMBLE_LOG_WARN
+  return LogLevel::warn;
+#else // GRUMBLE_LOG_ERROR
+  return LogLevel::error;
+#endif
+}
+} // namespace grumble
