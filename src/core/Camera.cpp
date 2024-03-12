@@ -6,7 +6,7 @@ Camera::Camera() {}
 
 Camera::~Camera() {}
 
-void Camera::setLocation(glm::vec2 location) { _location = location; }
+void Camera::setPosition(HMM_Vec2 pos) { _pos = pos; }
 
-glm::vec2 Camera::location() const { return _location; }
+HMM_Vec2 Camera::position() const { return _pos; }
 } // namespace grumble

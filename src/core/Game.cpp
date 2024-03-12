@@ -16,12 +16,7 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _spriteManager(spriteManager),
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
       _fontManager(fontManager),
-      _rootView(_viewFactory->createView({0.0f, 0.0f},
-                                         _rendererManager->screenSize())) {
-  _rendererManager->setOnScreenSizeUpdated([=](glm::vec2 size) {
-    this->logInfo("Resizing root view to {}", glm::to_string(size));
-    this->_rootView->transform()->setSize(size);
-  });
+      _rootView(_viewFactory->createView({0.0f, 0.0f})) {
   _rootView->renderer()->setTint(COLOR_WHITE);
 }
 
@@ -46,6 +41,16 @@ void Game::render() {
   _rendererManager->prepareFrame();
   _rendererManager->renderFrame(_rootView);
   _rendererManager->commitFrame();
+}
+
+void Game::setScreenSize(HMM_Vec2 size) {
+  _rendererManager->setScreenSize(size);
+  _rootView->transform()->setSize({size.Width, size.Height});
+}
+
+void Game::setCameraPosition(HMM_Vec2 pos) {
+  _camera->setPosition(pos);
+  _rendererManager->setCameraPosition(pos);
 }
 
 View::shared_ptr Game::rootView() { return _rootView; }

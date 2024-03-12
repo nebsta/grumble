@@ -18,11 +18,10 @@
 #include "../core/Object.hpp"
 #include "../render/ImageRenderer.hpp"
 #include "../ui/View.hpp"
+#include "../util/HandmadeMath.h"
 
 namespace grumble {
 class RendererManager : public Object {
-  typedef std::function<void(glm::vec2)> ScreenSizeUpdated;
-
 public:
   typedef std::shared_ptr<RendererManager> shared_ptr;
 
@@ -43,21 +42,20 @@ public:
                            TextRenderer::shared_ptr renderer) = 0;
   virtual void commitFrame() = 0;
 
-  const float renderScale() const;
-  const glm::vec2 screenSize() const;
+  void setScreenSize(HMM_Vec2 size);
+  void setCameraPosition(HMM_Vec2 pos);
 
-  void setOnScreenSizeUpdated(ScreenSizeUpdated onScreenSizeUpdated);
+  const float renderScale() const;
 
 private:
   RendererManagerConfiguration _configuration;
   float _renderScale;
-  glm::vec2 _screenSize;
-  ScreenSizeUpdated _onScreenSizeUpdated;
+  HMM_Mat4 _projectionMatrix;
+  HMM_Mat4 _viewMatrix;
 
 protected:
-  glm::mat4 submitScreenSize(glm::vec2 size);
-
   LogCategory logCategory() override;
+  HMM_Mat4 projectionViewMatrix() const;
   const RendererManagerConfiguration configuration() const;
 };
 } // namespace grumble

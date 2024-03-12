@@ -47,6 +47,9 @@ public:
   View::shared_ptr rootView();
   Camera::shared_ptr camera();
 
+  void setScreenSize(HMM_Vec2 size);
+  void setCameraPosition(HMM_Vec2 pos);
+
 protected:
   LogCategory logCategory() override;
 

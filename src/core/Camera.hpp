@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../util/HandmadeMath.h"
 #include "Object.hpp"
 #include <memory>
 
@@ -11,11 +12,11 @@ public:
   Camera();
   ~Camera();
 
-  void setLocation(glm::vec2 location);
+  void setPosition(HMM_Vec2 pos);
 
-  glm::vec2 location() const;
+  HMM_Vec2 position() const;
 
 private:
-  glm::vec2 _location;
+  HMM_Vec2 _pos;
 };
 } // namespace grumble

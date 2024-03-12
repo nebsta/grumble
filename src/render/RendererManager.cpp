@@ -42,26 +42,23 @@ void RendererManager::renderFrame(View::shared_ptr rootView) {
 
 const float RendererManager::renderScale() const { return _renderScale; }
 
-const glm::vec2 RendererManager::screenSize() const { return _screenSize; }
+void RendererManager::setScreenSize(HMM_Vec2 size) {
+  _projectionMatrix = HMM_Orthographic_LH_NO(0.0f, size.Width, size.Height,
+                                             0.0f, -100.0f, 100.0f);
+}
 
-void RendererManager::setOnScreenSizeUpdated(
-    ScreenSizeUpdated onScreenSizeUpdated) {
-  _onScreenSizeUpdated = onScreenSizeUpdated;
+void RendererManager::setCameraPosition(HMM_Vec2 pos) {
+  _viewMatrix = HMM_LookAt_LH({pos.X, pos.Y, -99.0f}, {0.0f, 0.0f, 0.0f},
+                              {0.0f, 1.0f, 0.0f});
 }
 
 #pragma mark Protected Methods
 
-glm::mat4 RendererManager::submitScreenSize(glm::vec2 size) {
-  logInfo("Screen size submitted: {}", glm::to_string(size));
-
-  _screenSize = size;
-  if (_onScreenSizeUpdated) {
-    _onScreenSizeUpdated(size);
-  }
-  return glm::ortho(0.0f, float(size.x), float(size.y), 0.0f);
-}
-
 LogCategory RendererManager::logCategory() { return LogCategory::rendering; }
+
+HMM_Mat4 RendererManager::projectionViewMatrix() const {
+  return HMM_MulM4(_projectionMatrix, _viewMatrix);
+}
 
 const RendererManagerConfiguration RendererManager::configuration() const {
   return _configuration;
