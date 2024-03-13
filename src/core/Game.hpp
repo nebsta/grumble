@@ -21,6 +21,7 @@
 #include "../ui/View.hpp"
 #include "../ui/ViewFactory.hpp"
 
+#include "../debug/DebugState.hpp"
 #include "../input/InputManager.hpp"
 #include "../io/FileManager.hpp"
 
@@ -52,6 +53,7 @@ public:
   InputManager::shared_ptr inputManager();
   View::shared_ptr rootView();
   Camera::shared_ptr camera();
+  DebugState::shared_ptr debugState();
 
   void setScreenSize(HMM_Vec2 size);
   void setCameraPosition(HMM_Vec2 pos);
@@ -69,5 +71,6 @@ private:
   InputManager::shared_ptr _inputManager;
   Camera::shared_ptr _camera;
   View::shared_ptr _rootView;
+  DebugState::shared_ptr _debugState;
 };
 } // namespace grumble

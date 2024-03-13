@@ -19,7 +19,8 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
       _fontManager(fontManager), _inputManager(inputManager),
       _rootView(_viewFactory->createView({0.0f, 0.0f})),
-      _camera(std::make_shared<Camera>()) {
+      _camera(std::make_shared<Camera>()),
+      _debugState(std::make_shared<DebugState>()) {
   _rootView->renderer()->setTint(COLOR_WHITE);
 }
 
@@ -76,6 +77,8 @@ SpriteManager::shared_ptr Game::spriteManager() { return _spriteManager; }
 InputManager::shared_ptr Game::inputManager() { return _inputManager; }
 
 Camera::shared_ptr Game::camera() { return _camera; }
+
+DebugState::shared_ptr Game::debugState() { return _debugState; }
 
 #pragma mark Protected Methods
 
