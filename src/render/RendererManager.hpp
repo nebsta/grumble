@@ -15,6 +15,7 @@
 #include "TextRenderer.hpp"
 
 #include "../core/Object.hpp"
+#include "../debug/DebugState.hpp"
 #include "../render/ImageRenderer.hpp"
 #include "../ui/View.hpp"
 #include "../util/HandmadeMath.h"
@@ -41,6 +42,7 @@ public:
                            TextRenderer::shared_ptr renderer) = 0;
   virtual void commitFrame() = 0;
 
+  void setDebugState(DebugState::shared_ptr debugState);
   void setScreenSize(HMM_Vec2 size);
   void setCameraPosition(HMM_Vec2 pos);
 
@@ -51,8 +53,10 @@ private:
   float _renderScale;
   HMM_Mat4 _projectionMatrix;
   HMM_Mat4 _viewMatrix;
+  DebugState::shared_ptr _debugState;
 
 protected:
+  DebugState::shared_ptr debugState() const;
   LogCategory logCategory() const override;
   HMM_Mat4 projectionViewMatrix() const;
   const RendererManagerConfiguration configuration() const;

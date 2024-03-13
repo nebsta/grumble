@@ -22,6 +22,7 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _camera(std::make_shared<Camera>()),
       _debugState(std::make_shared<DebugState>()) {
   _rootView->renderer()->setTint(COLOR_WHITE);
+  _rendererManager->setDebugState(_debugState);
 }
 
 Game::~Game() {}

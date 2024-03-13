@@ -54,6 +54,10 @@ void RendererManager::setCameraPosition(HMM_Vec2 pos) {
                               {0.0f, 1.0f, 0.0f});
 }
 
+void RendererManager::setDebugState(DebugState::shared_ptr debugState) {
+  _debugState = debugState;
+}
+
 #pragma mark Protected Methods
 
 LogCategory RendererManager::logCategory() const {
@@ -62,6 +66,10 @@ LogCategory RendererManager::logCategory() const {
 
 HMM_Mat4 RendererManager::projectionViewMatrix() const {
   return HMM_MulM4(_projectionMatrix, _viewMatrix);
+}
+
+DebugState::shared_ptr RendererManager::debugState() const {
+  return _debugState;
 }
 
 const RendererManagerConfiguration RendererManager::configuration() const {
