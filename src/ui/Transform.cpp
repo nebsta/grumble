@@ -60,39 +60,39 @@ const HMM_Mat4 Transform::modelMatrix(float renderScale) const {
   glm::vec2 resultSize = size() / renderScale;
 
   // applying offset based on origin
-  // if (_origin != TransformOrigin::Center) {
-  //   float halfWidth = size().x / 2.0f;
-  //   float halfHeight = size().y / 2.0f;
-  //
-  //   switch (_origin) {
-  //   case TransformOrigin::TopLeft:
-  //     resultPosition += glm::vec2(halfWidth, halfHeight);
-  //     break;
-  //   case TransformOrigin::Top:
-  //     resultPosition += glm::vec2(0, halfWidth);
-  //     break;
-  //   case TransformOrigin::TopRight:
-  //     resultPosition += glm::vec2(-halfWidth, halfHeight);
-  //     break;
-  //   case TransformOrigin::Left:
-  //     resultPosition += glm::vec2(halfWidth, 0);
-  //     break;
-  //   case TransformOrigin::Right:
-  //     resultPosition += glm::vec2(-halfWidth, 0);
-  //     break;
-  //   case TransformOrigin::BottomLeft:
-  //     resultPosition += glm::vec2(halfWidth, -halfHeight);
-  //     break;
-  //   case TransformOrigin::Bottom:
-  //     resultPosition += glm::vec2(0, -halfHeight);
-  //     break;
-  //   case TransformOrigin::BottomRight:
-  //     resultPosition += glm::vec2(-halfWidth, -halfHeight);
-  //     break;
-  //   default:
-  //     break;
-  //   }
-  // }
+  if (_origin != TransformOrigin::TopLeft) {
+    float halfWidth = size().x / 2.0f;
+    float halfHeight = size().y / 2.0f;
+
+    switch (_origin) {
+    case TransformOrigin::Center:
+      resultPosition += glm::vec2(-halfWidth, -halfHeight);
+      break;
+    case TransformOrigin::Top:
+      resultPosition += glm::vec2(-halfWidth, 0);
+      break;
+    case TransformOrigin::TopRight:
+      resultPosition += glm::vec2(-size().x, 0);
+      break;
+    case TransformOrigin::Left:
+      resultPosition += glm::vec2(0, -halfHeight);
+      break;
+    case TransformOrigin::Right:
+      resultPosition += glm::vec2(-size().x, -halfHeight);
+      break;
+    case TransformOrigin::BottomLeft:
+      resultPosition += glm::vec2(0, -size().y);
+      break;
+    case TransformOrigin::Bottom:
+      resultPosition += glm::vec2(-halfWidth, -size().y);
+      break;
+    case TransformOrigin::BottomRight:
+      resultPosition += glm::vec2(-size().x, -size().y);
+      break;
+    default:
+      break;
+    }
+  }
 
   HMM_Mat4 matrix = HMM_Translate({resultPosition.x, resultPosition.y, 0.0f});
   matrix = HMM_MulM4(matrix, HMM_Scale({resultSize.x, resultSize.y, 1.0f}));
