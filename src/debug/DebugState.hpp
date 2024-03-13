@@ -10,9 +10,13 @@ public:
   ~DebugState();
 
   void setGridVisible(bool visible);
+  void toggleGridVisible();
+
   void setInstanceIdVisible(bool visible);
+  void toggleInstanceIdVisible();
 
   const bool gridVisible() const;
+
   const bool instanceIdVisible() const;
 
 private:
