@@ -50,7 +50,7 @@ void RendererManager::setScreenSize(HMM_Vec2 size) {
 }
 
 void RendererManager::setCameraPosition(HMM_Vec2 pos) {
-  _viewMatrix = HMM_LookAt_LH({pos.X, pos.Y, -99.0f}, {0.0f, 0.0f, 0.0f},
+  _viewMatrix = HMM_LookAt_LH({pos.X, pos.Y, -99.0f}, {pos.X, pos.Y, 0.0f},
                               {0.0f, 1.0f, 0.0f});
 }
 

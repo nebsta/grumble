@@ -35,10 +35,7 @@ void Game::setup() {
 
 void Game::teardown() { _rendererManager->teardown(); }
 
-void Game::update(double dt) {
-  logDebug("Update. Delta: " + std::to_string(dt));
-  _rootView->update(dt);
-}
+void Game::update(double dt) { _rootView->update(dt); }
 
 void Game::render() {
   _rendererManager->prepareFrame();
