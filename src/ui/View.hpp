@@ -27,9 +27,14 @@ public:
   typedef std::vector<shared_ptr> vector;
   typedef vector::iterator iterator;
 
-  View(glm::vec2 position = {0, 0}, glm::vec2 size = {0, 0},
+  View(uint32_t instanceId, glm::vec2 position = {0, 0},
+       glm::vec2 size = {0, 0},
        TransformOrigin origin = TransformOrigin::TopLeft,
-       Renderer::shared_ptr renderer = std::make_shared<Renderer>(),
+       ViewType type = ViewType::BaseType);
+
+  View(Renderer::shared_ptr renderer, glm::vec2 position = {0, 0},
+       glm::vec2 size = {0, 0},
+       TransformOrigin origin = TransformOrigin::TopLeft,
        ViewType type = ViewType::BaseType);
 
   ~View();

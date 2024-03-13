@@ -10,7 +10,8 @@
 
 namespace grumble {
 
-Renderer::Renderer() : _tint(COLOR_WHITE) {}
+Renderer::Renderer(uint32_t instanceId)
+    : _tint(COLOR_WHITE), _instanceId(instanceId) {}
 
 Renderer::~Renderer() {}
 
@@ -19,6 +20,8 @@ Renderer::~Renderer() {}
 void Renderer::setTint(const glm::vec4 &tint) { _tint = tint; }
 
 #pragma mark Getters
+
+const uint32_t Renderer::instanceId() const { return _instanceId; }
 
 const glm::vec4 Renderer::tint() const { return _tint; }
 

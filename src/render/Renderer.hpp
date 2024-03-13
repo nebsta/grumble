@@ -23,12 +23,16 @@ public:
   typedef std::shared_ptr<Renderer> shared_ptr;
   typedef std::vector<shared_ptr>::iterator iterator;
 
-  Renderer();
+  Renderer(uint32_t instanceId);
   ~Renderer();
 
   void setTint(const glm::vec4 &tint);
 
+  const uint32_t instanceId() const;
   const glm::vec4 tint() const;
+
+private:
+  int _instanceId;
 
 protected:
   glm::vec4 _tint;

@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include <stdio.h>
-
 #include "View.hpp"
 
 #include "../sprite/Sprite.hpp"
@@ -19,19 +17,20 @@
 #include "../render/ImageRenderer.hpp"
 
 namespace grumble {
-  class ImageView : public View {
-    
-  public:
-    ImageView(Sprite::shared_ptr sprite = nullptr,
-              glm::vec2 position = VECTOR_EMPTY,
-              glm::vec2 size = glm::vec2(10,10),
-              TransformOrigin origin = TransformOrigin::TopLeft);
-    ~ImageView();
-    
-    void setSprite(Sprite::shared_ptr sprite);
-    
-    ImageRenderer::shared_ptr imageRenderer() const;
-  private:
-    Sprite::shared_ptr _sprite;
-  };
-}
+class ImageView : public View {
+
+public:
+  ImageView(uint32_t instanceId, Sprite::shared_ptr sprite = nullptr,
+            glm::vec2 position = VECTOR_EMPTY,
+            glm::vec2 size = glm::vec2(10, 10),
+            TransformOrigin origin = TransformOrigin::TopLeft);
+  ~ImageView();
+
+  void setSprite(Sprite::shared_ptr sprite);
+
+  ImageRenderer::shared_ptr imageRenderer() const;
+
+private:
+  Sprite::shared_ptr _sprite;
+};
+} // namespace grumble

@@ -15,7 +15,7 @@ class ImageRenderer : public Renderer {
 public:
   typedef std::shared_ptr<ImageRenderer> shared_ptr;
 
-  ImageRenderer(Sprite::shared_ptr sprite);
+  ImageRenderer(Sprite::shared_ptr sprite, uint32_t instanceId);
 
   ~ImageRenderer();
 

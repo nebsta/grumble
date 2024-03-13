@@ -15,7 +15,7 @@ class TextRenderer : public Renderer {
 public:
   typedef std::shared_ptr<TextRenderer> shared_ptr;
 
-  TextRenderer(std::string text, Font::shared_ptr font);
+  TextRenderer(std::string text, Font::shared_ptr font, uint32_t instanceId);
   ~TextRenderer();
 
   std::string text() const;

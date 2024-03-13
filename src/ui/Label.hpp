@@ -14,15 +14,13 @@
 #include "../render/TextRenderer.hpp"
 
 namespace grumble {
-  class Label: public View {
-  public:
-    Label(std::string text,
-          Font::shared_ptr font,
-          glm::vec2 position,
-          TransformOrigin origin = TransformOrigin::TopLeft);
-    ~Label();
-    
-  private:
-    std::string _text;
-  };
-}
+class Label : public View {
+public:
+  Label(uint32_t instanceId, std::string text, Font::shared_ptr font,
+        glm::vec2 position, TransformOrigin origin = TransformOrigin::TopLeft);
+  ~Label();
+
+private:
+  std::string _text;
+};
+} // namespace grumble

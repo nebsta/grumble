@@ -9,8 +9,9 @@
 
 namespace grumble {
 
-TextRenderer::TextRenderer(std::string text, Font::shared_ptr font)
-    : Renderer(), _text(text), _font(font) {}
+TextRenderer::TextRenderer(std::string text, Font::shared_ptr font,
+                           uint32_t instanceId)
+    : Renderer(instanceId), _text(text), _font(font) {}
 
 TextRenderer::~TextRenderer() {}
 

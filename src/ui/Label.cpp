@@ -8,16 +8,11 @@
 #include "Label.hpp"
 
 namespace grumble {
-  Label::Label(std::string text,
-               Font::shared_ptr font,
-               glm::vec2 position,
-               TransformOrigin origin) :
-    View(position, VECTOR_EMPTY, origin, std::make_shared<TextRenderer>(text, font), ViewType::LabelViewType),
-    _text(text) {
-    
-  }
+Label::Label(uint32_t instanceId, std::string text, Font::shared_ptr font,
+             glm::vec2 position, TransformOrigin origin)
+    : View(std::make_shared<TextRenderer>(text, font, instanceId), position,
+           VECTOR_EMPTY, origin, ViewType::LabelViewType),
+      _text(text) {}
 
-  Label::~Label() {
-    
-  }
-}
+Label::~Label() {}
+} // namespace grumble
