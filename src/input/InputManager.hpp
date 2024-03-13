@@ -1,5 +1,6 @@
 #pragma once
 #include "../core/Object.hpp"
+#include "../util/HandmadeMath.h"
 #include "InputCode.hpp"
 #include <memory>
 #include <set>
@@ -12,16 +13,26 @@ public:
   InputManager();
   ~InputManager();
 
+  virtual bool update() = 0;
+  void clearTriggeredInputs();
+
+  bool isInputActive(InputCode code) const;
+  bool isInputTriggered(InputCode code) const;
+
+  HMM_Vec2 mousePosition() const;
+
+protected:
+  void mouseMoved(HMM_Vec2 pos);
+
   void activateInput(InputCode code);
   void deactivateInput(InputCode code);
 
-  bool isInputActive(InputCode code) const;
-
-protected:
   LogCategory logCategory() const override;
 
 private:
   std::set<InputCode> _activeInputs;
+  std::set<InputCode> _triggeredInputs;
+  HMM_Vec2 _mousePosition;
 
   void logActiveInputs() const;
 };

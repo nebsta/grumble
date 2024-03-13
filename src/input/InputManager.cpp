@@ -4,22 +4,25 @@
 
 namespace grumble {
 
-InputManager::InputManager() : grumble::Object("input_mananger") {}
+InputManager::InputManager() : grumble::Object("input_manager") {}
 
 InputManager::~InputManager() {}
 
+void InputManager::clearTriggeredInputs() { _triggeredInputs.clear(); }
+
 void InputManager::activateInput(InputCode code) {
-  if (_activeInputs.count(code) == 1) {
+  if (code == InputCode::Unknown || isInputActive(code)) {
     return;
   }
 
   logDebug("Activating input: {}", InputCode_to_string(code));
   _activeInputs.insert(code);
+  _triggeredInputs.insert(code);
   logActiveInputs();
 }
 
 void InputManager::deactivateInput(InputCode code) {
-  if (_activeInputs.count(code) == 0) {
+  if (code == InputCode::Unknown || !isInputActive(code)) {
     return;
   }
 
@@ -32,6 +35,10 @@ bool InputManager::isInputActive(InputCode code) const {
   return _activeInputs.count(code);
 }
 
+bool InputManager::isInputTriggered(InputCode code) const {
+  return _triggeredInputs.count(code);
+}
+
 void InputManager::logActiveInputs() const {
   std::string output = "";
   std::set<InputCode>::iterator it;
@@ -42,6 +49,10 @@ void InputManager::logActiveInputs() const {
   }
   logDebug("Current active inputs: {}", output);
 }
+
+void InputManager::mouseMoved(HMM_Vec2 pos) { _mousePosition = pos; }
+
+HMM_Vec2 InputManager::mousePosition() const { return _mousePosition; }
 
 LogCategory InputManager::logCategory() const { return LogCategory::input; }
 } // namespace grumble

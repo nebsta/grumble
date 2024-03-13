@@ -35,6 +35,8 @@ void Game::setup() {
 
 void Game::teardown() { _rendererManager->teardown(); }
 
+bool Game::input() { return _inputManager->update(); }
+
 void Game::update(double dt) { _rootView->update(dt); }
 
 void Game::render() {
@@ -42,6 +44,8 @@ void Game::render() {
   _rendererManager->renderFrame(_rootView);
   _rendererManager->commitFrame();
 }
+
+void Game::reset() { _inputManager->clearTriggeredInputs(); }
 
 void Game::setScreenSize(HMM_Vec2 size) {
   _rendererManager->setScreenSize(size);

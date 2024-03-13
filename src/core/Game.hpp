@@ -39,8 +39,11 @@ public:
   void setup();
   void teardown();
 
-  void update(double dt);
-  void render();
+  // main steps in the game loop
+  bool input();           // collect any input. Return true if game should quit
+  void update(double dt); // perform updates within the engine
+  void render();          // render the frame
+  void reset();           // reset everything before the next frame
 
   ViewFactory::shared_ptr viewFactory();
   FileManager::shared_ptr fileManager();
