@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <array>
 #include <memory>
 
 #include "Camera.hpp"
@@ -24,6 +25,7 @@
 #include "../debug/DebugState.hpp"
 #include "../input/InputManager.hpp"
 #include "../io/FileManager.hpp"
+#include "../ui/ViewLayer.hpp"
 
 namespace grumble {
 class Game : public Object {
@@ -51,9 +53,9 @@ public:
   FontManager::shared_ptr fontManager();
   SpriteManager::shared_ptr spriteManager();
   InputManager::shared_ptr inputManager();
-  View::shared_ptr rootView();
   Camera::shared_ptr camera();
   DebugState::shared_ptr debugState();
+  ViewLayer::shared_ptr getViewLayer(int index);
 
   void setScreenSize(HMM_Vec2 size);
   void setCameraPosition(HMM_Vec2 pos);
@@ -70,7 +72,7 @@ private:
   SpriteManager::shared_ptr _spriteManager;
   InputManager::shared_ptr _inputManager;
   Camera::shared_ptr _camera;
-  View::shared_ptr _rootView;
   DebugState::shared_ptr _debugState;
+  ViewLayer::array _viewLayers;
 };
 } // namespace grumble

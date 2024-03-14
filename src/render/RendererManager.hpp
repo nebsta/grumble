@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <array>
 #include <memory>
 
 #include "Renderer.hpp"
@@ -18,6 +19,7 @@
 #include "../debug/DebugState.hpp"
 #include "../render/ImageRenderer.hpp"
 #include "../ui/View.hpp"
+#include "../ui/ViewLayer.hpp"
 #include "../util/HandmadeMath.h"
 
 namespace grumble {
@@ -31,16 +33,9 @@ public:
   virtual void setup() = 0;
   virtual void teardown() = 0;
 
-  void renderFrame(View::shared_ptr rootView);
+  void render(ViewLayer::iterator iter, ViewLayer::iterator end);
 
-  virtual void prepareFrame() = 0;
-  virtual void renderView(Transform::shared_ptr transform,
-                          Renderer::shared_ptr renderer) = 0;
-  virtual void renderImageView(Transform::shared_ptr transform,
-                               ImageRenderer::shared_ptr renderer) = 0;
-  virtual void renderLabel(Transform::shared_ptr transform,
-                           TextRenderer::shared_ptr renderer) = 0;
-  virtual void commitFrame() = 0;
+  virtual void updateBufferNested(View::shared_ptr view);
 
   void setDebugState(DebugState::shared_ptr debugState);
   void setScreenSize(HMM_Vec2 size);
@@ -56,9 +51,16 @@ private:
   DebugState::shared_ptr _debugState;
 
 protected:
-  DebugState::shared_ptr debugState() const;
   LogCategory logCategory() const override;
+  HMM_Mat4 viewMatrix() const;
   HMM_Mat4 projectionViewMatrix() const;
   const RendererManagerConfiguration configuration() const;
+
+  virtual void prepareMainLayer() = 0;
+  virtual void updateBuffer(View::shared_ptr view) = 0;
+  virtual void drawMainLayer() = 0;
+  virtual void drawDebugGrid(DebugState::shared_ptr debugState) = 0;
+  virtual void drawDebugMenu(DebugState::shared_ptr debugState) = 0;
+  virtual void commitFrame() = 0;
 };
 } // namespace grumble

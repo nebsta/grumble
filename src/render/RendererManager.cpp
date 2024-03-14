@@ -11,34 +11,47 @@
 namespace grumble {
 
 RendererManager::RendererManager(RendererManagerConfiguration configuration)
-    : _configuration(configuration) {
+    : Object("renderer_manager"), _configuration(configuration) {
   setCameraPosition({0.0f, 0.0f});
 }
 
-void RendererManager::renderFrame(View::shared_ptr rootView) {
-  this->renderView(rootView->transform(), rootView->renderer());
+void RendererManager::render(ViewLayer::iterator iter,
+                             ViewLayer::iterator end) {
+  prepareMainLayer();
 
-  if (!rootView->hasChildren()) {
+  for (; iter != end; iter++) {
+    ViewLayer::shared_ptr layer = (*iter);
+    View::iterator viewIter = layer->viewIteratorBegin();
+    for (; viewIter != layer->viewIteratorEnd(); viewIter++) {
+      View::shared_ptr rootView = *viewIter;
+      updateBufferNested(rootView);
+    }
+  }
+
+  drawMainLayer();
+
+  if (_debugState->gridVisible()) {
+    drawDebugGrid(_debugState);
+  }
+
+  if (_debugState->debugMenuVisible()) {
+    drawDebugMenu(_debugState);
+  }
+
+  commitFrame();
+}
+
+void RendererManager::updateBufferNested(View::shared_ptr view) {
+  this->updateBuffer(view);
+
+  if (!view->hasChildren()) {
     return;
   }
 
-  View::iterator iter = rootView->childIteratorBegin();
-  for (; iter != rootView->childIteratorEnd(); iter++) {
-    auto view = *iter;
-    switch (view->type()) {
-    case ViewType::BaseType:
-      this->renderView(view->transform(), view->renderer());
-      break;
-    case ViewType::ImageViewType:
-      this->renderImageView(
-          view->transform(),
-          dynamic_pointer_cast<ImageRenderer>(view->renderer()));
-      break;
-    case ViewType::LabelViewType:
-      this->renderLabel(view->transform(),
-                        dynamic_pointer_cast<TextRenderer>(view->renderer()));
-      break;
-    }
+  View::iterator iter = view->childIteratorBegin();
+  for (; iter != view->childIteratorEnd(); iter++) {
+    View::shared_ptr view = (*iter);
+    this->updateBuffer(view);
   }
 }
 
@@ -68,9 +81,7 @@ HMM_Mat4 RendererManager::projectionViewMatrix() const {
   return HMM_MulM4(_projectionMatrix, _viewMatrix);
 }
 
-DebugState::shared_ptr RendererManager::debugState() const {
-  return _debugState;
-}
+HMM_Mat4 RendererManager::viewMatrix() const { return _viewMatrix; }
 
 const RendererManagerConfiguration RendererManager::configuration() const {
   return _configuration;

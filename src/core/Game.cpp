@@ -18,11 +18,15 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _spriteManager(spriteManager),
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
       _fontManager(fontManager), _inputManager(inputManager),
-      _rootView(_viewFactory->createView({0.0f, 0.0f})),
       _camera(std::make_shared<Camera>()),
       _debugState(std::make_shared<DebugState>()) {
-  _rootView->renderer()->setTint(COLOR_WHITE);
   _rendererManager->setDebugState(_debugState);
+
+  _viewLayers[0] = std::make_shared<ViewLayer>();
+  _viewLayers[1] = std::make_shared<ViewLayer>();
+  _viewLayers[2] = std::make_shared<ViewLayer>();
+  _viewLayers[3] = std::make_shared<ViewLayer>();
+  _viewLayers[4] = std::make_shared<ViewLayer>();
 }
 
 Game::~Game() {}
@@ -37,21 +41,32 @@ void Game::setup() {
 
 void Game::teardown() { _rendererManager->teardown(); }
 
-bool Game::input() { return _inputManager->update(); }
+bool Game::input() {
+  bool terminate = _inputManager->update();
 
-void Game::update(double dt) { _rootView->update(dt); }
+  if (_inputManager->isInputTriggered(InputCode::D)) {
+    _debugState->toggleDebugMenuVisible();
+  }
+
+  return terminate;
+}
+
+void Game::update(double dt) {
+  auto iter = _viewLayers.begin();
+  for (; iter != _viewLayers.end(); iter++) {
+    ViewLayer::shared_ptr layer = (*iter);
+    layer->update(dt);
+  }
+}
 
 void Game::render() {
-  _rendererManager->prepareFrame();
-  _rendererManager->renderFrame(_rootView);
-  _rendererManager->commitFrame();
+  _rendererManager->render(_viewLayers.begin(), _viewLayers.end());
 }
 
 void Game::reset() { _inputManager->clearTriggeredInputs(); }
 
 void Game::setScreenSize(HMM_Vec2 size) {
   _rendererManager->setScreenSize(size);
-  _rootView->transform()->setSize({size.Width, size.Height});
 }
 
 void Game::setCameraPosition(HMM_Vec2 pos) {
@@ -64,8 +79,6 @@ void Game::moveCameraPosition(HMM_Vec2 by) {
   _camera->setPosition(newPos);
   _rendererManager->setCameraPosition(newPos);
 }
-
-View::shared_ptr Game::rootView() { return _rootView; }
 
 ViewFactory::shared_ptr Game::viewFactory() { return _viewFactory; }
 
@@ -80,6 +93,10 @@ InputManager::shared_ptr Game::inputManager() { return _inputManager; }
 Camera::shared_ptr Game::camera() { return _camera; }
 
 DebugState::shared_ptr Game::debugState() { return _debugState; }
+
+ViewLayer::shared_ptr Game::getViewLayer(int index) {
+  return _viewLayers[index];
+}
 
 #pragma mark Protected Methods
 
