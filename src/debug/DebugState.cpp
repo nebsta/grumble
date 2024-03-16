@@ -27,12 +27,12 @@ void DebugState::toggleDebugMenuVisible() {
   setDebugMenuVisible(!_debugMenuVisible);
 }
 
-void DebugState::setFrameStatsVisble(bool visible) {
+void DebugState::setDebugStatsVisble(bool visible) {
   _frameStatsVisible = visible;
 }
 
-void DebugState::toggleFrameStatsVisible() {
-  setFrameStatsVisble(!_frameStatsVisible);
+void DebugState::toggleDebugStatsVisible() {
+  setDebugStatsVisble(!_frameStatsVisible);
 }
 
 void DebugState::setGridResolution(GridResolution resolution) {
@@ -63,7 +63,7 @@ const GridResolution DebugState::gridResolution() const {
 
 const bool DebugState::debugMenuVisible() const { return _debugMenuVisible; }
 
-const bool DebugState::frameStatsVisible() const { return _frameStatsVisible; }
+const bool DebugState::debugStatsVisible() const { return _frameStatsVisible; }
 
 const FrameStats DebugState::currentFrameStats() const {
   return _frameStatsHistory[_frameStatsIndex];
@@ -71,6 +71,18 @@ const FrameStats DebugState::currentFrameStats() const {
 
 const FrameStats *const DebugState::frameStatsHistory() const {
   return _frameStatsHistory;
+}
+
+const float DebugState::averageFrameTime() const {
+  float sum = 0.0f;
+  for (int i = 0; i < FRAME_STATS_WINDOW_SIZE; i++) {
+    sum += _frameStatsHistory[i].totalFrameTime;
+  }
+  return sum / FRAME_STATS_WINDOW_SIZE;
+}
+
+const float DebugState::averageFPS() const {
+  return 1000.0f / averageFrameTime();
 }
 
 LogCategory DebugState::logCategory() const { return LogCategory::core; }

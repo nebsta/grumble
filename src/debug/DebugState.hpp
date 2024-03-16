@@ -25,8 +25,8 @@ public:
   void setDebugMenuVisible(bool visible);
   void toggleDebugMenuVisible();
 
-  void setFrameStatsVisble(bool visible);
-  void toggleFrameStatsVisible();
+  void setDebugStatsVisble(bool visible);
+  void toggleDebugStatsVisible();
 
   void setGridResolution(GridResolution resolution);
 
@@ -36,7 +36,10 @@ public:
   const bool instanceIdVisible() const;
   const GridResolution gridResolution() const;
   const bool debugMenuVisible() const;
-  const bool frameStatsVisible() const;
+  const bool debugStatsVisible() const;
+
+  const float averageFrameTime() const;
+  const float averageFPS() const;
 
   const int frameStatsIndex() const;
   const FrameStats currentFrameStats() const;
