@@ -34,15 +34,19 @@ public:
 
   const bool gridVisible() const;
   const bool instanceIdVisible() const;
-  const GridResolution gridResolution() const;
   const bool debugMenuVisible() const;
   const bool debugStatsVisible() const;
 
-  const float averageFrameTime() const;
+  const GridResolution gridResolution() const;
+
+  const float averageFrameTimeMs() const;
+  const float averageUpdateTimeMs() const;
+  const float averageRenderTimeMs() const;
+  const float averageFrameLagMs() const;
+  const float averageFrameDelayMs() const;
   const float averageFPS() const;
 
   const int frameStatsIndex() const;
-  const FrameStats currentFrameStats() const;
   const FrameStats *const frameStatsHistory() const;
 
 protected:
@@ -53,12 +57,10 @@ private:
   FrameStats _frameStatsHistory[FRAME_STATS_WINDOW_SIZE];
 
   bool _debugMenuVisible;
-
   bool _gridVisible;
-  GridResolution _gridResolution;
-
   bool _frameStatsVisible;
-
   bool _instanceIdVisible;
+
+  GridResolution _gridResolution;
 };
 } // namespace grumble

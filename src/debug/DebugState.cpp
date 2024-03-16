@@ -65,24 +65,52 @@ const bool DebugState::debugMenuVisible() const { return _debugMenuVisible; }
 
 const bool DebugState::debugStatsVisible() const { return _frameStatsVisible; }
 
-const FrameStats DebugState::currentFrameStats() const {
-  return _frameStatsHistory[_frameStatsIndex];
-}
-
 const FrameStats *const DebugState::frameStatsHistory() const {
   return _frameStatsHistory;
 }
 
-const float DebugState::averageFrameTime() const {
+const float DebugState::averageFrameTimeMs() const {
   float sum = 0.0f;
   for (int i = 0; i < FRAME_STATS_WINDOW_SIZE; i++) {
-    sum += _frameStatsHistory[i].totalFrameTime;
+    sum += _frameStatsHistory[i].frameTimeMs;
+  }
+  return sum / FRAME_STATS_WINDOW_SIZE;
+}
+
+const float DebugState::averageUpdateTimeMs() const {
+  float sum = 0.0f;
+  for (int i = 0; i < FRAME_STATS_WINDOW_SIZE; i++) {
+    sum += _frameStatsHistory[i].updateTimeMs;
+  }
+  return sum / FRAME_STATS_WINDOW_SIZE;
+}
+
+const float DebugState::averageRenderTimeMs() const {
+  float sum = 0.0f;
+  for (int i = 0; i < FRAME_STATS_WINDOW_SIZE; i++) {
+    sum += _frameStatsHistory[i].renderTimeMs;
+  }
+  return sum / FRAME_STATS_WINDOW_SIZE;
+}
+
+const float DebugState::averageFrameLagMs() const {
+  float sum = 0.0f;
+  for (int i = 0; i < FRAME_STATS_WINDOW_SIZE; i++) {
+    sum += _frameStatsHistory[i].frameLagMs;
+  }
+  return sum / FRAME_STATS_WINDOW_SIZE;
+}
+
+const float DebugState::averageFrameDelayMs() const {
+  float sum = 0.0f;
+  for (int i = 0; i < FRAME_STATS_WINDOW_SIZE; i++) {
+    sum += _frameStatsHistory[i].frameDelayMs;
   }
   return sum / FRAME_STATS_WINDOW_SIZE;
 }
 
 const float DebugState::averageFPS() const {
-  return 1000.0f / averageFrameTime();
+  return 1000.0f / averageFrameTimeMs();
 }
 
 LogCategory DebugState::logCategory() const { return LogCategory::core; }

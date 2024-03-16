@@ -2,8 +2,10 @@
 
 namespace grumble {
 struct FrameStats {
-  float totalFrameTime;
-  float updateFrameTime;
-  float remainingFrameTime;
+  float frameTimeMs;
+  float updateTimeMs;
+  float renderTimeMs;
+  float frameLagMs;
+  float frameDelayMs;
 };
 } // namespace grumble
