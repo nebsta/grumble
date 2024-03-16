@@ -17,8 +17,6 @@ void Camera::update(double dt) {
   float speed = HMM_Len(_velocity);
   float distance = speed * dt;
   HMM_Vec2 direction = HMM_Norm(_velocity);
-  logDebug("dir: {}, {}. dt: {}. Speed: {}. Distance: {}", direction.X,
-           direction.Y, dt, speed, distance);
   _pos += direction * distance;
 }
 
