@@ -8,16 +8,11 @@
 
 #pragma once
 
-#include <array>
-#include <memory>
-
-#include "Renderer.hpp"
 #include "RendererManagerConfiguration.hpp"
-#include "TextRenderer.hpp"
+#include <memory>
 
 #include "../core/Object.hpp"
 #include "../debug/DebugState.hpp"
-#include "../render/ImageRenderer.hpp"
 #include "../ui/View.hpp"
 #include "../ui/ViewLayer.hpp"
 #include "../util/HandmadeMath.h"
@@ -46,12 +41,14 @@ public:
 private:
   RendererManagerConfiguration _configuration;
   float _renderScale;
+  HMM_Vec2 _cameraPos;
   HMM_Mat4 _projectionMatrix;
   HMM_Mat4 _viewMatrix;
   DebugState::shared_ptr _debugState;
 
 protected:
   LogCategory logCategory() const override;
+  HMM_Vec2 cameraPos() const;
   HMM_Mat4 viewMatrix() const;
   HMM_Mat4 projectionViewMatrix() const;
   const RendererManagerConfiguration configuration() const;

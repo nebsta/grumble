@@ -6,7 +6,6 @@
 //
 
 #include "RendererManager.hpp"
-#include "RendererManagerConfiguration.hpp"
 
 namespace grumble {
 
@@ -63,6 +62,7 @@ void RendererManager::setScreenSize(HMM_Vec2 size) {
 }
 
 void RendererManager::setCameraPosition(HMM_Vec2 pos) {
+  _cameraPos = pos;
   _viewMatrix = HMM_LookAt_LH({pos.X, pos.Y, -99.0f}, {pos.X, pos.Y, 0.0f},
                               {0.0f, 1.0f, 0.0f});
 }
@@ -72,6 +72,8 @@ void RendererManager::setDebugState(DebugState::shared_ptr debugState) {
 }
 
 #pragma mark Protected Methods
+
+HMM_Vec2 RendererManager::cameraPos() const { return _cameraPos; }
 
 LogCategory RendererManager::logCategory() const {
   return LogCategory::rendering;
