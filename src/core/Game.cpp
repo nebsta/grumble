@@ -51,6 +51,8 @@ bool Game::input() {
 }
 
 void Game::update(double dt) {
+  _camera->update(dt);
+
   auto iter = _viewLayers.begin();
   for (; iter != _viewLayers.end(); iter++) {
     ViewLayer::shared_ptr layer = (*iter);
@@ -79,14 +81,7 @@ void Game::setScreenSize(HMM_Vec2 size) {
   _rendererManager->setScreenSize(size);
 }
 
-void Game::setCameraPosition(HMM_Vec2 pos) { _camera->setPosition(pos); }
-
 #pragma mark Getters
-
-void Game::moveCameraPosition(HMM_Vec2 by) {
-  auto newPos = _camera->position() + by;
-  _camera->setPosition(newPos);
-}
 
 ViewFactory::shared_ptr Game::viewFactory() { return _viewFactory; }
 

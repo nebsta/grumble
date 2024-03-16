@@ -12,11 +12,15 @@ public:
   Camera();
   ~Camera();
 
-  void setPosition(HMM_Vec2 pos);
+  HMM_Vec2 velocity() const;
 
   HMM_Vec2 position() const;
 
+  void update(double dt);
+  void setVelocity(HMM_Vec2 velocity);
+
 private:
+  HMM_Vec2 _velocity;
   HMM_Vec2 _pos;
 };
 } // namespace grumble
