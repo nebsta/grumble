@@ -39,7 +39,17 @@ void DebugState::setGridResolution(GridResolution resolution) {
   _gridResolution = resolution;
 }
 
-void DebugState::setFrameStats(FrameStats stats) { _frameStats = stats; }
+const int DebugState::frameStatsIndex() const { return _frameStatsIndex; }
+
+void DebugState::submitFrameStats(FrameStats stats) {
+  int index = _frameStatsIndex + 1;
+  if (index >= FRAME_STATS_WINDOW_SIZE) {
+    index = 0;
+  }
+
+  _frameStatsHistory[index] = stats;
+  _frameStatsIndex = index;
+}
 
 #pragma mark Getters
 
@@ -55,7 +65,13 @@ const bool DebugState::debugMenuVisible() const { return _debugMenuVisible; }
 
 const bool DebugState::frameStatsVisible() const { return _frameStatsVisible; }
 
-const FrameStats DebugState::frameStats() const { return _frameStats; }
+const FrameStats DebugState::currentFrameStats() const {
+  return _frameStatsHistory[_frameStatsIndex];
+}
+
+const FrameStats *const DebugState::frameStatsHistory() const {
+  return _frameStatsHistory;
+}
 
 LogCategory DebugState::logCategory() const { return LogCategory::core; }
 

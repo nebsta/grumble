@@ -4,6 +4,9 @@
 #include "FrameStats.hpp"
 #include "GridResolution.hpp"
 #include <memory>
+#include <queue>
+
+#define FRAME_STATS_WINDOW_SIZE 200
 
 namespace grumble {
 class DebugState : public Object {
@@ -27,26 +30,31 @@ public:
 
   void setGridResolution(GridResolution resolution);
 
-  void setFrameStats(FrameStats stats);
+  void submitFrameStats(FrameStats stats);
 
   const bool gridVisible() const;
   const bool instanceIdVisible() const;
   const GridResolution gridResolution() const;
   const bool debugMenuVisible() const;
   const bool frameStatsVisible() const;
-  const FrameStats frameStats() const;
+
+  const int frameStatsIndex() const;
+  const FrameStats currentFrameStats() const;
+  const FrameStats *const frameStatsHistory() const;
 
 protected:
   LogCategory logCategory() const override;
 
 private:
+  int _frameStatsIndex;
+  FrameStats _frameStatsHistory[FRAME_STATS_WINDOW_SIZE];
+
   bool _debugMenuVisible;
 
   bool _gridVisible;
   GridResolution _gridResolution;
 
   bool _frameStatsVisible;
-  FrameStats _frameStats;
 
   bool _instanceIdVisible;
 };

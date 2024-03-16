@@ -39,7 +39,7 @@ void RendererManager::render(ViewLayer::iterator iter,
   }
 
   if (_debugState->frameStatsVisible()) {
-    drawFrameStats(_debugState->frameStats());
+    drawFrameStats(_debugState->currentFrameStats());
   }
 
   if (_debugState->debugMenuVisible()) {
