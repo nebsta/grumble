@@ -13,15 +13,16 @@ namespace grumble {
 #pragma mark Public Methods
 
 void Logger::log(std::string message, LogLevel level, LogCategory category) {
-  // TODO: Need to add this back that isn't only compile time constant
-  //    if (level < Logger::activeLogLevel()) {
-  //      return;
-  //    }
+  if (level < Logger::activeLogLevel()) {
+    return;
+  }
+
+  if (logCategoryDisabled(category)) {
+    return;
+  }
 
   std::string levelName = Logger::logLevelName(level);
-
   std::cout << Time::nowString();
-
   std::cout << " [" << levelName << "] ";
   if (category != none) {
     std::string categoryName = Logger::logCategoryName(category);
@@ -66,15 +67,24 @@ std::string Logger::logCategoryName(LogCategory category) {
   }
 }
 
-LogLevel Logger::activeLogLevel() {
-#ifdef GRUMBLE_LOG_DEBUG
-  return LogLevel::debug;
-#elif GRUMBLE_LOG_INFO
-  return LogLevel::info;
-#elif GRUMBLE_LOG_WARN
-  return LogLevel::warn;
-#else // GRUMBLE_LOG_ERROR
-  return LogLevel::error;
-#endif
+bool Logger::logCategoryDisabled(LogCategory category) {
+  auto pos = std::find(_disabledLogCategories.begin(),
+                       _disabledLogCategories.end(), category);
+  return pos != _disabledLogCategories.end();
 }
+
+void Logger::setActiveLogLevel(LogLevel level) { _activeLogLevel = level; }
+
+void Logger::toggleLogCategory(LogCategory category) {
+  auto pos = std::find(_disabledLogCategories.begin(),
+                       _disabledLogCategories.end(), category);
+
+  if (pos != _disabledLogCategories.end()) {
+    _disabledLogCategories.erase(pos);
+  } else {
+    _disabledLogCategories.push_back(category);
+  }
+}
+
+LogLevel Logger::activeLogLevel() { return _activeLogLevel; }
 } // namespace grumble

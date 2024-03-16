@@ -11,6 +11,7 @@
 #include <fmt/core.h>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "../util/Time.hpp"
 #include "LogCategory.hpp"
@@ -49,10 +50,17 @@ public:
                 category);
   }
 
+  static void setActiveLogLevel(LogLevel level);
+  static void toggleLogCategory(LogCategory category);
+
+  static bool logCategoryDisabled(LogCategory category);
+  static LogLevel activeLogLevel();
+
 private:
+  static inline LogLevel _activeLogLevel = LogLevel::warn;
+  static inline std::vector<LogCategory> _disabledLogCategories = {};
+
   static std::string logLevelName(LogLevel level);
   static std::string logCategoryName(LogCategory category);
-
-  static LogLevel activeLogLevel();
 };
 } // namespace grumble
