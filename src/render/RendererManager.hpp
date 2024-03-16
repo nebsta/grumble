@@ -11,6 +11,7 @@
 #include "RendererManagerConfiguration.hpp"
 #include <memory>
 
+#include "../core/Camera.hpp"
 #include "../core/Object.hpp"
 #include "../debug/DebugState.hpp"
 #include "../ui/View.hpp"
@@ -25,28 +26,27 @@ public:
   RendererManager(RendererManagerConfiguration config);
   virtual ~RendererManager() = default;
 
-  virtual void setup() = 0;
+  void setup(Camera::shared_ptr camera, DebugState::shared_ptr debugState);
   virtual void teardown() = 0;
 
   void render(ViewLayer::iterator iter, ViewLayer::iterator end);
 
   virtual void updateBufferNested(View::shared_ptr view);
 
-  void setDebugState(DebugState::shared_ptr debugState);
   void setScreenSize(HMM_Vec2 size);
-  void setCameraPosition(HMM_Vec2 pos);
 
   const float renderScale() const;
 
 private:
   RendererManagerConfiguration _configuration;
   float _renderScale;
-  HMM_Vec2 _cameraPos;
+  Camera::shared_ptr _camera;
   HMM_Mat4 _projectionMatrix;
-  HMM_Mat4 _viewMatrix;
   DebugState::shared_ptr _debugState;
 
 protected:
+  virtual void setup() = 0;
+
   LogCategory logCategory() const override;
   HMM_Vec2 cameraPos() const;
   HMM_Mat4 viewMatrix() const;

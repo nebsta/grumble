@@ -10,8 +10,13 @@
 namespace grumble {
 
 RendererManager::RendererManager(RendererManagerConfiguration configuration)
-    : Object("renderer_manager"), _configuration(configuration) {
-  setCameraPosition({0.0f, 0.0f});
+    : Object("renderer_manager"), _configuration(configuration) {}
+
+void RendererManager::setup(Camera::shared_ptr camera,
+                            DebugState::shared_ptr debugState) {
+  _camera = camera;
+  _debugState = debugState;
+  setup();
 }
 
 void RendererManager::render(ViewLayer::iterator iter,
@@ -61,29 +66,23 @@ void RendererManager::setScreenSize(HMM_Vec2 size) {
                                              0.0f, -100.0f, 100.0f);
 }
 
-void RendererManager::setCameraPosition(HMM_Vec2 pos) {
-  _cameraPos = pos;
-  _viewMatrix = HMM_LookAt_LH({pos.X, pos.Y, -99.0f}, {pos.X, pos.Y, 0.0f},
-                              {0.0f, 1.0f, 0.0f});
-}
-
-void RendererManager::setDebugState(DebugState::shared_ptr debugState) {
-  _debugState = debugState;
-}
-
 #pragma mark Protected Methods
 
-HMM_Vec2 RendererManager::cameraPos() const { return _cameraPos; }
+HMM_Vec2 RendererManager::cameraPos() const { return _camera->position(); }
 
 LogCategory RendererManager::logCategory() const {
   return LogCategory::rendering;
 }
 
 HMM_Mat4 RendererManager::projectionViewMatrix() const {
-  return HMM_MulM4(_projectionMatrix, _viewMatrix);
+  return HMM_MulM4(_projectionMatrix, viewMatrix());
 }
 
-HMM_Mat4 RendererManager::viewMatrix() const { return _viewMatrix; }
+HMM_Mat4 RendererManager::viewMatrix() const {
+  HMM_Vec2 cameraPos = _camera->position();
+  return HMM_LookAt_LH({cameraPos.X, cameraPos.Y, -99.0f},
+                       {cameraPos.X, cameraPos.Y, 0.0f}, {0.0f, 1.0f, 0.0f});
+}
 
 const RendererManagerConfiguration RendererManager::configuration() const {
   return _configuration;

@@ -20,8 +20,6 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _fontManager(fontManager), _inputManager(inputManager),
       _camera(std::make_shared<Camera>()),
       _debugState(std::make_shared<DebugState>()) {
-  _rendererManager->setDebugState(_debugState);
-
   _viewLayers[0] = std::make_shared<ViewLayer>();
   _viewLayers[1] = std::make_shared<ViewLayer>();
   _viewLayers[2] = std::make_shared<ViewLayer>();
@@ -36,7 +34,7 @@ Game::~Game() {}
 void Game::setup() {
   _spriteManager->setup();
   _fontManager->setup();
-  _rendererManager->setup();
+  _rendererManager->setup(_camera, _debugState);
 }
 
 void Game::teardown() { _rendererManager->teardown(); }
@@ -69,15 +67,11 @@ void Game::setScreenSize(HMM_Vec2 size) {
   _rendererManager->setScreenSize(size);
 }
 
-void Game::setCameraPosition(HMM_Vec2 pos) {
-  _camera->setPosition(pos);
-  _rendererManager->setCameraPosition(pos);
-}
+void Game::setCameraPosition(HMM_Vec2 pos) { _camera->setPosition(pos); }
 
 void Game::moveCameraPosition(HMM_Vec2 by) {
   auto newPos = _camera->position() + by;
   _camera->setPosition(newPos);
-  _rendererManager->setCameraPosition(newPos);
 }
 
 ViewFactory::shared_ptr Game::viewFactory() { return _viewFactory; }
