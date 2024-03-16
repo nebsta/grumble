@@ -1,8 +1,10 @@
 #pragma once
 
 #include "../core/Object.hpp"
+#include "FrameStats.hpp"
 #include "GridResolution.hpp"
 #include <memory>
+
 namespace grumble {
 class DebugState : public Object {
 public:
@@ -20,20 +22,32 @@ public:
   void setDebugMenuVisible(bool visible);
   void toggleDebugMenuVisible();
 
+  void setFrameStatsVisble(bool visible);
+  void toggleFrameStatsVisible();
+
   void setGridResolution(GridResolution resolution);
+
+  void setFrameStats(FrameStats stats);
 
   const bool gridVisible() const;
   const bool instanceIdVisible() const;
   const GridResolution gridResolution() const;
   const bool debugMenuVisible() const;
+  const bool frameStatsVisible() const;
+  const FrameStats frameStats() const;
 
 protected:
   LogCategory logCategory() const override;
 
 private:
-  bool _gridVisible;
-  bool _instanceIdVisible;
   bool _debugMenuVisible;
+
+  bool _gridVisible;
   GridResolution _gridResolution;
+
+  bool _frameStatsVisible;
+  FrameStats _frameStats;
+
+  bool _instanceIdVisible;
 };
 } // namespace grumble

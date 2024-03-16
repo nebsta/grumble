@@ -35,7 +35,11 @@ void RendererManager::render(ViewLayer::iterator iter,
   drawMainLayer();
 
   if (_debugState->gridVisible()) {
-    drawDebugGrid(_debugState);
+    drawDebugGrid(_debugState->gridResolution());
+  }
+
+  if (_debugState->frameStatsVisible()) {
+    drawFrameStats(_debugState->frameStats());
   }
 
   if (_debugState->debugMenuVisible()) {

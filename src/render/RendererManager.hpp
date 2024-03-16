@@ -56,7 +56,8 @@ protected:
   virtual void prepareMainLayer() = 0;
   virtual void updateBuffer(View::shared_ptr view) = 0;
   virtual void drawMainLayer() = 0;
-  virtual void drawDebugGrid(DebugState::shared_ptr debugState) = 0;
+  virtual void drawDebugGrid(GridResolution resolution) = 0;
+  virtual void drawFrameStats(FrameStats stats) = 0;
   virtual void drawDebugMenu(DebugState::shared_ptr debugState) = 0;
   virtual void commitFrame() = 0;
 };
