@@ -6,7 +6,6 @@
 //
 
 #include "Game.hpp"
-#include <memory>
 
 namespace grumble {
 Game::Game(RendererManager::shared_ptr rendererManager,
@@ -29,7 +28,7 @@ Game::Game(RendererManager::shared_ptr rendererManager,
 
 Game::~Game() {}
 
-#pragma mark Public Methods
+#pragma mark Lifecycle Events
 
 void Game::setup() {
   _spriteManager->setup();
@@ -38,6 +37,8 @@ void Game::setup() {
 }
 
 void Game::teardown() { _rendererManager->teardown(); }
+
+#pragma mark Game Loop
 
 bool Game::input() {
   bool terminate = _inputManager->update();
@@ -55,6 +56,11 @@ void Game::update(double dt) {
     ViewLayer::shared_ptr layer = (*iter);
     layer->update(dt);
   }
+
+  auto systemIter = _systems.begin();
+  for (; systemIter != _systems.end(); systemIter++) {
+    (*systemIter)->update(dt);
+  }
 }
 
 void Game::render() {
@@ -63,11 +69,19 @@ void Game::render() {
 
 void Game::reset() { _inputManager->clearTriggeredInputs(); }
 
+#pragma mark Setters
+
+void Game::registerSystem(System::unique_ptr system) {
+  _systems.push_back(std::move(system));
+}
+
 void Game::setScreenSize(HMM_Vec2 size) {
   _rendererManager->setScreenSize(size);
 }
 
 void Game::setCameraPosition(HMM_Vec2 pos) { _camera->setPosition(pos); }
+
+#pragma mark Getters
 
 void Game::moveCameraPosition(HMM_Vec2 by) {
   auto newPos = _camera->position() + by;
@@ -91,8 +105,6 @@ DebugState::shared_ptr Game::debugState() { return _debugState; }
 ViewLayer::shared_ptr Game::getViewLayer(int index) {
   return _viewLayers[index];
 }
-
-#pragma mark Protected Methods
 
 LogCategory Game::logCategory() const { return LogCategory::core; }
 } // namespace grumble

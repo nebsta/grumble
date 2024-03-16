@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include <array>
 #include <memory>
 
 #include "Camera.hpp"
@@ -19,13 +18,13 @@
 
 #include "../font/FontManager.hpp"
 
-#include "../ui/View.hpp"
 #include "../ui/ViewFactory.hpp"
 
 #include "../debug/DebugState.hpp"
 #include "../input/InputManager.hpp"
 #include "../io/FileManager.hpp"
 #include "../ui/ViewLayer.hpp"
+#include "System.hpp"
 
 namespace grumble {
 class Game : public Object {
@@ -39,6 +38,7 @@ public:
        InputManager::shared_ptr inputManager);
   ~Game();
 
+  // lifecycle methods
   void setup();
   void teardown();
 
@@ -48,6 +48,7 @@ public:
   void render();          // render the frame
   void reset();           // reset everything before the next frame
 
+  // getters
   ViewFactory::shared_ptr viewFactory();
   FileManager::shared_ptr fileManager();
   FontManager::shared_ptr fontManager();
@@ -57,6 +58,8 @@ public:
   DebugState::shared_ptr debugState();
   ViewLayer::shared_ptr getViewLayer(int index);
 
+  // setters
+  void registerSystem(System::unique_ptr system);
   void setScreenSize(HMM_Vec2 size);
   void setCameraPosition(HMM_Vec2 pos);
   void moveCameraPosition(HMM_Vec2 by);
@@ -74,5 +77,6 @@ private:
   Camera::shared_ptr _camera;
   DebugState::shared_ptr _debugState;
   ViewLayer::array _viewLayers;
+  System::vector _systems;
 };
 } // namespace grumble
