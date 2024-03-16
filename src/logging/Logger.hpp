@@ -56,11 +56,12 @@ public:
   static bool logCategoryDisabled(LogCategory category);
   static LogLevel activeLogLevel();
 
+  static std::string logCategoryName(LogCategory category);
+
 private:
   static inline LogLevel _activeLogLevel = LogLevel::warn;
   static inline std::vector<LogCategory> _disabledLogCategories = {};
 
   static std::string logLevelName(LogLevel level);
-  static std::string logCategoryName(LogCategory category);
 };
 } // namespace grumble
