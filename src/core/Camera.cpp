@@ -12,11 +12,12 @@ Camera::~Camera() {}
 void Camera::setVelocity(HMM_Vec2 velocity) { _velocity = velocity; }
 
 void Camera::update(double dt) {
+  _prevPos = _pos;
+
   if (HMM_Eq(_velocity, {0.0f, 0.0f})) {
     return;
   }
 
-  _prevPos = _pos;
   float speed = HMM_Len(_velocity);
   float distance = speed * dt;
   HMM_Vec2 direction = HMM_Norm(_velocity);

@@ -51,8 +51,6 @@ bool Game::input() {
 }
 
 void Game::update(double dt) {
-  _camera->update(dt);
-
   auto iter = _viewLayers.begin();
   for (; iter != _viewLayers.end(); iter++) {
     ViewLayer::shared_ptr layer = (*iter);
@@ -63,6 +61,8 @@ void Game::update(double dt) {
   for (; systemIter != _systems.end(); systemIter++) {
     (*systemIter)->update(dt);
   }
+
+  _camera->update(dt);
 }
 
 void Game::render(double t) {
