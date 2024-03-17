@@ -1,9 +1,4 @@
-//
-//  Game.hpp
-//  grumble
-//
 //  Created by Benjamin Wallis on 17/07/2023.
-//
 
 #pragma once
 
@@ -45,7 +40,7 @@ public:
   // main steps in the game loop
   bool input();           // collect any input. Return true if game should quit
   void update(double dt); // perform updates within the engine
-  void render();          // render the frame
+  void render(double t);  // render the frame
   void reset();           // reset everything before the next frame
 
   // getters

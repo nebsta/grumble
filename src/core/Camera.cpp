@@ -1,9 +1,11 @@
 #include "Camera.hpp"
+#include "../util/MathUtils.hpp"
 
 namespace grumble {
 
 Camera::Camera()
-    : Object("cameraMain"), _pos({0.0f, 0.0f}), _velocity({0.0f, 0.0f}) {}
+    : Object("cameraMain"), _pos({0.0f, 0.0f}), _prevPos({0.0f, 0.0f}),
+      _velocity({0.0f, 0.0f}) {}
 
 Camera::~Camera() {}
 
@@ -14,6 +16,7 @@ void Camera::update(double dt) {
     return;
   }
 
+  _prevPos = _pos;
   float speed = HMM_Len(_velocity);
   float distance = speed * dt;
   HMM_Vec2 direction = HMM_Norm(_velocity);
@@ -21,4 +24,9 @@ void Camera::update(double dt) {
 }
 
 HMM_Vec2 Camera::position() const { return _pos; }
+
+HMM_Vec2 Camera::lerpPosition(float t) const { return lerp(_prevPos, _pos, t); }
+
+HMM_Vec2 Camera::prevPosition() const { return _prevPos; }
+
 } // namespace grumble

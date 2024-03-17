@@ -65,8 +65,8 @@ void Game::update(double dt) {
   }
 }
 
-void Game::render() {
-  _rendererManager->render(_viewLayers.begin(), _viewLayers.end());
+void Game::render(double t) {
+  _rendererManager->render(_viewLayers.begin(), _viewLayers.end(), t);
 }
 
 void Game::reset() { _inputManager->clearTriggeredInputs(); }

@@ -1,10 +1,5 @@
-//
-//  Graphics.hpp
-//  sprawl
-//
 //  Created by Benjamin Wallis on 07/01/2022.
 //  Copyright © 2022 The Caffeinated Coder. All rights reserved.
-//
 
 #pragma once
 
@@ -29,9 +24,7 @@ public:
   void setup(Camera::shared_ptr camera, DebugState::shared_ptr debugState);
   virtual void teardown() = 0;
 
-  void render(ViewLayer::iterator iter, ViewLayer::iterator end);
-
-  virtual void updateBufferNested(View::shared_ptr view);
+  void render(ViewLayer::iterator iter, ViewLayer::iterator end, double t);
 
   void setScreenSize(HMM_Vec2 size);
 
@@ -44,21 +37,23 @@ private:
   HMM_Mat4 _projectionMatrix;
   DebugState::shared_ptr _debugState;
 
+  void updateBufferNested(View::shared_ptr view, double t);
+
 protected:
   virtual void setup() = 0;
 
   LogCategory logCategory() const override;
-  HMM_Vec2 cameraPos() const;
-  HMM_Mat4 viewMatrix() const;
-  HMM_Mat4 projectionViewMatrix() const;
+  HMM_Vec2 cameraPos(double t) const;
+  HMM_Mat4 viewMatrix(double t) const;
+  HMM_Mat4 projectionViewMatrix(double t) const;
   const RendererManagerConfiguration configuration() const;
 
-  virtual void prepareMainLayer() = 0;
-  virtual void updateBuffer(View::shared_ptr view) = 0;
+  virtual void prepareMainLayer(double t) = 0;
+  virtual void updateBuffer(View::shared_ptr view, double t) = 0;
   virtual void drawMainLayer() = 0;
-  virtual void drawDebugGrid(GridResolution resolution) = 0;
+  virtual void drawDebugGrid(GridResolution resolution, double t) = 0;
   virtual void drawDebugStats(DebugState::shared_ptr debugState) = 0;
-  virtual void drawDebugMenu(DebugState::shared_ptr debugState) = 0;
+  virtual void drawDebugMenu(DebugState::shared_ptr debugState, double t) = 0;
   virtual void commitFrame() = 0;
 };
 } // namespace grumble
