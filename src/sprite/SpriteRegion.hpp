@@ -11,15 +11,12 @@
 #include <glm/gtx/string_cast.hpp>
 
 namespace grumble {
-  struct SpriteRegion {
-    glm::vec2 topLeft, topRight, bottomLeft, bottomRight;
-    
-    std::string toString() const {
-      return fmt::format("{}, {}, {}, {}",
-                         glm::to_string(topLeft),
-                         glm::to_string(topRight),
-                         glm::to_string(bottomLeft),
-                         glm::to_string(bottomRight));
-    }
-  };
-}
+struct SpriteRegion {
+  glm::vec2 tl, tr, bl, br;
+
+  std::string toString() const {
+    return fmt::format("{}, {}, {}, {}", glm::to_string(tl), glm::to_string(tr),
+                       glm::to_string(bl), glm::to_string(br));
+  }
+};
+} // namespace grumble

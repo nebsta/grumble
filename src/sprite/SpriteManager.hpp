@@ -12,7 +12,6 @@
 #include <map>
 #include <string>
 
-#include "Sprite.hpp"
 #include "SpriteAtlas.hpp"
 #include "SpriteManagerConfiguration.hpp"
 
@@ -31,8 +30,6 @@ public:
   ~SpriteManager();
 
   void setup();
-
-  Sprite::shared_ptr getSprite(std::string name, std::string atlas);
 
   const SpriteAtlas::vector allAtlases() const;
 

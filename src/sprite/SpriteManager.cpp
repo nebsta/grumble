@@ -40,12 +40,6 @@ void SpriteManager::setup() {
   logInfo("Successfully set up SpriteManager");
 }
 
-Sprite::shared_ptr SpriteManager::getSprite(std::string name,
-                                            std::string atlas) {
-  logDebug("Getting sprite: {} in atlas: {}", name, atlas);
-  return _allAtlases.at(atlas)->getSprite(name);
-}
-
 LogCategory SpriteManager::logCategory() const {
   return LogCategory::rendering;
 }
