@@ -8,14 +8,11 @@
 
 #pragma once
 
-#include <fmt/core.h>
-#include <iostream>
-#include <string>
-#include <vector>
-
-#include "../util/Time.hpp"
 #include "LogCategory.hpp"
 #include "LogLevel.hpp"
+#include <fmt/core.h>
+#include <string>
+#include <vector>
 
 namespace grumble {
 class Logger {
@@ -23,29 +20,47 @@ public:
   static void log(std::string message, LogLevel level, LogCategory category);
 
   template <typename... T>
-  static void debug(const std::string message,
-                    LogCategory category = LogCategory::none, T &&...args) {
+  static void debug(const std::string message, T &&...args) {
+    Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::debug,
+                LogCategory::none);
+  }
+
+  template <typename... T> static void info(std::string message, T &&...args) {
+    Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::info,
+                LogCategory::none);
+  }
+
+  template <typename... T> static void warn(std::string message, T &&...args) {
+    Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::warn,
+                LogCategory::none);
+  }
+
+  template <typename... T> static void error(std::string message, T &&...args) {
+    Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::error,
+                LogCategory::none);
+  }
+
+  template <typename... T>
+  static void debug(const std::string message, LogCategory category,
+                    T &&...args) {
     Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::debug,
                 category);
   }
 
   template <typename... T>
-  static void info(std::string message,
-                   LogCategory category = LogCategory::none, T &&...args) {
+  static void info(std::string message, LogCategory category, T &&...args) {
     Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::info,
                 category);
   }
 
   template <typename... T>
-  static void warn(std::string message,
-                   LogCategory category = LogCategory::none, T &&...args) {
+  static void warn(std::string message, LogCategory category, T &&...args) {
     Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::warn,
                 category);
   }
 
   template <typename... T>
-  static void error(std::string message,
-                    LogCategory category = LogCategory::none, T &&...args) {
+  static void error(std::string message, LogCategory category, T &&...args) {
     Logger::log(fmt::format(fmt::runtime(message), args...), LogLevel::error,
                 category);
   }

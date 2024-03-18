@@ -39,7 +39,7 @@ std::vector<char> FileManager::loadFileRaw(std::filesystem::path filename) {
   return std::vector<char>();
 }
 
-ImageFile::shared_ptr FileManager::loadPNG(std::filesystem::path filename) {
+ImageFile::unique_ptr FileManager::loadPNG(std::filesystem::path filename) {
   logInfo("Attempting to load png image: " + filename.string());
 
   std::filesystem::path path = buildReadPath(filename);
@@ -101,12 +101,12 @@ ImageFile::shared_ptr FileManager::loadPNG(std::filesystem::path filename) {
 
   fclose(fp);
   png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
-  return std::make_shared<ImageFile>(imgWidth, imgHeight, rowSize,
+  return std::make_unique<ImageFile>(imgWidth, imgHeight, rowSize,
                                      std::shared_ptr<unsigned char>(rowPtrs));
 }
 
 void FileManager::writePNG(std::filesystem::path filename,
-                           ImageFile::shared_ptr file) {
+                           ImageFile::unique_ptr file) {
   std::filesystem::path path = buildWritePath(filename);
   FILE *fp = fopen(path.c_str(), "wb");
   if (fp == nullptr) {

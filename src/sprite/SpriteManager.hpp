@@ -10,16 +10,13 @@
 
 #include <glm/glm.hpp>
 #include <map>
-#include <string>
+#include <string_view>
 
-#include "SpriteAtlas.hpp"
 #include "SpriteManagerConfiguration.hpp"
 
 #include "../io/FileManager.hpp"
 
 namespace grumble {
-typedef std::map<std::string, SpriteAtlas::shared_ptr> AtlasMap;
-typedef AtlasMap::const_iterator AtlasMapConstIterator;
 
 class SpriteManager : Object {
 public:
@@ -29,20 +26,18 @@ public:
                 FileManager::shared_ptr fileManager);
   ~SpriteManager();
 
+  void loadAtlas(std::string_view atlasName);
   void setup();
-
-  const SpriteAtlas::vector allAtlases() const;
 
 protected:
   LogCategory logCategory() const override;
 
 private:
+  std::map<std::string_view, ImageFile::unique_ptr> _loadedAtlases;
+
   SpriteManagerConfiguration _configuration;
   FileManager::shared_ptr _fileManager;
 
-  AtlasMap _allAtlases;
-
-  std::filesystem::path buildAtlasImagePath(std::string atlasName);
-  std::filesystem::path buildAtlasDataPath(std::string atlasName);
+  bool atlasLoaded(std::string_view atlas) const;
 };
 } // namespace grumble

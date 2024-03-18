@@ -26,10 +26,10 @@ public:
 
   std::string loadFile(std::filesystem::path filename);
   std::vector<char> loadFileRaw(std::filesystem::path filename);
-  ImageFile::shared_ptr loadPNG(std::filesystem::path filename);
+  ImageFile::unique_ptr loadPNG(std::filesystem::path filename);
   nlohmann::json loadJson(std::filesystem::path filename);
 
-  void writePNG(std::filesystem::path filename, ImageFile::shared_ptr file);
+  void writePNG(std::filesystem::path filename, ImageFile::unique_ptr file);
 
 protected:
   LogCategory logCategory() const override;

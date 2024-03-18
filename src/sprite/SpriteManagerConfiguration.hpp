@@ -6,12 +6,13 @@
 //
 
 #pragma once
+#include <filesystem>
+#include <string_view>
+#include <vector>
 
 namespace grumble {
-  struct SpriteManagerConfiguration {
-    typedef std::vector<std::string>::iterator AtlasIterator;
-    
-    std::filesystem::path atlasPath;
-    std::vector<std::string> atlases;
-  };
-}
+struct SpriteManagerConfiguration {
+  std::filesystem::path atlasPath;
+  std::vector<std::string_view> preloadedAtlases;
+};
+} // namespace grumble
