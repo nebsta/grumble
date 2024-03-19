@@ -44,7 +44,8 @@ void SpriteManager::loadAtlas(std::string_view atlasName) {
     return;
   }
 
-  std::filesystem::path atlasPath = _configuration.atlasPath / atlasName;
+  std::filesystem::path atlasPath =
+      _configuration.atlasPath / fmt::format("{}.png", atlasName);
   std::unique_ptr<ImageFile> loadedFile = _fileManager->loadPNG(atlasPath);
   if (loadedFile == nullptr) {
     logError("Error loading atlas file at path {}", atlasPath.string());
