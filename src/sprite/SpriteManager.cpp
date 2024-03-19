@@ -9,6 +9,7 @@
 #include "SpriteManager.hpp"
 #include <filesystem>
 #include <fmt/core.h>
+#include <memory>
 #include <string_view>
 #include <vector>
 
@@ -54,6 +55,16 @@ void SpriteManager::loadAtlas(std::string_view atlasName) {
 
   logInfo("Loaded atlas successfully at path {}", atlasPath.string());
   _loadedAtlases[atlasName] = std::move(loadedFile);
+}
+
+ImageFile::weak_ptr SpriteManager::getAtlasData(std::string_view atlas) const {
+  atlas_map_iter iter = _loadedAtlases.find(atlas);
+  if (iter == _loadedAtlases.end()) {
+    logError("Trying to get loaded atlas data when it doesn't exist");
+    return std::weak_ptr<ImageFile>();
+  }
+
+  return iter->second;
 }
 
 bool SpriteManager::atlasLoaded(std::string_view atlas) const {

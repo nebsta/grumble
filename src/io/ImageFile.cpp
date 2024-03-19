@@ -10,9 +10,9 @@
 
 namespace grumble {
 ImageFile::ImageFile(std::string_view name, int width, int height,
-                     int bytesPerRow, std::shared_ptr<unsigned char> data)
+                     int bytesPerRow, std::unique_ptr<unsigned char> data)
     : _name(name), _width(width), _height(height), _bytesPerRow(bytesPerRow),
-      _data(data), Object(name) {}
+      _data(std::move(data)), Object(name) {}
 
 std::string_view ImageFile::name() const { return _name; }
 
@@ -22,7 +22,7 @@ const int ImageFile::height() const { return _height; }
 
 const int ImageFile::bytesPerRow() const { return _bytesPerRow; }
 
-std::shared_ptr<unsigned char> ImageFile::data() const { return _data; }
+std::weak_ptr<unsigned char> ImageFile::data() const { return _data; }
 
 const std::string ImageFile::toString() const {
   return fmt::format("id: {}, width: {}, height: {}, btyesPerRow: {}", _id,

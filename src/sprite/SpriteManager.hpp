@@ -21,6 +21,8 @@ namespace grumble {
 class SpriteManager : Object {
 public:
   typedef std::shared_ptr<SpriteManager> shared_ptr;
+  typedef std::map<std::string_view, ImageFile::shared_ptr> atlas_map;
+  typedef atlas_map::const_iterator atlas_map_iter;
 
   SpriteManager(SpriteManagerConfiguration configuration,
                 FileManager::shared_ptr fileManager);
@@ -29,11 +31,13 @@ public:
   void loadAtlas(std::string_view atlasName);
   void setup();
 
+  ImageFile::weak_ptr getAtlasData(std::string_view atlas) const;
+
 protected:
   LogCategory logCategory() const override;
 
 private:
-  std::map<std::string_view, ImageFile::unique_ptr> _loadedAtlases;
+  atlas_map _loadedAtlases;
 
   SpriteManagerConfiguration _configuration;
   FileManager::shared_ptr _fileManager;
