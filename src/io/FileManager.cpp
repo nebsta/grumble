@@ -101,7 +101,8 @@ ImageFile::unique_ptr FileManager::loadPNG(std::filesystem::path filename) {
 
   fclose(fp);
   png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
-  return std::make_unique<ImageFile>(imgWidth, imgHeight, rowSize,
+  return std::make_unique<ImageFile>(filename.string(), imgWidth, imgHeight,
+                                     rowSize,
                                      std::shared_ptr<unsigned char>(rowPtrs));
 }
 

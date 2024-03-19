@@ -78,8 +78,8 @@ int Font::atlasHeight() { return ATLAS_SIZE.y; }
 int Font::bytesPerRow() { return ATLAS_SIZE.x; }
 
 std::shared_ptr<ImageFile> Font::generateAtlasImage() {
-  return std::make_shared<ImageFile>(atlasWidth(), atlasHeight(), bytesPerRow(),
-                                     data());
+  return std::make_shared<ImageFile>("", atlasWidth(), atlasHeight(),
+                                     bytesPerRow(), data());
 }
 
 FontCharacter::vector Font::allCharacters() {

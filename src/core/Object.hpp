@@ -17,11 +17,10 @@ namespace grumble {
 class Object {
 
 public:
-  Object(std::string id = "");
+  Object(std::string_view id = "");
   ~Object();
 
-  std::string id() const;
-  void setId(std::string id);
+  std::string_view id() const;
 
   virtual const std::string toString() const;
 

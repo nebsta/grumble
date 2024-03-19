@@ -8,22 +8,27 @@
 #pragma once
 
 #include "../core/Object.hpp"
+#include <string_view>
 
 namespace grumble {
 class ImageFile : public Object {
 public:
   typedef std::unique_ptr<ImageFile> unique_ptr;
 
-  ImageFile(int width, int height, int bytesPerRow,
+  ImageFile(std::string_view name, int width, int height, int bytesPerRow,
             std::shared_ptr<unsigned char> data);
 
+  std::string_view name() const;
   const int width() const;
   const int height() const;
   const int bytesPerRow() const;
 
   std::shared_ptr<unsigned char> data() const;
 
+  const std::string toString() const override;
+
 private:
+  std::string_view _name;
   int _width;
   int _height;
   int _bytesPerRow;

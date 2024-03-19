@@ -6,29 +6,26 @@
 //
 
 #include "ImageFile.hpp"
+#include <string_view>
 
 namespace grumble {
-  ImageFile::ImageFile(int width, int height, int bytesPerRow, std::shared_ptr<unsigned char> data) :
-    _width(width),
-    _height(height),
-    _bytesPerRow(bytesPerRow),
-    _data(data) {
-    
-  }
+ImageFile::ImageFile(std::string_view name, int width, int height,
+                     int bytesPerRow, std::shared_ptr<unsigned char> data)
+    : _name(name), _width(width), _height(height), _bytesPerRow(bytesPerRow),
+      _data(data), Object(name) {}
 
-  const int ImageFile::width() const {
-    return _width;
-  }
+std::string_view ImageFile::name() const { return _name; }
 
-  const int ImageFile::height() const {
-    return _height;
-  }
+const int ImageFile::width() const { return _width; }
 
-  const int ImageFile::bytesPerRow() const {
-    return _bytesPerRow;
-  }
+const int ImageFile::height() const { return _height; }
 
-  std::shared_ptr<unsigned char> ImageFile::data() const {
-    return _data;
-  }
+const int ImageFile::bytesPerRow() const { return _bytesPerRow; }
+
+std::shared_ptr<unsigned char> ImageFile::data() const { return _data; }
+
+const std::string ImageFile::toString() const {
+  return fmt::format("id: {}, width: {}, height: {}, btyesPerRow: {}", _id,
+                     _width, _height, _bytesPerRow);
 }
+} // namespace grumble
