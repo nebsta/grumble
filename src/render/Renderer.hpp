@@ -8,14 +8,12 @@
 
 #pragma once
 
+#include "../core/Object.hpp"
+#include "../sprite/SpriteDefinition.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/string_cast.hpp>
-
 #include <vector>
-
-#include "../core/Object.hpp"
-#include "../util/ColorConstants.hpp"
 
 namespace grumble {
 class Renderer : public Object {
@@ -27,11 +25,13 @@ public:
   ~Renderer();
 
   void setTint(const glm::vec4 &tint);
+  void setSprite(const SpriteDefinition &sprite);
 
   const uint32_t instanceId() const;
   const glm::vec4 tint() const;
 
 private:
+  SpriteDefinition _sprite;
   int _instanceId;
 
 protected:

@@ -14,10 +14,12 @@ namespace grumble {
 
 struct SpriteDefinition {
   std::string_view name;
+  std::string_view atlas;
   SpriteRegion region;
 
   std::string toString() const {
-    return fmt::format("{}, {}", name, region.toString());
+    return fmt::format("name: {}, atlas: {} region: {}", name, atlas,
+                       region.toString());
   }
 };
 } // namespace grumble

@@ -7,6 +7,7 @@
 //
 
 #include "Renderer.hpp"
+#include "../util/ColorConstants.hpp"
 
 namespace grumble {
 
@@ -18,6 +19,8 @@ Renderer::~Renderer() {}
 #pragma mark Setters
 
 void Renderer::setTint(const glm::vec4 &tint) { _tint = tint; }
+
+void Renderer::setSprite(const SpriteDefinition &sprite) { _sprite = sprite; }
 
 #pragma mark Getters
 
