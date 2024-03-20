@@ -15,8 +15,8 @@ namespace grumble {
 struct SpriteDefinition {
   std::string_view name;
   std::string_view atlas;
-  SpriteRegion region;
   HMM_Vec2 size;
+  SpriteRegion region;
 
   std::string toString() const {
     return fmt::format("name: {}, atlas: {} region: {} size: {}", name, atlas,
