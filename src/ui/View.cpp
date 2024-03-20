@@ -10,12 +10,12 @@
 #include <memory>
 
 namespace grumble {
-View::View(Renderer::shared_ptr renderer, glm::vec2 position, glm::vec2 size,
+View::View(Renderer::shared_ptr renderer, HMM_Vec2 position, HMM_Vec2 size,
            TransformOrigin origin, ViewType type)
     : _transform(std::make_shared<Transform>(position, size, origin)),
       _renderer(renderer), _type(type) {}
 
-View::View(uint32_t instanceId, glm::vec2 position, glm::vec2 size,
+View::View(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
            TransformOrigin origin, ViewType type)
     : View(std::make_shared<Renderer>(instanceId), position, size, origin,
            type) {}

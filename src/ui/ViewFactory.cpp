@@ -11,7 +11,7 @@ namespace grumble {
 ViewFactory::ViewFactory(FontManager::shared_ptr fontManager)
     : _fontManager(fontManager) {}
 
-View::shared_ptr ViewFactory::createView(glm::vec2 position, glm::vec2 size,
+View::shared_ptr ViewFactory::createView(HMM_Vec2 position, HMM_Vec2 size,
                                          TransformOrigin origin) {
 
   uint32_t instanceId = generateInstanceId();

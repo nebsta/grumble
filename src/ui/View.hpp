@@ -17,9 +17,6 @@
 
 #include "../render/Renderer.hpp"
 
-#include "../util/ColorConstants.hpp"
-#include "../util/MathConstants.hpp"
-
 namespace grumble {
 class View : public Object {
 public:
@@ -27,13 +24,12 @@ public:
   typedef std::vector<shared_ptr> vector;
   typedef vector::iterator iterator;
 
-  View(uint32_t instanceId, glm::vec2 position = {0, 0},
-       glm::vec2 size = {0, 0},
+  View(uint32_t instanceId, HMM_Vec2 position = {0, 0}, HMM_Vec2 size = {0, 0},
        TransformOrigin origin = TransformOrigin::TopLeft,
        ViewType type = ViewType::BaseType);
 
-  View(Renderer::shared_ptr renderer, glm::vec2 position = {0, 0},
-       glm::vec2 size = {0, 0},
+  View(Renderer::shared_ptr renderer, HMM_Vec2 position = {0, 0},
+       HMM_Vec2 size = {0, 0},
        TransformOrigin origin = TransformOrigin::TopLeft,
        ViewType type = ViewType::BaseType);
 

@@ -7,13 +7,10 @@
 
 #pragma once
 
-#include <memory>
-
 #include "../core/Object.hpp"
-
-#include "../ui/View.hpp"
-
 #include "../font/FontManager.hpp"
+#include "../ui/View.hpp"
+#include <memory>
 
 namespace grumble {
 class ViewFactory : public Object {
@@ -23,7 +20,7 @@ public:
   ViewFactory(FontManager::shared_ptr fontManager);
 
   View::shared_ptr
-  createView(glm::vec2 position = VECTOR_EMPTY, glm::vec2 size = {0.0, 0.0},
+  createView(HMM_Vec2 position = {0.0, 0.0}, HMM_Vec2 size = {0.0, 0.0},
              TransformOrigin origin = TransformOrigin::TopLeft);
 
 private:

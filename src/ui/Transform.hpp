@@ -11,8 +11,6 @@
 #include "../util/HandmadeMath.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <stdio.h>
-#include <vector>
 
 #include "../core/Object.hpp"
 
@@ -24,29 +22,29 @@ class Transform : public Object {
 public:
   typedef std::shared_ptr<Transform> shared_ptr;
 
-  Transform(glm::vec2 position = {0, 0}, glm::vec2 size = {10, 10},
+  Transform(HMM_Vec2 position = {0, 0}, HMM_Vec2 size = {10, 10},
             TransformOrigin origin = TransformOrigin::TopLeft);
   ~Transform();
 
-  void setLocalPosition(glm::vec2 localPosition);
+  void setLocalPosition(HMM_Vec2 localPosition);
 
   void setWidth(float width);
   void setHeight(float height);
   void setRelativeWidth(float factor);
   void setRelativeHeight(float factor);
-  void setSize(glm::vec2 size);
+  void setSize(HMM_Vec2 size);
   void setParent(Transform::shared_ptr parent);
 
-  glm::vec2 localPosition() const;
-  glm::vec2 screenPosition() const;
-  const glm::vec2 size() const;
+  HMM_Vec2 localPosition() const;
+  HMM_Vec2 screenPosition() const;
+  const HMM_Vec2 size() const;
   const HMM_Mat4 modelMatrix(float renderScale) const;
 
-  bool containsLocalPoint(glm::vec2 point) const;
-  bool containsScreenPoint(glm::vec2 point) const;
+  bool containsLocalPoint(HMM_Vec2 point) const;
+  bool containsScreenPoint(HMM_Vec2 point) const;
 
 private:
-  glm::vec2 _localPosition;
+  HMM_Vec2 _localPosition;
 
   TransformDimension _width;
   TransformDimension _height;

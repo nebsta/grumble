@@ -16,10 +16,11 @@ struct SpriteDefinition {
   std::string_view name;
   std::string_view atlas;
   SpriteRegion region;
+  HMM_Vec2 size;
 
   std::string toString() const {
-    return fmt::format("name: {}, atlas: {} region: {}", name, atlas,
-                       region.toString());
+    return fmt::format("name: {}, atlas: {} region: {} size: {}", name, atlas,
+                       region.toString(), HMM_Vec2_toString(size));
   }
 };
 } // namespace grumble
