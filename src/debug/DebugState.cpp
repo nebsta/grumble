@@ -2,7 +2,8 @@
 #include "GridResolution.hpp"
 
 namespace grumble {
-DebugState::DebugState() : _gridResolution(GridResolution::Small) {}
+DebugState::DebugState()
+    : _gridResolution(GridResolution::Small), _frameStatsIndex(0) {}
 
 DebugState::~DebugState() {}
 

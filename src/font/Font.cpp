@@ -15,8 +15,8 @@ Font::~Font() {}
 void Font::setup(FT_Face face) {
   int maxRowHeight = 0;
   int rowWidth = 0;
-  int yPos = 0;
-  int xPos = 0;
+  float yPos = 0;
+  float xPos = 0;
   for (unsigned char c = 48; c < CHARACTER_TOTAL; c++) {
     logInfo("Loading glyph: {}", c);
 

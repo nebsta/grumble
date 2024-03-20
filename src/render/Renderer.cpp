@@ -28,4 +28,6 @@ const uint32_t Renderer::instanceId() const { return _instanceId; }
 
 const glm::vec4 Renderer::tint() const { return _tint; }
 
+const SpriteDefinition Renderer::sprite() const { return _sprite; }
+
 } // namespace grumble

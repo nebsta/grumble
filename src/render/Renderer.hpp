@@ -29,6 +29,7 @@ public:
 
   const uint32_t instanceId() const;
   const glm::vec4 tint() const;
+  const SpriteDefinition sprite() const;
 
 private:
   SpriteDefinition _sprite;

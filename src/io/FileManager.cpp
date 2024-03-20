@@ -76,15 +76,15 @@ ImageFile::unique_ptr FileManager::loadPNG(std::filesystem::path filename) {
 
   png_uint_32 imgWidth = png_get_image_width(pngPtr, infoPtr);
   png_uint_32 imgHeight = png_get_image_height(pngPtr, infoPtr);
-  //    png_uint_32 bitDepth = png_get_bit_depth(pngPtr, infoPtr);
-  //    png_uint_32 channels = png_get_channels(pngPtr, infoPtr);
-  //    png_uint_32 color_type = png_get_color_type(pngPtr, infoPtr);
+  png_uint_32 bitDepth = png_get_bit_depth(pngPtr, infoPtr);
+  png_uint_32 channels = png_get_channels(pngPtr, infoPtr);
+  png_uint_32 color_type = png_get_color_type(pngPtr, infoPtr);
 
-  //    logInfo("Image Size: " + std::to_string(imgWidth) + ", " +
-  //    std::to_string(imgHeight)); logInfo("bitDepth: " +
-  //    std::to_string(bitDepth)); logInfo("channels: " +
-  //    std::to_string(channels)); logInfo("color_type: " +
-  //    std::to_string(color_type));
+  logInfo("Image Size: " + std::to_string(imgWidth) + ", " +
+          std::to_string(imgHeight));
+  logInfo("bitDepth: " + std::to_string(bitDepth));
+  logInfo("channels: " + std::to_string(channels));
+  logInfo("color_type: " + std::to_string(color_type));
 
   size_t rowSize = png_get_rowbytes(pngPtr, infoPtr);
   auto arrayLength = imgHeight * rowSize;

@@ -7,16 +7,19 @@
 
 #pragma once
 
+#include "../util/HandmadeMath.h"
+#include "../util/MathUtils.hpp"
 #include <fmt/core.h>
 #include <glm/gtx/string_cast.hpp>
 
 namespace grumble {
 struct SpriteRegion {
-  glm::vec2 tl, tr, bl, br;
+  HMM_Vec2 tl, tr, bl, br;
 
   std::string toString() const {
-    return fmt::format("{}, {}, {}, {}", glm::to_string(tl), glm::to_string(tr),
-                       glm::to_string(bl), glm::to_string(br));
+    return fmt::format("{}, {}, {}, {}", HMM_Vec2_toString(tl),
+                       HMM_Vec2_toString(tr), HMM_Vec2_toString(bl),
+                       HMM_Vec2_toString(br));
   }
 };
 } // namespace grumble
