@@ -14,6 +14,7 @@
 
 #include "Transform.hpp"
 
+#include "../anim/SpriteAnimator.hpp"
 #include "../render/Renderer.hpp"
 #include "../render/RendererManager.hpp"
 
@@ -54,6 +55,7 @@ public:
   void setPosition(HMM_Vec2 pos);
   void setSize(HMM_Vec2 size);
   void setSprite(SpriteDefinition sprite);
+  SpriteAnimator::shared_ptr spriteAnimator;
 
 private:
   Transform::shared_ptr _transform;

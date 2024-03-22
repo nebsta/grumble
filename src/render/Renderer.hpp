@@ -24,8 +24,8 @@ public:
   Renderer(uint32_t instanceId);
   ~Renderer();
 
-  void setTint(const glm::vec4 &tint);
-  void setSprite(const SpriteDefinition &sprite);
+  void setTint(glm::vec4 tint);
+  void setSprite(SpriteDefinition sprite);
 
   const uint32_t instanceId() const;
   const glm::vec4 tint() const;

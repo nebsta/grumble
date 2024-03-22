@@ -22,6 +22,11 @@ View::View(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
 View::~View() { _children.clear(); }
 
 void View::update(const float &dt) {
+  if (spriteAnimator != nullptr) {
+    spriteAnimator->update(dt);
+    _renderer->setSprite(spriteAnimator->currentFrame());
+  }
+
   if (hasChildren()) {
     unique_iterator iter = _children.begin();
     for (; iter != _children.end(); iter++) {
@@ -36,7 +41,7 @@ void View::updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
   HMM_Mat4 modelMatrix = _transform->modelMatrix(1.0f);
   uint32_t instanceId = _renderer->instanceId();
 
-  grumble::SpriteDefinition sprite = _renderer->sprite();
+  SpriteDefinition sprite = _renderer->sprite();
   HMM_Vec2 spriteSize = sprite.size;
   HMM_Vec2 uvOrigin = sprite.region.bl;
   HMM_Vec2 uvSize = sprite.region.size();

@@ -18,9 +18,9 @@ Renderer::~Renderer() {}
 
 #pragma mark Setters
 
-void Renderer::setTint(const glm::vec4 &tint) { _tint = tint; }
+void Renderer::setTint(glm::vec4 tint) { _tint = tint; }
 
-void Renderer::setSprite(const SpriteDefinition &sprite) { _sprite = sprite; }
+void Renderer::setSprite(SpriteDefinition sprite) { _sprite = sprite; }
 
 #pragma mark Getters
 

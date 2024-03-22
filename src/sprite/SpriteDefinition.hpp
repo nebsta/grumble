@@ -9,10 +9,14 @@
 #pragma once
 
 #include "SpriteRegion.hpp"
+#include <vector>
 
 namespace grumble {
 
 struct SpriteDefinition {
+public:
+  typedef std::vector<SpriteDefinition> vector;
+
   std::string_view name;
   std::string_view atlas;
   HMM_Vec2 size;
