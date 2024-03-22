@@ -21,5 +21,12 @@ struct SpriteRegion {
                        HMM_Vec2_toString(tr), HMM_Vec2_toString(bl),
                        HMM_Vec2_toString(br));
   }
+
+  HMM_Vec2 size() const {
+    return {
+        tr.X - tl.X,
+        tr.Y - br.Y,
+    };
+  }
 };
 } // namespace grumble
