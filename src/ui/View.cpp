@@ -12,7 +12,7 @@
 namespace grumble {
 View::View(Renderer::unique_ptr renderer, HMM_Vec2 position, HMM_Vec2 size,
            TransformOrigin origin)
-    : _transform(std::make_unique<Transform>(position, size, origin)),
+    : _transform(std::make_shared<Transform>(position, size, origin)),
       _renderer(std::move(renderer)) {}
 
 View::View(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
@@ -23,7 +23,7 @@ View::~View() { _children.clear(); }
 
 void View::update(const float &dt) {
   if (hasChildren()) {
-    shared_iterator iter = _children.begin();
+    unique_iterator iter = _children.begin();
     for (; iter != _children.end(); iter++) {
       (*iter)->update(dt);
     }
@@ -73,20 +73,20 @@ void View::updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
 
 #pragma mark Child Management
 
-void View::addChild(View::shared_ptr child) {
+void View::addChild(View::unique_ptr child) {
 
   // check if the child view already exists in the hierarchy
   if (hasChildren()) {
-    shared_iterator pos = std::find(_children.begin(), _children.end(), child);
+    unique_iterator pos = std::find(_children.begin(), _children.end(), child);
     if (pos != _children.end()) {
       logWarn(
           "Trying to add a child view when it already belongs to the parent");
       return;
     }
   }
-  _children.push_back(child);
-
   child->setParent(_transform);
+
+  _children.push_back(std::move(child));
 }
 
 void View::setParent(std::weak_ptr<Transform> parent) {

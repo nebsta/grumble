@@ -47,7 +47,7 @@ public:
 
   // children handling
   void setParent(std::weak_ptr<Transform> parent);
-  void addChild(shared_ptr child);
+  void addChild(unique_ptr child);
   bool hasChildren() const;
 
   // setters
@@ -58,6 +58,6 @@ public:
 private:
   Transform::shared_ptr _transform;
   Renderer::unique_ptr _renderer;
-  shared_vector _children;
+  unique_vector _children;
 };
 } // namespace grumble
