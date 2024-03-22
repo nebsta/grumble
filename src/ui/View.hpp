@@ -13,47 +13,51 @@
 #include <vector>
 
 #include "Transform.hpp"
-#include "ViewType.hpp"
 
 #include "../render/Renderer.hpp"
+#include "../render/RendererManager.hpp"
 
 namespace grumble {
 class View : public Object {
 public:
   typedef std::shared_ptr<View> shared_ptr;
-  typedef std::vector<shared_ptr> vector;
-  typedef vector::iterator iterator;
+  typedef std::unique_ptr<View> unique_ptr;
+  typedef std::weak_ptr<View> weak_ptr;
+
+  typedef std::vector<shared_ptr> shared_vector;
+  typedef std::vector<unique_ptr> unique_vector;
+  typedef std::vector<weak_ptr> weak_vector;
+
+  typedef shared_vector::iterator shared_iterator;
+  typedef unique_vector::iterator unique_iterator;
+  typedef weak_vector::iterator weak_iterator;
 
   View(uint32_t instanceId, HMM_Vec2 position = {0, 0}, HMM_Vec2 size = {0, 0},
-       TransformOrigin origin = TransformOrigin::TopLeft,
-       ViewType type = ViewType::BaseType);
+       TransformOrigin origin = TransformOrigin::TopLeft);
 
-  View(Renderer::shared_ptr renderer, HMM_Vec2 position = {0, 0},
+  View(Renderer::unique_ptr renderer, HMM_Vec2 position = {0, 0},
        HMM_Vec2 size = {0, 0},
-       TransformOrigin origin = TransformOrigin::TopLeft,
-       ViewType type = ViewType::BaseType);
+       TransformOrigin origin = TransformOrigin::TopLeft);
 
   ~View();
 
   void update(const float &dt);
+  void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
+                            double t);
 
+  // children handling
+  void setParent(std::weak_ptr<Transform> parent);
   void addChild(shared_ptr child);
   bool hasChildren() const;
 
-  Transform::shared_ptr transform();
-  Renderer::shared_ptr renderer();
-
-  iterator childIteratorBegin();
-  iterator childIteratorEnd();
-
-  const ViewType type() const;
-
-protected:
-  Transform::shared_ptr _transform;
-  Renderer::shared_ptr _renderer;
+  // setters
+  void setPosition(HMM_Vec2 pos);
+  void setSize(HMM_Vec2 size);
+  void setSprite(SpriteDefinition sprite);
 
 private:
-  ViewType _type;
-  vector _children;
+  Transform::shared_ptr _transform;
+  Renderer::unique_ptr _renderer;
+  shared_vector _children;
 };
 } // namespace grumble

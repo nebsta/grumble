@@ -19,7 +19,7 @@ public:
 
   ViewFactory(FontManager::shared_ptr fontManager);
 
-  View::shared_ptr
+  View::unique_ptr
   createView(HMM_Vec2 position = {0.0, 0.0}, HMM_Vec2 size = {0.0, 0.0},
              TransformOrigin origin = TransformOrigin::TopLeft);
 

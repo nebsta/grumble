@@ -3,7 +3,9 @@
 
 namespace grumble {
 DebugState::DebugState()
-    : _gridResolution(GridResolution::Small), _frameStatsIndex(0) {}
+    : _gridResolution(GridResolution::Small), _frameStatsIndex(0),
+      _debugMenuVisible(false), _gridVisible(false), _frameStatsVisible(false),
+      _instanceIdVisible(false) {}
 
 DebugState::~DebugState() {}
 

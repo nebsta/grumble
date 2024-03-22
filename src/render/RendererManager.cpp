@@ -19,19 +19,9 @@ void RendererManager::setup(Camera::shared_ptr camera,
   setup();
 }
 
-void RendererManager::render(ViewLayer::iterator iter, ViewLayer::iterator end,
-                             double t) {
-  prepareMainLayer(t);
+void RendererManager::prepareFrame(double t) { prepareMainLayer(t); }
 
-  for (; iter != end; iter++) {
-    ViewLayer::shared_ptr layer = (*iter);
-    View::iterator viewIter = layer->viewIteratorBegin();
-    for (; viewIter != layer->viewIteratorEnd(); viewIter++) {
-      View::shared_ptr rootView = *viewIter;
-      updateBufferNested(rootView, t);
-    }
-  }
-
+void RendererManager::drawFrame(double t) {
   drawMainLayer();
 
   if (_debugState->gridVisible()) {
@@ -47,20 +37,6 @@ void RendererManager::render(ViewLayer::iterator iter, ViewLayer::iterator end,
   }
 
   commitFrame();
-}
-
-void RendererManager::updateBufferNested(View::shared_ptr view, double t) {
-  this->updateBuffer(view, t);
-
-  if (!view->hasChildren()) {
-    return;
-  }
-
-  View::iterator iter = view->childIteratorBegin();
-  for (; iter != view->childIteratorEnd(); iter++) {
-    View::shared_ptr view = (*iter);
-    this->updateBuffer(view, t);
-  }
 }
 
 const float RendererManager::renderScale() const { return _renderScale; }

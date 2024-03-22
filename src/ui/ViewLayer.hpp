@@ -1,34 +1,34 @@
 #pragma once
 
 #include "../core/Object.hpp"
+#include "../render/RendererManager.hpp"
 #include "../ui/View.hpp"
-#include <array>
+#include "ViewLayerType.hpp"
 #include <memory>
-#include <vector>
-
-#define MAX_VIEW_LAYERS 5
 
 namespace grumble {
 class ViewLayer : public Object {
 public:
-  typedef std::shared_ptr<ViewLayer> shared_ptr;
-  typedef std::array<shared_ptr, MAX_VIEW_LAYERS> array;
+  typedef std::unique_ptr<ViewLayer> unique_ptr;
+  typedef std::array<unique_ptr, MAX_VIEW_LAYERS> array;
   typedef array::iterator iterator;
 
   ViewLayer();
   ~ViewLayer();
 
-  void addView(View::shared_ptr view);
-  void update(double dt);
+  void addView(View::unique_ptr view);
 
-  View::iterator viewIteratorBegin();
-  View::iterator viewIteratorEnd();
+  void update(double dt);
+  void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
+                            double t);
+
+  bool hasViews() const;
 
 protected:
   LogCategory logCategory() const override;
 
 private:
-  std::vector<View::shared_ptr> _views;
+  View::unique_vector _views;
 };
 
 } // namespace grumble

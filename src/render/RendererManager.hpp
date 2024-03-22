@@ -9,9 +9,8 @@
 #include "../core/Camera.hpp"
 #include "../core/Object.hpp"
 #include "../debug/DebugState.hpp"
-#include "../ui/View.hpp"
-#include "../ui/ViewLayer.hpp"
 #include "../util/HandmadeMath.h"
+#include "ViewInstance.hpp"
 
 namespace grumble {
 class RendererManager : public Object {
@@ -24,7 +23,10 @@ public:
   void setup(Camera::shared_ptr camera, DebugState::shared_ptr debugState);
   virtual void teardown() = 0;
 
-  void render(ViewLayer::iterator iter, ViewLayer::iterator end, double t);
+  void prepareFrame(double t);
+  virtual void updateInstanceBuffer(int instanceId, ViewInstance instance,
+                                    double t) = 0;
+  void drawFrame(double t);
 
   void setScreenSize(HMM_Vec2 size);
 
@@ -37,8 +39,6 @@ private:
   HMM_Mat4 _projectionMatrix;
   DebugState::shared_ptr _debugState;
 
-  void updateBufferNested(View::shared_ptr view, double t);
-
 protected:
   virtual void setup() = 0;
 
@@ -49,7 +49,7 @@ protected:
   const RendererManagerConfiguration configuration() const;
 
   virtual void prepareMainLayer(double t) = 0;
-  virtual void updateBuffer(View::shared_ptr view, double t) = 0;
+
   virtual void drawMainLayer() = 0;
   virtual void drawDebugGrid(GridResolution resolution, double t) = 0;
   virtual void drawDebugStats(DebugState::shared_ptr debugState) = 0;

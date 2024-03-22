@@ -7,14 +7,16 @@
 //
 
 #include "Transform.hpp"
+#include <memory>
 
 namespace grumble {
 Transform::Transform(HMM_Vec2 position, HMM_Vec2 size, TransformOrigin origin)
-    : _localPosition(position), _origin(origin), _parent(nullptr),
+    : _localPosition(position), _origin(origin),
+      _parent(std::weak_ptr<Transform>()),
       _width(TransformDimension(DimensionSizing::Absolute, size.Width)),
       _height(TransformDimension(DimensionSizing::Absolute, size.Height)) {}
 
-Transform::~Transform() { _parent = nullptr; }
+Transform::~Transform() {}
 
 #pragma mark Setters
 
@@ -39,7 +41,7 @@ void Transform::setSize(HMM_Vec2 size) {
   setHeight(size.Height);
 }
 
-void Transform::setParent(Transform::shared_ptr parent) { _parent = parent; }
+void Transform::setParent(Transform::weak_ptr parent) { _parent = parent; }
 
 #pragma mark Getters
 
@@ -47,13 +49,13 @@ HMM_Vec2 Transform::localPosition() const { return _localPosition; }
 
 HMM_Vec2 Transform::screenPosition() const {
   HMM_Vec2 result = {0, 0};
-  if (_parent != nullptr) {
-    result = _parent->screenPosition();
+  if (auto parent = _parent.lock()) {
+    result = parent->screenPosition();
   }
   return result + _localPosition;
 }
 
-const bool Transform::hasParent() const { return _parent != nullptr; }
+const bool Transform::hasParent() const { return !_parent.expired(); }
 
 const HMM_Mat4 Transform::modelMatrix(float renderScale) const {
   HMM_Vec2 resultPosition = screenPosition();
@@ -104,17 +106,17 @@ const HMM_Vec2 Transform::size() const {
   float width = 0.0f;
   float height = 0.0f;
 
-  if (_width.sizing() == DimensionSizing::Absolute || _parent == nullptr) {
+  if (_width.sizing() == DimensionSizing::Absolute || _parent.expired()) {
     width = _width.value();
-  } else {
-    float parentWidth = _parent->size().Width;
+  } else if (auto parent = _parent.lock()) {
+    float parentWidth = parent->size().Width;
     width = parentWidth * _width.value();
   }
 
-  if (_height.sizing() == DimensionSizing::Absolute || _parent == nullptr) {
+  if (_height.sizing() == DimensionSizing::Absolute || _parent.expired()) {
     height = _height.value();
-  } else {
-    float parentHeight = _parent->size().Height;
+  } else if (auto parent = _parent.lock()) {
+    float parentHeight = parent->size().Height;
     height = parentHeight * _height.value();
   }
 

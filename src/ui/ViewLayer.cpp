@@ -5,25 +5,33 @@ ViewLayer::ViewLayer() {}
 
 ViewLayer::~ViewLayer() {}
 
-void ViewLayer::addView(View::shared_ptr view) {
-  View::iterator pos = std::find(_views.begin(), _views.end(), view);
-  if (pos != _views.end()) {
-    return;
+void ViewLayer::addView(View::unique_ptr view) {
+  if (hasViews()) {
+    View::unique_iterator pos = std::find(_views.begin(), _views.end(), view);
+    if (pos != _views.end()) {
+      logWarn("Trying to add a view to a layer when it already exists");
+      return;
+    }
   }
-  _views.push_back(view);
+  _views.push_back(std::move(view));
 }
-
-View::iterator ViewLayer::viewIteratorBegin() { return _views.begin(); }
-
-View::iterator ViewLayer::viewIteratorEnd() { return _views.end(); }
 
 void ViewLayer::update(double dt) {
-  View::iterator iter = _views.begin();
+  View::unique_iterator iter = _views.begin();
   for (; iter != _views.end(); iter++) {
-    View::shared_ptr view = *iter;
-    view->update(dt);
+    (*iter)->update(dt);
   }
 }
+
+void ViewLayer::updateInstanceBuffer(
+    RendererManager::shared_ptr rendererManager, double t) {
+  View::unique_iterator viewIter = _views.begin();
+  for (; viewIter != _views.end(); viewIter++) {
+    (*viewIter)->updateInstanceBuffer(rendererManager, t);
+  }
+}
+
+bool ViewLayer::hasViews() const { return false; }
 
 LogCategory ViewLayer::logCategory() const { return LogCategory::ui; }
 

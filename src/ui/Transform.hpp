@@ -20,7 +20,9 @@
 namespace grumble {
 class Transform : public Object {
 public:
+  typedef std::unique_ptr<Transform> unique_ptr;
   typedef std::shared_ptr<Transform> shared_ptr;
+  typedef std::weak_ptr<Transform> weak_ptr;
 
   Transform(HMM_Vec2 position = {0, 0}, HMM_Vec2 size = {10, 10},
             TransformOrigin origin = TransformOrigin::TopLeft);
@@ -33,7 +35,7 @@ public:
   void setRelativeWidth(float factor);
   void setRelativeHeight(float factor);
   void setSize(HMM_Vec2 size);
-  void setParent(Transform::shared_ptr parent);
+  void setParent(Transform::weak_ptr parent);
 
   HMM_Vec2 localPosition() const;
   HMM_Vec2 screenPosition() const;
@@ -51,7 +53,7 @@ private:
 
   TransformOrigin _origin;
 
-  Transform::shared_ptr _parent;
+  Transform::weak_ptr _parent;
   const bool hasParent() const;
 
   float calculateDimensionSize(TransformDimension dimension, float parentSize);

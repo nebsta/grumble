@@ -51,16 +51,18 @@ public:
   InputManager::shared_ptr inputManager();
   Camera::shared_ptr camera();
   DebugState::shared_ptr debugState();
-  ViewLayer::shared_ptr getViewLayer(int index);
 
   // setters
   void registerSystem(System::unique_ptr system);
+  void addView(View::unique_ptr view, ViewLayerType layer);
   void setScreenSize(HMM_Vec2 size);
 
 protected:
   LogCategory logCategory() const override;
 
 private:
+  bool _isSetup;
+
   RendererManager::shared_ptr _rendererManager;
   ViewFactory::shared_ptr _viewFactory;
   FontManager::shared_ptr _fontManager;
@@ -71,5 +73,7 @@ private:
   DebugState::shared_ptr _debugState;
   ViewLayer::array _viewLayers;
   System::vector _systems;
+
+  void setupViewLayers();
 };
 } // namespace grumble

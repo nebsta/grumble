@@ -18,8 +18,8 @@
 namespace grumble {
 class Renderer : public Object {
 public:
-  typedef std::shared_ptr<Renderer> shared_ptr;
-  typedef std::vector<shared_ptr>::iterator iterator;
+  typedef std::unique_ptr<Renderer> unique_ptr;
+  typedef std::vector<unique_ptr>::iterator iterator;
 
   Renderer(uint32_t instanceId);
   ~Renderer();
