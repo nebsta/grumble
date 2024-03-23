@@ -7,6 +7,8 @@
 //
 
 #include "Transform.hpp"
+#include "../util/MathUtils.hpp"
+#include "TransformOrigin.hpp"
 #include <memory>
 
 namespace grumble {
@@ -121,6 +123,13 @@ const HMM_Vec2 Transform::size() const {
   }
 
   return {width, height};
+}
+
+const std::string Transform::toString() const {
+  return fmt::format("localPosition: {}, size: {}, origin: {}",
+                     HMM_Vec2_toString(_localPosition),
+                     HMM_Vec2_toString(size()),
+                     TransformOrigin_toString(_origin));
 }
 
 bool Transform::containsLocalPoint(HMM_Vec2 point) const {

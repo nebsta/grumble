@@ -23,7 +23,7 @@ public:
   SpriteRegion region;
 
   std::string toString() const {
-    return fmt::format("name: {}, atlas: {} region: {} size: {}", name, atlas,
+    return fmt::format("name: {}, atlas: {}, region: {}, size: {}", name, atlas,
                        region.toString(), HMM_Vec2_toString(size));
   }
 };

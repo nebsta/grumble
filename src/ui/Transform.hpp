@@ -8,14 +8,12 @@
 
 #pragma once
 
-#include "../util/HandmadeMath.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include "../core/Object.hpp"
-
+#include "../util/HandmadeMath.h"
 #include "TransformDimension.hpp"
 #include "TransformOrigin.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace grumble {
 class Transform : public Object {
@@ -44,6 +42,8 @@ public:
 
   bool containsLocalPoint(HMM_Vec2 point) const;
   bool containsScreenPoint(HMM_Vec2 point) const;
+
+  const std::string toString() const override;
 
 private:
   HMM_Vec2 _localPosition;

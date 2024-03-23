@@ -24,7 +24,10 @@ View::~View() { _children.clear(); }
 void View::update(const float &dt) {
   if (spriteAnimator != nullptr) {
     spriteAnimator->update(dt);
-    _renderer->setSprite(spriteAnimator->currentFrame());
+
+    SpriteDefinition sprite = spriteAnimator->currentFrame();
+    _renderer->setSprite(sprite);
+    _transform->setSize(sprite.size);
   }
 
   if (hasChildren()) {
@@ -63,7 +66,6 @@ void View::updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
                      .colz = modelMatrix.Columns[2],
                      .colw = modelMatrix.Columns[3]};
 
-  logInfo("instance: {}", ViewInstance_toString(instance));
   rendererManager->updateInstanceBuffer(instanceId, instance, t);
 
   if (!hasChildren()) {
