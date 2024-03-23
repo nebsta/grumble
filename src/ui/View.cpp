@@ -63,6 +63,7 @@ void View::updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
                      .colz = modelMatrix.Columns[2],
                      .colw = modelMatrix.Columns[3]};
 
+  logInfo("instance: {}", ViewInstance_toString(instance));
   rendererManager->updateInstanceBuffer(instanceId, instance, t);
 
   if (!hasChildren()) {

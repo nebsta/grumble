@@ -16,3 +16,7 @@ static HMM_Vec2 lerp(HMM_Vec2 start, HMM_Vec2 end, float t) {
 static const std::string HMM_Vec2_toString(HMM_Vec2 v) {
   return fmt::format("{}, {}", v.X, v.Y);
 }
+
+static const std::string HMM_Vec4_toString(HMM_Vec4 v) {
+  return fmt::format("{}, {}, {}, {}", v.X, v.Y, v.Z, v.W);
+}
