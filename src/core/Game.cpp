@@ -1,10 +1,3 @@
-//
-//  Game.cpp
-//  grumble
-//
-//  Created by Benjamin Wallis on 17/07/2023.
-//
-
 #include "Game.hpp"
 
 namespace grumble {

@@ -5,10 +5,9 @@ ViewLayer::ViewLayer() {}
 
 ViewLayer::~ViewLayer() {}
 
-void ViewLayer::addView(ImageView::unique_ptr view) {
+void ViewLayer::addView(View::unique_ptr view) {
   if (hasViews()) {
-    ImageView::unique_iterator pos =
-        std::find(_views.begin(), _views.end(), view);
+    View::unique_iterator pos = std::find(_views.begin(), _views.end(), view);
     if (pos != _views.end()) {
       logWarn("Trying to add a view to a layer when it already exists");
       return;
@@ -18,7 +17,7 @@ void ViewLayer::addView(ImageView::unique_ptr view) {
 }
 
 void ViewLayer::update(double dt) {
-  ImageView::unique_iterator iter = _views.begin();
+  View::unique_iterator iter = _views.begin();
   for (; iter != _views.end(); iter++) {
     (*iter)->update(dt);
   }
@@ -26,13 +25,13 @@ void ViewLayer::update(double dt) {
 
 void ViewLayer::updateInstanceBuffer(
     RendererManager::shared_ptr rendererManager, double t) {
-  ImageView::unique_iterator viewIter = _views.begin();
+  View::unique_iterator viewIter = _views.begin();
   for (; viewIter != _views.end(); viewIter++) {
     (*viewIter)->updateInstanceBuffer(rendererManager, t);
   }
 }
 
-bool ViewLayer::hasViews() const { return false; }
+bool ViewLayer::hasViews() const { return _views.size() != 0; }
 
 LogCategory ViewLayer::logCategory() const { return LogCategory::ui; }
 

@@ -1,25 +1,16 @@
-//
-//  View.hpp
-//  sprawl
-//
-//  Created by Benjamin Wallis on 4/10/2015.
-//  Copyright © 2015 The Caffeinated Coder. All rights reserved.
-//
-
 #pragma once
-
-#include <glm/glm.hpp>
-#include <memory>
-#include <vector>
-
-#include "Transform.hpp"
 
 #include "../anim/SpriteAnimator.hpp"
 #include "../render/Renderer.hpp"
 #include "../render/RendererManager.hpp"
+#include "Transform.hpp"
+#include "View.hpp"
+#include <glm/glm.hpp>
+#include <memory>
+#include <vector>
 
 namespace grumble {
-class ImageView : public Object {
+class ImageView : public View {
 public:
   typedef std::shared_ptr<ImageView> shared_ptr;
   typedef std::unique_ptr<ImageView> unique_ptr;
@@ -43,9 +34,9 @@ public:
 
   ~ImageView();
 
-  void update(const float &dt);
+  void update(double dt) override;
   void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
-                            double t);
+                            double t) override;
 
   // children handling
   void setParent(std::weak_ptr<Transform> parent);

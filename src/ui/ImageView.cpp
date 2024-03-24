@@ -1,13 +1,4 @@
-//
-//  ImageView.cpp
-//  sprawl
-//
-//  Created by Benjamin Wallis on 4/10/2015.
-//  Copyright © 2015 The Caffeinated Coder. All rights reserved.
-//
-
 #include "ImageView.hpp"
-#include <memory>
 
 namespace grumble {
 ImageView::ImageView(Renderer::unique_ptr renderer, HMM_Vec2 position,
@@ -22,7 +13,7 @@ ImageView::ImageView(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
 
 ImageView::~ImageView() { _children.clear(); }
 
-void ImageView::update(const float &dt) {
+void ImageView::update(double dt) {
   if (spriteAnimator != nullptr) {
     spriteAnimator->update(dt);
 
