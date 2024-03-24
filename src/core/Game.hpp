@@ -46,7 +46,7 @@ public:
 
   // setters
   void registerSystem(System::unique_ptr system);
-  void addView(ImageView::unique_ptr view, ViewLayerType layer);
+  void addView(View::unique_ptr view, ViewLayerType layer);
   void setScreenSize(HMM_Vec2 size);
 
 protected:

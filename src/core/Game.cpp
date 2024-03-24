@@ -80,7 +80,7 @@ void Game::registerSystem(System::unique_ptr system) {
   _systems.push_back(std::move(system));
 }
 
-void Game::addView(ImageView::unique_ptr view, ViewLayerType layer) {
+void Game::addView(View::unique_ptr view, ViewLayerType layer) {
   logDebug("Adding view {} to layer {}", view->id(),
            ViewLayerType_toString(layer));
   _viewLayers[layer]->addView(std::move(view));
