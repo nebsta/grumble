@@ -2,7 +2,7 @@
 
 #include "../core/Object.hpp"
 #include "../render/RendererManager.hpp"
-#include "../ui/View.hpp"
+#include "../ui/ImageView.hpp"
 #include "ViewLayerType.hpp"
 #include <memory>
 
@@ -16,7 +16,7 @@ public:
   ViewLayer();
   ~ViewLayer();
 
-  void addView(View::unique_ptr view);
+  void addView(ImageView::unique_ptr view);
 
   void update(double dt);
   void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
@@ -28,7 +28,7 @@ protected:
   LogCategory logCategory() const override;
 
 private:
-  View::unique_vector _views;
+  ImageView::unique_vector _views;
 };
 
 } // namespace grumble

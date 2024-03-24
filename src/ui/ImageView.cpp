@@ -1,27 +1,28 @@
 //
-//  View.cpp
+//  ImageView.cpp
 //  sprawl
 //
 //  Created by Benjamin Wallis on 4/10/2015.
 //  Copyright © 2015 The Caffeinated Coder. All rights reserved.
 //
 
-#include "View.hpp"
+#include "ImageView.hpp"
 #include <memory>
 
 namespace grumble {
-View::View(Renderer::unique_ptr renderer, HMM_Vec2 position, HMM_Vec2 size,
-           TransformOrigin origin)
+ImageView::ImageView(Renderer::unique_ptr renderer, HMM_Vec2 position,
+                     HMM_Vec2 size, TransformOrigin origin)
     : _transform(std::make_shared<Transform>(position, size, origin)),
       _renderer(std::move(renderer)) {}
 
-View::View(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
-           TransformOrigin origin)
-    : View(std::make_unique<Renderer>(instanceId), position, size, origin) {}
+ImageView::ImageView(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
+                     TransformOrigin origin)
+    : ImageView(std::make_unique<Renderer>(instanceId), position, size,
+                origin) {}
 
-View::~View() { _children.clear(); }
+ImageView::~ImageView() { _children.clear(); }
 
-void View::update(const float &dt) {
+void ImageView::update(const float &dt) {
   if (spriteAnimator != nullptr) {
     spriteAnimator->update(dt);
 
@@ -38,8 +39,8 @@ void View::update(const float &dt) {
   }
 }
 
-void View::updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
-                                double t) {
+void ImageView::updateInstanceBuffer(
+    RendererManager::shared_ptr rendererManager, double t) {
 
   HMM_Mat4 modelMatrix = _transform->modelMatrix(1.0f);
   uint32_t instanceId = _renderer->instanceId();
@@ -81,7 +82,7 @@ void View::updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
 
 #pragma mark Child Management
 
-void View::addChild(View::unique_ptr child) {
+void ImageView::addChild(ImageView::unique_ptr child) {
 
   // check if the child view already exists in the hierarchy
   if (hasChildren()) {
@@ -97,16 +98,18 @@ void View::addChild(View::unique_ptr child) {
   _children.push_back(std::move(child));
 }
 
-void View::setParent(std::weak_ptr<Transform> parent) {
+void ImageView::setParent(std::weak_ptr<Transform> parent) {
   _transform->setParent(parent);
 }
 
-bool View::hasChildren() const { return _children.size() != 0; }
+bool ImageView::hasChildren() const { return _children.size() != 0; }
 
 #pragma mark Setters
 
-void View::setPosition(HMM_Vec2 pos) { _transform->setLocalPosition(pos); }
-void View::setSize(HMM_Vec2 size) { _transform->setSize(size); }
-void View::setSprite(SpriteDefinition sprite) { _renderer->setSprite(sprite); }
+void ImageView::setPosition(HMM_Vec2 pos) { _transform->setLocalPosition(pos); }
+void ImageView::setSize(HMM_Vec2 size) { _transform->setSize(size); }
+void ImageView::setSprite(SpriteDefinition sprite) {
+  _renderer->setSprite(sprite);
+}
 
 } // namespace grumble

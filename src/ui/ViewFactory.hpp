@@ -1,15 +1,8 @@
-//
-//  ViewFactory.hpp
-//  grumble
-//
-//  Created by Benjamin Wallis on 23/07/2023.
-//
-
 #pragma once
 
 #include "../core/Object.hpp"
 #include "../font/FontManager.hpp"
-#include "../ui/View.hpp"
+#include "../ui/ImageView.hpp"
 #include <memory>
 
 namespace grumble {
@@ -19,9 +12,9 @@ public:
 
   ViewFactory(FontManager::shared_ptr fontManager);
 
-  View::unique_ptr
-  createView(HMM_Vec2 position = {0.0, 0.0}, HMM_Vec2 size = {0.0, 0.0},
-             TransformOrigin origin = TransformOrigin::TopLeft);
+  ImageView::unique_ptr
+  createImageView(HMM_Vec2 position = {0.0, 0.0}, HMM_Vec2 size = {0.0, 0.0},
+                  TransformOrigin origin = TransformOrigin::TopLeft);
 
 private:
   FontManager::shared_ptr _fontManager;

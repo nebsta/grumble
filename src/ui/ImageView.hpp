@@ -19,11 +19,11 @@
 #include "../render/RendererManager.hpp"
 
 namespace grumble {
-class View : public Object {
+class ImageView : public Object {
 public:
-  typedef std::shared_ptr<View> shared_ptr;
-  typedef std::unique_ptr<View> unique_ptr;
-  typedef std::weak_ptr<View> weak_ptr;
+  typedef std::shared_ptr<ImageView> shared_ptr;
+  typedef std::unique_ptr<ImageView> unique_ptr;
+  typedef std::weak_ptr<ImageView> weak_ptr;
 
   typedef std::vector<shared_ptr> shared_vector;
   typedef std::vector<unique_ptr> unique_vector;
@@ -33,14 +33,15 @@ public:
   typedef unique_vector::iterator unique_iterator;
   typedef weak_vector::iterator weak_iterator;
 
-  View(uint32_t instanceId, HMM_Vec2 position = {0, 0}, HMM_Vec2 size = {0, 0},
-       TransformOrigin origin = TransformOrigin::TopLeft);
+  ImageView(uint32_t instanceId, HMM_Vec2 position = {0, 0},
+            HMM_Vec2 size = {0, 0},
+            TransformOrigin origin = TransformOrigin::TopLeft);
 
-  View(Renderer::unique_ptr renderer, HMM_Vec2 position = {0, 0},
-       HMM_Vec2 size = {0, 0},
-       TransformOrigin origin = TransformOrigin::TopLeft);
+  ImageView(Renderer::unique_ptr renderer, HMM_Vec2 position = {0, 0},
+            HMM_Vec2 size = {0, 0},
+            TransformOrigin origin = TransformOrigin::TopLeft);
 
-  ~View();
+  ~ImageView();
 
   void update(const float &dt);
   void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,

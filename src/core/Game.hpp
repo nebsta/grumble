@@ -1,25 +1,17 @@
-//  Created by Benjamin Wallis on 17/07/2023.
-
 #pragma once
 
-#include <memory>
-
-#include "Camera.hpp"
-#include "Object.hpp"
-
-#include "../render/RendererManager.hpp"
-
-#include "../sprite/SpriteManager.hpp"
-
-#include "../font/FontManager.hpp"
-
-#include "../ui/ViewFactory.hpp"
-
 #include "../debug/DebugState.hpp"
+#include "../font/FontManager.hpp"
 #include "../input/InputManager.hpp"
 #include "../io/FileManager.hpp"
+#include "../render/RendererManager.hpp"
+#include "../sprite/SpriteManager.hpp"
+#include "../ui/ViewFactory.hpp"
 #include "../ui/ViewLayer.hpp"
+#include "Camera.hpp"
+#include "Object.hpp"
 #include "System.hpp"
+#include <memory>
 
 namespace grumble {
 class Game : public Object {
@@ -54,7 +46,7 @@ public:
 
   // setters
   void registerSystem(System::unique_ptr system);
-  void addView(View::unique_ptr view, ViewLayerType layer);
+  void addView(ImageView::unique_ptr view, ViewLayerType layer);
   void setScreenSize(HMM_Vec2 size);
 
 protected:
