@@ -12,7 +12,6 @@
 #include <vector>
 
 namespace grumble {
-
 struct SpriteDefinition {
 public:
   typedef std::vector<SpriteDefinition> vector;
@@ -26,5 +25,7 @@ public:
     return fmt::format("name: {}, atlas: {}, region: {}, size: {}", name, atlas,
                        region.toString(), HMM_Vec2_toString(size));
   }
+
+  bool isEmpty() const { return name.size() == 0; }
 };
 } // namespace grumble

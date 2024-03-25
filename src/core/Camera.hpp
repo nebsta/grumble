@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../util/HandmadeMath.h"
+#include "CameraRange.hpp"
 #include "Object.hpp"
 #include <memory>
 
@@ -20,10 +21,12 @@ public:
 
   void update(double dt);
   void setVelocity(HMM_Vec2 velocity);
+  void setCameraRange(CameraRange cameraRange);
 
 private:
   HMM_Vec2 _velocity;
   HMM_Vec2 _prevPos;
   HMM_Vec2 _pos;
+  CameraRange _cameraRange;
 };
 } // namespace grumble

@@ -32,6 +32,9 @@ void ImageView::update(double dt) {
 
 void ImageView::updateInstanceBuffer(
     RendererManager::shared_ptr rendererManager, double t) {
+  if (_renderer->sprite().isEmpty()) {
+    return;
+  }
 
   HMM_Mat4 modelMatrix = _transform->modelMatrix(1.0f);
   uint32_t instanceId = _renderer->instanceId();
