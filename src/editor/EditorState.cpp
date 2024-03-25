@@ -2,7 +2,7 @@
 #include "EditorState.hpp"
 
 namespace grumble {
-EditorState::EditorState() {}
+EditorState::EditorState() : _isActive(false) {}
 
 void EditorState::setActive(bool active) { _isActive = active; }
 
