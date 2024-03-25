@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../debug/DebugState.hpp"
+#include "../editor/EditorState.hpp"
 #include "../font/FontManager.hpp"
 #include "../input/InputManager.hpp"
 #include "../io/FileManager.hpp"
@@ -22,7 +23,8 @@ public:
        FileManager::shared_ptr fileManager,
        SpriteManager::shared_ptr spriteManager,
        FontManager::shared_ptr fontManager,
-       InputManager::shared_ptr inputManager);
+       InputManager::shared_ptr inputManager,
+       EditorState::shared_ptr editorState);
   ~Game();
 
   // lifecycle methods
@@ -63,6 +65,7 @@ private:
   InputManager::shared_ptr _inputManager;
   Camera::shared_ptr _camera;
   DebugState::shared_ptr _debugState;
+  EditorState::shared_ptr _editorState;
   ViewLayer::array _viewLayers;
   System::vector _systems;
 

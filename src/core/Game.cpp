@@ -5,13 +5,14 @@ Game::Game(RendererManager::shared_ptr rendererManager,
            FileManager::shared_ptr fileManager,
            SpriteManager::shared_ptr spriteManager,
            FontManager::shared_ptr fontManager,
-           InputManager::shared_ptr inputManager)
+           InputManager::shared_ptr inputManager,
+           EditorState::shared_ptr editorState)
     : _rendererManager(rendererManager), _fileManager(fileManager),
       _spriteManager(spriteManager),
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
       _fontManager(fontManager), _inputManager(inputManager),
       _camera(std::make_shared<Camera>()),
-      _debugState(std::make_shared<DebugState>()) {}
+      _debugState(std::make_shared<DebugState>()), _editorState(editorState) {}
 
 Game::~Game() {}
 
@@ -40,6 +41,10 @@ bool Game::input() {
 
   if (_inputManager->isInputTriggered(InputCode::D)) {
     _debugState->toggleDebugMenuVisible();
+  }
+
+  if (_inputManager->isInputTriggered(InputCode::E)) {
+    _editorState->toggleActive();
   }
 
   return terminate;

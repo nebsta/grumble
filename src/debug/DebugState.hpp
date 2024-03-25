@@ -4,7 +4,6 @@
 #include "FrameStats.hpp"
 #include "GridResolution.hpp"
 #include <memory>
-#include <queue>
 
 #define FRAME_STATS_WINDOW_SIZE 200
 

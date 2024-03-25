@@ -1,23 +1,21 @@
-//  Created by Benjamin Wallis on 07/01/2022.
-//  Copyright © 2022 The Caffeinated Coder. All rights reserved.
-
 #pragma once
-
-#include "RendererManagerConfiguration.hpp"
-#include <memory>
 
 #include "../core/Camera.hpp"
 #include "../core/Object.hpp"
 #include "../debug/DebugState.hpp"
+#include "../editor/EditorView.hpp"
 #include "../util/HandmadeMath.h"
+#include "RendererManagerConfiguration.hpp"
 #include "ViewInstance.hpp"
+#include <memory>
 
 namespace grumble {
 class RendererManager : public Object {
 public:
   typedef std::shared_ptr<RendererManager> shared_ptr;
 
-  RendererManager(RendererManagerConfiguration config);
+  RendererManager(RendererManagerConfiguration config,
+                  EditorView::unique_ptr editorView);
   virtual ~RendererManager() = default;
 
   void setup(Camera::shared_ptr camera, DebugState::shared_ptr debugState);
@@ -34,10 +32,15 @@ public:
 
 private:
   RendererManagerConfiguration _configuration;
+
   float _renderScale;
-  Camera::shared_ptr _camera;
   HMM_Mat4 _projectionMatrix;
+
+  Camera::shared_ptr _camera;
+
   DebugState::shared_ptr _debugState;
+
+  EditorView::unique_ptr _editorView;
 
 protected:
   virtual void setup() = 0;
@@ -49,7 +52,6 @@ protected:
   const RendererManagerConfiguration configuration() const;
 
   virtual void prepareMainLayer(double t) = 0;
-
   virtual void drawMainLayer() = 0;
   virtual void drawDebugGrid(GridResolution resolution, double t) = 0;
   virtual void drawDebugStats(DebugState::shared_ptr debugState) = 0;

@@ -9,8 +9,10 @@
 
 namespace grumble {
 
-RendererManager::RendererManager(RendererManagerConfiguration configuration)
-    : Object("renderer_manager"), _configuration(configuration) {}
+RendererManager::RendererManager(RendererManagerConfiguration configuration,
+                                 EditorView::unique_ptr editorView)
+    : Object("renderer_manager"), _configuration(configuration),
+      _editorView(std::move(editorView)) {}
 
 void RendererManager::setup(Camera::shared_ptr camera,
                             DebugState::shared_ptr debugState) {
@@ -34,6 +36,10 @@ void RendererManager::drawFrame(double t) {
 
   if (_debugState->debugMenuVisible()) {
     drawDebugMenu(_debugState, t);
+  }
+
+  if (_editorView->isActive()) {
+    _editorView->draw();
   }
 
   commitFrame();

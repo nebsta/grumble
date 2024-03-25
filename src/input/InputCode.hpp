@@ -11,7 +11,8 @@ enum InputCode {
   ArrowDown = 4,
   MouseLeft = 5,
   MouseRight = 6,
-  D = 7
+  D = 7,
+  E = 8
 };
 
 static std::string InputCode_to_string(InputCode code) {
@@ -30,6 +31,8 @@ static std::string InputCode_to_string(InputCode code) {
     return "MouseRight";
   case grumble::InputCode::D:
     return "D";
+  case grumble::InputCode::E:
+    return "E";
   case grumble::InputCode::Unknown:
     return "Unknown";
   }
