@@ -1,66 +1,26 @@
-//
-//  Transform.cpp
-//  sprawl
-//
-//  Created by Benjamin Wallis on 7/11/2015.
-//  Copyright © 2015 The Caffeinated Coder. All rights reserved.
-//
-
 #include "Transform.hpp"
 #include "../util/MathUtils.hpp"
 #include "TransformOrigin.hpp"
-#include <memory>
 
 namespace grumble {
-Transform::Transform(HMM_Vec2 position, HMM_Vec2 size, TransformOrigin origin)
-    : _localPosition(position), _origin(origin),
-      _parent(std::weak_ptr<Transform>()),
-      _width(TransformDimension(DimensionSizing::Absolute, size.Width)),
-      _height(TransformDimension(DimensionSizing::Absolute, size.Height)) {}
+Transform::Transform(const std::string_view &id, HMM_Vec2 position,
+                     HMM_Vec2 size, TransformOrigin origin)
+    : Object(id), _position(position), _origin(origin), _size(size) {}
 
 Transform::~Transform() {}
 
 #pragma mark Setters
 
-void Transform::setLocalPosition(HMM_Vec2 localPosition) {
-  _localPosition = localPosition;
-}
+void Transform::setPosition(HMM_Vec2 position) { _position = position; }
 
-void Transform::setRelativeWidth(float factor) {
-  _width.update(DimensionSizing::Relative, factor);
-}
-
-void Transform::setRelativeHeight(float factor) {
-  _height.update(DimensionSizing::Relative, factor);
-}
-
-void Transform::setWidth(float width) { _width.update(width); }
-
-void Transform::setHeight(float height) { _height.update(height); }
-
-void Transform::setSize(HMM_Vec2 size) {
-  setWidth(size.Width);
-  setHeight(size.Height);
-}
-
-void Transform::setParent(Transform::weak_ptr parent) { _parent = parent; }
+void Transform::setSize(HMM_Vec2 size) { _size = size; }
 
 #pragma mark Getters
 
-HMM_Vec2 Transform::localPosition() const { return _localPosition; }
-
-HMM_Vec2 Transform::screenPosition() const {
-  HMM_Vec2 result = {0, 0};
-  if (auto parent = _parent.lock()) {
-    result = parent->screenPosition();
-  }
-  return result + _localPosition;
-}
-
-const bool Transform::hasParent() const { return !_parent.expired(); }
+const HMM_Vec2 Transform::position() const { return _position; }
 
 const HMM_Mat4 Transform::modelMatrix(float renderScale) const {
-  HMM_Vec2 resultPosition = screenPosition();
+  HMM_Vec2 resultPosition = _position;
   HMM_Vec2 resultSize = size() / renderScale;
 
   // applying offset based on origin
@@ -104,46 +64,12 @@ const HMM_Mat4 Transform::modelMatrix(float renderScale) const {
   return matrix;
 }
 
-const HMM_Vec2 Transform::size() const {
-  float width = 0.0f;
-  float height = 0.0f;
-
-  if (_width.sizing() == DimensionSizing::Absolute || _parent.expired()) {
-    width = _width.value();
-  } else if (auto parent = _parent.lock()) {
-    float parentWidth = parent->size().Width;
-    width = parentWidth * _width.value();
-  }
-
-  if (_height.sizing() == DimensionSizing::Absolute || _parent.expired()) {
-    height = _height.value();
-  } else if (auto parent = _parent.lock()) {
-    float parentHeight = parent->size().Height;
-    height = parentHeight * _height.value();
-  }
-
-  return {width, height};
-}
+const HMM_Vec2 Transform::size() const { return _size; }
 
 const std::string Transform::toString() const {
   return fmt::format("localPosition: {}, size: {}, origin: {}",
-                     HMM_Vec2_toString(_localPosition),
-                     HMM_Vec2_toString(size()),
+                     HMM_Vec2_toString(_position), HMM_Vec2_toString(size()),
                      TransformOrigin_toString(_origin));
 }
 
-bool Transform::containsLocalPoint(HMM_Vec2 point) const {
-  return false;
-  //    return point.x >= _localPosition.x && point.y >= _localPosition.y &&
-  //    point.x <= _localPosition.x + _size.x && point.y <= _localPosition.y +
-  //    _size.y;
-}
-
-bool Transform::containsScreenPoint(HMM_Vec2 point) const {
-  return false;
-  //    HMM_Vec2 sPos = screenPosition();
-  //
-  //    return point.x >= sPos.x && point.y >= sPos.y &&
-  //    point.x <= sPos.x + _size.x && point.y <= sPos.y + _size.y;
-}
 } // namespace grumble

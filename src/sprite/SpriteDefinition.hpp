@@ -1,15 +1,14 @@
-//
-//  Sprite.hpp
-//  sprawl
-//
-//  Created by Benjamin Wallis on 1/11/2015.
-//  Copyright © 2015 The Caffeinated Coder. All rights reserved.
-//
-
 #pragma once
 
 #include "SpriteRegion.hpp"
 #include <vector>
+
+#define EMPTY_SPRITE                                                           \
+  {                                                                            \
+    "", "", {0, 0}, {                                                          \
+      {0, 0}, {0, 0}, {0, 0}, { 0, 0 }                                         \
+    }                                                                          \
+  }
 
 namespace grumble {
 struct SpriteDefinition {

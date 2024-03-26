@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../anim/SpriteAnimator.hpp"
-#include "../render/Renderer.hpp"
 #include "../render/RendererManager.hpp"
 #include "Transform.hpp"
 #include "View.hpp"
@@ -24,12 +23,9 @@ public:
   typedef unique_vector::iterator unique_iterator;
   typedef weak_vector::iterator weak_iterator;
 
-  ImageView(uint32_t instanceId, HMM_Vec2 position = {0, 0},
-            HMM_Vec2 size = {0, 0},
-            TransformOrigin origin = TransformOrigin::TopLeft);
-
-  ImageView(Renderer::unique_ptr renderer, HMM_Vec2 position = {0, 0},
-            HMM_Vec2 size = {0, 0},
+  ImageView(uint32_t instanceBufferId,
+            const SpriteDefinition &sprite = EMPTY_SPRITE,
+            HMM_Vec2 position = {0, 0}, HMM_Vec2 size = {0, 0},
             TransformOrigin origin = TransformOrigin::TopLeft);
 
   ~ImageView();
@@ -37,21 +33,20 @@ public:
   void update(double dt) override;
   void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
                             double t) override;
-
-  // children handling
-  void setParent(std::weak_ptr<Transform> parent);
-  void addChild(unique_ptr child);
-  bool hasChildren() const;
-
   // setters
   void setPosition(HMM_Vec2 pos);
   void setSize(HMM_Vec2 size);
-  void setSprite(SpriteDefinition sprite);
-  SpriteAnimator::shared_ptr spriteAnimator;
+  void setSprite(const SpriteDefinition &sprite);
+
+  // getters
+  HMM_Vec2 position() const;
+  HMM_Vec2 size() const;
 
 private:
-  Transform::shared_ptr _transform;
-  Renderer::unique_ptr _renderer;
-  unique_vector _children;
+  SpriteAnimator::shared_ptr _spriteAnimator;
+  Transform::unique_ptr _transform;
+
+  SpriteDefinition _sprite;
+  int _instanceBufferId;
 };
 } // namespace grumble

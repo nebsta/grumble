@@ -1,59 +1,47 @@
 #include "ImageView.hpp"
+#include <fmt/core.h>
 
 namespace grumble {
-ImageView::ImageView(Renderer::unique_ptr renderer, HMM_Vec2 position,
-                     HMM_Vec2 size, TransformOrigin origin)
-    : _transform(std::make_shared<Transform>(position, size, origin)),
-      _renderer(std::move(renderer)) {}
+ImageView::ImageView(uint32_t instanceBufferId, const SpriteDefinition &sprite,
+                     HMM_Vec2 position, HMM_Vec2 size, TransformOrigin origin)
+    : _transform(std::make_unique<Transform>(
+          fmt::format("{}_transform", instanceBufferId), position, size,
+          origin)),
+      _sprite(sprite), _instanceBufferId(instanceBufferId) {}
 
-ImageView::ImageView(uint32_t instanceId, HMM_Vec2 position, HMM_Vec2 size,
-                     TransformOrigin origin)
-    : ImageView(std::make_unique<Renderer>(instanceId), position, size,
-                origin) {}
-
-ImageView::~ImageView() { _children.clear(); }
+ImageView::~ImageView() {}
 
 void ImageView::update(double dt) {
-  if (spriteAnimator != nullptr) {
-    spriteAnimator->update(dt);
+  if (_spriteAnimator != nullptr) {
+    _spriteAnimator->update(dt);
 
-    SpriteDefinition sprite = spriteAnimator->currentFrame();
-    _renderer->setSprite(sprite);
-    _transform->setSize(sprite.size);
-  }
-
-  if (hasChildren()) {
-    unique_iterator iter = _children.begin();
-    for (; iter != _children.end(); iter++) {
-      (*iter)->update(dt);
-    }
+    _sprite = _spriteAnimator->currentFrame();
+    _transform->setSize(_sprite.size);
   }
 }
 
 void ImageView::updateInstanceBuffer(
     RendererManager::shared_ptr rendererManager, double t) {
-  if (_renderer->sprite().isEmpty()) {
+  if (_sprite.isEmpty()) {
     return;
   }
 
   HMM_Mat4 modelMatrix = _transform->modelMatrix(1.0f);
-  uint32_t instanceId = _renderer->instanceId();
 
-  SpriteDefinition sprite = _renderer->sprite();
-  HMM_Vec2 spriteSize = sprite.size;
-  HMM_Vec2 uvOrigin = sprite.region.bl;
-  HMM_Vec2 uvSize = sprite.region.size();
+  HMM_Vec2 spriteSize = _sprite.size;
+  HMM_Vec2 uvOrigin = _sprite.region.bl;
+  HMM_Vec2 uvSize = _sprite.region.size();
   float uvScaleFactorX = _transform->size().Width / spriteSize.Width;
   float uvScaleFactorY = _transform->size().Height / spriteSize.Height;
   ViewInstance instance =
-      (ViewInstance){.uv0 = {sprite.region.tl.X * uvScaleFactorX,
-                             sprite.region.tl.Y * uvScaleFactorY},
-                     .uv1 = {sprite.region.tr.X * uvScaleFactorX,
-                             sprite.region.tr.Y * uvScaleFactorY},
-                     .uv2 = {sprite.region.br.X * uvScaleFactorX,
-                             sprite.region.br.Y * uvScaleFactorY},
-                     .uv3 = {sprite.region.bl.X * uvScaleFactorX,
-                             sprite.region.bl.Y * uvScaleFactorY},
+      (ViewInstance){.uv0 = {_sprite.region.tl.X * uvScaleFactorX,
+                             _sprite.region.tl.Y * uvScaleFactorY},
+                     .uv1 = {_sprite.region.tr.X * uvScaleFactorX,
+                             _sprite.region.tr.Y * uvScaleFactorY},
+                     .uv2 = {_sprite.region.br.X * uvScaleFactorX,
+                             _sprite.region.br.Y * uvScaleFactorY},
+                     .uv3 = {_sprite.region.bl.X * uvScaleFactorX,
+                             _sprite.region.bl.Y * uvScaleFactorY},
                      .uvs = uvSize,
                      .uvo = uvOrigin,
                      .colx = modelMatrix.Columns[0],
@@ -61,49 +49,21 @@ void ImageView::updateInstanceBuffer(
                      .colz = modelMatrix.Columns[2],
                      .colw = modelMatrix.Columns[3]};
 
-  rendererManager->updateInstanceBuffer(instanceId, instance, t);
-
-  if (!hasChildren()) {
-    return;
-  }
-
-  // updating the buffers for the child views
-  auto iter = _children.begin();
-  for (; iter != _children.end(); iter++) {
-    (*iter)->updateInstanceBuffer(rendererManager, t);
-  }
+  rendererManager->updateInstanceBuffer(_instanceBufferId, instance, t);
 }
 
-#pragma mark Child Management
+#pragma mark Getters
 
-void ImageView::addChild(ImageView::unique_ptr child) {
+HMM_Vec2 ImageView::position() const { return _transform->position(); }
 
-  // check if the child view already exists in the hierarchy
-  if (hasChildren()) {
-    unique_iterator pos = std::find(_children.begin(), _children.end(), child);
-    if (pos != _children.end()) {
-      logWarn(
-          "Trying to add a child view when it already belongs to the parent");
-      return;
-    }
-  }
-  child->setParent(_transform);
-
-  _children.push_back(std::move(child));
-}
-
-void ImageView::setParent(std::weak_ptr<Transform> parent) {
-  _transform->setParent(parent);
-}
-
-bool ImageView::hasChildren() const { return _children.size() != 0; }
+HMM_Vec2 ImageView::size() const { return _transform->size(); }
 
 #pragma mark Setters
 
-void ImageView::setPosition(HMM_Vec2 pos) { _transform->setLocalPosition(pos); }
+void ImageView::setPosition(HMM_Vec2 pos) { _transform->setPosition(pos); }
+
 void ImageView::setSize(HMM_Vec2 size) { _transform->setSize(size); }
-void ImageView::setSprite(SpriteDefinition sprite) {
-  _renderer->setSprite(sprite);
-}
+
+void ImageView::setSprite(const SpriteDefinition &sprite) { _sprite = sprite; }
 
 } // namespace grumble
