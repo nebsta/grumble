@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include <fmt/core.h>
 
 namespace grumble {
 Game::Game(RendererManager::shared_ptr rendererManager,
@@ -11,7 +12,7 @@ Game::Game(RendererManager::shared_ptr rendererManager,
       _spriteManager(spriteManager),
       _viewFactory(std::make_shared<ViewFactory>(fontManager)),
       _fontManager(fontManager), _inputManager(inputManager),
-      _camera(std::make_shared<Camera>()),
+      _camera(std::make_shared<Camera>()), _frameInput(EMPTY_INPUT),
       _debugState(std::make_shared<DebugState>()), _editorState(editorState) {}
 
 Game::~Game() {}
@@ -28,7 +29,9 @@ void Game::setup() {
 void Game::setupViewLayers() {
   logInfo("Setting up view layers");
   for (int i = 0; i < MAX_VIEW_LAYERS; i++) {
-    _viewLayers[i] = std::make_unique<ViewLayer>();
+    ViewLayerType layerType = static_cast<ViewLayerType>(i);
+    std::string id = ViewLayerType_toString(layerType);
+    _viewLayers[i] = std::make_unique<ViewLayer>(id);
   }
 }
 
@@ -37,7 +40,10 @@ void Game::teardown() { _rendererManager->teardown(); }
 #pragma mark Game Loop
 
 bool Game::input() {
-  bool terminate = _inputManager->update();
+  _frameInput = _inputManager->collect();
+  if (_frameInput.shouldTerminate) {
+    return true;
+  }
 
   if (_inputManager->isInputTriggered(InputCode::D)) {
     _debugState->toggleDebugMenuVisible();
@@ -47,14 +53,13 @@ bool Game::input() {
     _editorState->toggleActive();
   }
 
-  return terminate;
+  return false;
 }
 
 void Game::update(double dt) {
-
   // updating the views
   for (auto &layer : _viewLayers) {
-    layer->update(dt);
+    layer->update(dt, _frameInput);
   }
 
   // updating systems
@@ -64,6 +69,7 @@ void Game::update(double dt) {
 
   // updating the camera
   _camera->update(dt);
+  _frameInput.handled = false;
 }
 
 void Game::render(double t) {
@@ -78,7 +84,7 @@ void Game::render(double t) {
 }
 
 void Game::reset() {
-  _inputManager->clearTriggeredInputs();
+  _inputManager->reset();
   _rendererManager->reset();
 }
 

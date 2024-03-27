@@ -10,12 +10,22 @@ ImageView::ImageView(const std::string &id, const SpriteDefinition &sprite,
 
 ImageView::~ImageView() {}
 
-void ImageView::update(double dt) {
+void ImageView::update(double dt, FrameInput &input) {
   if (_spriteAnimator != nullptr) {
     _spriteAnimator->update(dt);
 
     _sprite = _spriteAnimator->currentFrame();
     _transform->setSize(_sprite.size);
+  }
+
+  if (_isInteractive && !input.handled) {
+    bool containsPoint = _transform->containsPoint(input.touchPosition);
+    if (containsPoint) {
+      input.handled = true;
+      if (_responder.onTouchDown != nullptr) {
+        _responder.onTouchDown();
+      }
+    }
   }
 }
 
@@ -46,14 +56,6 @@ void ImageView::pushBuffer(InstanceBufferCollection &collection, double t) {
                      .colz = modelMatrix.Columns[2],
                      .colw = modelMatrix.Columns[3]};
   collection.push(instance);
-}
-
-bool ImageView::tryHandleTouchInternal(HMM_Vec2 position) {
-  bool containsPoint = _transform->containsPoint(position);
-  if (containsPoint && _responder.onTouchDown != nullptr) {
-    _responder.onTouchDown();
-  }
-  return containsPoint;
 }
 
 #pragma mark Getters

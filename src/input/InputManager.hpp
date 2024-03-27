@@ -1,6 +1,7 @@
 #pragma once
 #include "../core/Object.hpp"
 #include "../util/HandmadeMath.h"
+#include "FrameInput.hpp"
 #include "InputCode.hpp"
 #include <memory>
 #include <set>
@@ -13,8 +14,8 @@ public:
   InputManager();
   ~InputManager();
 
-  virtual bool update() = 0;
-  void clearTriggeredInputs();
+  FrameInput collect();
+  void reset();
 
   bool isInputActive(InputCode code) const;
   bool isInputTriggered(InputCode code) const;
@@ -22,6 +23,9 @@ public:
   HMM_Vec2 mousePosition() const;
 
 protected:
+  virtual void update() = 0;
+
+  void scheduleTermination();
   void mouseMoved(HMM_Vec2 pos);
 
   void activateInput(InputCode code);
@@ -30,6 +34,8 @@ protected:
   LogCategory logCategory() const override;
 
 private:
+  bool _shouldTerminate;
+
   std::set<InputCode> _activeInputs;
   std::set<InputCode> _triggeredInputs;
   HMM_Vec2 _mousePosition;

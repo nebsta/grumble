@@ -1,6 +1,6 @@
 #pragma once
+#include <string>
 
-#include <string_view>
 #define MAX_VIEW_LAYERS 9
 
 namespace grumble {
@@ -16,7 +16,7 @@ enum ViewLayerType {
   UI_3 = 8,
 };
 
-static std::string_view ViewLayerType_toString(ViewLayerType type) {
+static std::string ViewLayerType_toString(ViewLayerType type) {
   switch (type) {
   case BACKGROUND_1:
     return "BACKGROUND_1";

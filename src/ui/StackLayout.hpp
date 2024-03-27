@@ -10,9 +10,10 @@ public:
 
   void addView(View::unique_ptr view);
 
-  void update(double dt) override;
+  void update(double dt, FrameInput &inputx) override;
   void pushBuffer(InstanceBufferCollection &collection, double t) override;
-  bool tryHandleTouchInternal(HMM_Vec2 position) override;
+
+  bool hasViews() const;
 
 private:
   View::unique_vector _views;

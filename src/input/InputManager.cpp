@@ -1,14 +1,30 @@
 #include "InputManager.hpp"
+#include "FrameInput.hpp"
 #include "InputCode.hpp"
 #include <fmt/core.h>
 
 namespace grumble {
 
-InputManager::InputManager() : grumble::Object("input_manager") {}
+InputManager::InputManager()
+    : grumble::Object("input_manager"), _shouldTerminate(false) {}
 
 InputManager::~InputManager() {}
 
-void InputManager::clearTriggeredInputs() { _triggeredInputs.clear(); }
+FrameInput InputManager::collect() {
+  update();
+
+  FrameInput frameInput = EMPTY_INPUT;
+  if (isInputTriggered(InputCode::MouseLeft)) {
+    frameInput.touchPosition = mousePosition();
+  }
+
+  frameInput.shouldTerminate = _shouldTerminate;
+  return frameInput;
+}
+
+void InputManager::reset() { _triggeredInputs.clear(); }
+
+void InputManager::scheduleTermination() { _shouldTerminate = true; }
 
 void InputManager::activateInput(InputCode code) {
   if (code == InputCode::Unknown || isInputActive(code)) {

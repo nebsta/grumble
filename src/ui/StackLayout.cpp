@@ -9,9 +9,9 @@ void StackLayout::addView(View::unique_ptr view) {
   _views.insert(_views.begin(), std::move(view));
 }
 
-void StackLayout::update(double dt) {
+void StackLayout::update(double dt, FrameInput &input) {
   for (auto &view : _views) {
-    view->update(dt);
+    view->update(dt, input);
   }
 }
 
@@ -21,13 +21,6 @@ void StackLayout::pushBuffer(InstanceBufferCollection &collection, double t) {
   }
 }
 
-bool StackLayout::tryHandleTouchInternal(HMM_Vec2 position) {
-  for (auto &view : _views) {
-    if (view->tryHandleTouch(position)) {
-      return true;
-    }
-  }
-  return false;
-}
+bool StackLayout::hasViews() const { return _views.size() != 0; }
 
 } // namespace grumble

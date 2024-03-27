@@ -30,7 +30,7 @@ public:
 
   ~ImageView();
 
-  void update(double dt) override;
+  void update(double dt, FrameInput &input) override;
   void pushBuffer(InstanceBufferCollection &collection, double t) override;
 
   // setters
@@ -41,9 +41,6 @@ public:
   // getters
   HMM_Vec2 position() const;
   HMM_Vec2 size() const;
-
-protected:
-  bool tryHandleTouchInternal(HMM_Vec2 position) override;
 
 private:
   SpriteAnimator::shared_ptr _spriteAnimator;

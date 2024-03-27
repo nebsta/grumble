@@ -9,6 +9,7 @@
 #include "../sprite/SpriteManager.hpp"
 #include "../ui/ViewFactory.hpp"
 #include "../ui/ViewLayer.hpp"
+#include "../ui/ViewLayerType.hpp"
 #include "Camera.hpp"
 #include "Object.hpp"
 #include "System.hpp"
@@ -56,6 +57,7 @@ protected:
 
 private:
   bool _isSetup;
+  FrameInput _frameInput;
 
   RendererManager::shared_ptr _rendererManager;
   ViewFactory::shared_ptr _viewFactory;
