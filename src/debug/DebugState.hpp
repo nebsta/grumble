@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../core/Object.hpp"
+#include "../util/LoopedArray.hpp"
 #include "FrameStats.hpp"
 #include "GridResolution.hpp"
 #include <memory>
@@ -52,8 +53,7 @@ protected:
   LogCategory logCategory() const override;
 
 private:
-  int _frameStatsIndex;
-  FrameStats _frameStatsHistory[FRAME_STATS_WINDOW_SIZE];
+  LoopedArray<FrameStats, FRAME_STATS_WINDOW_SIZE> _frameStatsHistory;
 
   bool _debugMenuVisible;
   bool _gridVisible;
@@ -62,4 +62,5 @@ private:
 
   GridResolution _gridResolution;
 };
+
 } // namespace grumble

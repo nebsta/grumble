@@ -1,10 +1,10 @@
 #include "DebugState.hpp"
+#include "FrameStats.hpp"
 #include "GridResolution.hpp"
-
 namespace grumble {
 DebugState::DebugState()
-    : _gridResolution(GridResolution::Small), _frameStatsIndex(0),
-      _debugMenuVisible(false), _gridVisible(false), _frameStatsVisible(false),
+    : _gridResolution(GridResolution::Small), _debugMenuVisible(false),
+      _gridVisible(false), _frameStatsVisible(false),
       _instanceIdVisible(false) {}
 
 DebugState::~DebugState() {}
@@ -42,16 +42,12 @@ void DebugState::setGridResolution(GridResolution resolution) {
   _gridResolution = resolution;
 }
 
-const int DebugState::frameStatsIndex() const { return _frameStatsIndex; }
+const int DebugState::frameStatsIndex() const {
+  return _frameStatsHistory.currentIndex();
+}
 
 void DebugState::submitFrameStats(FrameStats stats) {
-  int index = _frameStatsIndex + 1;
-  if (index >= FRAME_STATS_WINDOW_SIZE) {
-    index = 0;
-  }
-
-  _frameStatsHistory[index] = stats;
-  _frameStatsIndex = index;
+  _frameStatsHistory.push(stats);
 }
 
 #pragma mark Getters
@@ -69,7 +65,7 @@ const bool DebugState::debugMenuVisible() const { return _debugMenuVisible; }
 const bool DebugState::debugStatsVisible() const { return _frameStatsVisible; }
 
 const FrameStats *const DebugState::frameStatsHistory() const {
-  return _frameStatsHistory;
+  return _frameStatsHistory.data();
 }
 
 const float DebugState::averageFrameTimeMs() const {
