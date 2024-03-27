@@ -64,6 +64,12 @@ const HMM_Mat4 Transform::modelMatrix(float renderScale) const {
   return matrix;
 }
 
+bool Transform::containsPoint(HMM_Vec2 point) const {
+  return point.X >= _position.X && point.Y >= _position.Y &&
+         point.X <= _position.X + _size.Width &&
+         point.Y <= _position.Y + _size.Height;
+}
+
 const HMM_Vec2 Transform::size() const { return _size; }
 
 const std::string Transform::toString() const {

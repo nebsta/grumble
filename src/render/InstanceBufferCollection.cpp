@@ -21,6 +21,8 @@ const ViewInstance *const InstanceBufferCollection::data() {
   return _buffers.data();
 }
 
+uint32_t InstanceBufferCollection::count() const { return _currentIndex + 1; }
+
 size_t InstanceBufferCollection::size() const {
   return (_currentIndex + 1) * sizeof(ViewInstance);
 }

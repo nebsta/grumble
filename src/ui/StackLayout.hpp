@@ -3,15 +3,16 @@
 #include "View.hpp"
 
 namespace grumble {
-class ViewContainer : public View {
+class StackLayout : public View {
 public:
-  ViewContainer(const std::string &id);
-  ~ViewContainer();
+  StackLayout(const std::string &id);
+  ~StackLayout();
 
   void addView(View::unique_ptr view);
 
   void update(double dt) override;
   void pushBuffer(InstanceBufferCollection &collection, double t) override;
+  bool tryHandleTouch(HMM_Vec2 position) override;
 
 private:
   View::unique_vector _views;

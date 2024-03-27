@@ -53,15 +53,13 @@ bool Game::input() {
 void Game::update(double dt) {
 
   // updating the views
-  auto iter = _viewLayers.begin();
-  for (; iter != _viewLayers.end(); iter++) {
-    (*iter)->update(dt);
+  for (auto &layer : _viewLayers) {
+    layer->update(dt);
   }
 
   // updating systems
-  auto systemIter = _systems.begin();
-  for (; systemIter != _systems.end(); systemIter++) {
-    (*systemIter)->update(dt);
+  for (auto &system : _systems) {
+    system->update(dt);
   }
 
   // updating the camera

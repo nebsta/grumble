@@ -6,7 +6,7 @@ ImageView::ImageView(const std::string &id, const SpriteDefinition &sprite,
                      HMM_Vec2 position, HMM_Vec2 size, TransformOrigin origin)
     : View(id), _transform(std::make_unique<Transform>(
                     fmt::format("{}_transform", id), position, size, origin)),
-      _sprite(sprite) {}
+      _responder({nullptr, nullptr}), _sprite(sprite) {}
 
 ImageView::~ImageView() {}
 
@@ -46,6 +46,14 @@ void ImageView::pushBuffer(InstanceBufferCollection &collection, double t) {
                      .colz = modelMatrix.Columns[2],
                      .colw = modelMatrix.Columns[3]};
   collection.push(instance);
+}
+
+bool ImageView::tryHandleTouchInternal(HMM_Vec2 position) {
+  bool containsPoint = _transform->containsPoint(position);
+  if (containsPoint && _responder.onTouchDown != nullptr) {
+    _responder.onTouchDown();
+  }
+  return containsPoint;
 }
 
 #pragma mark Getters

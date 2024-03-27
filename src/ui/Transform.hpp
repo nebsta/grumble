@@ -25,8 +25,7 @@ public:
   const HMM_Vec2 size() const;
   const HMM_Mat4 modelMatrix(float renderScale) const;
 
-  bool containsLocalPoint(HMM_Vec2 point) const;
-  bool containsScreenPoint(HMM_Vec2 point) const;
+  bool containsPoint(HMM_Vec2 point) const;
 
   const std::string toString() const override;
 

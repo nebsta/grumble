@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../anim/SpriteAnimator.hpp"
+#include "../input/Responder.hpp"
 #include "Transform.hpp"
 #include "View.hpp"
 #include <glm/glm.hpp>
@@ -41,10 +42,13 @@ public:
   HMM_Vec2 position() const;
   HMM_Vec2 size() const;
 
+protected:
+  bool tryHandleTouchInternal(HMM_Vec2 position) override;
+
 private:
   SpriteAnimator::shared_ptr _spriteAnimator;
   Transform::unique_ptr _transform;
-
   SpriteDefinition _sprite;
+  Responder _responder;
 };
 } // namespace grumble

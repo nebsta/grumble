@@ -15,6 +15,7 @@ public:
 
   void push(const ViewInstance &instance);
 
+  uint32_t count() const;
   size_t size() const;
 
   void reset();
