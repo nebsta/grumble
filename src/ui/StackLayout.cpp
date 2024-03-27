@@ -21,7 +21,7 @@ void StackLayout::pushBuffer(InstanceBufferCollection &collection, double t) {
   }
 }
 
-bool StackLayout::tryHandleTouch(HMM_Vec2 position) {
+bool StackLayout::tryHandleTouchInternal(HMM_Vec2 position) {
   for (auto &view : _views) {
     if (view->tryHandleTouch(position)) {
       return true;

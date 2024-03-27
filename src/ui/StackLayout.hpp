@@ -12,7 +12,7 @@ public:
 
   void update(double dt) override;
   void pushBuffer(InstanceBufferCollection &collection, double t) override;
-  bool tryHandleTouch(HMM_Vec2 position) override;
+  bool tryHandleTouchInternal(HMM_Vec2 position) override;
 
 private:
   View::unique_vector _views;

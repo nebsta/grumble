@@ -16,7 +16,7 @@ public:
 
   virtual void update(double dt) = 0;
   virtual void pushBuffer(InstanceBufferCollection &collection, double t) = 0;
-  virtual bool tryHandleTouch(HMM_Vec2 position);
+  bool tryHandleTouch(HMM_Vec2 position);
 
   void setIsInteractive(bool isInteractive);
   bool isInteractive() const;
