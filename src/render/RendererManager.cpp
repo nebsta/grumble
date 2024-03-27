@@ -12,6 +12,7 @@ namespace grumble {
 RendererManager::RendererManager(RendererManagerConfiguration configuration,
                                  EditorView::unique_ptr editorView)
     : Object("renderer_manager"), _configuration(configuration),
+      _instanceBuffers("renderer_manager_instance_buffers"),
       _editorView(std::move(editorView)) {}
 
 void RendererManager::setup(Camera::shared_ptr camera,
@@ -45,11 +46,17 @@ void RendererManager::drawFrame(double t) {
   commitFrame();
 }
 
+void RendererManager::reset() { _instanceBuffers.reset(); }
+
 const float RendererManager::renderScale() const { return _renderScale; }
 
 void RendererManager::setScreenSize(HMM_Vec2 size) {
   _projectionMatrix = HMM_Orthographic_LH_NO(0.0f, size.Width, size.Height,
                                              0.0f, -100.0f, 100.0f);
+}
+
+InstanceBufferCollection &RendererManager::instanceBufferCollection() {
+  return _instanceBuffers;
 }
 
 #pragma mark Protected Methods

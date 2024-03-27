@@ -5,14 +5,13 @@
 namespace grumble {
 class ViewContainer : public View {
 public:
-  ViewContainer();
+  ViewContainer(const std::string &id);
   ~ViewContainer();
 
   void addView(View::unique_ptr view);
 
   void update(double dt) override;
-  void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
-                            double t) override;
+  void pushBuffer(InstanceBufferCollection &collection, double t) override;
 
 private:
   View::unique_vector _views;

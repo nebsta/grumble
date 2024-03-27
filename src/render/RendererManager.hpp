@@ -5,8 +5,8 @@
 #include "../debug/DebugState.hpp"
 #include "../editor/EditorView.hpp"
 #include "../util/HandmadeMath.h"
+#include "InstanceBufferCollection.hpp"
 #include "RendererManagerConfiguration.hpp"
-#include "ViewInstance.hpp"
 #include <memory>
 
 namespace grumble {
@@ -22,13 +22,13 @@ public:
   virtual void teardown() = 0;
 
   void prepareFrame(double t);
-  virtual void updateInstanceBuffer(int instanceId, ViewInstance instance,
-                                    double t) = 0;
   void drawFrame(double t);
+  void reset();
 
   void setScreenSize(HMM_Vec2 size);
 
   const float renderScale() const;
+  InstanceBufferCollection &instanceBufferCollection();
 
 private:
   RendererManagerConfiguration _configuration;
@@ -43,13 +43,16 @@ private:
   EditorView::unique_ptr _editorView;
 
 protected:
+  InstanceBufferCollection _instanceBuffers;
+
+  const RendererManagerConfiguration configuration() const;
+
   virtual void setup() = 0;
 
   LogCategory logCategory() const override;
   HMM_Vec2 cameraPos(double t) const;
   HMM_Mat4 viewMatrix(double t) const;
   HMM_Mat4 projectionViewMatrix(double t) const;
-  const RendererManagerConfiguration configuration() const;
 
   virtual void prepareMainLayer(double t) = 0;
   virtual void drawMainLayer() = 0;

@@ -17,17 +17,14 @@ void ViewLayer::addView(View::unique_ptr view) {
 }
 
 void ViewLayer::update(double dt) {
-  View::unique_iterator iter = _views.begin();
-  for (; iter != _views.end(); iter++) {
-    (*iter)->update(dt);
+  for (auto &view : _views) {
+    view->update(dt);
   }
 }
 
-void ViewLayer::updateInstanceBuffer(
-    RendererManager::shared_ptr rendererManager, double t) {
-  View::unique_iterator viewIter = _views.begin();
-  for (; viewIter != _views.end(); viewIter++) {
-    (*viewIter)->updateInstanceBuffer(rendererManager, t);
+void ViewLayer::pushBuffer(InstanceBufferCollection &collection, double t) {
+  for (auto &view : _views) {
+    view->pushBuffer(collection, t);
   }
 }
 

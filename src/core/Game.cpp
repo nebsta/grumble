@@ -70,14 +70,19 @@ void Game::update(double dt) {
 
 void Game::render(double t) {
   _rendererManager->prepareFrame(t);
-  ViewLayer::iterator iter = _viewLayers.begin();
-  for (; iter != _viewLayers.end(); iter++) {
-    (*iter)->updateInstanceBuffer(_rendererManager, t);
+
+  InstanceBufferCollection &collection =
+      _rendererManager->instanceBufferCollection();
+  for (auto &viewLayer : _viewLayers) {
+    viewLayer->pushBuffer(collection, t);
   }
   _rendererManager->drawFrame(t);
 }
 
-void Game::reset() { _inputManager->clearTriggeredInputs(); }
+void Game::reset() {
+  _inputManager->clearTriggeredInputs();
+  _rendererManager->reset();
+}
 
 #pragma mark Setters
 

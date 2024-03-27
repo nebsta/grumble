@@ -1,22 +1,20 @@
 #include "ViewContainer.hpp"
+#include "View.hpp"
 
 namespace grumble {
-ViewContainer::ViewContainer() {}
+ViewContainer::ViewContainer(const std::string &id) : View(id) {}
 
 ViewContainer::~ViewContainer() {}
 
 void ViewContainer::update(double dt) {
-  auto iter = _views.begin();
-  for (; iter != _views.end(); iter++) {
-    (*iter)->update(dt);
+  for (auto &view : _views) {
+    view->update(dt);
   }
 }
 
-void ViewContainer::updateInstanceBuffer(
-    RendererManager::shared_ptr rendererManager, double t) {
-  auto iter = _views.begin();
-  for (; iter != _views.end(); iter++) {
-    (*iter)->updateInstanceBuffer(rendererManager, t);
+void ViewContainer::pushBuffer(InstanceBufferCollection &collection, double t) {
+  for (auto &view : _views) {
+    view->pushBuffer(collection, t);
   }
 }
 

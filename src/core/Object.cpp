@@ -1,11 +1,3 @@
-//
-//  Object.cpp
-//  sprawl
-//
-//  Created by Benjamin Wallis on 1/11/2015.
-//  Copyright © 2015 The Caffeinated Coder. All rights reserved.
-//
-
 #include "Object.hpp"
 
 namespace grumble {
@@ -19,6 +11,6 @@ const std::string Object::toString() const {
 
 LogCategory Object::logCategory() const { return LogCategory::none; }
 
-std::string_view Object::id() const { return _id; }
+const std::string Object::id() const { return _id; }
 
 } // namespace grumble

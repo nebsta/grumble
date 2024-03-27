@@ -2,12 +2,11 @@
 #include <fmt/core.h>
 
 namespace grumble {
-ImageView::ImageView(uint32_t instanceBufferId, const SpriteDefinition &sprite,
+ImageView::ImageView(const std::string &id, const SpriteDefinition &sprite,
                      HMM_Vec2 position, HMM_Vec2 size, TransformOrigin origin)
-    : _transform(std::make_unique<Transform>(
-          fmt::format("{}_transform", instanceBufferId), position, size,
-          origin)),
-      _sprite(sprite), _instanceBufferId(instanceBufferId) {}
+    : View(id), _transform(std::make_unique<Transform>(
+                    fmt::format("{}_transform", id), position, size, origin)),
+      _sprite(sprite) {}
 
 ImageView::~ImageView() {}
 
@@ -20,14 +19,12 @@ void ImageView::update(double dt) {
   }
 }
 
-void ImageView::updateInstanceBuffer(
-    RendererManager::shared_ptr rendererManager, double t) {
+void ImageView::pushBuffer(InstanceBufferCollection &collection, double t) {
   if (_sprite.isEmpty()) {
     return;
   }
 
   HMM_Mat4 modelMatrix = _transform->modelMatrix(1.0f);
-
   HMM_Vec2 spriteSize = _sprite.size;
   HMM_Vec2 uvOrigin = _sprite.region.bl;
   HMM_Vec2 uvSize = _sprite.region.size();
@@ -48,8 +45,7 @@ void ImageView::updateInstanceBuffer(
                      .coly = modelMatrix.Columns[1],
                      .colz = modelMatrix.Columns[2],
                      .colw = modelMatrix.Columns[3]};
-
-  rendererManager->updateInstanceBuffer(_instanceBufferId, instance, t);
+  collection.push(instance);
 }
 
 #pragma mark Getters

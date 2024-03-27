@@ -1,11 +1,3 @@
-//
-//  Object.hpp
-//  sprawl
-//
-//  Created by Benjamin Wallis on 1/11/2015.
-//  Copyright © 2015 The Caffeinated Coder. All rights reserved.
-//
-
 #pragma once
 
 #include <fmt/core.h>
@@ -20,7 +12,7 @@ public:
   Object(std::string_view id = "");
   ~Object();
 
-  std::string_view id() const;
+  const std::string id() const;
 
   virtual const std::string toString() const;
 

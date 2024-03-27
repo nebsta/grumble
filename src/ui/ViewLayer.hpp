@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../core/Object.hpp"
-#include "../render/RendererManager.hpp"
+#include "../render/InstanceBufferCollection.hpp"
 #include "View.hpp"
 #include "ViewLayerType.hpp"
 #include <memory>
@@ -19,8 +19,7 @@ public:
   void addView(View::unique_ptr view);
 
   void update(double dt);
-  void updateInstanceBuffer(RendererManager::shared_ptr rendererManager,
-                            double t);
+  void pushBuffer(InstanceBufferCollection &collection, double t);
 
   bool hasViews() const;
 
